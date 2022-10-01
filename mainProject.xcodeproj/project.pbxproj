@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ACB588A428E7E66F0025D230 /* ResuableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A328E7E66F0025D230 /* ResuableLabel.swift */; };
+		ACB588A628E7E6D80025D230 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A528E7E6D80025D230 /* Extensions.swift */; };
+		ACB588A828E7E9C30025D230 /* ReusableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A728E7E9C30025D230 /* ReusableButton.swift */; };
+		ACB588AB28E7F08C0025D230 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = ACB588AA28E7F08C0025D230 /* SnapKit */; };
 		ACFEBEA328E7603000372297 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEBEA228E7603000372297 /* AppDelegate.swift */; };
 		ACFEBEA528E7603000372297 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEBEA428E7603000372297 /* SceneDelegate.swift */; };
 		ACFEBEA728E7603000372297 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEBEA628E7603000372297 /* ViewController.swift */; };
@@ -43,6 +47,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ACB588A328E7E66F0025D230 /* ResuableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResuableLabel.swift; sourceTree = "<group>"; };
+		ACB588A528E7E6D80025D230 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = mainProject/Vendor/Utilities/Extensions.swift; sourceTree = SOURCE_ROOT; };
+		ACB588A728E7E9C30025D230 /* ReusableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableButton.swift; sourceTree = "<group>"; };
 		ACFEBE9F28E7603000372297 /* mainProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mainProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACFEBEA228E7603000372297 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACFEBEA428E7603000372297 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,21 +59,8 @@
 		ACFEBEAE28E7603100372297 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ACFEBEB028E7603100372297 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACFEBEBE28E7613000372297 /* Sora-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-Regular.otf"; sourceTree = "<group>"; };
-		ACFEBEBF28E7613000372297 /* Sora-ExtraLightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-ExtraLightItalic.otf"; sourceTree = "<group>"; };
-		ACFEBEC028E7613000372297 /* Sora-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-ExtraLight.otf"; sourceTree = "<group>"; };
-		ACFEBEC128E7613000372297 /* Sora-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-BoldItalic.otf"; sourceTree = "<group>"; };
 		ACFEBEC228E7613000372297 /* Sora-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-SemiBold.otf"; sourceTree = "<group>"; };
-		ACFEBEC328E7613000372297 /* Sora-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-LightItalic.otf"; sourceTree = "<group>"; };
-		ACFEBEC428E7613000372297 /* Sora-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-ExtraBold.otf"; sourceTree = "<group>"; };
 		ACFEBEC528E7613000372297 /* Sora-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-Bold.otf"; sourceTree = "<group>"; };
-		ACFEBEC628E7613000372297 /* Sora-SemiBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-SemiBoldItalic.otf"; sourceTree = "<group>"; };
-		ACFEBEC728E7613000372297 /* Sora-ExtraBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-ExtraBoldItalic.otf"; sourceTree = "<group>"; };
-		ACFEBEC828E7613000372297 /* Sora-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-Medium.otf"; sourceTree = "<group>"; };
-		ACFEBEC928E7613000372297 /* Sora-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-Light.otf"; sourceTree = "<group>"; };
-		ACFEBECA28E7613000372297 /* Sora-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-Italic.otf"; sourceTree = "<group>"; };
-		ACFEBECB28E7613000372297 /* Sora-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-MediumItalic.otf"; sourceTree = "<group>"; };
-		ACFEBECC28E7613000372297 /* Sora-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-Thin.otf"; sourceTree = "<group>"; };
-		ACFEBECD28E7613000372297 /* Sora-ThinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-ThinItalic.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +85,7 @@
 				ACFEBEE528E7678900372297 /* FirebaseDatabaseSwift in Frameworks */,
 				ACFEBEEF28E7678900372297 /* FirebaseFunctions in Frameworks */,
 				ACFEBF0528E7678900372297 /* FirebaseStorageCombine-Community in Frameworks */,
+				ACB588AB28E7F08C0025D230 /* SnapKit in Frameworks */,
 				ACFEBEFF28E7678900372297 /* FirebaseRemoteConfig in Frameworks */,
 				ACFEBEDB28E7678900372297 /* FirebaseAppDistribution-Beta in Frameworks */,
 				ACFEBEDF28E7678900372297 /* FirebaseAuthCombine-Community in Frameworks */,
@@ -154,6 +149,7 @@
 		ACFEBEB728E7611000372297 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				ACB588A528E7E6D80025D230 /* Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -161,6 +157,8 @@
 		ACFEBEB828E7611000372297 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				ACB588A328E7E66F0025D230 /* ResuableLabel.swift */,
+				ACB588A728E7E9C30025D230 /* ReusableButton.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -197,21 +195,8 @@
 			isa = PBXGroup;
 			children = (
 				ACFEBEC528E7613000372297 /* Sora-Bold.otf */,
-				ACFEBEC128E7613000372297 /* Sora-BoldItalic.otf */,
-				ACFEBEC428E7613000372297 /* Sora-ExtraBold.otf */,
-				ACFEBEC728E7613000372297 /* Sora-ExtraBoldItalic.otf */,
-				ACFEBEC028E7613000372297 /* Sora-ExtraLight.otf */,
-				ACFEBEBF28E7613000372297 /* Sora-ExtraLightItalic.otf */,
-				ACFEBECA28E7613000372297 /* Sora-Italic.otf */,
-				ACFEBEC928E7613000372297 /* Sora-Light.otf */,
-				ACFEBEC328E7613000372297 /* Sora-LightItalic.otf */,
-				ACFEBEC828E7613000372297 /* Sora-Medium.otf */,
-				ACFEBECB28E7613000372297 /* Sora-MediumItalic.otf */,
 				ACFEBEBE28E7613000372297 /* Sora-Regular.otf */,
 				ACFEBEC228E7613000372297 /* Sora-SemiBold.otf */,
-				ACFEBEC628E7613000372297 /* Sora-SemiBoldItalic.otf */,
-				ACFEBECC28E7613000372297 /* Sora-Thin.otf */,
-				ACFEBECD28E7613000372297 /* Sora-ThinItalic.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -269,6 +254,7 @@
 				ACFEBF0028E7678900372297 /* FirebaseRemoteConfigSwift */,
 				ACFEBF0228E7678900372297 /* FirebaseStorage */,
 				ACFEBF0428E7678900372297 /* FirebaseStorageCombine-Community */,
+				ACB588AA28E7F08C0025D230 /* SnapKit */,
 			);
 			productName = mainProject;
 			productReference = ACFEBE9F28E7603000372297 /* mainProject.app */;
@@ -300,6 +286,7 @@
 			mainGroup = ACFEBE9628E7603000372297;
 			packageReferences = (
 				ACFEBECF28E7678900372297 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				ACB588A928E7F08C0025D230 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = ACFEBEA028E7603000372297 /* Products */;
 			projectDirPath = "";
@@ -328,7 +315,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACB588A628E7E6D80025D230 /* Extensions.swift in Sources */,
 				ACFEBEA728E7603000372297 /* ViewController.swift in Sources */,
+				ACB588A828E7E9C30025D230 /* ReusableButton.swift in Sources */,
+				ACB588A428E7E66F0025D230 /* ResuableLabel.swift in Sources */,
 				ACFEBEA328E7603000372297 /* AppDelegate.swift in Sources */,
 				ACFEBEA528E7603000372297 /* SceneDelegate.swift in Sources */,
 			);
@@ -550,6 +540,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		ACB588A928E7F08C0025D230 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
 		ACFEBECF28E7678900372297 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -561,6 +559,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		ACB588AA28E7F08C0025D230 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ACB588A928E7F08C0025D230 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
 		ACFEBED028E7678900372297 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = ACFEBECF28E7678900372297 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
