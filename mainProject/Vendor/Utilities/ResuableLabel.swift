@@ -41,8 +41,20 @@ class ReusableLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Methods
     private func configureLabel() {
+        
+        configureLabelText()
+        configureLabelStyle()
+    }
+    
+    private func configureLabelText() {
+        self.text = textString
+    }
+    
+    //MARK: - Methods
+    private func configureLabelStyle() {
+        
+        let paragraphStyle = NSMutableParagraphStyle()
         
         switch style {
             case .largeTitle_1:
@@ -65,6 +77,14 @@ class ReusableLabel: UILabel {
                 
             case .subHeading_2:
                 self.font = UIFont.subHeading_2()
+            
+                paragraphStyle.minimumLineHeight = 27
+                paragraphStyle.maximumLineHeight = 27
+                self.attributedText = NSAttributedString(
+                    string: textString,
+                    attributes: [
+                        .paragraphStyle: paragraphStyle
+                    ])
                 
             case .bodyText:
                 self.font = UIFont.bodyText()
@@ -84,6 +104,5 @@ class ReusableLabel: UILabel {
         
         self.textColor = .black
         self.numberOfLines = 100
-        self.text = textString
     }
 }

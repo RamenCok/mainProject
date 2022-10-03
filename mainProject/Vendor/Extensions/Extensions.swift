@@ -5,17 +5,14 @@
 //  Created by Bryan Kenneth on 01/10/22.
 //
 
-
 import Foundation
 import UIKit
 
 extension UIColor {
+    
     static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> UIColor {
         return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: alpha)
     }
-    
-    static let textColor = UIColor(named: "textColor")
-    static let backgroundColor = UIColor(named: "backgroundColor")
     
     //System-Based Color
     static let primaryColor = UIColor.rgb(red: 35, green: 49, blue: 97, alpha: 1)
@@ -26,34 +23,13 @@ extension UIColor {
     
     static let blackTexts = UIColor.rgb(red: 35, green: 35, blue: 35, alpha: 1)
     
-    //Colo-based Color
+    //Color-based Color
     static let greyColor = UIColor.rgb(red: 73, green: 73, blue: 73, alpha: 1)
     static let redColor = UIColor.rgb(red: 215, green: 87, blue: 87, alpha: 1)
     static let greenColor = UIColor.rgb(red: 155, green: 217, blue: 117, alpha: 1)
     static let microRed = UIColor.rgb(red: 215, green: 87, blue: 87, alpha: 0.2)
     static let microGreen = UIColor.rgb(red: 169, green: 225, blue: 134, alpha: 0.2)
     
-}
-
-extension UIView {
-    
-    func setupShadow(
-        opacity: Float = 0,
-        radius: CGFloat = 0,
-        offset: CGSize = .zero,
-        color: UIColor = .black) {
-        
-            layer.shadowOpacity = opacity
-            layer.shadowRadius = radius
-            layer.shadowOffset = offset
-            layer.shadowColor = color.cgColor
-    }
-    
-    convenience public init(backgroundColor: UIColor = .clear) {
-        
-        self.init(frame: .zero)
-        self.backgroundColor = backgroundColor
-    }
 }
 
 extension UIFont {
@@ -201,5 +177,17 @@ extension UIView {
     
     func removeAllSubviews() {
         subviews.forEach({ $0.removeFromSuperview() })
+    }
+    
+    func setupShadow(
+        opacity: Float = 0,
+        radius: CGFloat = 0,
+        offset: CGSize = .zero,
+        color: UIColor = .black) {
+        
+            layer.shadowOpacity = opacity
+            layer.shadowRadius = radius
+            layer.shadowOffset = offset
+            layer.shadowColor = color.cgColor
     }
 }

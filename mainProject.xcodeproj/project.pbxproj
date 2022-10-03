@@ -44,11 +44,17 @@
 		ACFEBF0128E7678900372297 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = ACFEBF0028E7678900372297 /* FirebaseRemoteConfigSwift */; };
 		ACFEBF0328E7678900372297 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = ACFEBF0228E7678900372297 /* FirebaseStorage */; };
 		ACFEBF0528E7678900372297 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = ACFEBF0428E7678900372297 /* FirebaseStorageCombine-Community */; };
+		DB58D06328E8059800A5C727 /* OnboardingViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB58D06128E8059800A5C727 /* OnboardingViewContainer.swift */; };
+		DB58D06428E8059800A5C727 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB58D06228E8059800A5C727 /* OnboardingViewController.swift */; };
+		DB58D06528E816FB00A5C727 /* Sora-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC528E7613000372297 /* Sora-Bold.otf */; };
+		DB58D06628E816FD00A5C727 /* Sora-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEBE28E7613000372297 /* Sora-Regular.otf */; };
+		DB58D06728E8170000A5C727 /* Sora-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC228E7613000372297 /* Sora-SemiBold.otf */; };
+		DBEC708F28E93617005D0974 /* OnboardingViewController + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEC708E28E93617005D0974 /* OnboardingViewController + Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		ACB588A328E7E66F0025D230 /* ResuableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResuableLabel.swift; sourceTree = "<group>"; };
-		ACB588A528E7E6D80025D230 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = mainProject/Vendor/Utilities/Extensions.swift; sourceTree = SOURCE_ROOT; };
+		ACB588A528E7E6D80025D230 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = mainProject/Vendor/Extensions/Extensions.swift; sourceTree = SOURCE_ROOT; };
 		ACB588A728E7E9C30025D230 /* ReusableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableButton.swift; sourceTree = "<group>"; };
 		ACFEBE9F28E7603000372297 /* mainProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mainProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACFEBEA228E7603000372297 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +67,9 @@
 		ACFEBEBE28E7613000372297 /* Sora-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-Regular.otf"; sourceTree = "<group>"; };
 		ACFEBEC228E7613000372297 /* Sora-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-SemiBold.otf"; sourceTree = "<group>"; };
 		ACFEBEC528E7613000372297 /* Sora-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-Bold.otf"; sourceTree = "<group>"; };
+		DB58D06128E8059800A5C727 /* OnboardingViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewContainer.swift; sourceTree = "<group>"; };
+		DB58D06228E8059800A5C727 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		DBEC708E28E93617005D0974 /* OnboardingViewController + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingViewController + Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +133,7 @@
 				ACFEBEA228E7603000372297 /* AppDelegate.swift */,
 				ACFEBEA428E7603000372297 /* SceneDelegate.swift */,
 				ACFEBEA628E7603000372297 /* ViewController.swift */,
+				DB58D05E28E804CB00A5C727 /* Pages */,
 				ACFEBEBC28E7611000372297 /* Model */,
 				ACFEBEB628E7611000372297 /* Vendor */,
 				ACFEBECE28E7614500372297 /* Storyboards */,
@@ -208,6 +218,40 @@
 				ACFEBEAD28E7603100372297 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		DB58D05D28E804AE00A5C727 /* Onboarding View */ = {
+			isa = PBXGroup;
+			children = (
+				DB58D05F28E8053F00A5C727 /* View Model */,
+				DB58D06028E8054700A5C727 /* View */,
+			);
+			path = "Onboarding View";
+			sourceTree = "<group>";
+		};
+		DB58D05E28E804CB00A5C727 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				DB58D05D28E804AE00A5C727 /* Onboarding View */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		DB58D05F28E8053F00A5C727 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		DB58D06028E8054700A5C727 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DB58D06128E8059800A5C727 /* OnboardingViewContainer.swift */,
+				DB58D06228E8059800A5C727 /* OnboardingViewController.swift */,
+				DBEC708E28E93617005D0974 /* OnboardingViewController + Extensions.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,8 +347,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACFEBEAF28E7603100372297 /* LaunchScreen.storyboard in Resources */,
+				DB58D06728E8170000A5C727 /* Sora-SemiBold.otf in Resources */,
 				ACFEBEAC28E7603100372297 /* Assets.xcassets in Resources */,
 				ACFEBEAA28E7603000372297 /* Main.storyboard in Resources */,
+				DB58D06528E816FB00A5C727 /* Sora-Bold.otf in Resources */,
+				DB58D06628E816FD00A5C727 /* Sora-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,8 +362,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB58D06328E8059800A5C727 /* OnboardingViewContainer.swift in Sources */,
 				ACB588A628E7E6D80025D230 /* Extensions.swift in Sources */,
 				ACFEBEA728E7603000372297 /* ViewController.swift in Sources */,
+				DBEC708F28E93617005D0974 /* OnboardingViewController + Extensions.swift in Sources */,
+				DB58D06428E8059800A5C727 /* OnboardingViewController.swift in Sources */,
 				ACB588A828E7E9C30025D230 /* ReusableButton.swift in Sources */,
 				ACB588A428E7E66F0025D230 /* ResuableLabel.swift in Sources */,
 				ACFEBEA328E7603000372297 /* AppDelegate.swift in Sources */,
@@ -467,7 +517,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8XZM6ZXT9F;
+				DEVELOPMENT_TEAM = L7SMRXB5WV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mainProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -495,7 +545,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8XZM6ZXT9F;
+				DEVELOPMENT_TEAM = L7SMRXB5WV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mainProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
