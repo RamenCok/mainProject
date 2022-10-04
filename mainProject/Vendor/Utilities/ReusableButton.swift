@@ -47,48 +47,48 @@ class ReusableButton: UIButton {
     
     private func configureButton(){
 //        self.autoresizingMask = false
-        
+        self.setTitle(buttontext, for: .normal)
+        print(buttontext)
         switch style {
         case .primary:
             self.backgroundColor = UIColor.primaryColor
             self.layer.borderColor = UIColor.primaryColor.cgColor
             self.layer.borderWidth = 1.5
             self.tintColor = UIColor.whiteColor
-            break
+            
             
         case .secondary:
-            self.backgroundColor = UIColor.clear
+            self.backgroundColor = .clear
             self.layer.borderColor = UIColor.primaryColor.cgColor
             self.layer.borderWidth = 1.5
-            self.tintColor = UIColor.whiteColor
-            break
+            self.setTitleColor(.primaryColor, for: .normal)
+            
             
         case .primaryDisabled:
             self.backgroundColor = UIColor.disabledColor
             self.layer.borderColor = UIColor.disabledColor.cgColor
             self.layer.borderWidth = 1.5
             self.tintColor = UIColor.whiteColor
-            break
+            
             
         case .secondaryDisabled:
             self.backgroundColor = UIColor.clear
             self.layer.borderColor = UIColor.disabledColor.cgColor
             self.layer.borderWidth = 1.5
             self.tintColor = UIColor.disabledColor
-            break
+            
             
         case .delete:
             self.backgroundColor = UIColor.redColor
             self.layer.borderColor = UIColor.redColor.cgColor
             self.layer.borderWidth = 1.5
             self.tintColor = UIColor.whiteColor
-            break
+            
             
         }
         self.layer.cornerRadius = 10
         self.titleLabel?.font = UIFont.bodyText()
-        self.setTitle(buttontext, for: .normal)
-        self.titleLabel?.textColor = .white
+        
         self.snp.makeConstraints { make in
             make.height.equalTo(48)
             make.width.equalTo(UIScreen.main.bounds.width - 40)

@@ -7,10 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC548F3D28EBFB52002C3CC8 /* ASHUButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC548F3C28EBFB52002C3CC8 /* ASHUButton.swift */; };
 		ACB588A428E7E66F0025D230 /* ResuableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A328E7E66F0025D230 /* ResuableLabel.swift */; };
 		ACB588A628E7E6D80025D230 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A528E7E6D80025D230 /* Extensions.swift */; };
 		ACB588A828E7E9C30025D230 /* ReusableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A728E7E9C30025D230 /* ReusableButton.swift */; };
 		ACB588AB28E7F08C0025D230 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = ACB588AA28E7F08C0025D230 /* SnapKit */; };
+		ACB588AF28EA02660025D230 /* Brands.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588AE28EA02660025D230 /* Brands.swift */; };
+		ACB588B328EA03680025D230 /* BrandCatalogueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588B228EA03680025D230 /* BrandCatalogueViewController.swift */; };
+		ACB588B428EA8CC80025D230 /* Sora-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC528E7613000372297 /* Sora-Bold.otf */; };
+		ACB588B528EA8CCA0025D230 /* Sora-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEBE28E7613000372297 /* Sora-Regular.otf */; };
+		ACB588B628EA8CCD0025D230 /* Sora-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC228E7613000372297 /* Sora-SemiBold.otf */; };
+		ACB588BB28EA909E0025D230 /* BrandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588BA28EA909E0025D230 /* BrandCollectionViewCell.swift */; };
+		ACB588BE28EAFEAC0025D230 /* BrandCatalogueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588BD28EAFEAC0025D230 /* BrandCatalogueViewModel.swift */; };
+		ACB588C328EBE0460025D230 /* SignupLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588C228EBE0460025D230 /* SignupLogin.swift */; };
 		ACFEBEA328E7603000372297 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEBEA228E7603000372297 /* AppDelegate.swift */; };
 		ACFEBEA528E7603000372297 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEBEA428E7603000372297 /* SceneDelegate.swift */; };
 		ACFEBEA728E7603000372297 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEBEA628E7603000372297 /* ViewController.swift */; };
@@ -47,9 +56,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC548F3C28EBFB52002C3CC8 /* ASHUButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASHUButton.swift; sourceTree = "<group>"; };
 		ACB588A328E7E66F0025D230 /* ResuableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResuableLabel.swift; sourceTree = "<group>"; };
-		ACB588A528E7E6D80025D230 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = mainProject/Vendor/Utilities/Extensions.swift; sourceTree = SOURCE_ROOT; };
+		ACB588A528E7E6D80025D230 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = mainProject/Vendor/Extensions/Extensions.swift; sourceTree = SOURCE_ROOT; };
 		ACB588A728E7E9C30025D230 /* ReusableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableButton.swift; sourceTree = "<group>"; };
+		ACB588AE28EA02660025D230 /* Brands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Brands.swift; path = mainProject/Model/Brands.swift; sourceTree = SOURCE_ROOT; };
+		ACB588B228EA03680025D230 /* BrandCatalogueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandCatalogueViewController.swift; sourceTree = "<group>"; wrapsLines = 0; };
+		ACB588BA28EA909E0025D230 /* BrandCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACB588BD28EAFEAC0025D230 /* BrandCatalogueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandCatalogueViewModel.swift; sourceTree = "<group>"; };
+		ACB588C228EBE0460025D230 /* SignupLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupLogin.swift; sourceTree = "<group>"; };
 		ACFEBE9F28E7603000372297 /* mainProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mainProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACFEBEA228E7603000372297 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACFEBEA428E7603000372297 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +117,81 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ACB588AC28EA023B0025D230 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				ACB588BF28EB5D3C0025D230 /* Authentication */,
+				ACB588AD28EA02460025D230 /* BrandCatalogue */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		ACB588AD28EA02460025D230 /* BrandCatalogue */ = {
+			isa = PBXGroup;
+			children = (
+				ACB588B128EA034E0025D230 /* ViewModel */,
+				ACB588B028EA03470025D230 /* View */,
+			);
+			path = BrandCatalogue;
+			sourceTree = "<group>";
+		};
+		ACB588B028EA03470025D230 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ACB588B228EA03680025D230 /* BrandCatalogueViewController.swift */,
+				ACB588BA28EA909E0025D230 /* BrandCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ACB588B128EA034E0025D230 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				ACB588BD28EAFEAC0025D230 /* BrandCatalogueViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		ACB588B728EA8F310025D230 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ACB588AE28EA02660025D230 /* Brands.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ACB588BC28EA95EB0025D230 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				ACB588A528E7E6D80025D230 /* Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		ACB588BF28EB5D3C0025D230 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				ACB588C128EB5D4A0025D230 /* View */,
+				ACB588C028EB5D450025D230 /* ViewModel */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		ACB588C028EB5D450025D230 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		ACB588C128EB5D4A0025D230 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ACB588C228EBE0460025D230 /* SignupLogin.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		ACFEBE9628E7603000372297 = {
 			isa = PBXGroup;
 			children = (
@@ -124,7 +214,8 @@
 				ACFEBEA228E7603000372297 /* AppDelegate.swift */,
 				ACFEBEA428E7603000372297 /* SceneDelegate.swift */,
 				ACFEBEA628E7603000372297 /* ViewController.swift */,
-				ACFEBEBC28E7611000372297 /* Model */,
+				ACB588AC28EA023B0025D230 /* Pages */,
+				ACB588B728EA8F310025D230 /* Model */,
 				ACFEBEB628E7611000372297 /* Vendor */,
 				ACFEBECE28E7614500372297 /* Storyboards */,
 				ACFEBEAB28E7603100372297 /* Assets.xcassets */,
@@ -137,7 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				ACFEBEBD28E7611D00372297 /* Fonts */,
-				ACFEBEB728E7611000372297 /* Extensions */,
+				ACB588BC28EA95EB0025D230 /* Extensions */,
 				ACFEBEB828E7611000372297 /* Utilities */,
 				ACFEBEB928E7611000372297 /* Constant */,
 				ACFEBEBA28E7611000372297 /* Helper */,
@@ -146,17 +237,10 @@
 			path = Vendor;
 			sourceTree = "<group>";
 		};
-		ACFEBEB728E7611000372297 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				ACB588A528E7E6D80025D230 /* Extensions.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		ACFEBEB828E7611000372297 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				AC548F3C28EBFB52002C3CC8 /* ASHUButton.swift */,
 				ACB588A328E7E66F0025D230 /* ResuableLabel.swift */,
 				ACB588A728E7E9C30025D230 /* ReusableButton.swift */,
 			);
@@ -182,13 +266,6 @@
 			children = (
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		ACFEBEBC28E7611000372297 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		ACFEBEBD28E7611D00372297 /* Fonts */ = {
@@ -303,8 +380,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACFEBEAF28E7603100372297 /* LaunchScreen.storyboard in Resources */,
+				ACB588B628EA8CCD0025D230 /* Sora-SemiBold.otf in Resources */,
 				ACFEBEAC28E7603100372297 /* Assets.xcassets in Resources */,
 				ACFEBEAA28E7603000372297 /* Main.storyboard in Resources */,
+				ACB588B428EA8CC80025D230 /* Sora-Bold.otf in Resources */,
+				ACB588B528EA8CCA0025D230 /* Sora-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,10 +395,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACB588BE28EAFEAC0025D230 /* BrandCatalogueViewModel.swift in Sources */,
+				ACB588B328EA03680025D230 /* BrandCatalogueViewController.swift in Sources */,
 				ACB588A628E7E6D80025D230 /* Extensions.swift in Sources */,
 				ACFEBEA728E7603000372297 /* ViewController.swift in Sources */,
+				AC548F3D28EBFB52002C3CC8 /* ASHUButton.swift in Sources */,
+				ACB588AF28EA02660025D230 /* Brands.swift in Sources */,
+				ACB588C328EBE0460025D230 /* SignupLogin.swift in Sources */,
 				ACB588A828E7E9C30025D230 /* ReusableButton.swift in Sources */,
 				ACB588A428E7E66F0025D230 /* ResuableLabel.swift in Sources */,
+				ACB588BB28EA909E0025D230 /* BrandCollectionViewCell.swift in Sources */,
 				ACFEBEA328E7603000372297 /* AppDelegate.swift in Sources */,
 				ACFEBEA528E7603000372297 /* SceneDelegate.swift in Sources */,
 			);
