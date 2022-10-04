@@ -12,6 +12,9 @@ class ViewController: UIViewController {
     
     private lazy var button: UIButton = {
         let button = ReusableButton(style: .secondary, buttonText: "Button", selector: #selector(printYeuy), target: self)
+        button.setImage(UIImage(systemName: "apple.logo"), for: .normal)
+        button.tintColor = .primaryColor
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 10)
         return button
     }()
     
