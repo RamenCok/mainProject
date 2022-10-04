@@ -44,6 +44,17 @@
 		ACFEBF0128E7678900372297 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = ACFEBF0028E7678900372297 /* FirebaseRemoteConfigSwift */; };
 		ACFEBF0328E7678900372297 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = ACFEBF0228E7678900372297 /* FirebaseStorage */; };
 		ACFEBF0528E7678900372297 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = ACFEBF0428E7678900372297 /* FirebaseStorageCombine-Community */; };
+		DB8BCD8F28EBD81A00630CA3 /* DismissTappablePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCD8E28EBD81A00630CA3 /* DismissTappablePresentationController.swift */; };
+		DB8BCD9128EBD83900630CA3 /* NotTappablePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCD9028EBD83900630CA3 /* NotTappablePresentationController.swift */; };
+		DB8BCD9728EBDC8F00630CA3 /* SignUpModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCD9628EBDC8F00630CA3 /* SignUpModalVC.swift */; };
+		DB8BCD9928EBDD0F00630CA3 /* BodyMeasurementModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCD9828EBDD0F00630CA3 /* BodyMeasurementModalVC.swift */; };
+		DB8BCD9F28EBDD8500630CA3 /* BuyModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCD9E28EBDD8500630CA3 /* BuyModalVC.swift */; };
+		DB8BCDA328EBDE0800630CA3 /* SizeCalculatorModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCDA128EBDE0800630CA3 /* SizeCalculatorModalVC.swift */; };
+		DB8BCDA428EBDE0800630CA3 /* SizeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCDA228EBDE0800630CA3 /* SizeButtonView.swift */; };
+		DB8BCDA628EBE03600630CA3 /* Sora-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC528E7613000372297 /* Sora-Bold.otf */; };
+		DB8BCDA728EBE03600630CA3 /* Sora-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEBE28E7613000372297 /* Sora-Regular.otf */; };
+		DB8BCDA828EBE03600630CA3 /* Sora-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC228E7613000372297 /* Sora-SemiBold.otf */; };
+		DB8BCDAA28EBF0F200630CA3 /* BuyModalVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCDA928EBF0F200630CA3 /* BuyModalVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +72,14 @@
 		ACFEBEBE28E7613000372297 /* Sora-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-Regular.otf"; sourceTree = "<group>"; };
 		ACFEBEC228E7613000372297 /* Sora-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-SemiBold.otf"; sourceTree = "<group>"; };
 		ACFEBEC528E7613000372297 /* Sora-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-Bold.otf"; sourceTree = "<group>"; };
+		DB8BCD8E28EBD81A00630CA3 /* DismissTappablePresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissTappablePresentationController.swift; sourceTree = "<group>"; };
+		DB8BCD9028EBD83900630CA3 /* NotTappablePresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotTappablePresentationController.swift; sourceTree = "<group>"; };
+		DB8BCD9628EBDC8F00630CA3 /* SignUpModalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpModalVC.swift; sourceTree = "<group>"; };
+		DB8BCD9828EBDD0F00630CA3 /* BodyMeasurementModalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyMeasurementModalVC.swift; sourceTree = "<group>"; };
+		DB8BCD9E28EBDD8500630CA3 /* BuyModalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyModalVC.swift; sourceTree = "<group>"; };
+		DB8BCDA128EBDE0800630CA3 /* SizeCalculatorModalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeCalculatorModalVC.swift; sourceTree = "<group>"; };
+		DB8BCDA228EBDE0800630CA3 /* SizeButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeButtonView.swift; sourceTree = "<group>"; };
+		DB8BCDA928EBF0F200630CA3 /* BuyModalVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyModalVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +143,7 @@
 				ACFEBEA228E7603000372297 /* AppDelegate.swift */,
 				ACFEBEA428E7603000372297 /* SceneDelegate.swift */,
 				ACFEBEA628E7603000372297 /* ViewController.swift */,
+				DB8BCD8A28EBD66D00630CA3 /* Reusable Modal */,
 				ACFEBEBC28E7611000372297 /* Model */,
 				ACFEBEB628E7611000372297 /* Vendor */,
 				ACFEBECE28E7614500372297 /* Storyboards */,
@@ -208,6 +228,125 @@
 				ACFEBEAD28E7603100372297 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		DB8BCD8A28EBD66D00630CA3 /* Reusable Modal */ = {
+			isa = PBXGroup;
+			children = (
+				DB8BCD8D28EBD7F900630CA3 /* Presentation Controller */,
+				DB8BCD9528EBDC5C00630CA3 /* SizeCalculatorModal */,
+				DB8BCD9428EBDC5400630CA3 /* BuyLinkModal */,
+				DB8BCD9328EBDC3700630CA3 /* AskSetupBodyMeasurementModal */,
+				DB8BCD9228EBDC1E00630CA3 /* AskToSignUpModal */,
+			);
+			path = "Reusable Modal";
+			sourceTree = "<group>";
+		};
+		DB8BCD8B28EBD6B200630CA3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DB8BCD9628EBDC8F00630CA3 /* SignUpModalVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DB8BCD8C28EBD7A900630CA3 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		DB8BCD8D28EBD7F900630CA3 /* Presentation Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DB8BCD8E28EBD81A00630CA3 /* DismissTappablePresentationController.swift */,
+				DB8BCD9028EBD83900630CA3 /* NotTappablePresentationController.swift */,
+			);
+			path = "Presentation Controller";
+			sourceTree = "<group>";
+		};
+		DB8BCD9228EBDC1E00630CA3 /* AskToSignUpModal */ = {
+			isa = PBXGroup;
+			children = (
+				DB8BCD8C28EBD7A900630CA3 /* View Model */,
+				DB8BCD8B28EBD6B200630CA3 /* View */,
+			);
+			path = AskToSignUpModal;
+			sourceTree = "<group>";
+		};
+		DB8BCD9328EBDC3700630CA3 /* AskSetupBodyMeasurementModal */ = {
+			isa = PBXGroup;
+			children = (
+				DB8BCD9B28EBDD1C00630CA3 /* View Model */,
+				DB8BCD9A28EBDD1500630CA3 /* View */,
+			);
+			path = AskSetupBodyMeasurementModal;
+			sourceTree = "<group>";
+		};
+		DB8BCD9428EBDC5400630CA3 /* BuyLinkModal */ = {
+			isa = PBXGroup;
+			children = (
+				DB8BCD9D28EBDD7900630CA3 /* View Model */,
+				DB8BCD9C28EBDD7400630CA3 /* View */,
+			);
+			path = BuyLinkModal;
+			sourceTree = "<group>";
+		};
+		DB8BCD9528EBDC5C00630CA3 /* SizeCalculatorModal */ = {
+			isa = PBXGroup;
+			children = (
+				DB8BCDA528EBDE0B00630CA3 /* View Model */,
+				DB8BCDA028EBDDFD00630CA3 /* View */,
+			);
+			path = SizeCalculatorModal;
+			sourceTree = "<group>";
+		};
+		DB8BCD9A28EBDD1500630CA3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DB8BCD9828EBDD0F00630CA3 /* BodyMeasurementModalVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DB8BCD9B28EBDD1C00630CA3 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		DB8BCD9C28EBDD7400630CA3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DB8BCD9E28EBDD8500630CA3 /* BuyModalVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DB8BCD9D28EBDD7900630CA3 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				DB8BCDA928EBF0F200630CA3 /* BuyModalVM.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		DB8BCDA028EBDDFD00630CA3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DB8BCDA228EBDE0800630CA3 /* SizeButtonView.swift */,
+				DB8BCDA128EBDE0800630CA3 /* SizeCalculatorModalVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DB8BCDA528EBDE0B00630CA3 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,8 +442,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACFEBEAF28E7603100372297 /* LaunchScreen.storyboard in Resources */,
+				DB8BCDA828EBE03600630CA3 /* Sora-SemiBold.otf in Resources */,
 				ACFEBEAC28E7603100372297 /* Assets.xcassets in Resources */,
 				ACFEBEAA28E7603000372297 /* Main.storyboard in Resources */,
+				DB8BCDA628EBE03600630CA3 /* Sora-Bold.otf in Resources */,
+				DB8BCDA728EBE03600630CA3 /* Sora-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,10 +457,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB8BCD8F28EBD81A00630CA3 /* DismissTappablePresentationController.swift in Sources */,
+				DB8BCDAA28EBF0F200630CA3 /* BuyModalVM.swift in Sources */,
+				DB8BCDA328EBDE0800630CA3 /* SizeCalculatorModalVC.swift in Sources */,
+				DB8BCD9F28EBDD8500630CA3 /* BuyModalVC.swift in Sources */,
+				DB8BCD9728EBDC8F00630CA3 /* SignUpModalVC.swift in Sources */,
+				DB8BCDA428EBDE0800630CA3 /* SizeButtonView.swift in Sources */,
 				ACB588A628E7E6D80025D230 /* Extensions.swift in Sources */,
 				ACFEBEA728E7603000372297 /* ViewController.swift in Sources */,
 				ACB588A828E7E9C30025D230 /* ReusableButton.swift in Sources */,
+				DB8BCD9128EBD83900630CA3 /* NotTappablePresentationController.swift in Sources */,
 				ACB588A428E7E66F0025D230 /* ResuableLabel.swift in Sources */,
+				DB8BCD9928EBDD0F00630CA3 /* BodyMeasurementModalVC.swift in Sources */,
 				ACFEBEA328E7603000372297 /* AppDelegate.swift in Sources */,
 				ACFEBEA528E7603000372297 /* SceneDelegate.swift in Sources */,
 			);
@@ -467,7 +617,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8XZM6ZXT9F;
+				DEVELOPMENT_TEAM = L7SMRXB5WV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mainProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -495,7 +645,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8XZM6ZXT9F;
+				DEVELOPMENT_TEAM = L7SMRXB5WV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mainProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

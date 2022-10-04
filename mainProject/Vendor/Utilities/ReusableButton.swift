@@ -60,7 +60,7 @@ class ReusableButton: UIButton {
             self.backgroundColor = UIColor.clear
             self.layer.borderColor = UIColor.primaryColor.cgColor
             self.layer.borderWidth = 1.5
-            self.tintColor = UIColor.whiteColor
+            self.setTitleColor(.primaryColor, for: .normal)
             break
             
         case .primaryDisabled:

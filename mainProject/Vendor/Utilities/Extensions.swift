@@ -54,6 +54,33 @@ extension UIView {
         self.init(frame: .zero)
         self.backgroundColor = backgroundColor
     }
+    
+    func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
+        
+        let path = UIBezierPath(
+            roundedRect: bounds,
+            byRoundingCorners: corners,
+            cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        
+        mask.path = path.cgPath
+        layer.mask = mask
+    }
+    
+    func pinToParent(parent: UIView) {
+        translatesAutoresizingMaskIntoConstraints = false
+        parent.addSubview(self)
+        NSLayoutConstraint.activate([
+            topAnchor.constraint(equalTo: parent.topAnchor),
+            leadingAnchor.constraint(equalTo: parent.leadingAnchor),
+            trailingAnchor.constraint(equalTo: parent.trailingAnchor),
+            bottomAnchor.constraint(equalTo: parent.bottomAnchor)
+        ])
+    }
+    
+    func removeAllSubviews() {
+        subviews.forEach({ $0.removeFromSuperview() })
+    }
 }
 
 extension UIFont {
@@ -183,23 +210,5 @@ extension UITextField {
         let barButton = UIBarButtonItem(title: title, style: .plain, target: target, action: selector)//3
         toolBar.setItems([flexible, barButton], animated: false)
         self.inputAccessoryView = toolBar
-    }
-}
-
-extension UIView {
-    
-    func pinToParent(parent: UIView) {
-        translatesAutoresizingMaskIntoConstraints = false
-        parent.addSubview(self)
-        NSLayoutConstraint.activate([
-            topAnchor.constraint(equalTo: parent.topAnchor),
-            leadingAnchor.constraint(equalTo: parent.leadingAnchor),
-            trailingAnchor.constraint(equalTo: parent.trailingAnchor),
-            bottomAnchor.constraint(equalTo: parent.bottomAnchor)
-        ])
-    }
-    
-    func removeAllSubviews() {
-        subviews.forEach({ $0.removeFromSuperview() })
     }
 }
