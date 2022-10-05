@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ProfileViewController: UIViewController {
 
@@ -14,6 +15,32 @@ class ProfileViewController: UIViewController {
         let image = UIImageView()
         image.image = UIImage(named: "profileBG")
         return image
+    }()
+    
+    private lazy var profileImage: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "initialProfilePicture")
+        image.snp.makeConstraints { make in
+            make.width.height.equalTo(view.frame.width / 2.203)
+        }
+        image.layer.masksToBounds = true
+        image.layer.cornerRadius = (view.frame.width / 2.203) / 2
+        return image
+    }()
+    
+    private lazy var bodyMeasurementButton: ReusableProfileButtonView = {
+        let button = ReusableProfileButtonView(logo: "ruler", buttonText: "Body Measurement", selector: #selector(handleBodyMeasurementButton), target: self)
+        return button
+    }()
+    
+    private lazy var resetPasswordButton: ReusableProfileButtonView = {
+        let button = ReusableProfileButtonView(logo: "key", buttonText: "Reset Password", selector: #selector(handleResetPasswordButton), target: self)
+        return button
+    }()
+    
+    private lazy var logOutButton: ReusableButton = {
+        let button = ReusableButton(style: .delete, buttonText: "Log out", selector: #selector(handleLogOutButton), target: self)
+        return button
     }()
     
     // MARK: - Lifecycle
@@ -25,7 +52,19 @@ class ProfileViewController: UIViewController {
     
     // MARK: - Selectors
     @objc func handleEdit() {
-        print("Test")
+        print("Edit")
+    }
+    
+    @objc func handleBodyMeasurementButton() {
+        print("Body Measurement")
+    }
+    
+    @objc func handleResetPasswordButton() {
+        print("Reset Password")
+    }
+    
+    @objc func handleLogOutButton() {
+        print("Log out")
     }
     
     // MARK: - Helpers
@@ -36,27 +75,33 @@ class ProfileViewController: UIViewController {
             make.top.bottom.leading.trailing.equalToSuperview()
         }
         
-        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 44, width: view.frame.width, height: 44))
-                
-        // To set custom font for title
-        let navItem = UINavigationItem()
-        
         // To set transparent background for navigation bar
         let appearance = UINavigationBarAppearance()
         appearance.configureWithTransparentBackground()
         UINavigationBar.appearance().standardAppearance = appearance
         
-        // To set Cancel button and custom font
-        let cancelItem = UIBarButtonItem(barButtonSystemItem: .edit, target: nil, action: #selector(handleEdit))
-        let navItemAttribute = [NSAttributedString.Key.font: UIFont.bodyText()]
-        UIBarButtonItem.appearance().setTitleTextAttributes(navItemAttribute, for: .normal)
-        UIBarButtonItem.appearance().tintColor = .label
+        view.addSubview(profileImage)
+        profileImage.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(view.frame.height / 11.25)
+        }
         
-        // Add Cancel button to the right
-        navItem.rightBarButtonItem = cancelItem
+        view.addSubview(logOutButton)
+        logOutButton.snp.makeConstraints { make in
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-37)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+        }
         
-        // Add all items to the navigation bar
-        navBar.setItems([navItem], animated: false)
-        view.addSubview(navBar)
+        let stack = UIStackView(arrangedSubviews: [bodyMeasurementButton, resetPasswordButton])
+        stack.axis = .vertical
+        stack.spacing = 10
+        view.addSubview(stack)
+        stack.snp.makeConstraints { make in
+            make.bottom.equalTo(logOutButton.snp.top).offset(-(view.frame.height / 5.861))
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+        }
+        
     }
 }
