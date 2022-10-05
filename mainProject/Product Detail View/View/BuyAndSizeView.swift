@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class BuyAndSizeView: UIView {
-    
+    // MARK: - Properties
     private lazy var rectangle: UIView = {
         let rect = UIView()
         rect.backgroundColor = .systemBackground
@@ -38,14 +38,15 @@ class BuyAndSizeView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
+    // MARK: - Helpers
     private func configureUI() {
         addSubview(rectangle)
         rectangle.snp.makeConstraints { make in
             make.center.equalTo(self)
-            make.width.height.equalTo(self)
+            make.height.equalTo(self)
         }
-        rectangle.setupShadow(opacity: 0.15, radius: 58, offset: CGSize(width: 1, height: 8), color: .systemGray)
+        rectangle.setupShadow(opacity: 0.28, radius: 58, offset: CGSize(width: 1, height: 8), color: .systemGray)
         
         addSubview(buyButton)
         buyButton.snp.makeConstraints { make in
@@ -62,6 +63,7 @@ class BuyAndSizeView: UIView {
         }
     }
     
+    // MARK: - Selectors
     @objc func handleBuyButton() {
         print("Buy modal popout")
     }

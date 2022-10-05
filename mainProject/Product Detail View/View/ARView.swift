@@ -11,6 +11,10 @@ import SceneKit.ModelIO
 
 class ARView: UIView {
     
+    // MARK: - Properties
+    
+    private var filename: String
+    
     private lazy var sceneKitView: SCNView = {
         let view = SCNView()
         view.allowsCameraControl = true
@@ -19,22 +23,11 @@ class ARView: UIView {
     }()
     
     //MARK: - Lifecycle
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        commonInit()
-    }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonInit()
-    }
-    
-    init() {
+    required init(filename: String) {
+        self.filename = filename
         super.init(frame: .zero)
-        commonInit()
-    }
-    
-    private func commonInit() {
+        
         backgroundColor = .systemBackground
         
         setup3DModel()
@@ -46,8 +39,14 @@ class ARView: UIView {
         }
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - Helpers
+    
     private func setup3DModel() {
-        guard let url = Bundle.main.url(forResource: "AirForce", withExtension: "usdz") else { fatalError() }
+        guard let url = Bundle.main.url(forResource: "\(filename)", withExtension: "usdz") else { fatalError() }
         let mdlAsset = MDLAsset(url: url)
         let scene = SCNScene(mdlAsset: mdlAsset)
     

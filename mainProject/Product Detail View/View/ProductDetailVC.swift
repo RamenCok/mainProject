@@ -11,8 +11,7 @@ class ProductDetailVC: UIViewController {
     
     // MARK: - Properties
     var vm: ProductDetailVM!
-    
-    var colorsArrayTest = [String]()
+    private var product = Product(filename: "", brandName: "", productName: "", productDesc: "", colorsArray: [String]())
     
     private let scrollView: UIScrollView = {
         let view = UIScrollView()
@@ -24,21 +23,17 @@ class ProductDetailVC: UIViewController {
         return view
     }()
     
-    private let ArView: UIView = {
-        let view = ARView()
-        return view
-    }()
-    
     private let viewInAR: UIButton = {
         let button = UIButton()
-        button.setTitleColor(.white, for: .normal)
-        button.setTitle("View in AR", for: .normal)
         button.backgroundColor = .primaryColor
         button.layer.cornerRadius = 45 / 2
-        button.addTarget(self, action: #selector(handleARButton), for: .touchUpInside)
+        button.setTitleColor(.white, for: .normal)
+        button.setTitle("View in AR", for: .normal)
         button.titleLabel?.font = UIFont.bodyText()
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 6, bottom: 0, right: 0)
         button.setImage(UIImage(named: "ARicon"), for: .normal)
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 15)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)
+        button.addTarget(self, action: #selector(handleARButton), for: .touchUpInside)
         return button
     }()
     
@@ -48,57 +43,17 @@ class ProductDetailVC: UIViewController {
         return rect
     }()
     
-    private lazy var brandName: UILabel = {
-        let label = ReusableLabel(style: .productDetailBrand, textString: "")
-        label.textColor = .systemGray3
-        return label
-    }()
-    
-    private lazy var productName: UILabel = {
-        let label = ReusableLabel(style: .heading_2, textString: "")
-        label.numberOfLines = 2
-        return label
-    }()
-    
-    private lazy var productInfo: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [brandName, productName])
-        stackView.axis = .vertical
-        stackView.alignment = .leading
-        stackView.spacing = 3
-        return stackView
-    }()
-    
-    private lazy var shareButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "square.and.arrow.up")?.scalePreservingAspectRatio(targetSize: CGSize(width: 27, height: 27)), for: .normal)
-        button.addTarget(self, action: #selector(handleShareButton), for: .touchUpInside)
-        return button
-    }()
-    
-    private lazy var productHeadline: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [productInfo, shareButton])
-        stackView.axis = .horizontal
-        stackView.alignment = .center
-        stackView.distribution = .fill
-        stackView.spacing = 10
-        return stackView
-    }()
-    
-    private lazy var productDescription: UILabel = {
-        let label = ReusableLabel(style: .bodyText, textString: "")
-        label.numberOfLines = 0
-        return label
-    }()
     // MARK: - Lifecycle
     override open func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         // Panggil dari vm
         vm.updatedData = { [weak self] data in
-            self?.brandName.text = "\(data.brandName)"
-            self?.productName.text = "\(data.productName)"
-            self?.colorsArrayTest = data.colorsArray
-            self?.productDescription.text = "\(data.productDesc)"
+            self?.product.filename = "\(data.filename)"
+            self?.product.brandName = "\(data.brandName)"
+            self?.product.productName = "\(data.productName)"
+            self?.product.colorsArray = data.colorsArray
+            self?.product.productDesc = "\(data.productDesc)"
             self?.setupScrollView()
         }
     }
@@ -109,9 +64,6 @@ class ProductDetailVC: UIViewController {
     }
     
     // MARK: - Selectors
-    @objc func handleShareButton() {
-        print("Share")
-    }
     
     @objc func handleBackButton() {
         print("Back")
@@ -128,7 +80,7 @@ class ProductDetailVC: UIViewController {
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
             make.top.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-164)
+            make.bottom.equalToSuperview().offset(view.frame.height * -0.194)
         }
         
         scrollView.contentInsetAdjustmentBehavior = .never
@@ -139,7 +91,7 @@ class ProductDetailVC: UIViewController {
             make.centerX.equalTo(scrollView.snp.centerX)
             make.width.equalTo(scrollView.snp.width)
             make.top.equalTo(scrollView.snp.top)
-            make.bottom.equalTo(scrollView.snp.bottom).offset(-20)
+            make.bottom.equalTo(scrollView.snp.bottom).offset(view.frame.height * -0.023)
         }
         
         let buyandsize = BuyAndSizeView()
@@ -149,18 +101,21 @@ class ProductDetailVC: UIViewController {
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
             make.top.equalTo(scrollView.snp.bottom)
             make.bottom.equalToSuperview()
+            make.height.equalTo(view.frame.height * 0.194)
+            print(view.frame.height * 0.194)
         }
 
         configureContainerView()
     }
     
     private func configureContainerView() {
-
+        
+        let ArView = ARView(filename: product.filename)
         contentView.addSubview(ArView)
         ArView.snp.makeConstraints { make in
             make.top.equalTo(contentView.snp.top)
             make.width.equalTo(contentView.snp.width)
-            make.height.equalTo(view.frame.height * 0.4480094787)
+            make.height.equalTo(view.frame.height * 0.448)
         }
         
         contentView.addSubview(rectangle)
@@ -172,29 +127,31 @@ class ProductDetailVC: UIViewController {
         
         contentView.addSubview(viewInAR)
         viewInAR.snp.makeConstraints { make in
-            make.bottom.equalTo(rectangle.snp.top).offset(-12)
+            make.bottom.equalTo(rectangle.snp.top).offset(view.frame.height * -0.014)
             make.trailing.equalTo(contentView.snp.trailing).offset(-20)
-            make.width.equalTo(146)
-            make.height.equalTo(45)
+            make.width.equalTo(view.frame.width * 0.374)
+            make.height.equalTo(view.frame.height * 0.053)
         }
         
+        let productHeadline = HeadlineView(brandName: product.brandName, productName: product.productName)
         contentView.addSubview(productHeadline)
         productHeadline.snp.makeConstraints { make in
-            make.top.equalTo(ArView.snp.bottom).offset(17)
+            make.top.equalTo(ArView.snp.bottom).offset(view.frame.height * 0.02)
             make.leading.equalTo(contentView.snp.leading).offset(20)
             make.trailing.equalTo(contentView.snp.trailing).offset(-20)
         }
 
-        let RadioButton = RadioButtonView(colorarray: colorsArrayTest)
+        let RadioButton = RadioButtonView(colorarray: product.colorsArray)
         contentView.addSubview(RadioButton)
         RadioButton.snp.makeConstraints { make in
-            make.top.equalTo(productHeadline.snp.bottom).offset(17)
+            make.top.equalTo(productHeadline.snp.bottom).offset(view.frame.height * 0.02)
             make.leading.equalTo(contentView.snp.leading).offset(20)
         }
         
+        let productDescription = DescriptionView(productDesc: product.productDesc)
         contentView.addSubview(productDescription)
         productDescription.snp.makeConstraints { make in
-            make.top.equalTo(RadioButton.snp.bottom).offset(17)
+            make.top.equalTo(RadioButton.snp.bottom).offset(view.frame.height * 0.02)
             make.leading.equalTo(contentView.snp.leading).offset(20)
             make.trailing.equalTo(contentView.snp.trailing).offset(-20)
             make.bottom.equalTo(contentView.snp.bottom)

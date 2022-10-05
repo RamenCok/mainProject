@@ -9,6 +9,8 @@ import SnapKit
 import UIKit
 
 class RadioButtonView: UIView {
+    // MARK: - Properties
+    
     private var colorarray: [String]
     private var radioButton: RadioButtonManager<UIView>?
     private var selectedBorderView: UIView?
@@ -27,6 +29,19 @@ class RadioButtonView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Selectors
+    
+    @objc func handleTapColor(_ sender: UIGestureRecognizer) {
+        guard let iv = sender.view else { return }
+        radioButton?.selected = iv
+        
+        guard let getTag = sender.view?.tag else { return }
+        selected = getTag
+        print(selected)
+    }
+    
+    // MARK: - Helpers
     
     private func createButton(colors: [String])->[UIView]{
         var currentTag = 0
@@ -71,7 +86,7 @@ class RadioButtonView: UIView {
         radioButton?.selectedIndex = 0
         
         colorArray.forEach { color in
-            let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapAvatar(_:)))
+            let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapColor(_:)))
             // setiap image view harus di tag, baru bisa ambil tag nya
             tap.view?.tag =  color.tag
             color.isUserInteractionEnabled = true
@@ -96,14 +111,5 @@ class RadioButtonView: UIView {
             make.center.equalTo(self)
             make.width.height.equalTo(self)
         }
-    }
-    
-    @objc func handleTapAvatar(_ sender: UIGestureRecognizer) {
-        guard let iv = sender.view else { return }
-        radioButton?.selected = iv
-        
-        guard let getTag = sender.view?.tag else { return }
-        selected = getTag
-        print(selected)
     }
 }

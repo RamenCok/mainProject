@@ -18,6 +18,8 @@
 		0EAFD7E828EB06A30004E3DB /* RadioButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAFD7E728EB06A30004E3DB /* RadioButtonView.swift */; };
 		0EB2125928ED706800FB1255 /* BuyAndSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB2125828ED706800FB1255 /* BuyAndSizeView.swift */; };
 		0EB2125B28ED895E00FB1255 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB2125A28ED895E00FB1255 /* ProductModel.swift */; };
+		0EB2125D28EDDF4700FB1255 /* HeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB2125C28EDDF4700FB1255 /* HeadlineView.swift */; };
+		0EB2125F28EDE33200FB1255 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB2125E28EDE33200FB1255 /* DescriptionView.swift */; };
 		ACB588A428E7E66F0025D230 /* ResuableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A328E7E66F0025D230 /* ResuableLabel.swift */; };
 		ACB588A628E7E6D80025D230 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A528E7E6D80025D230 /* Extensions.swift */; };
 		ACB588A828E7E9C30025D230 /* ReusableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A728E7E9C30025D230 /* ReusableButton.swift */; };
@@ -66,6 +68,8 @@
 		0EAFD7E728EB06A30004E3DB /* RadioButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonView.swift; sourceTree = "<group>"; };
 		0EB2125828ED706800FB1255 /* BuyAndSizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyAndSizeView.swift; sourceTree = "<group>"; };
 		0EB2125A28ED895E00FB1255 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		0EB2125C28EDDF4700FB1255 /* HeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineView.swift; sourceTree = "<group>"; };
+		0EB2125E28EDE33200FB1255 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
 		ACB588A328E7E66F0025D230 /* ResuableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResuableLabel.swift; sourceTree = "<group>"; };
 		ACB588A528E7E6D80025D230 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = mainProject/Vendor/Utilities/Extensions.swift; sourceTree = SOURCE_ROOT; };
 		ACB588A728E7E9C30025D230 /* ReusableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableButton.swift; sourceTree = "<group>"; };
@@ -133,10 +137,12 @@
 		0EAFD7DF28EA996F0004E3DB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0EAFD7E728EB06A30004E3DB /* RadioButtonView.swift */,
 				0E7BCE4028EBF1C1000820E0 /* ProductDetailVC.swift */,
-				0E7BCE4228EBF431000820E0 /* ARView.swift */,
 				0EB2125828ED706800FB1255 /* BuyAndSizeView.swift */,
+				0E7BCE4228EBF431000820E0 /* ARView.swift */,
+				0EB2125C28EDDF4700FB1255 /* HeadlineView.swift */,
+				0EAFD7E728EB06A30004E3DB /* RadioButtonView.swift */,
+				0EB2125E28EDE33200FB1255 /* DescriptionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -372,6 +378,7 @@
 			files = (
 				ACB588A628E7E6D80025D230 /* Extensions.swift in Sources */,
 				ACFEBEA728E7603000372297 /* ViewController.swift in Sources */,
+				0EB2125D28EDDF4700FB1255 /* HeadlineView.swift in Sources */,
 				ACB588A828E7E9C30025D230 /* ReusableButton.swift in Sources */,
 				ACB588A428E7E66F0025D230 /* ResuableLabel.swift in Sources */,
 				0E7BCE4328EBF431000820E0 /* ARView.swift in Sources */,
@@ -381,6 +388,7 @@
 				0EAFD7E428EAE35B0004E3DB /* RadioButton.swift in Sources */,
 				0EB2125B28ED895E00FB1255 /* ProductModel.swift in Sources */,
 				0E7BCE4128EBF1C1000820E0 /* ProductDetailVC.swift in Sources */,
+				0EB2125F28EDE33200FB1255 /* DescriptionView.swift in Sources */,
 				0EB2125928ED706800FB1255 /* BuyAndSizeView.swift in Sources */,
 				0EAFD7E628EAE6D10004E3DB /* ProductDetailVM.swift in Sources */,
 			);
