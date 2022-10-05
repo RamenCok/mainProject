@@ -31,6 +31,7 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
         stack.spacing = 16
         stack.snp.makeConstraints { make in
             make.width.equalTo(view.frame.width)
+            make.height.equalTo(sizeLabel.snp.height)
         }
         return stack
     }()
@@ -95,6 +96,9 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
         stack.alignment = .center
         stack.distribution = .fill
         stack.spacing = (view.frame.width - 40) / 43.75
+        stack.snp.makeConstraints { make in
+            make.height.equalTo(xsSizeView.snp.height)
+        }
         return stack
     }()
     
@@ -105,6 +109,15 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
         stack.axis = .vertical
         stack.distribution = .equalSpacing
         return stack
+    }()
+    
+    private lazy var mannequinImageView: UIImageView = {
+        let image = UIImageView(image: UIImage(named: "SizeCalculatorBody-Woman"))
+        image.snp.makeConstraints { make in
+            make.width.equalTo(view.frame.width)
+        }
+        image.contentMode = .scaleAspectFill
+        return image
     }()
     
     var hasSetPointOrigin = false
@@ -219,6 +232,14 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
         sizeStack.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(20)
             make.top.equalTo(productDetailStack.snp.bottom).offset(20)
+        }
+        
+        view.addSubview(mannequinImageView)
+        mannequinImageView.snp.makeConstraints { make in
+            make.top.equalTo(sizeStack.snp.bottom).offset(20)
+//            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
         }
     }
     

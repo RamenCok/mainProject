@@ -23,10 +23,10 @@ class ViewController: UIViewController {
     
     @objc func printYeuy(){
         
-        let slideVC = BuyModalVC()
+        let slideVC = SizeCalculatorModalVC()
         
         presentedVC = slideVC.modalType
-        modalSize = slideVC.vm.setModalHeight(numberOfButtons: slideVC.stack.arrangedSubviews.count) 
+        modalSize = slideVC.modalSize
         
         slideVC.modalPresentationStyle = .custom
         slideVC.transitioningDelegate = self
