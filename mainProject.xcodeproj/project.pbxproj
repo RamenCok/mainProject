@@ -46,6 +46,8 @@
 		ACFEBF0528E7678900372297 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = ACFEBF0428E7678900372297 /* FirebaseStorageCombine-Community */; };
 		DB19AF2228ED6515003E6F61 /* ReusableProfileButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB19AF2128ED6515003E6F61 /* ReusableProfileButtonView.swift */; };
 		DBA2FCD028ED365900FDC148 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA2FCCF28ED365900FDC148 /* ProfileViewController.swift */; };
+		DBA35F2428EDB0D4009D6917 /* ProfileViewController + ImagePickerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA35F2328EDB0D4009D6917 /* ProfileViewController + ImagePickerExtensions.swift */; };
+		DBA35F2628EDB118009D6917 /* ProfileViewController + KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA35F2528EDB118009D6917 /* ProfileViewController + KeyboardExtension.swift */; };
 		DBB8F41328ED9C3900D2EDF5 /* Sora-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC528E7613000372297 /* Sora-Bold.otf */; };
 		DBB8F41428ED9C3B00D2EDF5 /* Sora-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEBE28E7613000372297 /* Sora-Regular.otf */; };
 		DBB8F41528ED9C3E00D2EDF5 /* Sora-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC228E7613000372297 /* Sora-SemiBold.otf */; };
@@ -68,6 +70,8 @@
 		ACFEBEC528E7613000372297 /* Sora-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-Bold.otf"; sourceTree = "<group>"; };
 		DB19AF2128ED6515003E6F61 /* ReusableProfileButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProfileButtonView.swift; sourceTree = "<group>"; };
 		DBA2FCCF28ED365900FDC148 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		DBA35F2328EDB0D4009D6917 /* ProfileViewController + ImagePickerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController + ImagePickerExtensions.swift"; sourceTree = "<group>"; };
+		DBA35F2528EDB118009D6917 /* ProfileViewController + KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController + KeyboardExtension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +235,8 @@
 			isa = PBXGroup;
 			children = (
 				DBA2FCCF28ED365900FDC148 /* ProfileViewController.swift */,
+				DBA35F2328EDB0D4009D6917 /* ProfileViewController + ImagePickerExtensions.swift */,
+				DBA35F2528EDB118009D6917 /* ProfileViewController + KeyboardExtension.swift */,
 				DB19AF2128ED6515003E6F61 /* ReusableProfileButtonView.swift */,
 			);
 			path = View;
@@ -354,7 +360,9 @@
 				ACB588A628E7E6D80025D230 /* Extensions.swift in Sources */,
 				ACFEBEA728E7603000372297 /* ViewController.swift in Sources */,
 				ACB588A828E7E9C30025D230 /* ReusableButton.swift in Sources */,
+				DBA35F2628EDB118009D6917 /* ProfileViewController + KeyboardExtension.swift in Sources */,
 				ACB588A428E7E66F0025D230 /* ResuableLabel.swift in Sources */,
+				DBA35F2428EDB0D4009D6917 /* ProfileViewController + ImagePickerExtensions.swift in Sources */,
 				DBA2FCD028ED365900FDC148 /* ProfileViewController.swift in Sources */,
 				DB19AF2228ED6515003E6F61 /* ReusableProfileButtonView.swift in Sources */,
 				ACFEBEA328E7603000372297 /* AppDelegate.swift in Sources */,

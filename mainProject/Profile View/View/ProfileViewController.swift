@@ -25,7 +25,7 @@ class ProfileViewController: UIViewController {
         return button
     }()
     
-    private lazy var profileImage: UIImageView = {
+    internal lazy var profileImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "initialProfilePicture")
         image.snp.makeConstraints { make in
@@ -51,7 +51,7 @@ class ProfileViewController: UIViewController {
         return button
     }()
     
-    private lazy var nameTF: UITextField = {
+    internal lazy var nameTF: UITextField = {
         let tf = UITextField()
         tf.textAlignment = .center
         tf.backgroundColor = .clear
@@ -63,6 +63,7 @@ class ProfileViewController: UIViewController {
             make.height.equalTo(view.frame.height / 18)
         }
         tf.text = "Test"
+        tf.returnKeyType = .done
         return tf
     }()
     
@@ -127,6 +128,7 @@ class ProfileViewController: UIViewController {
         
         super.viewDidLoad()
         configureUI()
+        configureTextFieldObservers()
     }
     
     // MARK: - Selectors
@@ -249,9 +251,9 @@ class ProfileViewController: UIViewController {
         }
     }
     
-    func showAlert() {
+    private func showAlert() {
         
-        let alert = UIAlertController(title: "Select Image", message: "Where do you want to choose your recipe photo?", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Select Image", message: "Where do you want to choose your profile photo?", preferredStyle: .actionSheet)
         
         let cameraButton = UIAlertAction(title: "Camera", style: .default) { action in
             self.showImagePicker(selectedSource: .camera)
@@ -263,42 +265,11 @@ class ProfileViewController: UIViewController {
         
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
         
-        alert.view.tintColor = UIColor(named: "main")
+        alert.view.tintColor = UIColor.primaryColor
         alert.addAction(cameraButton)
         alert.addAction(galleryButton)
         alert.addAction(cancelButton)
         
         self.present(alert, animated: true, completion: nil)
-    }
-}
-
-extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    func showImagePicker(selectedSource: UIImagePickerController.SourceType) {
-        
-        guard UIImagePickerController.isSourceTypeAvailable(selectedSource) else { return }
-        
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
-        imagePickerController.sourceType = selectedSource
-        imagePickerController.allowsEditing = true
-        imagePickerController.view.tintColor = UIColor(named: "main")
-        
-        self.present(imagePickerController, animated: true, completion: nil)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        if let selectedImage = info[.originalImage] as? UIImage {
-            profileImage.image = selectedImage
-        } else {
-            print("Image not found")
-        }
-        
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
     }
 }

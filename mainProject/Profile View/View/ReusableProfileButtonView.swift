@@ -37,11 +37,17 @@ class ReusableProfileButtonView: UIButton {
     private func configureButton() {
         
         self.backgroundColor = .white
+        
+        self.layer.borderColor = UIColor.systemGray5.cgColor
+        self.layer.borderWidth = 1
+        
         self.layer.cornerRadius = 14
-        self.layer.shadowColor = UIColor.gray.cgColor
-        self.layer.shadowRadius = 16
+        
+        self.layer.shadowColor = UIColor.systemGray2.cgColor
+        self.layer.shadowRadius = 10
         self.layer.shadowOpacity = 0.15
-        self.layer.shadowOffset = CGSize(width: 0, height: 10)
+        self.layer.shadowOffset = CGSize(width: 0, height: 5)
+        
         self.contentHorizontalAlignment = .leading
         
         self.setTitle(buttonText, for: .normal)
@@ -57,5 +63,32 @@ class ReusableProfileButtonView: UIButton {
         self.snp.makeConstraints { make in
             make.height.equalTo(64)
         }
+    }
+    
+    //MARK: Animate
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        super.touchesBegan(touches, with: event)
+        
+        UIView.animate(
+            withDuration: 0.2,
+            delay: 0,
+            options: [.allowUserInteraction, .curveEaseIn]) {
+                self.transform = .init(scaleX: 0.98, y: 0.98)
+                self.layer.shadowOpacity = 0
+            }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        super.touchesEnded(touches, with: event)
+        
+        UIView.animate(
+            withDuration: 0.2,
+            delay: 0,
+            options: [.allowUserInteraction, .curveEaseOut]) {
+                self.transform = .identity
+                self.layer.shadowOpacity = 0.15
+            }
     }
 }
