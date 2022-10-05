@@ -151,7 +151,7 @@ class ProfileViewController: UIViewController {
     }
     
     @objc func handleEditProfilePicture() {
-        showAlert()
+        self.showImagePicker(selectedSource: .photoLibrary)
     }
     
     @objc func handleDone() {
@@ -251,27 +251,5 @@ class ProfileViewController: UIViewController {
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
         }
-    }
-    
-    private func showAlert() {
-        
-        let alert = UIAlertController(title: "Select Image", message: "Where do you want to choose your profile photo?", preferredStyle: .actionSheet)
-        
-        let cameraButton = UIAlertAction(title: "Camera", style: .default) { action in
-            self.showImagePicker(selectedSource: .camera)
-        }
-        
-        let galleryButton = UIAlertAction(title: "Photo Gallery", style: .default) { action in
-            self.showImagePicker(selectedSource: .photoLibrary)
-        }
-        
-        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
-        
-        alert.view.tintColor = UIColor.primaryColor
-        alert.addAction(cameraButton)
-        alert.addAction(galleryButton)
-        alert.addAction(cancelButton)
-        
-        self.present(alert, animated: true, completion: nil)
     }
 }
