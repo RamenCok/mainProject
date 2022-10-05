@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     }()
     
     @objc func printYeuy(){
-        print("")
+        print("Cuy")
     }
 
     override func viewDidLoad() {
