@@ -22,6 +22,10 @@
 		ACB588BE28EAFEAC0025D230 /* BrandCatalogueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588BD28EAFEAC0025D230 /* BrandCatalogueViewModel.swift */; };
 		ACB588C328EBE0460025D230 /* SignupLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588C228EBE0460025D230 /* SignupLogin.swift */; };
 		ACFE712F28ED207900A894D4 /* ReusablePinkCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFE712E28ED207900A894D4 /* ReusablePinkCapsule.swift */; };
+		ACFE713128ED3C8000A894D4 /* ReusableAuthBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFE713028ED3C8000A894D4 /* ReusableAuthBackground.swift */; };
+		ACFE713428ED405C00A894D4 /* ReusableCapsuleTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFE713328ED405C00A894D4 /* ReusableCapsuleTitle.swift */; };
+		ACFE713628ED6C1800A894D4 /* ReusableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFE713528ED6C1800A894D4 /* ReusableTextField.swift */; };
+		ACFE713828ED6FA500A894D4 /* ReusableErrorLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFE713728ED6FA500A894D4 /* ReusableErrorLabel.swift */; };
 		ACFEBEA328E7603000372297 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEBEA228E7603000372297 /* AppDelegate.swift */; };
 		ACFEBEA528E7603000372297 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEBEA428E7603000372297 /* SceneDelegate.swift */; };
 		ACFEBEA728E7603000372297 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEBEA628E7603000372297 /* ViewController.swift */; };
@@ -69,6 +73,10 @@
 		ACB588BD28EAFEAC0025D230 /* BrandCatalogueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandCatalogueViewModel.swift; sourceTree = "<group>"; };
 		ACB588C228EBE0460025D230 /* SignupLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupLogin.swift; sourceTree = "<group>"; };
 		ACFE712E28ED207900A894D4 /* ReusablePinkCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePinkCapsule.swift; sourceTree = "<group>"; };
+		ACFE713028ED3C8000A894D4 /* ReusableAuthBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableAuthBackground.swift; sourceTree = "<group>"; };
+		ACFE713328ED405C00A894D4 /* ReusableCapsuleTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCapsuleTitle.swift; sourceTree = "<group>"; };
+		ACFE713528ED6C1800A894D4 /* ReusableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTextField.swift; sourceTree = "<group>"; };
+		ACFE713728ED6FA500A894D4 /* ReusableErrorLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableErrorLabel.swift; sourceTree = "<group>"; };
 		ACFEBE9F28E7603000372297 /* mainProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mainProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACFEBEA228E7603000372297 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACFEBEA428E7603000372297 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -197,6 +205,16 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		ACFE713228ED3F9F00A894D4 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				ACFE713028ED3C8000A894D4 /* ReusableAuthBackground.swift */,
+				ACFE713328ED405C00A894D4 /* ReusableCapsuleTitle.swift */,
+				ACFE713728ED6FA500A894D4 /* ReusableErrorLabel.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		ACFEBE9628E7603000372297 = {
 			isa = PBXGroup;
 			children = (
@@ -245,10 +263,12 @@
 		ACFEBEB828E7611000372297 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				ACFE713228ED3F9F00A894D4 /* Auth */,
 				AC548F3C28EBFB52002C3CC8 /* ASHUButton.swift */,
 				ACB588A328E7E66F0025D230 /* ResuableLabel.swift */,
 				ACB588A728E7E9C30025D230 /* ReusableButton.swift */,
 				ACFE712E28ED207900A894D4 /* ReusablePinkCapsule.swift */,
+				ACFE713528ED6C1800A894D4 /* ReusableTextField.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -408,13 +428,17 @@
 				AC548F3D28EBFB52002C3CC8 /* ASHUButton.swift in Sources */,
 				ACB588AF28EA02660025D230 /* Brands.swift in Sources */,
 				ACFE712F28ED207900A894D4 /* ReusablePinkCapsule.swift in Sources */,
+				ACFE713428ED405C00A894D4 /* ReusableCapsuleTitle.swift in Sources */,
 				ACB588C328EBE0460025D230 /* SignupLogin.swift in Sources */,
 				ACB588A828E7E9C30025D230 /* ReusableButton.swift in Sources */,
+				ACFE713828ED6FA500A894D4 /* ReusableErrorLabel.swift in Sources */,
 				ACB588A428E7E66F0025D230 /* ResuableLabel.swift in Sources */,
 				ACB588BB28EA909E0025D230 /* BrandCollectionViewCell.swift in Sources */,
 				ACFEBEA328E7603000372297 /* AppDelegate.swift in Sources */,
+				ACFE713128ED3C8000A894D4 /* ReusableAuthBackground.swift in Sources */,
 				AC548F3F28EC040E002C3CC8 /* SignUpViewController.swift in Sources */,
 				ACFEBEA528E7603000372297 /* SceneDelegate.swift in Sources */,
+				ACFE713628ED6C1800A894D4 /* ReusableTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
