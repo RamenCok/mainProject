@@ -44,6 +44,7 @@
 		ACFEBF0128E7678900372297 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = ACFEBF0028E7678900372297 /* FirebaseRemoteConfigSwift */; };
 		ACFEBF0328E7678900372297 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = ACFEBF0228E7678900372297 /* FirebaseStorage */; };
 		ACFEBF0528E7678900372297 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = ACFEBF0428E7678900372297 /* FirebaseStorageCombine-Community */; };
+		DBA2FCD028ED365900FDC148 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA2FCCF28ED365900FDC148 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		ACFEBEBE28E7613000372297 /* Sora-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-Regular.otf"; sourceTree = "<group>"; };
 		ACFEBEC228E7613000372297 /* Sora-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-SemiBold.otf"; sourceTree = "<group>"; };
 		ACFEBEC528E7613000372297 /* Sora-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-Bold.otf"; sourceTree = "<group>"; };
+		DBA2FCCF28ED365900FDC148 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				ACFEBEA228E7603000372297 /* AppDelegate.swift */,
 				ACFEBEA428E7603000372297 /* SceneDelegate.swift */,
 				ACFEBEA628E7603000372297 /* ViewController.swift */,
+				DBA2FCCC28ED363400FDC148 /* Profile View */,
 				ACFEBEBC28E7611000372297 /* Model */,
 				ACFEBEB628E7611000372297 /* Vendor */,
 				ACFEBECE28E7614500372297 /* Storyboards */,
@@ -208,6 +211,30 @@
 				ACFEBEAD28E7603100372297 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		DBA2FCCC28ED363400FDC148 /* Profile View */ = {
+			isa = PBXGroup;
+			children = (
+				DBA2FCCE28ED363F00FDC148 /* View Model */,
+				DBA2FCCD28ED363B00FDC148 /* View */,
+			);
+			path = "Profile View";
+			sourceTree = "<group>";
+		};
+		DBA2FCCD28ED363B00FDC148 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DBA2FCCF28ED365900FDC148 /* ProfileViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DBA2FCCE28ED363F00FDC148 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,6 +346,7 @@
 				ACFEBEA728E7603000372297 /* ViewController.swift in Sources */,
 				ACB588A828E7E9C30025D230 /* ReusableButton.swift in Sources */,
 				ACB588A428E7E66F0025D230 /* ResuableLabel.swift in Sources */,
+				DBA2FCD028ED365900FDC148 /* ProfileViewController.swift in Sources */,
 				ACFEBEA328E7603000372297 /* AppDelegate.swift in Sources */,
 				ACFEBEA528E7603000372297 /* SceneDelegate.swift in Sources */,
 			);
