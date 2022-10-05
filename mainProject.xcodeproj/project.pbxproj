@@ -46,6 +46,9 @@
 		ACFEBF0528E7678900372297 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = ACFEBF0428E7678900372297 /* FirebaseStorageCombine-Community */; };
 		DB19AF2228ED6515003E6F61 /* ReusableProfileButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB19AF2128ED6515003E6F61 /* ReusableProfileButtonView.swift */; };
 		DBA2FCD028ED365900FDC148 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA2FCCF28ED365900FDC148 /* ProfileViewController.swift */; };
+		DBB8F41328ED9C3900D2EDF5 /* Sora-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC528E7613000372297 /* Sora-Bold.otf */; };
+		DBB8F41428ED9C3B00D2EDF5 /* Sora-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEBE28E7613000372297 /* Sora-Regular.otf */; };
+		DBB8F41528ED9C3E00D2EDF5 /* Sora-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC228E7613000372297 /* Sora-SemiBold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -333,8 +336,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACFEBEAF28E7603100372297 /* LaunchScreen.storyboard in Resources */,
+				DBB8F41528ED9C3E00D2EDF5 /* Sora-SemiBold.otf in Resources */,
 				ACFEBEAC28E7603100372297 /* Assets.xcassets in Resources */,
 				ACFEBEAA28E7603000372297 /* Main.storyboard in Resources */,
+				DBB8F41328ED9C3900D2EDF5 /* Sora-Bold.otf in Resources */,
+				DBB8F41428ED9C3B00D2EDF5 /* Sora-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
