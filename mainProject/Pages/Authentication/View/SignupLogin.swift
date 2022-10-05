@@ -31,13 +31,7 @@ class SignupLogin: UIViewController {
     }()
     
     private lazy var pinkCapsule: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.tertiaryColor
-        view.snp.makeConstraints { make in
-                make.height.equalTo(25)
-                make.width.equalTo(82)
-        }
-        view.layer.cornerRadius = 12.5
+        let view = ResuablePinkCapsule()
         return view
     }()
     
@@ -77,7 +71,7 @@ class SignupLogin: UIViewController {
     private lazy var orLabel: UILabel = {
         let label = ReusableLabel(style: .bodyText, textString: "or")
         label.snp.makeConstraints { make in
-            make.width.equalTo(16)
+//            make.width.equalTo(16)
         }
         return label
     }()
@@ -151,12 +145,26 @@ class SignupLogin: UIViewController {
             make.top.equalTo(stackView.snp.bottom).offset(view.frame.height*0.0569)
         }
         
-        let stackViewOr = UIStackView(arrangedSubviews: [divider, orLabel, divider2])
-        stackViewOr.alignment = .center
-        stackViewOr.distribution = .fillEqually
-        stackViewOr.spacing = view.frame.width*0.038
-        view.addSubview(stackViewOr)
-        stackViewOr.snp.makeConstraints { make in
+        let viewOr = UIView()
+        viewOr.addSubview(divider)
+        divider.snp.makeConstraints { make in
+            make.leading.equalTo(viewOr.snp.leading)
+            make.width.equalTo(view.frame.width * 0.38)
+        }
+        viewOr.addSubview(orLabel)
+        orLabel.snp.makeConstraints { make in
+            make.leading.equalTo(divider.snp.trailing).offset(view.frame.width * 0.038)
+            make.centerY.equalTo(viewOr.snp.centerY)
+        }
+        viewOr.addSubview(divider2)
+        divider2.snp.makeConstraints { make in
+            make.leading.equalTo(orLabel.snp.trailing).offset(view.frame.width * 0.038)
+            make.trailing.equalTo(viewOr.snp.trailing)
+            make.centerY.equalTo(viewOr.snp.centerY)
+        }
+        
+        view.addSubview(viewOr)
+        viewOr.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
             make.top.equalTo(stackViewBtn.snp.bottom).offset(view.frame.height*0.027)
@@ -167,7 +175,7 @@ class SignupLogin: UIViewController {
         loginBtn.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
-            make.top.equalTo(stackViewOr.snp.bottom).offset(view.frame.height*0.027)
+            make.top.equalTo(viewOr.snp.bottom).offset(view.frame.height*0.027)
         }
 
         view.addSubview(attributedBtn)
@@ -176,14 +184,7 @@ class SignupLogin: UIViewController {
             make.trailing.equalToSuperview().offset(-20)
             make.top.equalTo(loginBtn.snp.bottom).offset(view.frame.height * 0.014)
         }
-//        view.addSubview(subView)
-//        subView.snp.makeConstraints { make in
-////            make.centerY.equalToSuperview()
-//            make.bottom.equalToSuperview().inset(50)
-//            make.leading.equalToSuperview().inset(20)
-//            make.trailing.equalToSuperview().inset(20)
-//        }
-//
+
     }
 
 }
