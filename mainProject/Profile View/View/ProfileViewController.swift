@@ -28,6 +28,7 @@ class ProfileViewController: UIViewController {
     internal lazy var profileImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "initialProfilePicture")
+        image.contentMode = .scaleAspectFill
         image.snp.makeConstraints { make in
             make.width.height.equalTo(view.frame.width / 2.203)
         }
@@ -230,7 +231,8 @@ class ProfileViewController: UIViewController {
         view.addSubview(genderButton)
         genderButton.snp.makeConstraints { make in
             make.centerY.equalTo(genderLabel.snp.centerY)
-            make.trailing.equalTo(genderLabel.snp.trailing).offset(-15)
+            make.trailing.equalTo(genderLabel.snp.trailing)
+            make.height.width.equalTo(view.frame.height / 18)
         }
         
         let stack = UIStackView(arrangedSubviews: [bodyMeasurementButton, resetPasswordButton])

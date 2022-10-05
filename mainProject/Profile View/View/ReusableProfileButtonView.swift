@@ -38,8 +38,8 @@ class ReusableProfileButtonView: UIButton {
         
         self.backgroundColor = .white
         
-        self.layer.borderColor = UIColor.systemGray5.cgColor
-        self.layer.borderWidth = 1
+//        self.layer.borderColor = UIColor.systemGray5.cgColor
+//        self.layer.borderWidth = 1
         
         self.layer.cornerRadius = 14
         
@@ -71,7 +71,7 @@ class ReusableProfileButtonView: UIButton {
         super.touchesBegan(touches, with: event)
         
         UIView.animate(
-            withDuration: 0.2,
+            withDuration: 0.075,
             delay: 0,
             options: [.allowUserInteraction, .curveEaseIn]) {
                 self.transform = .init(scaleX: 0.98, y: 0.98)
@@ -84,7 +84,7 @@ class ReusableProfileButtonView: UIButton {
         super.touchesEnded(touches, with: event)
         
         UIView.animate(
-            withDuration: 0.2,
+            withDuration: 0.1,
             delay: 0,
             options: [.allowUserInteraction, .curveEaseOut]) {
                 self.transform = .identity

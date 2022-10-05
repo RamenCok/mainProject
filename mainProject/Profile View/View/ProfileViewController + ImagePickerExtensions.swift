@@ -23,14 +23,13 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        if let selectedImage = info[.originalImage] as? UIImage {
-            profileImage.image = selectedImage
-        } else {
-            print("Image not found")
+        picker.dismiss(animated: true, completion: nil)
+        guard let image = info[.originalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
         
-        picker.dismiss(animated: true, completion: nil)
+        profileImage.image = image
+        profileImage.contentMode = .scaleAspectFill
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
