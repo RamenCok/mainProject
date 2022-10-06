@@ -55,6 +55,7 @@
 		DB8BCDA728EBE03600630CA3 /* Sora-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEBE28E7613000372297 /* Sora-Regular.otf */; };
 		DB8BCDA828EBE03600630CA3 /* Sora-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC228E7613000372297 /* Sora-SemiBold.otf */; };
 		DB8BCDAA28EBF0F200630CA3 /* BuyModalVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCDA928EBF0F200630CA3 /* BuyModalVM.swift */; };
+		DB9660E428EDD87C001D9A53 /* SetupBodyMeasurementModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9660E328EDD87C001D9A53 /* SetupBodyMeasurementModalVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		DB8BCDA128EBDE0800630CA3 /* SizeCalculatorModalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeCalculatorModalVC.swift; sourceTree = "<group>"; };
 		DB8BCDA228EBDE0800630CA3 /* SizeButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeButtonView.swift; sourceTree = "<group>"; };
 		DB8BCDA928EBF0F200630CA3 /* BuyModalVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyModalVM.swift; sourceTree = "<group>"; };
+		DB9660E328EDD87C001D9A53 /* SetupBodyMeasurementModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupBodyMeasurementModalVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				DB8BCD8D28EBD7F900630CA3 /* Presentation Controller */,
+				DB9660DE28EDD784001D9A53 /* SetupBodyMeasurementModal */,
 				DB8BCD9528EBDC5C00630CA3 /* SizeCalculatorModal */,
 				DB8BCD9428EBDC5400630CA3 /* BuyLinkModal */,
 				DB8BCD9328EBDC3700630CA3 /* AskSetupBodyMeasurementModal */,
@@ -343,6 +346,30 @@
 			sourceTree = "<group>";
 		};
 		DB8BCDA528EBDE0B00630CA3 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		DB9660DE28EDD784001D9A53 /* SetupBodyMeasurementModal */ = {
+			isa = PBXGroup;
+			children = (
+				DB9660E028EDD7AF001D9A53 /* View Model */,
+				DB9660DF28EDD7A9001D9A53 /* View */,
+			);
+			path = SetupBodyMeasurementModal;
+			sourceTree = "<group>";
+		};
+		DB9660DF28EDD7A9001D9A53 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DB9660E328EDD87C001D9A53 /* SetupBodyMeasurementModalVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DB9660E028EDD7AF001D9A53 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -459,6 +486,7 @@
 			files = (
 				DB8BCD8F28EBD81A00630CA3 /* DismissTappablePresentationController.swift in Sources */,
 				DB8BCDAA28EBF0F200630CA3 /* BuyModalVM.swift in Sources */,
+				DB9660E428EDD87C001D9A53 /* SetupBodyMeasurementModalVC.swift in Sources */,
 				DB8BCDA328EBDE0800630CA3 /* SizeCalculatorModalVC.swift in Sources */,
 				DB8BCD9F28EBDD8500630CA3 /* BuyModalVC.swift in Sources */,
 				DB8BCD9728EBDC8F00630CA3 /* SignUpModalVC.swift in Sources */,
