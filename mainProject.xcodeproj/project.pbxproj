@@ -57,6 +57,7 @@
 		DB8BCDAA28EBF0F200630CA3 /* BuyModalVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCDA928EBF0F200630CA3 /* BuyModalVM.swift */; };
 		DB9660E428EDD87C001D9A53 /* SetupBodyMeasurementModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9660E328EDD87C001D9A53 /* SetupBodyMeasurementModalVC.swift */; };
 		DBB8328728EE84A0004E0820 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DBB8328628EE84A0004E0820 /* IQKeyboardManagerSwift */; };
+		DBD144DF28EEA7A6006A3E40 /* ReusableSizeCalculatorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD144DE28EEA7A6006A3E40 /* ReusableSizeCalculatorButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,7 @@
 		DB8BCDA228EBDE0800630CA3 /* SizeButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeButtonView.swift; sourceTree = "<group>"; };
 		DB8BCDA928EBF0F200630CA3 /* BuyModalVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyModalVM.swift; sourceTree = "<group>"; };
 		DB9660E328EDD87C001D9A53 /* SetupBodyMeasurementModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupBodyMeasurementModalVC.swift; sourceTree = "<group>"; };
+		DBD144DE28EEA7A6006A3E40 /* ReusableSizeCalculatorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableSizeCalculatorButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -343,6 +345,7 @@
 			children = (
 				DB8BCDA228EBDE0800630CA3 /* SizeButtonView.swift */,
 				DB8BCDA128EBDE0800630CA3 /* SizeCalculatorModalVC.swift */,
+				DBD144DE28EEA7A6006A3E40 /* ReusableSizeCalculatorButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				DB9660E428EDD87C001D9A53 /* SetupBodyMeasurementModalVC.swift in Sources */,
 				DB8BCDA328EBDE0800630CA3 /* SizeCalculatorModalVC.swift in Sources */,
 				DB8BCD9F28EBDD8500630CA3 /* BuyModalVC.swift in Sources */,
+				DBD144DF28EEA7A6006A3E40 /* ReusableSizeCalculatorButton.swift in Sources */,
 				DB8BCD9728EBDC8F00630CA3 /* SignUpModalVC.swift in Sources */,
 				DB8BCDA428EBDE0800630CA3 /* SizeButtonView.swift in Sources */,
 				ACB588A628E7E6D80025D230 /* Extensions.swift in Sources */,

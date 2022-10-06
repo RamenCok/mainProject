@@ -113,11 +113,23 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
     
     private lazy var mannequinImageView: UIImageView = {
         let image = UIImageView(image: UIImage(named: "SizeCalculatorBody-Woman"))
-        image.snp.makeConstraints { make in
-            make.width.equalTo(view.frame.width)
-        }
         image.contentMode = .scaleAspectFill
         return image
+    }()
+    
+    private lazy var button: ReusableSizeCalculatorButton = {
+        let button = ReusableSizeCalculatorButton(buttomImage: "greenExclamation", selector: #selector(handleButton), target: self)
+        return button
+    }()
+    
+    private lazy var button2: ReusableSizeCalculatorButton = {
+        let button = ReusableSizeCalculatorButton(buttomImage: "greenExclamation", selector: #selector(handleButton), target: self)
+        return button
+    }()
+    
+    private lazy var button3: ReusableSizeCalculatorButton = {
+        let button = ReusableSizeCalculatorButton(buttomImage: "greenExclamation", selector: #selector(handleButton), target: self)
+        return button
     }()
     
     var hasSetPointOrigin = false
@@ -145,6 +157,9 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
     // MARK: - Selectors
     @objc func handleDismiss() {
         self.dismiss(animated: true)
+    }
+    @objc func handleButton() {
+        print("Test")
     }
     
     @objc func onViewSelected(_ sender: UITapGestureRecognizer) {
@@ -210,36 +225,53 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
         view.addSubview(recommendedSizeStack)
         recommendedSizeStack.snp.makeConstraints { make in
             make.top.equalTo(navBar.snp.bottom).offset(20)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
+            make.leading.trailing.equalToSuperview().inset(20)
         }
         
         view.addSubview(divider)
         divider.snp.makeConstraints { make in
             make.top.equalTo(recommendedSizeStack.snp.bottom).offset(20)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
+            make.leading.trailing.equalToSuperview().inset(20)
         }
         
         view.addSubview(productDetailStack)
         productDetailStack.snp.makeConstraints { make in
             make.top.equalTo(divider.snp.bottom).offset(20)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
+            make.leading.trailing.equalToSuperview().inset(20)
         }
         
         view.addSubview(sizeStack)
         sizeStack.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(20)
             make.top.equalTo(productDetailStack.snp.bottom).offset(20)
+            make.leading.trailing.equalToSuperview().inset(20)
         }
         
         view.addSubview(mannequinImageView)
         mannequinImageView.snp.makeConstraints { make in
             make.top.equalTo(sizeStack.snp.bottom).offset(20)
-//            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
+            make.width.equalTo(view.frame.width)
+            make.leading.trailing.equalToSuperview().inset(0)
+        }
+        
+        view.addSubview(button)
+        button.snp.makeConstraints { make in
+            make.leading.equalTo(mannequinImageView.snp.leading).offset(view.frame.width / 2.03)
+            make.top.equalTo(mannequinImageView.snp.top).offset(mannequinImageView.frame.height / 3.76)
+            make.width.height.equalTo(view.frame.width / 8.67)
+        }
+        
+        view.addSubview(button2)
+        button2.snp.makeConstraints { make in
+            make.leading.equalTo(mannequinImageView.snp.leading).offset(view.frame.width / 13)
+            make.top.equalTo(mannequinImageView.snp.top).offset(mannequinImageView.frame.height / 2.71)
+            make.width.height.equalTo(view.frame.width / 8.67)
+        }
+        
+        view.addSubview(button3)
+        button3.snp.makeConstraints { make in
+            make.leading.equalTo(mannequinImageView.snp.leading).offset(view.frame.width / 2.03)
+            make.top.equalTo(mannequinImageView.snp.top).offset(mannequinImageView.frame.height / 2.15)
+            make.width.height.equalTo(view.frame.width / 8.67)
         }
     }
     

@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     }()
     
     private lazy var stack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [button, button2, button3])
+        let stack = UIStackView(arrangedSubviews: [button])
         stack.axis = .vertical
         stack.spacing = 8
         return stack
@@ -37,7 +37,7 @@ class ViewController: UIViewController {
     
     @objc func handleBustButton(){
         
-        let slideVC = SetupBodyMeasurementModalVC(modalTitle: "Bust", helperImageName: "bust-Woman")
+        let slideVC = SizeCalculatorModalVC()
         
         presentedVC = slideVC.modalType
         modalSize = slideVC.modalSize
