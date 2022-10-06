@@ -34,7 +34,7 @@ class SignupLogin: UIViewController {
     }()
     
     private lazy var appleBtn: ReusableButton = {
-        let button = ReusableButton(style: .secondary, buttonText: "Continue with Apple", selector: #selector(printYeuy), target: self)
+        let button = ReusableButton(style: .secondary, buttonText: " Continue with Apple", selector: #selector(printYeuy), target: self)
         button.setImage(UIImage(systemName: "apple.logo"), for: .normal)
         button.tintColor = .primaryColor
 //        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 10)
@@ -42,7 +42,9 @@ class SignupLogin: UIViewController {
     }()
     
     private lazy var googleBtn: UIButton = {
-        let button = ReusableButton(style: .secondary, buttonText: "Continue with Google", selector: #selector(printYeuy), target: self)
+        let button = ReusableButton(style: .secondary, buttonText: " Continue with Google", selector: #selector(printYeuy), target: self)
+        button.setImage(UIImage(named: "google.logo"), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFill
         return button
     }()
     
@@ -75,7 +77,7 @@ class SignupLogin: UIViewController {
     }()
     
     private lazy var loginBtn: UIButton = {
-        let button = ReusableButton(style: .primary, buttonText: "Log In", selector: #selector(printYeuy), target: self)
+        let button = ReusableButton(style: .primary, buttonText: "Log In", selector: #selector(handleLogin), target: self)
         return button
     }()
     
@@ -110,7 +112,12 @@ class SignupLogin: UIViewController {
     }
     
     @objc func goToSignUp(){
+        print("goToSignUp")
         navigationController?.pushViewController(SignUpViewController(), animated: true)
+    }
+    
+    @objc func handleLogin(){
+        navigationController?.pushViewController(LoginViewController(), animated: true)
     }
     
     
