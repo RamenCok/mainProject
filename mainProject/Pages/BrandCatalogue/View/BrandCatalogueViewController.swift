@@ -152,6 +152,8 @@ class BrandCatalogueViewController: UIViewController, UICollectionViewDelegate, 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BrandCollectionViewCell.identifier, for: indexPath)
         
+        cell.contentView.layer.masksToBounds = false
+        
         return cell
     }
     
