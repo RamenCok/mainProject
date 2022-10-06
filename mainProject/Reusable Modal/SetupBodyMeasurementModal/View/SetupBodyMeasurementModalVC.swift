@@ -75,13 +75,6 @@ class SetupBodyMeasurementModalVC: UIViewController {
         super.viewDidLoad()
         configureUI()
         configureTextFieldObservers()
-        
-        slideViewWhenShowKeyboard(self, #selector(self.keyboardWillShow(notification:)), #selector(self.keyboardWillHide))
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     // MARK: - Selectors
@@ -129,7 +122,7 @@ class SetupBodyMeasurementModalVC: UIViewController {
         view.addSubview(helperImage)
         helperImage.image = UIImage(named: helperImageName ?? "")
         helperImage.snp.makeConstraints { make in
-            make.top.equalTo(navBar.snp.bottom).offset(5)
+            make.top.equalTo(navBar.snp.bottom).offset(15)
             make.centerX.equalToSuperview()
         }
         
@@ -155,12 +148,6 @@ class SetupBodyMeasurementModalVC: UIViewController {
 
 extension SetupBodyMeasurementModalVC {
     
-    func slideViewWhenShowKeyboard(_ target: Any, _ actionShowKeyboard: Selector, _ actionHideKeyboard: Selector) {
-        
-        NotificationCenter.default.addObserver(target, selector: actionShowKeyboard, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(target, selector: actionHideKeyboard, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
     @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         textField.resignFirstResponder()
     }
@@ -169,25 +156,5 @@ extension SetupBodyMeasurementModalVC {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard(_:)))
         self.view.addGestureRecognizer(tap)
-    }
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-        
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            
-            let keyboardHeight = keyboardFrame.cgRectValue.height
-            let bottomSpacing = self.view.frame.height - (lengthLabel.frame.origin.y + lengthLabel.frame.height)
-            self.view.frame.origin.y -= keyboardHeight - bottomSpacing + 20
-        }
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            
-            let keyboardHeight = keyboardFrame.cgRectValue.height
-            let bottomSpacing = self.view.frame.height - (lengthLabel.frame.origin.y + lengthLabel.frame.height)
-            self.view.frame.origin.y += keyboardHeight - bottomSpacing + 20
-        }
     }
 }
