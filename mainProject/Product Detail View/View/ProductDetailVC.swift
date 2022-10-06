@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import Combine
 
 class ProductDetailVC: UIViewController {
     
     // MARK: - Properties
     var vm: ProductDetailVM!
-    private var product = Product(filename: "", brandName: "", productName: "", productDesc: "", colorsArray: [String]())
+    private var product: Product!
+    private var cancellables: Set<AnyCancellable> = []
     
     private let scrollView: UIScrollView = {
         let view = UIScrollView()
@@ -48,14 +50,10 @@ class ProductDetailVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         // Panggil dari vm
-        vm.updatedData = { [weak self] data in
-            self?.product.filename = "\(data.filename)"
-            self?.product.brandName = "\(data.brandName)"
-            self?.product.productName = "\(data.productName)"
-            self?.product.colorsArray = data.colorsArray
-            self?.product.productDesc = "\(data.productDesc)"
+        vm.updatedData.sink { [weak self] data in
+            self?.product = data
             self?.setupScrollView()
-        }
+        }.store(in: &cancellables)
     }
     
     override func viewWillAppear(_ animated: Bool) {

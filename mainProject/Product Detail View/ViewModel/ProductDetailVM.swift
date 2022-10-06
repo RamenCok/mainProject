@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import Combine
 
-class ProductDetailVM {
+class ProductDetailVM: ObservableObject {
     
     let service: Servicing
     
@@ -15,11 +16,11 @@ class ProductDetailVM {
         self.service = service
     }
     
-    var updatedData: ((Product)-> Void)?
+    let updatedData = PassthroughSubject<Product, Never>()
     
     func fetchData() {
         service.getData { [weak self] data in
-            self?.updatedData?(data)
+            self?.updatedData.send(data)
         }
     }
 }

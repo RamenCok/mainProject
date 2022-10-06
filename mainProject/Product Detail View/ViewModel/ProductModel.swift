@@ -43,7 +43,7 @@ class Service: Servicing {
                                brandName: "Love, Bonito",
                                productName: "Lela Textured A-line Dress",
                                productDesc: "Dreamy frills to brighten up your day. Crafted from sweat-wicking textured cotton, this mini dress features an A-line silhouette, V-neckline, and flared sleves. Comes with functional side pockets and zipper on the side. \n \n Dreamy frills to brighten up your day. Crafted from sweat-wicking textured cotton, this mini dress features an A-line silhouette, V-neckline, and flared sleves. Comes with functional side pockets and zipper on the side.",
-                               colorsArray: ["7479EA", "B55DD3", "FF95BF", "FFFFFF"]))
+                               colorsArray: ["7479EA", "B55DD3", "FF95BF"]))
         }
     }
 }
