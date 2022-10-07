@@ -5,8 +5,8 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Sora-Bold.otf</string>
-		<string>Sora-SemiBold.otf</string>
 		<string>Sora-Regular.otf</string>
+		<string>Sora-SemiBold.otf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

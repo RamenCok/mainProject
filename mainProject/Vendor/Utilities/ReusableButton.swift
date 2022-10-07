@@ -47,14 +47,15 @@ class ReusableButton: UIButton {
     
     private func configureButton(){
 //        self.autoresizingMask = false
-        
+        self.setTitle(buttontext, for: .normal)
+        print(buttontext)
         switch style {
         case .primary:
             self.backgroundColor = UIColor.primaryColor
             self.layer.borderColor = UIColor.primaryColor.cgColor
             self.layer.borderWidth = 1.5
             self.tintColor = UIColor.whiteColor
-            break
+            
             
         case .secondary:
             self.backgroundColor = .clear
@@ -67,21 +68,21 @@ class ReusableButton: UIButton {
             self.layer.borderColor = UIColor.disabledColor.cgColor
             self.layer.borderWidth = 1.5
             self.tintColor = UIColor.whiteColor
-            break
+            
             
         case .secondaryDisabled:
             self.backgroundColor = UIColor.clear
             self.layer.borderColor = UIColor.disabledColor.cgColor
             self.layer.borderWidth = 1.5
             self.tintColor = UIColor.disabledColor
-            break
+            
             
         case .delete:
             self.backgroundColor = UIColor.redColor
             self.layer.borderColor = UIColor.redColor.cgColor
             self.layer.borderWidth = 1.5
             self.tintColor = UIColor.whiteColor
-            break
+            
             
         }
         self.layer.cornerRadius = 10

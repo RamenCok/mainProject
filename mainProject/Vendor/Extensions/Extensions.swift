@@ -20,8 +20,8 @@ extension UIColor {
     static let tertiaryColor = UIColor.rgb(red: 221, green: 74, blue: 162, alpha: 1)
     static let disabledColor = UIColor.rgb(red: 188, green: 198, blue: 232, alpha: 1)
     static let whiteColor = UIColor.rgb(red: 255, green: 255, blue: 255, alpha: 1)
-    
     static let blackTexts = UIColor.rgb(red: 35, green: 35, blue: 35, alpha: 1)
+    static let tesColor = UIColor.rgb(red: 231, green: 231, blue: 231, alpha: 1)
     
     //Color-based Color
     static let greyColor = UIColor.rgb(red: 73, green: 73, blue: 73, alpha: 1)
