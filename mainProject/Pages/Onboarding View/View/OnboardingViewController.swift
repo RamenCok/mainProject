@@ -81,7 +81,7 @@ class OnboardingViewController: UIPageViewController {
     @objc func handleNavigationButton() {
         
         print("Next Screen")
-        navigationController?.pushViewController(ViewController(), animated: true)
+        navigationController?.pushViewController(SignupLogin(), animated: true)
     }
     
     @objc func handleSkipButton() {

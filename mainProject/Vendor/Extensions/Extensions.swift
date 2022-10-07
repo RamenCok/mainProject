@@ -89,6 +89,18 @@ extension UIView {
         subviews.forEach({ $0.removeFromSuperview() })
     }
     
+    func setupShadow(
+        opacity: Float = 0,
+        radius: CGFloat = 0,
+        offset: CGSize = .zero,
+        color: UIColor = .black) {
+            
+            layer.shadowOpacity = opacity
+            layer.shadowRadius = radius
+            layer.shadowOffset = offset
+            layer.shadowColor = color.cgColor
+        }
+    
     func setDimensions(height: CGFloat, width: CGFloat) {
         translatesAutoresizingMaskIntoConstraints = false
         heightAnchor.constraint(equalToConstant: height).isActive = true
@@ -225,17 +237,7 @@ extension UITextField {
         self.inputAccessoryView = toolBar
     }
     
-    func setupShadow(
-        opacity: Float = 0,
-        radius: CGFloat = 0,
-        offset: CGSize = .zero,
-        color: UIColor = .black) {
-            
-            layer.shadowOpacity = opacity
-            layer.shadowRadius = radius
-            layer.shadowOffset = offset
-            layer.shadowColor = color.cgColor
-        }
+    
 }
 
 extension UIImage {

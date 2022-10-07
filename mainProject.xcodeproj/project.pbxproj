@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E00506F28EB1BD600DAB7CA /* Sora-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC528E7613000372297 /* Sora-Bold.otf */; };
-		0E00507028EB1BD800DAB7CA /* Sora-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEBE28E7613000372297 /* Sora-Regular.otf */; };
-		0E00507128EB1BDA00DAB7CA /* Sora-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC228E7613000372297 /* Sora-SemiBold.otf */; };
 		0E7BCE3B28EB2FC8000820E0 /* AirForce.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0E7BCE3A28EB2FC8000820E0 /* AirForce.usdz */; };
 		0E7BCE4128EBF1C1000820E0 /* ProductDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7BCE4028EBF1C1000820E0 /* ProductDetailVC.swift */; };
 		0E7BCE4328EBF431000820E0 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7BCE4228EBF431000820E0 /* ARView.swift */; };
@@ -24,7 +21,6 @@
 		AC6F478028EDEADF00AAF1F6 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC6F477F28EDEADF00AAF1F6 /* IQKeyboardManagerSwift */; };
 		AC6F478428EE982F00AAF1F6 /* ReusableTextFieldAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */; };
 		AC6F478628EE9A5100AAF1F6 /* ReusablePasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478528EE9A5100AAF1F6 /* ReusablePasswordTextField.swift */; };
-		AC6F478C28EF22E600AAF1F6 /* Heihgt.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478B28EF22E600AAF1F6 /* Heihgt.swift */; };
 		ACB588A428E7E66F0025D230 /* ResuableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A328E7E66F0025D230 /* ResuableLabel.swift */; };
 		ACB588A628E7E6D80025D230 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A528E7E6D80025D230 /* Extensions.swift */; };
 		ACB588A828E7E9C30025D230 /* ReusableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A728E7E9C30025D230 /* ReusableButton.swift */; };
@@ -92,7 +88,6 @@
 		DBE905F628EFDF4F00B6E463 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905F028EFDF4F00B6E463 /* ResetPasswordViewController.swift */; };
 		DBE905F728EFDF4F00B6E463 /* PersonalizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905F128EFDF4F00B6E463 /* PersonalizeViewController.swift */; };
 		DBE905F828EFDF4F00B6E463 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905F228EFDF4F00B6E463 /* LoginViewController.swift */; };
-		DBE905F928EFDF4F00B6E463 /* Heihgt.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905F328EFDF4F00B6E463 /* Heihgt.swift */; };
 		DBE9060028EFDF5B00B6E463 /* BrandCatalogueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905FC28EFDF5B00B6E463 /* BrandCatalogueViewModel.swift */; };
 		DBE9060128EFDF5B00B6E463 /* BrandCatalogueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905FE28EFDF5B00B6E463 /* BrandCatalogueViewController.swift */; };
 		DBE9060228EFDF5B00B6E463 /* BrandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905FF28EFDF5B00B6E463 /* BrandCollectionViewCell.swift */; };
@@ -113,7 +108,6 @@
 		AC548F3C28EBFB52002C3CC8 /* ASHUButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASHUButton.swift; sourceTree = "<group>"; };
 		AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTextFieldAuth.swift; sourceTree = "<group>"; };
 		AC6F478528EE9A5100AAF1F6 /* ReusablePasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePasswordTextField.swift; sourceTree = "<group>"; };
-		AC6F478B28EF22E600AAF1F6 /* Heihgt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Heihgt.swift; path = mainProject/Vendor/Utilities/Constant/Heihgt.swift; sourceTree = SOURCE_ROOT; };
 		ACB588A328E7E66F0025D230 /* ResuableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResuableLabel.swift; sourceTree = "<group>"; };
 		ACB588A528E7E6D80025D230 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = mainProject/Vendor/Extensions/Extensions.swift; sourceTree = SOURCE_ROOT; };
 		ACB588A728E7E9C30025D230 /* ReusableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableButton.swift; sourceTree = "<group>"; };
@@ -155,7 +149,6 @@
 		DBE905F028EFDF4F00B6E463 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		DBE905F128EFDF4F00B6E463 /* PersonalizeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalizeViewController.swift; sourceTree = "<group>"; };
 		DBE905F228EFDF4F00B6E463 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		DBE905F328EFDF4F00B6E463 /* Heihgt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Heihgt.swift; sourceTree = "<group>"; };
 		DBE905FC28EFDF5B00B6E463 /* BrandCatalogueViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandCatalogueViewModel.swift; sourceTree = "<group>"; };
 		DBE905FE28EFDF5B00B6E463 /* BrandCatalogueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandCatalogueViewController.swift; sourceTree = "<group>"; };
 		DBE905FF28EFDF5B00B6E463 /* BrandCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -236,7 +229,6 @@
 		AC1C7B0B28EFE0F10058CCB3 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
-				AC6F478B28EF22E600AAF1F6 /* Heihgt.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -589,7 +581,6 @@
 				DBE905F028EFDF4F00B6E463 /* ResetPasswordViewController.swift */,
 				DBE905F128EFDF4F00B6E463 /* PersonalizeViewController.swift */,
 				DBE905F228EFDF4F00B6E463 /* LoginViewController.swift */,
-				DBE905F328EFDF4F00B6E463 /* Heihgt.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -717,10 +708,7 @@
 				ACFEBEAF28E7603100372297 /* LaunchScreen.storyboard in Resources */,
 				ACB588B628EA8CCD0025D230 /* Sora-SemiBold.otf in Resources */,
 				ACFEBEAC28E7603100372297 /* Assets.xcassets in Resources */,
-				0E00507128EB1BDA00DAB7CA /* Sora-SemiBold.otf in Resources */,
 				0E7BCE3B28EB2FC8000820E0 /* AirForce.usdz in Resources */,
-				0E00507028EB1BD800DAB7CA /* Sora-Regular.otf in Resources */,
-				0E00506F28EB1BD600DAB7CA /* Sora-Bold.otf in Resources */,
 				ACFEBEAA28E7603000372297 /* Main.storyboard in Resources */,
 				ACB588B428EA8CC80025D230 /* Sora-Bold.otf in Resources */,
 				ACB588B528EA8CCA0025D230 /* Sora-Regular.otf in Resources */,
@@ -762,12 +750,10 @@
 				ACFE713828ED6FA500A894D4 /* ReusableErrorLabel.swift in Sources */,
 				ACB588A428E7E66F0025D230 /* ResuableLabel.swift in Sources */,
 				DB8BCD9928EBDD0F00630CA3 /* BodyMeasurementModalVC.swift in Sources */,
-				DBE905F928EFDF4F00B6E463 /* Heihgt.swift in Sources */,
 				DBA35F2428EDB0D4009D6917 /* ProfileViewController + ImagePickerExtensions.swift in Sources */,
 				DBA2FCD028ED365900FDC148 /* ProfileViewController.swift in Sources */,
 				DBE9060228EFDF5B00B6E463 /* BrandCollectionViewCell.swift in Sources */,
 				DB19AF2228ED6515003E6F61 /* ReusableProfileButtonView.swift in Sources */,
-				AC6F478C28EF22E600AAF1F6 /* Heihgt.swift in Sources */,
 				0E7BCE4328EBF431000820E0 /* ARView.swift in Sources */,
 				ACFEBEA328E7603000372297 /* AppDelegate.swift in Sources */,
 				ACFE713128ED3C8000A894D4 /* ReusableAuthBackground.swift in Sources */,
