@@ -29,7 +29,9 @@ extension UIColor {
     static let greenColor = UIColor.rgb(red: 155, green: 217, blue: 117, alpha: 1)
     static let microRed = UIColor.rgb(red: 215, green: 87, blue: 87, alpha: 0.2)
     static let microGreen = UIColor.rgb(red: 169, green: 225, blue: 134, alpha: 0.2)
-    
+}
+
+extension UIView {
     convenience public init(backgroundColor: UIColor = .clear) {
         
         self.init(frame: .zero)
@@ -198,10 +200,10 @@ extension UITextField {
         radius: CGFloat = 0,
         offset: CGSize = .zero,
         color: UIColor = .black) {
-        
+            
             layer.shadowOpacity = opacity
             layer.shadowRadius = radius
             layer.shadowOffset = offset
             layer.shadowColor = color.cgColor
-    }
+        }
 }

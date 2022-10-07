@@ -53,9 +53,7 @@ class ReusableLabel: UILabel {
     
     //MARK: - Methods
     private func configureLabelStyle() {
-        
-        let paragraphStyle = NSMutableParagraphStyle()
-        
+
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.hyphenationFactor = 1.0
 
