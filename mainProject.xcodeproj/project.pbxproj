@@ -16,6 +16,19 @@
 		AC6F478828EEA45B00AAF1F6 /* PersonalizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478728EEA45B00AAF1F6 /* PersonalizeViewController.swift */; };
 		AC6F478A28EF110400AAF1F6 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478928EF110400AAF1F6 /* ResetPasswordViewController.swift */; };
 		AC6F478C28EF22E600AAF1F6 /* Heihgt.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478B28EF22E600AAF1F6 /* Heihgt.swift */; };
+		0E00506F28EB1BD600DAB7CA /* Sora-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC528E7613000372297 /* Sora-Bold.otf */; };
+		0E00507028EB1BD800DAB7CA /* Sora-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEBE28E7613000372297 /* Sora-Regular.otf */; };
+		0E00507128EB1BDA00DAB7CA /* Sora-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC228E7613000372297 /* Sora-SemiBold.otf */; };
+		0E7BCE3B28EB2FC8000820E0 /* AirForce.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0E7BCE3A28EB2FC8000820E0 /* AirForce.usdz */; };
+		0E7BCE4128EBF1C1000820E0 /* ProductDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7BCE4028EBF1C1000820E0 /* ProductDetailVC.swift */; };
+		0E7BCE4328EBF431000820E0 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7BCE4228EBF431000820E0 /* ARView.swift */; };
+		0EAFD7E428EAE35B0004E3DB /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAFD7E328EAE35B0004E3DB /* RadioButton.swift */; };
+		0EAFD7E628EAE6D10004E3DB /* ProductDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAFD7E528EAE6D10004E3DB /* ProductDetailVM.swift */; };
+		0EAFD7E828EB06A30004E3DB /* RadioButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAFD7E728EB06A30004E3DB /* RadioButtonView.swift */; };
+		0EB2125928ED706800FB1255 /* BuyAndSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB2125828ED706800FB1255 /* BuyAndSizeView.swift */; };
+		0EB2125B28ED895E00FB1255 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB2125A28ED895E00FB1255 /* ProductModel.swift */; };
+		0EB2125D28EDDF4700FB1255 /* HeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB2125C28EDDF4700FB1255 /* HeadlineView.swift */; };
+		0EB2125F28EDE33200FB1255 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB2125E28EDE33200FB1255 /* DescriptionView.swift */; };
 		ACB588A428E7E66F0025D230 /* ResuableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A328E7E66F0025D230 /* ResuableLabel.swift */; };
 		ACB588A628E7E6D80025D230 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A528E7E6D80025D230 /* Extensions.swift */; };
 		ACB588A828E7E9C30025D230 /* ReusableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A728E7E9C30025D230 /* ReusableButton.swift */; };
@@ -104,6 +117,16 @@
 		AC6F478728EEA45B00AAF1F6 /* PersonalizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizeViewController.swift; sourceTree = "<group>"; };
 		AC6F478928EF110400AAF1F6 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		AC6F478B28EF22E600AAF1F6 /* Heihgt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Heihgt.swift; path = mainProject/Pages/Authentication/View/Heihgt.swift; sourceTree = SOURCE_ROOT; };
+		0E7BCE3A28EB2FC8000820E0 /* AirForce.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = AirForce.usdz; sourceTree = "<group>"; };
+		0E7BCE4028EBF1C1000820E0 /* ProductDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailVC.swift; sourceTree = "<group>"; };
+		0E7BCE4228EBF431000820E0 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
+		0EAFD7E328EAE35B0004E3DB /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		0EAFD7E528EAE6D10004E3DB /* ProductDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailVM.swift; sourceTree = "<group>"; };
+		0EAFD7E728EB06A30004E3DB /* RadioButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonView.swift; sourceTree = "<group>"; };
+		0EB2125828ED706800FB1255 /* BuyAndSizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyAndSizeView.swift; sourceTree = "<group>"; };
+		0EB2125A28ED895E00FB1255 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		0EB2125C28EDDF4700FB1255 /* HeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineView.swift; sourceTree = "<group>"; };
+		0EB2125E28EDE33200FB1255 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
 		ACB588A328E7E66F0025D230 /* ResuableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResuableLabel.swift; sourceTree = "<group>"; };
 		ACB588A528E7E6D80025D230 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = mainProject/Vendor/Extensions/Extensions.swift; sourceTree = SOURCE_ROOT; };
 		ACB588A728E7E9C30025D230 /* ReusableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableButton.swift; sourceTree = "<group>"; };
@@ -302,6 +325,37 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		0EAFD7DE28EA995E0004E3DB /* Product Detail View */ = {
+			isa = PBXGroup;
+			children = (
+				0EAFD7E028EA99760004E3DB /* ViewModel */,
+				0EAFD7DF28EA996F0004E3DB /* View */,
+			);
+			path = "Product Detail View";
+			sourceTree = "<group>";
+		};
+		0EAFD7DF28EA996F0004E3DB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0E7BCE4028EBF1C1000820E0 /* ProductDetailVC.swift */,
+				0EB2125828ED706800FB1255 /* BuyAndSizeView.swift */,
+				0E7BCE4228EBF431000820E0 /* ARView.swift */,
+				0EB2125C28EDDF4700FB1255 /* HeadlineView.swift */,
+				0EAFD7E728EB06A30004E3DB /* RadioButtonView.swift */,
+				0EB2125E28EDE33200FB1255 /* DescriptionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0EAFD7E028EA99760004E3DB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0EAFD7E528EAE6D10004E3DB /* ProductDetailVM.swift */,
+				0EB2125A28ED895E00FB1255 /* ProductModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		ACFEBE9628E7603000372297 = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +375,7 @@
 		ACFEBEA128E7603000372297 /* mainProject */ = {
 			isa = PBXGroup;
 			children = (
+				0EAFD7DE28EA995E0004E3DB /* Product Detail View */,
 				ACFEBEA228E7603000372297 /* AppDelegate.swift */,
 				ACFEBEA428E7603000372297 /* SceneDelegate.swift */,
 				ACFEBEA628E7603000372297 /* ViewController.swift */,
@@ -332,6 +387,7 @@
 				ACFEBECE28E7614500372297 /* Storyboards */,
 				ACFEBEAB28E7603100372297 /* Assets.xcassets */,
 				ACFEBEB028E7603100372297 /* Info.plist */,
+				0E7BCE3A28EB2FC8000820E0 /* AirForce.usdz */,
 			);
 			path = mainProject;
 			sourceTree = "<group>";
@@ -358,6 +414,7 @@
 				ACB588A728E7E9C30025D230 /* ReusableButton.swift */,
 				ACFE712E28ED207900A894D4 /* ReusablePinkCapsule.swift */,
 				ACFE713528ED6C1800A894D4 /* ReusableTextField.swift */,
+				0EAFD7E328EAE35B0004E3DB /* RadioButton.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -706,6 +763,10 @@
 				ACFEBEAF28E7603100372297 /* LaunchScreen.storyboard in Resources */,
 				ACB588B628EA8CCD0025D230 /* Sora-SemiBold.otf in Resources */,
 				ACFEBEAC28E7603100372297 /* Assets.xcassets in Resources */,
+				0E00507128EB1BDA00DAB7CA /* Sora-SemiBold.otf in Resources */,
+				0E7BCE3B28EB2FC8000820E0 /* AirForce.usdz in Resources */,
+				0E00507028EB1BD800DAB7CA /* Sora-Regular.otf in Resources */,
+				0E00506F28EB1BD600DAB7CA /* Sora-Bold.otf in Resources */,
 				ACFEBEAA28E7603000372297 /* Main.storyboard in Resources */,
 				ACB588B428EA8CC80025D230 /* Sora-Bold.otf in Resources */,
 				ACB588B528EA8CCA0025D230 /* Sora-Regular.otf in Resources */,
@@ -742,6 +803,7 @@
 				AC6F478828EEA45B00AAF1F6 /* PersonalizeViewController.swift in Sources */,
 				ACFE713428ED405C00A894D4 /* ReusableCapsuleTitle.swift in Sources */,
 				ACB588C328EBE0460025D230 /* SignupLogin.swift in Sources */,
+				0EB2125D28EDDF4700FB1255 /* HeadlineView.swift in Sources */,
 				ACB588A828E7E9C30025D230 /* ReusableButton.swift in Sources */,
 				DB8BCD9128EBD83900630CA3 /* NotTappablePresentationController.swift in Sources */,
 				DBA35F2628EDB118009D6917 /* ProfileViewController + KeyboardExtension.swift in Sources */,
@@ -753,6 +815,7 @@
 				DB19AF2228ED6515003E6F61 /* ReusableProfileButtonView.swift in Sources */,
 				ACB588BB28EA909E0025D230 /* BrandCollectionViewCell.swift in Sources */,
 				AC6F478C28EF22E600AAF1F6 /* Heihgt.swift in Sources */,
+				0E7BCE4328EBF431000820E0 /* ARView.swift in Sources */,
 				ACFEBEA328E7603000372297 /* AppDelegate.swift in Sources */,
 				AC6F478A28EF110400AAF1F6 /* ResetPasswordViewController.swift in Sources */,
 				ACFE713128ED3C8000A894D4 /* ReusableAuthBackground.swift in Sources */,
@@ -760,6 +823,13 @@
 				AC548F3F28EC040E002C3CC8 /* SignUpViewController.swift in Sources */,
 				ACFEBEA528E7603000372297 /* SceneDelegate.swift in Sources */,
 				ACFE713628ED6C1800A894D4 /* ReusableTextField.swift in Sources */,
+				0EAFD7E828EB06A30004E3DB /* RadioButtonView.swift in Sources */,
+				0EAFD7E428EAE35B0004E3DB /* RadioButton.swift in Sources */,
+				0EB2125B28ED895E00FB1255 /* ProductModel.swift in Sources */,
+				0E7BCE4128EBF1C1000820E0 /* ProductDetailVC.swift in Sources */,
+				0EB2125F28EDE33200FB1255 /* DescriptionView.swift in Sources */,
+				0EB2125928ED706800FB1255 /* BuyAndSizeView.swift in Sources */,
+				0EAFD7E628EAE6D10004E3DB /* ProductDetailVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

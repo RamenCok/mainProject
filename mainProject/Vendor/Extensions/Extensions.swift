@@ -31,6 +31,25 @@ extension UIColor {
     static let microGreen = UIColor.rgb(red: 169, green: 225, blue: 134, alpha: 0.2)
     static let lightGray = UIColor.rgb(red: 249, green: 249, blue: 249, alpha: 1)
     
+    // Convert hex to UIColor
+    convenience init(_ hex: String, alpha: CGFloat = 1.0) {
+        var cString = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+        
+        if cString.hasPrefix("#") { cString.removeFirst() }
+        
+        if cString.count != 6 {
+            self.init("ff0000") // return red color for wrong hex input
+            return
+        }
+        
+        var rgbValue: UInt64 = 0
+        Scanner(string: cString).scanHexInt64(&rgbValue)
+        
+        self.init(red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+                  green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+                  blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+                  alpha: alpha)
+    }
 }
 
 
@@ -68,6 +87,12 @@ extension UIView {
     
     func removeAllSubviews() {
         subviews.forEach({ $0.removeFromSuperview() })
+    }
+    
+    func setDimensions(height: CGFloat, width: CGFloat) {
+        translatesAutoresizingMaskIntoConstraints = false
+        heightAnchor.constraint(equalToConstant: height).isActive = true
+        widthAnchor.constraint(equalToConstant: width).isActive = true
     }
 }
 
@@ -211,4 +236,34 @@ extension UITextField {
             layer.shadowOffset = offset
             layer.shadowColor = color.cgColor
         }
+}
+
+extension UIImage {
+    func scalePreservingAspectRatio(targetSize: CGSize) -> UIImage {
+        // Determine the scale factor that preserves aspect ratio
+        let widthRatio = targetSize.width / size.width
+        let heightRatio = targetSize.height / size.height
+        
+        let scaleFactor = min(widthRatio, heightRatio)
+        
+        // Compute the new image size that preserves aspect ratio
+        let scaledImageSize = CGSize(
+            width: size.width * scaleFactor,
+            height: size.height * scaleFactor
+        )
+
+        // Draw and return the resized UIImage
+        let renderer = UIGraphicsImageRenderer(
+            size: scaledImageSize
+        )
+
+        let scaledImage = renderer.image { _ in
+            self.draw(in: CGRect(
+                origin: .zero,
+                size: scaledImageSize
+            ))
+        }
+        
+        return scaledImage
+    }
 }

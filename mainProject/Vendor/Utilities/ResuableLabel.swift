@@ -61,6 +61,13 @@ class ReusableLabel: UILabel {
             NSAttributedString.Key.paragraphStyle : paragraphStyle,
         ] as [NSAttributedString.Key : Any]
         
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.hyphenationFactor = 1.0
+        
+        let hyphenAttribute = [
+            NSAttributedString.Key.paragraphStyle : paragraphStyle,
+        ] as [NSAttributedString.Key : Any]
+        
         switch style {
             case .largeTitle_1:
                 self.font = UIFont.largeTitle_1()
