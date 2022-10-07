@@ -20,14 +20,33 @@ class ViewController: UIViewController {
     }
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        view.addSubview(button)
-        button.snp.makeConstraints { make in
+        
+        view.addSubview(stack)
+        stack.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
         }
-        // Do any additional setup after loading the view.
     }
+}
 
-
+extension ViewController: UIViewControllerTransitioningDelegate {
+    
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        
+        if presentedVC == "Tappable" {
+            return DismissTappablePresentationController(
+                modalTransitionSize: (view.frame.height/self.modalSize)/view.frame.height,
+                presentedViewController: presented,
+                presenting: presenting
+            )
+        } else {
+            return NotTappablePresentationController(
+                modalTransitionSize: (view.frame.height/self.modalSize)/view.frame.height,
+                presentedViewController: presented,
+                presenting: presenting
+            )
+        }
+    }
 }
 

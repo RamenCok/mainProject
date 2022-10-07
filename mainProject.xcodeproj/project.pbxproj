@@ -50,6 +50,20 @@
 		DB58D06628E816FD00A5C727 /* Sora-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEBE28E7613000372297 /* Sora-Regular.otf */; };
 		DB58D06728E8170000A5C727 /* Sora-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC228E7613000372297 /* Sora-SemiBold.otf */; };
 		DBEC708F28E93617005D0974 /* OnboardingViewController + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEC708E28E93617005D0974 /* OnboardingViewController + Extensions.swift */; };
+		DB8BCD8F28EBD81A00630CA3 /* DismissTappablePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCD8E28EBD81A00630CA3 /* DismissTappablePresentationController.swift */; };
+		DB8BCD9128EBD83900630CA3 /* NotTappablePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCD9028EBD83900630CA3 /* NotTappablePresentationController.swift */; };
+		DB8BCD9728EBDC8F00630CA3 /* SignUpModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCD9628EBDC8F00630CA3 /* SignUpModalVC.swift */; };
+		DB8BCD9928EBDD0F00630CA3 /* BodyMeasurementModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCD9828EBDD0F00630CA3 /* BodyMeasurementModalVC.swift */; };
+		DB8BCD9F28EBDD8500630CA3 /* BuyModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCD9E28EBDD8500630CA3 /* BuyModalVC.swift */; };
+		DB8BCDA328EBDE0800630CA3 /* SizeCalculatorModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCDA128EBDE0800630CA3 /* SizeCalculatorModalVC.swift */; };
+		DB8BCDA428EBDE0800630CA3 /* SizeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCDA228EBDE0800630CA3 /* SizeButtonView.swift */; };
+		DB8BCDA628EBE03600630CA3 /* Sora-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC528E7613000372297 /* Sora-Bold.otf */; };
+		DB8BCDA728EBE03600630CA3 /* Sora-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEBE28E7613000372297 /* Sora-Regular.otf */; };
+		DB8BCDA828EBE03600630CA3 /* Sora-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC228E7613000372297 /* Sora-SemiBold.otf */; };
+		DB8BCDAA28EBF0F200630CA3 /* BuyModalVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCDA928EBF0F200630CA3 /* BuyModalVM.swift */; };
+		DB9660E428EDD87C001D9A53 /* SetupBodyMeasurementModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9660E328EDD87C001D9A53 /* SetupBodyMeasurementModalVC.swift */; };
+		DBB8328728EE84A0004E0820 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DBB8328628EE84A0004E0820 /* IQKeyboardManagerSwift */; };
+		DBD144DF28EEA7A6006A3E40 /* ReusableSizeCalculatorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD144DE28EEA7A6006A3E40 /* ReusableSizeCalculatorButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +84,16 @@
 		DB58D06128E8059800A5C727 /* OnboardingViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewContainer.swift; sourceTree = "<group>"; };
 		DB58D06228E8059800A5C727 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		DBEC708E28E93617005D0974 /* OnboardingViewController + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingViewController + Extensions.swift"; sourceTree = "<group>"; };
+		DB8BCD8E28EBD81A00630CA3 /* DismissTappablePresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissTappablePresentationController.swift; sourceTree = "<group>"; };
+		DB8BCD9028EBD83900630CA3 /* NotTappablePresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotTappablePresentationController.swift; sourceTree = "<group>"; };
+		DB8BCD9628EBDC8F00630CA3 /* SignUpModalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpModalVC.swift; sourceTree = "<group>"; };
+		DB8BCD9828EBDD0F00630CA3 /* BodyMeasurementModalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyMeasurementModalVC.swift; sourceTree = "<group>"; };
+		DB8BCD9E28EBDD8500630CA3 /* BuyModalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyModalVC.swift; sourceTree = "<group>"; };
+		DB8BCDA128EBDE0800630CA3 /* SizeCalculatorModalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeCalculatorModalVC.swift; sourceTree = "<group>"; };
+		DB8BCDA228EBDE0800630CA3 /* SizeButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeButtonView.swift; sourceTree = "<group>"; };
+		DB8BCDA928EBF0F200630CA3 /* BuyModalVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyModalVM.swift; sourceTree = "<group>"; };
+		DB9660E328EDD87C001D9A53 /* SetupBodyMeasurementModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupBodyMeasurementModalVC.swift; sourceTree = "<group>"; };
+		DBD144DE28EEA7A6006A3E40 /* ReusableSizeCalculatorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableSizeCalculatorButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +128,7 @@
 				ACFEBEE728E7678900372297 /* FirebaseDynamicLinks in Frameworks */,
 				ACFEBEEB28E7678900372297 /* FirebaseFirestoreCombine-Community in Frameworks */,
 				ACFEBEFB28E7678900372297 /* FirebaseMessaging in Frameworks */,
+				DBB8328728EE84A0004E0820 /* IQKeyboardManagerSwift in Frameworks */,
 				ACFEBEF728E7678900372297 /* FirebaseInstallations in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -134,6 +159,7 @@
 				ACFEBEA428E7603000372297 /* SceneDelegate.swift */,
 				ACFEBEA628E7603000372297 /* ViewController.swift */,
 				DB58D05E28E804CB00A5C727 /* Pages */,
+				DB8BCD8A28EBD66D00630CA3 /* Reusable Modal */,
 				ACFEBEBC28E7611000372297 /* Model */,
 				ACFEBEB628E7611000372297 /* Vendor */,
 				ACFEBECE28E7614500372297 /* Storyboards */,
@@ -254,6 +280,151 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		DB8BCD8A28EBD66D00630CA3 /* Reusable Modal */ = {
+			isa = PBXGroup;
+			children = (
+				DB8BCD8D28EBD7F900630CA3 /* Presentation Controller */,
+				DB9660DE28EDD784001D9A53 /* SetupBodyMeasurementModal */,
+				DB8BCD9528EBDC5C00630CA3 /* SizeCalculatorModal */,
+				DB8BCD9428EBDC5400630CA3 /* BuyLinkModal */,
+				DB8BCD9328EBDC3700630CA3 /* AskSetupBodyMeasurementModal */,
+				DB8BCD9228EBDC1E00630CA3 /* AskToSignUpModal */,
+			);
+			path = "Reusable Modal";
+			sourceTree = "<group>";
+		};
+		DB8BCD8B28EBD6B200630CA3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DB8BCD9628EBDC8F00630CA3 /* SignUpModalVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DB8BCD8C28EBD7A900630CA3 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		DB8BCD8D28EBD7F900630CA3 /* Presentation Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DB8BCD8E28EBD81A00630CA3 /* DismissTappablePresentationController.swift */,
+				DB8BCD9028EBD83900630CA3 /* NotTappablePresentationController.swift */,
+			);
+			path = "Presentation Controller";
+			sourceTree = "<group>";
+		};
+		DB8BCD9228EBDC1E00630CA3 /* AskToSignUpModal */ = {
+			isa = PBXGroup;
+			children = (
+				DB8BCD8C28EBD7A900630CA3 /* View Model */,
+				DB8BCD8B28EBD6B200630CA3 /* View */,
+			);
+			path = AskToSignUpModal;
+			sourceTree = "<group>";
+		};
+		DB8BCD9328EBDC3700630CA3 /* AskSetupBodyMeasurementModal */ = {
+			isa = PBXGroup;
+			children = (
+				DB8BCD9B28EBDD1C00630CA3 /* View Model */,
+				DB8BCD9A28EBDD1500630CA3 /* View */,
+			);
+			path = AskSetupBodyMeasurementModal;
+			sourceTree = "<group>";
+		};
+		DB8BCD9428EBDC5400630CA3 /* BuyLinkModal */ = {
+			isa = PBXGroup;
+			children = (
+				DB8BCD9D28EBDD7900630CA3 /* View Model */,
+				DB8BCD9C28EBDD7400630CA3 /* View */,
+			);
+			path = BuyLinkModal;
+			sourceTree = "<group>";
+		};
+		DB8BCD9528EBDC5C00630CA3 /* SizeCalculatorModal */ = {
+			isa = PBXGroup;
+			children = (
+				DB8BCDA528EBDE0B00630CA3 /* View Model */,
+				DB8BCDA028EBDDFD00630CA3 /* View */,
+			);
+			path = SizeCalculatorModal;
+			sourceTree = "<group>";
+		};
+		DB8BCD9A28EBDD1500630CA3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DB8BCD9828EBDD0F00630CA3 /* BodyMeasurementModalVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DB8BCD9B28EBDD1C00630CA3 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		DB8BCD9C28EBDD7400630CA3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DB8BCD9E28EBDD8500630CA3 /* BuyModalVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DB8BCD9D28EBDD7900630CA3 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				DB8BCDA928EBF0F200630CA3 /* BuyModalVM.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		DB8BCDA028EBDDFD00630CA3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DB8BCDA228EBDE0800630CA3 /* SizeButtonView.swift */,
+				DB8BCDA128EBDE0800630CA3 /* SizeCalculatorModalVC.swift */,
+				DBD144DE28EEA7A6006A3E40 /* ReusableSizeCalculatorButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DB8BCDA528EBDE0B00630CA3 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		DB9660DE28EDD784001D9A53 /* SetupBodyMeasurementModal */ = {
+			isa = PBXGroup;
+			children = (
+				DB9660E028EDD7AF001D9A53 /* View Model */,
+				DB9660DF28EDD7A9001D9A53 /* View */,
+			);
+			path = SetupBodyMeasurementModal;
+			sourceTree = "<group>";
+		};
+		DB9660DF28EDD7A9001D9A53 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DB9660E328EDD87C001D9A53 /* SetupBodyMeasurementModalVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DB9660E028EDD7AF001D9A53 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -299,6 +470,7 @@
 				ACFEBF0228E7678900372297 /* FirebaseStorage */,
 				ACFEBF0428E7678900372297 /* FirebaseStorageCombine-Community */,
 				ACB588AA28E7F08C0025D230 /* SnapKit */,
+				DBB8328628EE84A0004E0820 /* IQKeyboardManagerSwift */,
 			);
 			productName = mainProject;
 			productReference = ACFEBE9F28E7603000372297 /* mainProject.app */;
@@ -331,6 +503,7 @@
 			packageReferences = (
 				ACFEBECF28E7678900372297 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				ACB588A928E7F08C0025D230 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				DBB8328528EE84A0004E0820 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = ACFEBEA028E7603000372297 /* Products */;
 			projectDirPath = "";
@@ -347,11 +520,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACFEBEAF28E7603100372297 /* LaunchScreen.storyboard in Resources */,
-				DB58D06728E8170000A5C727 /* Sora-SemiBold.otf in Resources */,
+				DB8BCDA828EBE03600630CA3 /* Sora-SemiBold.otf in Resources */,
 				ACFEBEAC28E7603100372297 /* Assets.xcassets in Resources */,
 				ACFEBEAA28E7603000372297 /* Main.storyboard in Resources */,
-				DB58D06528E816FB00A5C727 /* Sora-Bold.otf in Resources */,
-				DB58D06628E816FD00A5C727 /* Sora-Regular.otf in Resources */,
+				DB8BCDA628EBE03600630CA3 /* Sora-Bold.otf in Resources */,
+				DB8BCDA728EBE03600630CA3 /* Sora-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,12 +536,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB58D06328E8059800A5C727 /* OnboardingViewContainer.swift in Sources */,
+				DB8BCD8F28EBD81A00630CA3 /* DismissTappablePresentationController.swift in Sources */,
+				DB8BCDAA28EBF0F200630CA3 /* BuyModalVM.swift in Sources */,
+				DB9660E428EDD87C001D9A53 /* SetupBodyMeasurementModalVC.swift in Sources */,
+				DB8BCDA328EBDE0800630CA3 /* SizeCalculatorModalVC.swift in Sources */,
+				DB8BCD9F28EBDD8500630CA3 /* BuyModalVC.swift in Sources */,
+				DBD144DF28EEA7A6006A3E40 /* ReusableSizeCalculatorButton.swift in Sources */,
+				DB8BCD9728EBDC8F00630CA3 /* SignUpModalVC.swift in Sources */,
+				DB8BCDA428EBDE0800630CA3 /* SizeButtonView.swift in Sources */,
 				ACB588A628E7E6D80025D230 /* Extensions.swift in Sources */,
 				ACFEBEA728E7603000372297 /* ViewController.swift in Sources */,
 				DBEC708F28E93617005D0974 /* OnboardingViewController + Extensions.swift in Sources */,
 				DB58D06428E8059800A5C727 /* OnboardingViewController.swift in Sources */,
 				ACB588A828E7E9C30025D230 /* ReusableButton.swift in Sources */,
+				DB8BCD9128EBD83900630CA3 /* NotTappablePresentationController.swift in Sources */,
 				ACB588A428E7E66F0025D230 /* ResuableLabel.swift in Sources */,
+				DB8BCD9928EBDD0F00630CA3 /* BodyMeasurementModalVC.swift in Sources */,
 				ACFEBEA328E7603000372297 /* AppDelegate.swift in Sources */,
 				ACFEBEA528E7603000372297 /* SceneDelegate.swift in Sources */,
 			);
@@ -606,6 +789,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		DBB8328528EE84A0004E0820 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -748,6 +939,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = ACFEBECF28E7678900372297 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseStorageCombine-Community";
+		};
+		DBB8328628EE84A0004E0820 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DBB8328528EE84A0004E0820 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
