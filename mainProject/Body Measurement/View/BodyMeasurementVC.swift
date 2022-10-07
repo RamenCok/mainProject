@@ -124,5 +124,4 @@ extension BodyMeasurementVC: UICollectionViewDelegate, UICollectionViewDataSourc
         
         return cell
     }
-    
 }

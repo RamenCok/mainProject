@@ -38,12 +38,13 @@ class BodyMeasurementCell: UICollectionViewCell {
     }
     
     func configure() {
+        
         print(self.type)
         contentView.backgroundColor = .clear
         contentView.addSubview(background)
         
-        let measurementType = ReusableLabel(style: .heading_3, textString: "\(self.type!)")
-        measurementType.textAlignment = .left
+        let measurementType = ReusableLabel(style: .heading_3, textString: converter(type: self.type))
+        measurementType.textAlignment = .center
         contentView.addSubview(measurementType)
         
         let measurementNumber = ReusableLabel(style: .subHeading_1, textString: "\(self.numbers!) cm")
@@ -54,6 +55,29 @@ class BodyMeasurementCell: UICollectionViewCell {
         background.frame = CGRect(x: 0, y: 0, width: contentView.frame.size.width, height: contentView.frame.size.width)
         measurementType.frame = CGRect(x: 50, y: contentView.frame.size.width-20, width: contentView.frame.size.width, height: 20)
         measurementNumber.frame = CGRect(x: 50, y: contentView.frame.size.width, width: contentView.frame.size.width, height: 20)
+    }
+    
+    private func converter(type: Int)->String {
+        switch type {
+        case 0:
+            return "bust"
+        case 1:
+            return "waist"
+        case 2:
+            return "height"
+        case 3:
+            return "hips"
+        case 4:
+            return "arm"
+        case 5:
+            return "thigh"
+        case 6:
+            return "shoulder"
+        case 7:
+            return "sleeve"
+        default:
+            return ""
+        }
     }
     
 //    override func layoutSubviews() {
