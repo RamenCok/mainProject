@@ -38,11 +38,11 @@ class BrandCatalogueViewController: UIViewController, UICollectionViewDelegate, 
     private lazy var profileButton: UIButton = {
        
         let button = UIButton(type: .custom)
-        button.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+//        button.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         button.setImage(UIImage(named: "profile-icon"), for: .normal)
-        button.tintColor = .gray
-        button.clipsToBounds = true
-        button.layer.cornerRadius = 0.5 * button.bounds.size.width
+//        button.tintColor = .gray
+//        button.clipsToBounds = true
+//        button.layer.cornerRadius = 0.5 * button.bounds.size.width
 
         return button
     }()
@@ -125,15 +125,27 @@ class BrandCatalogueViewController: UIViewController, UICollectionViewDelegate, 
         self.title = "Brands"
         self.navigationController?.title = "Brands"
         
-        let rightBarBtn = UIBarButtonItem(image: UIImage(systemName: "person.crop.circle.fill"), style: .plain, target: self, action: nil)
-        rightBarBtn.tintColor = .greyColor
-     
-
-        let currWidth = rightBarBtn.customView?.widthAnchor.constraint(equalToConstant: 24)
-        currWidth?.isActive = true
-        let currHeight = rightBarBtn.customView?.heightAnchor.constraint(equalToConstant: 24)
-        currHeight?.isActive = true
-        navigationItem.rightBarButtonItem = rightBarBtn
+//        let rightBarBtn = UIBarButtonItem(customView: profileButton)
+        
+        guard let navigationBar = self.navigationController?.navigationBar else { return }
+            navigationBar.addSubview(profileButton)
+            profileButton.layer.cornerRadius = Const.ImageSizeForLargeState / 2
+            profileButton.clipsToBounds = true
+            profileButton.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                profileButton.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -Const.ImageRightMargin),
+                profileButton.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: -Const.ImageBottomMarginForLargeState),
+                profileButton.heightAnchor.constraint(equalToConstant: Const.ImageSizeForLargeState),
+                profileButton.widthAnchor.constraint(equalTo: profileButton.heightAnchor)
+                ])
+//        rightBarBtn.tintColor = .greyColor
+//
+//
+//        let currWidth = rightBarBtn.customView?.widthAnchor.constraint(equalToConstant: 24)
+//        currWidth?.isActive = true
+//        let currHeight = rightBarBtn.customView?.heightAnchor.constraint(equalToConstant: 24)
+//        currHeight?.isActive = true
+//        navigationItem.rightBarButtonItem = rightBarBtn
         
 
     }
@@ -146,7 +158,7 @@ class BrandCatalogueViewController: UIViewController, UICollectionViewDelegate, 
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print(brandVM.brandList.count)
-        return brandVM.brandList.count
+        return 30
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -156,6 +168,8 @@ class BrandCatalogueViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let height = navigationController?.navigationBar.frame.height else { return }
+        moveAndResizeImage(for: height)
         let svtop = scrollView.frame.origin.y
         let v3top = scrollView.superview! .convert(view.bounds.origin, from:view).y
         if v3top < svtop { print ("now") }
@@ -171,9 +185,51 @@ class BrandCatalogueViewController: UIViewController, UICollectionViewDelegate, 
         print("yay")
     }
 
-   
-    
+    private func moveAndResizeImage(for height: CGFloat) {
+        
+        let coeff: CGFloat = {
+                let delta = height - Const.NavBarHeightSmallState
+                let heightDifferenceBetweenStates = (Const.NavBarHeightLargeState - Const.NavBarHeightSmallState)
+                return delta / heightDifferenceBetweenStates
+            }()
 
-    
+            let factor = Const.ImageSizeForSmallState / Const.ImageSizeForLargeState
 
+            let scale: CGFloat = {
+                let sizeAddendumFactor = coeff * (1.0 - factor)
+                return min(1.0, sizeAddendumFactor + factor)
+            }()
+
+            // Value of difference between icons for large and small states
+            let sizeDiff = Const.ImageSizeForLargeState * (1.0 - factor) // 8.0
+            let yTranslation: CGFloat = {
+                /// This value = 14. It equals to difference of 12 and 6 (bottom margin for large and small states). Also it adds 8.0 (size difference when the image gets smaller size)
+                let maxYTranslation = Const.ImageBottomMarginForLargeState - Const.ImageBottomMarginForSmallState + sizeDiff
+                return max(0, min(maxYTranslation, (maxYTranslation - coeff * (Const.ImageBottomMarginForSmallState + sizeDiff))))
+            }()
+
+            let xTranslation = max(0, sizeDiff - coeff * sizeDiff)
+            profileButton.transform = CGAffineTransform.identity
+                .scaledBy(x: scale, y: scale)
+                .translatedBy(x: xTranslation, y: yTranslation)
+    }
+ 
+    
+}
+
+private struct Const {
+    /// Image height/width for Large NavBar state
+    static let ImageSizeForLargeState: CGFloat = 60
+    /// Margin from right anchor of safe area to right anchor of Image
+    static let ImageRightMargin: CGFloat = 20
+    /// Margin from bottom anchor of NavBar to bottom anchor of Image for Large NavBar state
+    static let ImageBottomMarginForLargeState: CGFloat = 54
+    /// Margin from bottom anchor of NavBar to bottom anchor of Image for Small NavBar state
+    static let ImageBottomMarginForSmallState: CGFloat = 0
+    /// Image height/width for Small NavBar state
+    static let ImageSizeForSmallState: CGFloat = 10
+    /// Height of NavBar for Small state. Usually it's just 44
+    static let NavBarHeightSmallState: CGFloat = 44
+    /// Height of NavBar for Large state. Usually it's just 96.5 but if you have a custom font for the title, please make sure to edit this value since it changes the height for Large state of NavBar
+    static let NavBarHeightLargeState: CGFloat = 76
 }

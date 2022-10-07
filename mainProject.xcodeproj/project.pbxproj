@@ -143,9 +143,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC6F478D28EF35A700AAF1F6 /* ProductCatalogue */ = {
+			isa = PBXGroup;
+			children = (
+				AC6F478F28EF394C00AAF1F6 /* View */,
+				AC6F478E28EF394200AAF1F6 /* ViewModel */,
+			);
+			path = ProductCatalogue;
+			sourceTree = "<group>";
+		};
+		AC6F478E28EF394200AAF1F6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AC6F478F28EF394C00AAF1F6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		ACB588AC28EA023B0025D230 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				AC6F478D28EF35A700AAF1F6 /* ProductCatalogue */,
 				ACB588BF28EB5D3C0025D230 /* Authentication */,
 				ACB588AD28EA02460025D230 /* BrandCatalogue */,
 			);
