@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0EB2126728EE937D00FB1255 /* BodyMeasurementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB2126628EE937D00FB1255 /* BodyMeasurementVC.swift */; };
+		0EB2126928EE939900FB1255 /* BodyMeasurementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB2126828EE939900FB1255 /* BodyMeasurementCell.swift */; };
+		0EB2126B28EE940D00FB1255 /* BodyMeasurementVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB2126A28EE940D00FB1255 /* BodyMeasurementVM.swift */; };
+		0EB2126C28EF264700FB1255 /* Sora-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC528E7613000372297 /* Sora-Bold.otf */; };
+		0EB2126D28EF264A00FB1255 /* Sora-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEBE28E7613000372297 /* Sora-Regular.otf */; };
+		0EB2126E28EF264F00FB1255 /* Sora-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC228E7613000372297 /* Sora-SemiBold.otf */; };
 		ACB588A428E7E66F0025D230 /* ResuableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A328E7E66F0025D230 /* ResuableLabel.swift */; };
 		ACB588A628E7E6D80025D230 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A528E7E6D80025D230 /* Extensions.swift */; };
 		ACB588A828E7E9C30025D230 /* ReusableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A728E7E9C30025D230 /* ReusableButton.swift */; };
@@ -47,6 +53,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0EB2126628EE937D00FB1255 /* BodyMeasurementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyMeasurementVC.swift; sourceTree = "<group>"; };
+		0EB2126828EE939900FB1255 /* BodyMeasurementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyMeasurementCell.swift; sourceTree = "<group>"; };
+		0EB2126A28EE940D00FB1255 /* BodyMeasurementVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyMeasurementVM.swift; sourceTree = "<group>"; };
 		ACB588A328E7E66F0025D230 /* ResuableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResuableLabel.swift; sourceTree = "<group>"; };
 		ACB588A528E7E6D80025D230 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = mainProject/Vendor/Utilities/Extensions.swift; sourceTree = SOURCE_ROOT; };
 		ACB588A728E7E9C30025D230 /* ReusableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableButton.swift; sourceTree = "<group>"; };
@@ -102,6 +111,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0EB2126328EE935B00FB1255 /* Body Measurement */ = {
+			isa = PBXGroup;
+			children = (
+				0EB2126528EE936C00FB1255 /* ViewModel */,
+				0EB2126428EE936600FB1255 /* View */,
+			);
+			path = "Body Measurement";
+			sourceTree = "<group>";
+		};
+		0EB2126428EE936600FB1255 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0EB2126628EE937D00FB1255 /* BodyMeasurementVC.swift */,
+				0EB2126828EE939900FB1255 /* BodyMeasurementCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0EB2126528EE936C00FB1255 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0EB2126A28EE940D00FB1255 /* BodyMeasurementVM.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		ACFEBE9628E7603000372297 = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +159,7 @@
 				ACFEBEA228E7603000372297 /* AppDelegate.swift */,
 				ACFEBEA428E7603000372297 /* SceneDelegate.swift */,
 				ACFEBEA628E7603000372297 /* ViewController.swift */,
+				0EB2126328EE935B00FB1255 /* Body Measurement */,
 				ACFEBEBC28E7611000372297 /* Model */,
 				ACFEBEB628E7611000372297 /* Vendor */,
 				ACFEBECE28E7614500372297 /* Storyboards */,
@@ -303,6 +339,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACFEBEAF28E7603100372297 /* LaunchScreen.storyboard in Resources */,
+				0EB2126E28EF264F00FB1255 /* Sora-SemiBold.otf in Resources */,
+				0EB2126C28EF264700FB1255 /* Sora-Bold.otf in Resources */,
+				0EB2126D28EF264A00FB1255 /* Sora-Regular.otf in Resources */,
 				ACFEBEAC28E7603100372297 /* Assets.xcassets in Resources */,
 				ACFEBEAA28E7603000372297 /* Main.storyboard in Resources */,
 			);
@@ -315,12 +354,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EB2126928EE939900FB1255 /* BodyMeasurementCell.swift in Sources */,
 				ACB588A628E7E6D80025D230 /* Extensions.swift in Sources */,
 				ACFEBEA728E7603000372297 /* ViewController.swift in Sources */,
+				0EB2126B28EE940D00FB1255 /* BodyMeasurementVM.swift in Sources */,
 				ACB588A828E7E9C30025D230 /* ReusableButton.swift in Sources */,
 				ACB588A428E7E66F0025D230 /* ResuableLabel.swift in Sources */,
 				ACFEBEA328E7603000372297 /* AppDelegate.swift in Sources */,
 				ACFEBEA528E7603000372297 /* SceneDelegate.swift in Sources */,
+				0EB2126728EE937D00FB1255 /* BodyMeasurementVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
