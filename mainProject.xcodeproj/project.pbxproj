@@ -7,15 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AC548F3D28EBFB52002C3CC8 /* ASHUButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC548F3C28EBFB52002C3CC8 /* ASHUButton.swift */; };
-		AC548F3F28EC040E002C3CC8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC548F3E28EC040E002C3CC8 /* SignUpViewController.swift */; };
-		AC6F478028EDEADF00AAF1F6 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC6F477F28EDEADF00AAF1F6 /* IQKeyboardManagerSwift */; };
-		AC6F478228EE8AD900AAF1F6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478128EE8AD900AAF1F6 /* LoginViewController.swift */; };
-		AC6F478428EE982F00AAF1F6 /* ReusableTextFieldAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */; };
-		AC6F478628EE9A5100AAF1F6 /* ReusablePasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478528EE9A5100AAF1F6 /* ReusablePasswordTextField.swift */; };
-		AC6F478828EEA45B00AAF1F6 /* PersonalizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478728EEA45B00AAF1F6 /* PersonalizeViewController.swift */; };
-		AC6F478A28EF110400AAF1F6 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478928EF110400AAF1F6 /* ResetPasswordViewController.swift */; };
-		AC6F478C28EF22E600AAF1F6 /* Heihgt.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478B28EF22E600AAF1F6 /* Heihgt.swift */; };
 		0E00506F28EB1BD600DAB7CA /* Sora-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC528E7613000372297 /* Sora-Bold.otf */; };
 		0E00507028EB1BD800DAB7CA /* Sora-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEBE28E7613000372297 /* Sora-Regular.otf */; };
 		0E00507128EB1BDA00DAB7CA /* Sora-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC228E7613000372297 /* Sora-SemiBold.otf */; };
@@ -29,18 +20,18 @@
 		0EB2125B28ED895E00FB1255 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB2125A28ED895E00FB1255 /* ProductModel.swift */; };
 		0EB2125D28EDDF4700FB1255 /* HeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB2125C28EDDF4700FB1255 /* HeadlineView.swift */; };
 		0EB2125F28EDE33200FB1255 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB2125E28EDE33200FB1255 /* DescriptionView.swift */; };
+		AC548F3D28EBFB52002C3CC8 /* ASHUButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC548F3C28EBFB52002C3CC8 /* ASHUButton.swift */; };
+		AC6F478028EDEADF00AAF1F6 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC6F477F28EDEADF00AAF1F6 /* IQKeyboardManagerSwift */; };
+		AC6F478428EE982F00AAF1F6 /* ReusableTextFieldAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */; };
+		AC6F478628EE9A5100AAF1F6 /* ReusablePasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478528EE9A5100AAF1F6 /* ReusablePasswordTextField.swift */; };
+		AC6F478C28EF22E600AAF1F6 /* Heihgt.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478B28EF22E600AAF1F6 /* Heihgt.swift */; };
 		ACB588A428E7E66F0025D230 /* ResuableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A328E7E66F0025D230 /* ResuableLabel.swift */; };
 		ACB588A628E7E6D80025D230 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A528E7E6D80025D230 /* Extensions.swift */; };
 		ACB588A828E7E9C30025D230 /* ReusableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A728E7E9C30025D230 /* ReusableButton.swift */; };
 		ACB588AB28E7F08C0025D230 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = ACB588AA28E7F08C0025D230 /* SnapKit */; };
-		ACB588AF28EA02660025D230 /* Brands.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588AE28EA02660025D230 /* Brands.swift */; };
-		ACB588B328EA03680025D230 /* BrandCatalogueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588B228EA03680025D230 /* BrandCatalogueViewController.swift */; };
 		ACB588B428EA8CC80025D230 /* Sora-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC528E7613000372297 /* Sora-Bold.otf */; };
 		ACB588B528EA8CCA0025D230 /* Sora-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEBE28E7613000372297 /* Sora-Regular.otf */; };
 		ACB588B628EA8CCD0025D230 /* Sora-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC228E7613000372297 /* Sora-SemiBold.otf */; };
-		ACB588BB28EA909E0025D230 /* BrandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588BA28EA909E0025D230 /* BrandCollectionViewCell.swift */; };
-		ACB588BE28EAFEAC0025D230 /* BrandCatalogueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588BD28EAFEAC0025D230 /* BrandCatalogueViewModel.swift */; };
-		ACB588C328EBE0460025D230 /* SignupLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588C228EBE0460025D230 /* SignupLogin.swift */; };
 		ACFE712F28ED207900A894D4 /* ReusablePinkCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFE712E28ED207900A894D4 /* ReusablePinkCapsule.swift */; };
 		ACFE713128ED3C8000A894D4 /* ReusableAuthBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFE713028ED3C8000A894D4 /* ReusableAuthBackground.swift */; };
 		ACFE713428ED405C00A894D4 /* ReusableCapsuleTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFE713328ED405C00A894D4 /* ReusableCapsuleTitle.swift */; };
@@ -79,12 +70,9 @@
 		ACFEBF0128E7678900372297 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = ACFEBF0028E7678900372297 /* FirebaseRemoteConfigSwift */; };
 		ACFEBF0328E7678900372297 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = ACFEBF0228E7678900372297 /* FirebaseStorage */; };
 		ACFEBF0528E7678900372297 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = ACFEBF0428E7678900372297 /* FirebaseStorageCombine-Community */; };
+		DB19AF2228ED6515003E6F61 /* ReusableProfileButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB19AF2128ED6515003E6F61 /* ReusableProfileButtonView.swift */; };
 		DB58D06328E8059800A5C727 /* OnboardingViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB58D06128E8059800A5C727 /* OnboardingViewContainer.swift */; };
 		DB58D06428E8059800A5C727 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB58D06228E8059800A5C727 /* OnboardingViewController.swift */; };
-		DB58D06528E816FB00A5C727 /* Sora-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC528E7613000372297 /* Sora-Bold.otf */; };
-		DB58D06628E816FD00A5C727 /* Sora-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEBE28E7613000372297 /* Sora-Regular.otf */; };
-		DB58D06728E8170000A5C727 /* Sora-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC228E7613000372297 /* Sora-SemiBold.otf */; };
-		DBEC708F28E93617005D0974 /* OnboardingViewController + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEC708E28E93617005D0974 /* OnboardingViewController + Extensions.swift */; };
 		DB8BCD8F28EBD81A00630CA3 /* DismissTappablePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCD8E28EBD81A00630CA3 /* DismissTappablePresentationController.swift */; };
 		DB8BCD9128EBD83900630CA3 /* NotTappablePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCD9028EBD83900630CA3 /* NotTappablePresentationController.swift */; };
 		DB8BCD9728EBDC8F00630CA3 /* SignUpModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCD9628EBDC8F00630CA3 /* SignUpModalVC.swift */; };
@@ -92,31 +80,26 @@
 		DB8BCD9F28EBDD8500630CA3 /* BuyModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCD9E28EBDD8500630CA3 /* BuyModalVC.swift */; };
 		DB8BCDA328EBDE0800630CA3 /* SizeCalculatorModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCDA128EBDE0800630CA3 /* SizeCalculatorModalVC.swift */; };
 		DB8BCDA428EBDE0800630CA3 /* SizeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCDA228EBDE0800630CA3 /* SizeButtonView.swift */; };
-		DB8BCDA628EBE03600630CA3 /* Sora-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC528E7613000372297 /* Sora-Bold.otf */; };
-		DB8BCDA728EBE03600630CA3 /* Sora-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEBE28E7613000372297 /* Sora-Regular.otf */; };
-		DB8BCDA828EBE03600630CA3 /* Sora-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC228E7613000372297 /* Sora-SemiBold.otf */; };
 		DB8BCDAA28EBF0F200630CA3 /* BuyModalVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCDA928EBF0F200630CA3 /* BuyModalVM.swift */; };
 		DB9660E428EDD87C001D9A53 /* SetupBodyMeasurementModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9660E328EDD87C001D9A53 /* SetupBodyMeasurementModalVC.swift */; };
-		DBB8328728EE84A0004E0820 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DBB8328628EE84A0004E0820 /* IQKeyboardManagerSwift */; };
-		DBD144DF28EEA7A6006A3E40 /* ReusableSizeCalculatorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD144DE28EEA7A6006A3E40 /* ReusableSizeCalculatorButton.swift */; };
-		DB19AF2228ED6515003E6F61 /* ReusableProfileButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB19AF2128ED6515003E6F61 /* ReusableProfileButtonView.swift */; };
 		DBA2FCD028ED365900FDC148 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA2FCCF28ED365900FDC148 /* ProfileViewController.swift */; };
 		DBA35F2428EDB0D4009D6917 /* ProfileViewController + ImagePickerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA35F2328EDB0D4009D6917 /* ProfileViewController + ImagePickerExtensions.swift */; };
 		DBA35F2628EDB118009D6917 /* ProfileViewController + KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA35F2528EDB118009D6917 /* ProfileViewController + KeyboardExtension.swift */; };
-		DBB8F41328ED9C3900D2EDF5 /* Sora-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC528E7613000372297 /* Sora-Bold.otf */; };
-		DBB8F41428ED9C3B00D2EDF5 /* Sora-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEBE28E7613000372297 /* Sora-Regular.otf */; };
-		DBB8F41528ED9C3E00D2EDF5 /* Sora-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC228E7613000372297 /* Sora-SemiBold.otf */; };
+		DBD144DF28EEA7A6006A3E40 /* ReusableSizeCalculatorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD144DE28EEA7A6006A3E40 /* ReusableSizeCalculatorButton.swift */; };
+		DBE905EB28EFDE9300B6E463 /* Brands.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905EA28EFDE9300B6E463 /* Brands.swift */; };
+		DBE905F428EFDF4F00B6E463 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905EE28EFDF4F00B6E463 /* SignUpViewController.swift */; };
+		DBE905F528EFDF4F00B6E463 /* SignupLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905EF28EFDF4F00B6E463 /* SignupLogin.swift */; };
+		DBE905F628EFDF4F00B6E463 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905F028EFDF4F00B6E463 /* ResetPasswordViewController.swift */; };
+		DBE905F728EFDF4F00B6E463 /* PersonalizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905F128EFDF4F00B6E463 /* PersonalizeViewController.swift */; };
+		DBE905F828EFDF4F00B6E463 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905F228EFDF4F00B6E463 /* LoginViewController.swift */; };
+		DBE905F928EFDF4F00B6E463 /* Heihgt.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905F328EFDF4F00B6E463 /* Heihgt.swift */; };
+		DBE9060028EFDF5B00B6E463 /* BrandCatalogueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905FC28EFDF5B00B6E463 /* BrandCatalogueViewModel.swift */; };
+		DBE9060128EFDF5B00B6E463 /* BrandCatalogueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905FE28EFDF5B00B6E463 /* BrandCatalogueViewController.swift */; };
+		DBE9060228EFDF5B00B6E463 /* BrandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905FF28EFDF5B00B6E463 /* BrandCollectionViewCell.swift */; };
+		DBEC708F28E93617005D0974 /* OnboardingViewController + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEC708E28E93617005D0974 /* OnboardingViewController + Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AC548F3C28EBFB52002C3CC8 /* ASHUButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASHUButton.swift; sourceTree = "<group>"; };
-		AC548F3E28EC040E002C3CC8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		AC6F478128EE8AD900AAF1F6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTextFieldAuth.swift; sourceTree = "<group>"; };
-		AC6F478528EE9A5100AAF1F6 /* ReusablePasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePasswordTextField.swift; sourceTree = "<group>"; };
-		AC6F478728EEA45B00AAF1F6 /* PersonalizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizeViewController.swift; sourceTree = "<group>"; };
-		AC6F478928EF110400AAF1F6 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
-		AC6F478B28EF22E600AAF1F6 /* Heihgt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Heihgt.swift; path = mainProject/Pages/Authentication/View/Heihgt.swift; sourceTree = SOURCE_ROOT; };
 		0E7BCE3A28EB2FC8000820E0 /* AirForce.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = AirForce.usdz; sourceTree = "<group>"; };
 		0E7BCE4028EBF1C1000820E0 /* ProductDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailVC.swift; sourceTree = "<group>"; };
 		0E7BCE4228EBF431000820E0 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
@@ -127,14 +110,13 @@
 		0EB2125A28ED895E00FB1255 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		0EB2125C28EDDF4700FB1255 /* HeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineView.swift; sourceTree = "<group>"; };
 		0EB2125E28EDE33200FB1255 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
+		AC548F3C28EBFB52002C3CC8 /* ASHUButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASHUButton.swift; sourceTree = "<group>"; };
+		AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTextFieldAuth.swift; sourceTree = "<group>"; };
+		AC6F478528EE9A5100AAF1F6 /* ReusablePasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePasswordTextField.swift; sourceTree = "<group>"; };
+		AC6F478B28EF22E600AAF1F6 /* Heihgt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Heihgt.swift; path = mainProject/Pages/Authentication/View/Heihgt.swift; sourceTree = SOURCE_ROOT; };
 		ACB588A328E7E66F0025D230 /* ResuableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResuableLabel.swift; sourceTree = "<group>"; };
 		ACB588A528E7E6D80025D230 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = mainProject/Vendor/Extensions/Extensions.swift; sourceTree = SOURCE_ROOT; };
 		ACB588A728E7E9C30025D230 /* ReusableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableButton.swift; sourceTree = "<group>"; };
-		ACB588AE28EA02660025D230 /* Brands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Brands.swift; path = mainProject/Model/Brands.swift; sourceTree = SOURCE_ROOT; };
-		ACB588B228EA03680025D230 /* BrandCatalogueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandCatalogueViewController.swift; sourceTree = "<group>"; wrapsLines = 0; };
-		ACB588BA28EA909E0025D230 /* BrandCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandCollectionViewCell.swift; sourceTree = "<group>"; };
-		ACB588BD28EAFEAC0025D230 /* BrandCatalogueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandCatalogueViewModel.swift; sourceTree = "<group>"; };
-		ACB588C228EBE0460025D230 /* SignupLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupLogin.swift; sourceTree = "<group>"; };
 		ACFE712E28ED207900A894D4 /* ReusablePinkCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePinkCapsule.swift; sourceTree = "<group>"; };
 		ACFE713028ED3C8000A894D4 /* ReusableAuthBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableAuthBackground.swift; sourceTree = "<group>"; };
 		ACFE713328ED405C00A894D4 /* ReusableCapsuleTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCapsuleTitle.swift; sourceTree = "<group>"; };
@@ -151,9 +133,9 @@
 		ACFEBEBE28E7613000372297 /* Sora-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-Regular.otf"; sourceTree = "<group>"; };
 		ACFEBEC228E7613000372297 /* Sora-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-SemiBold.otf"; sourceTree = "<group>"; };
 		ACFEBEC528E7613000372297 /* Sora-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-Bold.otf"; sourceTree = "<group>"; };
+		DB19AF2128ED6515003E6F61 /* ReusableProfileButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProfileButtonView.swift; sourceTree = "<group>"; };
 		DB58D06128E8059800A5C727 /* OnboardingViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewContainer.swift; sourceTree = "<group>"; };
 		DB58D06228E8059800A5C727 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
-		DBEC708E28E93617005D0974 /* OnboardingViewController + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingViewController + Extensions.swift"; sourceTree = "<group>"; };
 		DB8BCD8E28EBD81A00630CA3 /* DismissTappablePresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissTappablePresentationController.swift; sourceTree = "<group>"; };
 		DB8BCD9028EBD83900630CA3 /* NotTappablePresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotTappablePresentationController.swift; sourceTree = "<group>"; };
 		DB8BCD9628EBDC8F00630CA3 /* SignUpModalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpModalVC.swift; sourceTree = "<group>"; };
@@ -163,11 +145,21 @@
 		DB8BCDA228EBDE0800630CA3 /* SizeButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeButtonView.swift; sourceTree = "<group>"; };
 		DB8BCDA928EBF0F200630CA3 /* BuyModalVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyModalVM.swift; sourceTree = "<group>"; };
 		DB9660E328EDD87C001D9A53 /* SetupBodyMeasurementModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupBodyMeasurementModalVC.swift; sourceTree = "<group>"; };
-		DBD144DE28EEA7A6006A3E40 /* ReusableSizeCalculatorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableSizeCalculatorButton.swift; sourceTree = "<group>"; };
-		DB19AF2128ED6515003E6F61 /* ReusableProfileButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProfileButtonView.swift; sourceTree = "<group>"; };
 		DBA2FCCF28ED365900FDC148 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		DBA35F2328EDB0D4009D6917 /* ProfileViewController + ImagePickerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController + ImagePickerExtensions.swift"; sourceTree = "<group>"; };
 		DBA35F2528EDB118009D6917 /* ProfileViewController + KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController + KeyboardExtension.swift"; sourceTree = "<group>"; };
+		DBD144DE28EEA7A6006A3E40 /* ReusableSizeCalculatorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableSizeCalculatorButton.swift; sourceTree = "<group>"; };
+		DBE905EA28EFDE9300B6E463 /* Brands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brands.swift; sourceTree = "<group>"; };
+		DBE905EE28EFDF4F00B6E463 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		DBE905EF28EFDF4F00B6E463 /* SignupLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupLogin.swift; sourceTree = "<group>"; };
+		DBE905F028EFDF4F00B6E463 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		DBE905F128EFDF4F00B6E463 /* PersonalizeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalizeViewController.swift; sourceTree = "<group>"; };
+		DBE905F228EFDF4F00B6E463 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		DBE905F328EFDF4F00B6E463 /* Heihgt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Heihgt.swift; sourceTree = "<group>"; };
+		DBE905FC28EFDF5B00B6E463 /* BrandCatalogueViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandCatalogueViewModel.swift; sourceTree = "<group>"; };
+		DBE905FE28EFDF5B00B6E463 /* BrandCatalogueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandCatalogueViewController.swift; sourceTree = "<group>"; };
+		DBE905FF28EFDF5B00B6E463 /* BrandCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandCollectionViewCell.swift; sourceTree = "<group>"; };
+		DBEC708E28E93617005D0974 /* OnboardingViewController + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingViewController + Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,121 +202,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AC6F478D28EF35A700AAF1F6 /* ProductCatalogue */ = {
-			isa = PBXGroup;
-			children = (
-				AC6F478F28EF394C00AAF1F6 /* View */,
-				AC6F478E28EF394200AAF1F6 /* ViewModel */,
-			);
-			path = ProductCatalogue;
-			sourceTree = "<group>";
-		};
-		AC6F478E28EF394200AAF1F6 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		AC6F478F28EF394C00AAF1F6 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		ACB588AC28EA023B0025D230 /* Pages */ = {
-			isa = PBXGroup;
-			children = (
-				AC6F478D28EF35A700AAF1F6 /* ProductCatalogue */,
-				ACB588BF28EB5D3C0025D230 /* Authentication */,
-				ACB588AD28EA02460025D230 /* BrandCatalogue */,
-			);
-			path = Pages;
-			sourceTree = "<group>";
-		};
-		ACB588AD28EA02460025D230 /* BrandCatalogue */ = {
-			isa = PBXGroup;
-			children = (
-				ACB588B128EA034E0025D230 /* ViewModel */,
-				ACB588B028EA03470025D230 /* View */,
-			);
-			path = BrandCatalogue;
-			sourceTree = "<group>";
-		};
-		ACB588B028EA03470025D230 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				ACB588B228EA03680025D230 /* BrandCatalogueViewController.swift */,
-				ACB588BA28EA909E0025D230 /* BrandCollectionViewCell.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		ACB588B128EA034E0025D230 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				ACB588BD28EAFEAC0025D230 /* BrandCatalogueViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		ACB588B728EA8F310025D230 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				ACB588AE28EA02660025D230 /* Brands.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		ACB588BC28EA95EB0025D230 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				ACB588A528E7E6D80025D230 /* Extensions.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		ACB588BF28EB5D3C0025D230 /* Authentication */ = {
-			isa = PBXGroup;
-			children = (
-				ACB588C128EB5D4A0025D230 /* View */,
-				ACB588C028EB5D450025D230 /* ViewModel */,
-			);
-			path = Authentication;
-			sourceTree = "<group>";
-		};
-		ACB588C028EB5D450025D230 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		ACB588C128EB5D4A0025D230 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				ACB588C228EBE0460025D230 /* SignupLogin.swift */,
-				AC548F3E28EC040E002C3CC8 /* SignUpViewController.swift */,
-				AC6F478128EE8AD900AAF1F6 /* LoginViewController.swift */,
-				AC6F478728EEA45B00AAF1F6 /* PersonalizeViewController.swift */,
-				AC6F478928EF110400AAF1F6 /* ResetPasswordViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		ACFE713228ED3F9F00A894D4 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				ACFE713028ED3C8000A894D4 /* ReusableAuthBackground.swift */,
-				ACFE713328ED405C00A894D4 /* ReusableCapsuleTitle.swift */,
-				ACFE713728ED6FA500A894D4 /* ReusableErrorLabel.swift */,
-				AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */,
-				AC6F478528EE9A5100AAF1F6 /* ReusablePasswordTextField.swift */,
-			);
-			path = Auth;
-			sourceTree = "<group>";
-		};
 		0EAFD7DE28EA995E0004E3DB /* Product Detail View */ = {
 			isa = PBXGroup;
 			children = (
@@ -356,6 +233,26 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		ACB588BC28EA95EB0025D230 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				ACB588A528E7E6D80025D230 /* Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		ACFE713228ED3F9F00A894D4 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				ACFE713028ED3C8000A894D4 /* ReusableAuthBackground.swift */,
+				ACFE713328ED405C00A894D4 /* ReusableCapsuleTitle.swift */,
+				ACFE713728ED6FA500A894D4 /* ReusableErrorLabel.swift */,
+				AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */,
+				AC6F478528EE9A5100AAF1F6 /* ReusablePasswordTextField.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		ACFEBE9628E7603000372297 = {
 			isa = PBXGroup;
 			children = (
@@ -375,6 +272,8 @@
 		ACFEBEA128E7603000372297 /* mainProject */ = {
 			isa = PBXGroup;
 			children = (
+				DBE905E928EFDE9300B6E463 /* Model */,
+				DBE905E628EFDE4E00B6E463 /* New Group */,
 				0EAFD7DE28EA995E0004E3DB /* Product Detail View */,
 				ACFEBEA228E7603000372297 /* AppDelegate.swift */,
 				ACFEBEA428E7603000372297 /* SceneDelegate.swift */,
@@ -382,7 +281,6 @@
 				DB58D05E28E804CB00A5C727 /* Pages */,
 				DB8BCD8A28EBD66D00630CA3 /* Reusable Modal */,
 				DBA2FCCC28ED363400FDC148 /* Profile View */,
-				ACFEBEBC28E7611000372297 /* Model */,
 				ACFEBEB628E7611000372297 /* Vendor */,
 				ACFEBECE28E7614500372297 /* Storyboards */,
 				ACFEBEAB28E7603100372297 /* Assets.xcassets */,
@@ -472,6 +370,8 @@
 		DB58D05E28E804CB00A5C727 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				DBE905EC28EFDF4F00B6E463 /* Authentication */,
+				DBE905FA28EFDF5B00B6E463 /* BrandCatalogue */,
 				DB58D05D28E804AE00A5C727 /* Onboarding View */,
 			);
 			path = Pages;
@@ -666,6 +566,68 @@
 			path = "View Model";
 			sourceTree = "<group>";
 		};
+		DBE905E628EFDE4E00B6E463 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		DBE905E928EFDE9300B6E463 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DBE905EA28EFDE9300B6E463 /* Brands.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DBE905EC28EFDF4F00B6E463 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				DBE905ED28EFDF4F00B6E463 /* View */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		DBE905ED28EFDF4F00B6E463 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DBE905EE28EFDF4F00B6E463 /* SignUpViewController.swift */,
+				DBE905EF28EFDF4F00B6E463 /* SignupLogin.swift */,
+				DBE905F028EFDF4F00B6E463 /* ResetPasswordViewController.swift */,
+				DBE905F128EFDF4F00B6E463 /* PersonalizeViewController.swift */,
+				DBE905F228EFDF4F00B6E463 /* LoginViewController.swift */,
+				DBE905F328EFDF4F00B6E463 /* Heihgt.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DBE905FA28EFDF5B00B6E463 /* BrandCatalogue */ = {
+			isa = PBXGroup;
+			children = (
+				DBE905FB28EFDF5B00B6E463 /* ViewModel */,
+				DBE905FD28EFDF5B00B6E463 /* View */,
+			);
+			path = BrandCatalogue;
+			sourceTree = "<group>";
+		};
+		DBE905FB28EFDF5B00B6E463 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DBE905FC28EFDF5B00B6E463 /* BrandCatalogueViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DBE905FD28EFDF5B00B6E463 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DBE905FE28EFDF5B00B6E463 /* BrandCatalogueViewController.swift */,
+				DBE905FF28EFDF5B00B6E463 /* BrandCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -789,38 +751,39 @@
 				DBD144DF28EEA7A6006A3E40 /* ReusableSizeCalculatorButton.swift in Sources */,
 				DB8BCD9728EBDC8F00630CA3 /* SignUpModalVC.swift in Sources */,
 				DB8BCDA428EBDE0800630CA3 /* SizeButtonView.swift in Sources */,
-				ACB588BE28EAFEAC0025D230 /* BrandCatalogueViewModel.swift in Sources */,
-				ACB588B328EA03680025D230 /* BrandCatalogueViewController.swift in Sources */,
+				DBE905F728EFDF4F00B6E463 /* PersonalizeViewController.swift in Sources */,
 				ACB588A628E7E6D80025D230 /* Extensions.swift in Sources */,
 				ACFEBEA728E7603000372297 /* ViewController.swift in Sources */,
 				DBEC708F28E93617005D0974 /* OnboardingViewController + Extensions.swift in Sources */,
 				DB58D06428E8059800A5C727 /* OnboardingViewController.swift in Sources */,
 				AC6F478628EE9A5100AAF1F6 /* ReusablePasswordTextField.swift in Sources */,
-				AC6F478228EE8AD900AAF1F6 /* LoginViewController.swift in Sources */,
 				AC548F3D28EBFB52002C3CC8 /* ASHUButton.swift in Sources */,
-				ACB588AF28EA02660025D230 /* Brands.swift in Sources */,
+				DBE905EB28EFDE9300B6E463 /* Brands.swift in Sources */,
 				ACFE712F28ED207900A894D4 /* ReusablePinkCapsule.swift in Sources */,
-				AC6F478828EEA45B00AAF1F6 /* PersonalizeViewController.swift in Sources */,
 				ACFE713428ED405C00A894D4 /* ReusableCapsuleTitle.swift in Sources */,
-				ACB588C328EBE0460025D230 /* SignupLogin.swift in Sources */,
+				DBE905F528EFDF4F00B6E463 /* SignupLogin.swift in Sources */,
 				0EB2125D28EDDF4700FB1255 /* HeadlineView.swift in Sources */,
+				DBE9060128EFDF5B00B6E463 /* BrandCatalogueViewController.swift in Sources */,
 				ACB588A828E7E9C30025D230 /* ReusableButton.swift in Sources */,
 				DB8BCD9128EBD83900630CA3 /* NotTappablePresentationController.swift in Sources */,
 				DBA35F2628EDB118009D6917 /* ProfileViewController + KeyboardExtension.swift in Sources */,
 				ACFE713828ED6FA500A894D4 /* ReusableErrorLabel.swift in Sources */,
 				ACB588A428E7E66F0025D230 /* ResuableLabel.swift in Sources */,
 				DB8BCD9928EBDD0F00630CA3 /* BodyMeasurementModalVC.swift in Sources */,
+				DBE905F928EFDF4F00B6E463 /* Heihgt.swift in Sources */,
 				DBA35F2428EDB0D4009D6917 /* ProfileViewController + ImagePickerExtensions.swift in Sources */,
 				DBA2FCD028ED365900FDC148 /* ProfileViewController.swift in Sources */,
+				DBE9060228EFDF5B00B6E463 /* BrandCollectionViewCell.swift in Sources */,
 				DB19AF2228ED6515003E6F61 /* ReusableProfileButtonView.swift in Sources */,
-				ACB588BB28EA909E0025D230 /* BrandCollectionViewCell.swift in Sources */,
 				AC6F478C28EF22E600AAF1F6 /* Heihgt.swift in Sources */,
 				0E7BCE4328EBF431000820E0 /* ARView.swift in Sources */,
 				ACFEBEA328E7603000372297 /* AppDelegate.swift in Sources */,
-				AC6F478A28EF110400AAF1F6 /* ResetPasswordViewController.swift in Sources */,
 				ACFE713128ED3C8000A894D4 /* ReusableAuthBackground.swift in Sources */,
+				DBE9060028EFDF5B00B6E463 /* BrandCatalogueViewModel.swift in Sources */,
+				DBE905F628EFDF4F00B6E463 /* ResetPasswordViewController.swift in Sources */,
+				DBE905F428EFDF4F00B6E463 /* SignUpViewController.swift in Sources */,
+				DBE905F828EFDF4F00B6E463 /* LoginViewController.swift in Sources */,
 				AC6F478428EE982F00AAF1F6 /* ReusableTextFieldAuth.swift in Sources */,
-				AC548F3F28EC040E002C3CC8 /* SignUpViewController.swift in Sources */,
 				ACFEBEA528E7603000372297 /* SceneDelegate.swift in Sources */,
 				ACFE713628ED6C1800A894D4 /* ReusableTextField.swift in Sources */,
 				0EAFD7E828EB06A30004E3DB /* RadioButtonView.swift in Sources */,
@@ -1077,14 +1040,6 @@
 				minimumVersion = 9.0.0;
 			};
 		};
-		DBB8328528EE84A0004E0820 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1232,11 +1187,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = ACFEBECF28E7678900372297 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseStorageCombine-Community";
-		};
-		DBB8328628EE84A0004E0820 /* IQKeyboardManagerSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DBB8328528EE84A0004E0820 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
-			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
