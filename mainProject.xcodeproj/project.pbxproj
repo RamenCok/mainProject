@@ -113,7 +113,7 @@
 		AC548F3C28EBFB52002C3CC8 /* ASHUButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASHUButton.swift; sourceTree = "<group>"; };
 		AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTextFieldAuth.swift; sourceTree = "<group>"; };
 		AC6F478528EE9A5100AAF1F6 /* ReusablePasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePasswordTextField.swift; sourceTree = "<group>"; };
-		AC6F478B28EF22E600AAF1F6 /* Heihgt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Heihgt.swift; path = mainProject/Pages/Authentication/View/Heihgt.swift; sourceTree = SOURCE_ROOT; };
+		AC6F478B28EF22E600AAF1F6 /* Heihgt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Heihgt.swift; path = mainProject/Vendor/Utilities/Constant/Heihgt.swift; sourceTree = SOURCE_ROOT; };
 		ACB588A328E7E66F0025D230 /* ResuableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResuableLabel.swift; sourceTree = "<group>"; };
 		ACB588A528E7E6D80025D230 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = mainProject/Vendor/Extensions/Extensions.swift; sourceTree = SOURCE_ROOT; };
 		ACB588A728E7E9C30025D230 /* ReusableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableButton.swift; sourceTree = "<group>"; };
@@ -233,6 +233,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		AC1C7B0B28EFE0F10058CCB3 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				AC6F478B28EF22E600AAF1F6 /* Heihgt.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
 		ACB588BC28EA95EB0025D230 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,14 +281,10 @@
 			isa = PBXGroup;
 			children = (
 				DBE905E928EFDE9300B6E463 /* Model */,
-				DBE905E628EFDE4E00B6E463 /* New Group */,
-				0EAFD7DE28EA995E0004E3DB /* Product Detail View */,
 				ACFEBEA228E7603000372297 /* AppDelegate.swift */,
 				ACFEBEA428E7603000372297 /* SceneDelegate.swift */,
 				ACFEBEA628E7603000372297 /* ViewController.swift */,
 				DB58D05E28E804CB00A5C727 /* Pages */,
-				DB8BCD8A28EBD66D00630CA3 /* Reusable Modal */,
-				DBA2FCCC28ED363400FDC148 /* Profile View */,
 				ACFEBEB628E7611000372297 /* Vendor */,
 				ACFEBECE28E7614500372297 /* Storyboards */,
 				ACFEBEAB28E7603100372297 /* Assets.xcassets */,
@@ -296,7 +300,6 @@
 				ACFEBEBD28E7611D00372297 /* Fonts */,
 				ACB588BC28EA95EB0025D230 /* Extensions */,
 				ACFEBEB828E7611000372297 /* Utilities */,
-				ACFEBEB928E7611000372297 /* Constant */,
 				ACFEBEBA28E7611000372297 /* Helper */,
 				ACFEBEBB28E7611000372297 /* Services */,
 			);
@@ -306,6 +309,8 @@
 		ACFEBEB828E7611000372297 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				AC1C7B0B28EFE0F10058CCB3 /* Constant */,
+				DB8BCD8A28EBD66D00630CA3 /* Reusable Modal */,
 				ACFE713228ED3F9F00A894D4 /* Auth */,
 				AC548F3C28EBFB52002C3CC8 /* ASHUButton.swift */,
 				ACB588A328E7E66F0025D230 /* ResuableLabel.swift */,
@@ -315,14 +320,6 @@
 				0EAFD7E328EAE35B0004E3DB /* RadioButton.swift */,
 			);
 			path = Utilities;
-			sourceTree = "<group>";
-		};
-		ACFEBEB928E7611000372297 /* Constant */ = {
-			isa = PBXGroup;
-			children = (
-				AC6F478B28EF22E600AAF1F6 /* Heihgt.swift */,
-			);
-			path = Constant;
 			sourceTree = "<group>";
 		};
 		ACFEBEBA28E7611000372297 /* Helper */ = {
@@ -370,9 +367,11 @@
 		DB58D05E28E804CB00A5C727 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				0EAFD7DE28EA995E0004E3DB /* Product Detail View */,
 				DBE905EC28EFDF4F00B6E463 /* Authentication */,
 				DBE905FA28EFDF5B00B6E463 /* BrandCatalogue */,
 				DB58D05D28E804AE00A5C727 /* Onboarding View */,
+				DBA2FCCC28ED363400FDC148 /* Profile View */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -564,13 +563,6 @@
 			children = (
 			);
 			path = "View Model";
-			sourceTree = "<group>";
-		};
-		DBE905E628EFDE4E00B6E463 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		DBE905E928EFDE9300B6E463 /* Model */ = {
