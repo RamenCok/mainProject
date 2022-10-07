@@ -56,7 +56,7 @@ class ReusableButton: UIButton {
             self.layer.borderWidth = 1.5
             self.tintColor = UIColor.whiteColor
             
-            
+
         case .secondary:
             self.backgroundColor = .clear
             self.layer.borderColor = UIColor.primaryColor.cgColor
@@ -92,8 +92,11 @@ class ReusableButton: UIButton {
             make.height.equalTo(48)
             make.width.equalTo(UIScreen.main.bounds.width - 40)
         }
-        
-      
+    }
+    
+    public func makeDisabled(isDisabled: Bool){
+        self.isEnabled = !isDisabled
+        self.backgroundColor = isDisabled ? .disabledColor : .primaryColor
     }
     
     //MARK: Animate

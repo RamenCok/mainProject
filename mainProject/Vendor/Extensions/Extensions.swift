@@ -29,7 +29,12 @@ extension UIColor {
     static let greenColor = UIColor.rgb(red: 155, green: 217, blue: 117, alpha: 1)
     static let microRed = UIColor.rgb(red: 215, green: 87, blue: 87, alpha: 0.2)
     static let microGreen = UIColor.rgb(red: 169, green: 225, blue: 134, alpha: 0.2)
+    static let lightGray = UIColor.rgb(red: 249, green: 249, blue: 249, alpha: 1)
+    
 }
+
+
+
 
 extension UIView {
     convenience public init(backgroundColor: UIColor = .clear) {

@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		AC548F3D28EBFB52002C3CC8 /* ASHUButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC548F3C28EBFB52002C3CC8 /* ASHUButton.swift */; };
 		AC548F3F28EC040E002C3CC8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC548F3E28EC040E002C3CC8 /* SignUpViewController.swift */; };
+		AC6F478028EDEADF00AAF1F6 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC6F477F28EDEADF00AAF1F6 /* IQKeyboardManagerSwift */; };
+		AC6F478228EE8AD900AAF1F6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478128EE8AD900AAF1F6 /* LoginViewController.swift */; };
+		AC6F478428EE982F00AAF1F6 /* ReusableTextFieldAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */; };
+		AC6F478628EE9A5100AAF1F6 /* ReusablePasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478528EE9A5100AAF1F6 /* ReusablePasswordTextField.swift */; };
+		AC6F478828EEA45B00AAF1F6 /* PersonalizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478728EEA45B00AAF1F6 /* PersonalizeViewController.swift */; };
+		AC6F478A28EF110400AAF1F6 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478928EF110400AAF1F6 /* ResetPasswordViewController.swift */; };
+		AC6F478C28EF22E600AAF1F6 /* Heihgt.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478B28EF22E600AAF1F6 /* Heihgt.swift */; };
 		ACB588A428E7E66F0025D230 /* ResuableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A328E7E66F0025D230 /* ResuableLabel.swift */; };
 		ACB588A628E7E6D80025D230 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A528E7E6D80025D230 /* Extensions.swift */; };
 		ACB588A828E7E9C30025D230 /* ReusableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A728E7E9C30025D230 /* ReusableButton.swift */; };
@@ -22,6 +29,10 @@
 		ACB588BE28EAFEAC0025D230 /* BrandCatalogueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588BD28EAFEAC0025D230 /* BrandCatalogueViewModel.swift */; };
 		ACB588C328EBE0460025D230 /* SignupLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588C228EBE0460025D230 /* SignupLogin.swift */; };
 		ACFE712F28ED207900A894D4 /* ReusablePinkCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFE712E28ED207900A894D4 /* ReusablePinkCapsule.swift */; };
+		ACFE713128ED3C8000A894D4 /* ReusableAuthBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFE713028ED3C8000A894D4 /* ReusableAuthBackground.swift */; };
+		ACFE713428ED405C00A894D4 /* ReusableCapsuleTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFE713328ED405C00A894D4 /* ReusableCapsuleTitle.swift */; };
+		ACFE713628ED6C1800A894D4 /* ReusableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFE713528ED6C1800A894D4 /* ReusableTextField.swift */; };
+		ACFE713828ED6FA500A894D4 /* ReusableErrorLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFE713728ED6FA500A894D4 /* ReusableErrorLabel.swift */; };
 		ACFEBEA328E7603000372297 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEBEA228E7603000372297 /* AppDelegate.swift */; };
 		ACFEBEA528E7603000372297 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEBEA428E7603000372297 /* SceneDelegate.swift */; };
 		ACFEBEA728E7603000372297 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEBEA628E7603000372297 /* ViewController.swift */; };
@@ -87,6 +98,12 @@
 /* Begin PBXFileReference section */
 		AC548F3C28EBFB52002C3CC8 /* ASHUButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASHUButton.swift; sourceTree = "<group>"; };
 		AC548F3E28EC040E002C3CC8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		AC6F478128EE8AD900AAF1F6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTextFieldAuth.swift; sourceTree = "<group>"; };
+		AC6F478528EE9A5100AAF1F6 /* ReusablePasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePasswordTextField.swift; sourceTree = "<group>"; };
+		AC6F478728EEA45B00AAF1F6 /* PersonalizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizeViewController.swift; sourceTree = "<group>"; };
+		AC6F478928EF110400AAF1F6 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		AC6F478B28EF22E600AAF1F6 /* Heihgt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Heihgt.swift; path = mainProject/Pages/Authentication/View/Heihgt.swift; sourceTree = SOURCE_ROOT; };
 		ACB588A328E7E66F0025D230 /* ResuableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResuableLabel.swift; sourceTree = "<group>"; };
 		ACB588A528E7E6D80025D230 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = mainProject/Vendor/Extensions/Extensions.swift; sourceTree = SOURCE_ROOT; };
 		ACB588A728E7E9C30025D230 /* ReusableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableButton.swift; sourceTree = "<group>"; };
@@ -96,6 +113,10 @@
 		ACB588BD28EAFEAC0025D230 /* BrandCatalogueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandCatalogueViewModel.swift; sourceTree = "<group>"; };
 		ACB588C228EBE0460025D230 /* SignupLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupLogin.swift; sourceTree = "<group>"; };
 		ACFE712E28ED207900A894D4 /* ReusablePinkCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePinkCapsule.swift; sourceTree = "<group>"; };
+		ACFE713028ED3C8000A894D4 /* ReusableAuthBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableAuthBackground.swift; sourceTree = "<group>"; };
+		ACFE713328ED405C00A894D4 /* ReusableCapsuleTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCapsuleTitle.swift; sourceTree = "<group>"; };
+		ACFE713528ED6C1800A894D4 /* ReusableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTextField.swift; sourceTree = "<group>"; };
+		ACFE713728ED6FA500A894D4 /* ReusableErrorLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableErrorLabel.swift; sourceTree = "<group>"; };
 		ACFEBE9F28E7603000372297 /* mainProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mainProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACFEBEA228E7603000372297 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACFEBEA428E7603000372297 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -158,7 +179,7 @@
 				ACFEBEE728E7678900372297 /* FirebaseDynamicLinks in Frameworks */,
 				ACFEBEEB28E7678900372297 /* FirebaseFirestoreCombine-Community in Frameworks */,
 				ACFEBEFB28E7678900372297 /* FirebaseMessaging in Frameworks */,
-				DBB8328728EE84A0004E0820 /* IQKeyboardManagerSwift in Frameworks */,
+				AC6F478028EDEADF00AAF1F6 /* IQKeyboardManagerSwift in Frameworks */,
 				ACFEBEF728E7678900372297 /* FirebaseInstallations in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,9 +187,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC6F478D28EF35A700AAF1F6 /* ProductCatalogue */ = {
+			isa = PBXGroup;
+			children = (
+				AC6F478F28EF394C00AAF1F6 /* View */,
+				AC6F478E28EF394200AAF1F6 /* ViewModel */,
+			);
+			path = ProductCatalogue;
+			sourceTree = "<group>";
+		};
+		AC6F478E28EF394200AAF1F6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AC6F478F28EF394C00AAF1F6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		ACB588AC28EA023B0025D230 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				AC6F478D28EF35A700AAF1F6 /* ProductCatalogue */,
 				ACB588BF28EB5D3C0025D230 /* Authentication */,
 				ACB588AD28EA02460025D230 /* BrandCatalogue */,
 			);
@@ -238,8 +283,23 @@
 			children = (
 				ACB588C228EBE0460025D230 /* SignupLogin.swift */,
 				AC548F3E28EC040E002C3CC8 /* SignUpViewController.swift */,
+				AC6F478128EE8AD900AAF1F6 /* LoginViewController.swift */,
+				AC6F478728EEA45B00AAF1F6 /* PersonalizeViewController.swift */,
+				AC6F478928EF110400AAF1F6 /* ResetPasswordViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		ACFE713228ED3F9F00A894D4 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				ACFE713028ED3C8000A894D4 /* ReusableAuthBackground.swift */,
+				ACFE713328ED405C00A894D4 /* ReusableCapsuleTitle.swift */,
+				ACFE713728ED6FA500A894D4 /* ReusableErrorLabel.swift */,
+				AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */,
+				AC6F478528EE9A5100AAF1F6 /* ReusablePasswordTextField.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		ACFEBE9628E7603000372297 = {
@@ -292,10 +352,12 @@
 		ACFEBEB828E7611000372297 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				ACFE713228ED3F9F00A894D4 /* Auth */,
 				AC548F3C28EBFB52002C3CC8 /* ASHUButton.swift */,
 				ACB588A328E7E66F0025D230 /* ResuableLabel.swift */,
 				ACB588A728E7E9C30025D230 /* ReusableButton.swift */,
 				ACFE712E28ED207900A894D4 /* ReusablePinkCapsule.swift */,
+				ACFE713528ED6C1800A894D4 /* ReusableTextField.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -303,6 +365,7 @@
 		ACFEBEB928E7611000372297 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
+				AC6F478B28EF22E600AAF1F6 /* Heihgt.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -591,7 +654,7 @@
 				ACFEBF0228E7678900372297 /* FirebaseStorage */,
 				ACFEBF0428E7678900372297 /* FirebaseStorageCombine-Community */,
 				ACB588AA28E7F08C0025D230 /* SnapKit */,
-				DBB8328628EE84A0004E0820 /* IQKeyboardManagerSwift */,
+				AC6F477F28EDEADF00AAF1F6 /* IQKeyboardManagerSwift */,
 			);
 			productName = mainProject;
 			productReference = ACFEBE9F28E7603000372297 /* mainProject.app */;
@@ -624,7 +687,7 @@
 			packageReferences = (
 				ACFEBECF28E7678900372297 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				ACB588A928E7F08C0025D230 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				DBB8328528EE84A0004E0820 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				AC6F477E28EDEADF00AAF1F6 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = ACFEBEA028E7603000372297 /* Products */;
 			projectDirPath = "";
@@ -671,22 +734,32 @@
 				ACFEBEA728E7603000372297 /* ViewController.swift in Sources */,
 				DBEC708F28E93617005D0974 /* OnboardingViewController + Extensions.swift in Sources */,
 				DB58D06428E8059800A5C727 /* OnboardingViewController.swift in Sources */,
+				AC6F478628EE9A5100AAF1F6 /* ReusablePasswordTextField.swift in Sources */,
+				AC6F478228EE8AD900AAF1F6 /* LoginViewController.swift in Sources */,
 				AC548F3D28EBFB52002C3CC8 /* ASHUButton.swift in Sources */,
 				ACB588AF28EA02660025D230 /* Brands.swift in Sources */,
 				ACFE712F28ED207900A894D4 /* ReusablePinkCapsule.swift in Sources */,
+				AC6F478828EEA45B00AAF1F6 /* PersonalizeViewController.swift in Sources */,
+				ACFE713428ED405C00A894D4 /* ReusableCapsuleTitle.swift in Sources */,
 				ACB588C328EBE0460025D230 /* SignupLogin.swift in Sources */,
 				ACB588A828E7E9C30025D230 /* ReusableButton.swift in Sources */,
 				DB8BCD9128EBD83900630CA3 /* NotTappablePresentationController.swift in Sources */,
 				DBA35F2628EDB118009D6917 /* ProfileViewController + KeyboardExtension.swift in Sources */,
+				ACFE713828ED6FA500A894D4 /* ReusableErrorLabel.swift in Sources */,
 				ACB588A428E7E66F0025D230 /* ResuableLabel.swift in Sources */,
 				DB8BCD9928EBDD0F00630CA3 /* BodyMeasurementModalVC.swift in Sources */,
 				DBA35F2428EDB0D4009D6917 /* ProfileViewController + ImagePickerExtensions.swift in Sources */,
 				DBA2FCD028ED365900FDC148 /* ProfileViewController.swift in Sources */,
 				DB19AF2228ED6515003E6F61 /* ReusableProfileButtonView.swift in Sources */,
 				ACB588BB28EA909E0025D230 /* BrandCollectionViewCell.swift in Sources */,
+				AC6F478C28EF22E600AAF1F6 /* Heihgt.swift in Sources */,
 				ACFEBEA328E7603000372297 /* AppDelegate.swift in Sources */,
+				AC6F478A28EF110400AAF1F6 /* ResetPasswordViewController.swift in Sources */,
+				ACFE713128ED3C8000A894D4 /* ReusableAuthBackground.swift in Sources */,
+				AC6F478428EE982F00AAF1F6 /* ReusableTextFieldAuth.swift in Sources */,
 				AC548F3F28EC040E002C3CC8 /* SignUpViewController.swift in Sources */,
 				ACFEBEA528E7603000372297 /* SceneDelegate.swift in Sources */,
+				ACFE713628ED6C1800A894D4 /* ReusableTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -910,6 +983,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		AC6F477E28EDEADF00AAF1F6 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		ACB588A928E7F08C0025D230 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -937,6 +1018,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AC6F477F28EDEADF00AAF1F6 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AC6F477E28EDEADF00AAF1F6 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
 		ACB588AA28E7F08C0025D230 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = ACB588A928E7F08C0025D230 /* XCRemoteSwiftPackageReference "SnapKit" */;

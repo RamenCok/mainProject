@@ -11,9 +11,7 @@ class SignupLogin: UIViewController {
 
     // MARK: - Properties
     private lazy var bgLogin: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "bg-auth")
-        imageView.contentMode = .scaleAspectFill
+        let imageView = AuthBackground()
         return imageView
     }()
     
@@ -36,15 +34,17 @@ class SignupLogin: UIViewController {
     }()
     
     private lazy var appleBtn: ReusableButton = {
-        let button = ReusableButton(style: .secondary, buttonText: "Continue with Apple", selector: #selector(printYeuy), target: self)
+        let button = ReusableButton(style: .secondary, buttonText: " Continue with Apple", selector: #selector(printYeuy), target: self)
         button.setImage(UIImage(systemName: "apple.logo"), for: .normal)
         button.tintColor = .primaryColor
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 10)
+//        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 10)
         return button
     }()
     
     private lazy var googleBtn: UIButton = {
-        let button = ReusableButton(style: .secondary, buttonText: "Continue with Google", selector: #selector(printYeuy), target: self)
+        let button = ReusableButton(style: .secondary, buttonText: " Continue with Google", selector: #selector(printYeuy), target: self)
+        button.setImage(UIImage(named: "google.logo"), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFill
         return button
     }()
     
@@ -77,19 +77,25 @@ class SignupLogin: UIViewController {
     }()
     
     private lazy var loginBtn: UIButton = {
-        let button = ReusableButton(style: .primary, buttonText: "Log In", selector: #selector(printYeuy), target: self)
+        let button = ReusableButton(style: .primary, buttonText: "Log In", selector: #selector(handleLogin), target: self)
         return button
     }()
     
     private lazy var attributedBtn: UIButton = {
         let btn = UIButton()
         
-        let attributedTitle = NSMutableAttributedString(string: "Don't have an account?", attributes: [NSAttributedString.Key.foregroundColor: UIColor.blackTexts])
+        let attributedTitle = NSMutableAttributedString(string: "Don't have an account?", attributes: [NSAttributedString.Key.foregroundColor: UIColor.blackTexts, NSAttributedString.Key.font: UIFont(name: "Sora-Regular", size: 15)!])
         
-        attributedTitle.append(NSAttributedString(string: " Sign Up", attributes: [NSAttributedString.Key.foregroundColor: UIColor.blackTexts, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16)]))
+        attributedTitle.append(NSAttributedString(string: " Sign Up", attributes: [NSAttributedString.Key.foregroundColor: UIColor.blackTexts, NSAttributedString.Key.font: UIFont(name: "Sora-SemiBold", size: 15)!, NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue]))
         btn.setAttributedTitle(attributedTitle, for: .normal)
-        
+        btn.addTarget(self, action: #selector(goToSignUp), for: .touchUpInside)
         return btn
+    }()
+    
+    private lazy var stackView: ReusableCapsuleTitle = {
+        let stackView = ReusableCapsuleTitle(title: "Level up your shopping journey")
+        stackView.spacing = view.frame.height * 0.019
+        return stackView
     }()
     
     
@@ -105,6 +111,15 @@ class SignupLogin: UIViewController {
         print("")
     }
     
+    @objc func goToSignUp(){
+        print("goToSignUp")
+        navigationController?.pushViewController(SignUpViewController(), animated: true)
+    }
+    
+    @objc func handleLogin(){
+        navigationController?.pushViewController(LoginViewController(), animated: true)
+    }
+    
     
     // MARK: - Helpers
     func configureUI() {
@@ -116,13 +131,7 @@ class SignupLogin: UIViewController {
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
         }
-        
-        
-        let stackView = UIStackView(arrangedSubviews: [pinkCapsule, titleLabel])
-        stackView.axis = .vertical
-        stackView.alignment = .leading
-        stackView.spacing = view.frame.height * 0.019
-        
+
         view.addSubview(stackView)
         stackView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(20)
