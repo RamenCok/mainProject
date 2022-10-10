@@ -57,8 +57,6 @@ class BodyMeasurementVC: UIViewController {
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.blackTexts, NSAttributedString.Key.font: UIFont.heading_1()]
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.modalTitle()]
 
-        
-
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .always
 
@@ -78,7 +76,7 @@ class BodyMeasurementVC: UIViewController {
     }
     
     func configureUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
@@ -88,22 +86,6 @@ class BodyMeasurementVC: UIViewController {
             make.top.equalToSuperview()
         }
     }
-    
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let svtop = scrollView.frame.origin.y
-//        let v3top = scrollView.superview! .convert(view.bounds.origin, from:view).y
-//        if v3top < svtop { print ("now") }
-//    }
-//    
-//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//        if scrollView.contentOffset.y == 0 {
-//          print("top!")
-//        }
-//    }
-//    
-//    func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
-//        print("yay")
-//    }
 }
 
 extension BodyMeasurementVC: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -123,5 +105,9 @@ extension BodyMeasurementVC: UICollectionViewDelegate, UICollectionViewDataSourc
         (cell as! BodyMeasurementCell).configure()
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.row)
     }
 }

@@ -38,43 +38,48 @@ class BodyMeasurementCell: UICollectionViewCell {
     }
     
     func configure() {
-        
-        print(self.type)
         contentView.backgroundColor = .clear
         contentView.addSubview(background)
         
         let measurementType = ReusableLabel(style: .heading_3, textString: converter(type: self.type))
         measurementType.textAlignment = .center
         contentView.addSubview(measurementType)
+        measurementType.snp.makeConstraints { make in
+            make.top.leading.equalTo(self).offset(20)
+        }
         
         let measurementNumber = ReusableLabel(style: .subHeading_1, textString: "\(self.numbers!) cm")
         measurementNumber.textAlignment = .left
         contentView.addSubview(measurementNumber)
+        measurementNumber.snp.makeConstraints { make in
+            make.bottom.trailing.equalTo(self).offset(-20)
+        }
+        
         contentView.clipsToBounds = true
         
         background.frame = CGRect(x: 0, y: 0, width: contentView.frame.size.width, height: contentView.frame.size.width)
-        measurementType.frame = CGRect(x: 50, y: contentView.frame.size.width-20, width: contentView.frame.size.width, height: 20)
-        measurementNumber.frame = CGRect(x: 50, y: contentView.frame.size.width, width: contentView.frame.size.width, height: 20)
+        measurementType.frame = CGRect(x: 0, y: 0, width: contentView.frame.size.width, height: contentView.frame.size.width)
+        measurementNumber.frame = CGRect(x: 0, y: 0, width: contentView.frame.size.width, height: contentView.frame.size.width)
     }
     
     private func converter(type: Int)->String {
         switch type {
         case 0:
-            return "bust"
+            return "Bust"
         case 1:
-            return "waist"
+            return "Waist"
         case 2:
-            return "height"
+            return "Height"
         case 3:
-            return "hips"
+            return "Hips"
         case 4:
-            return "arm"
+            return "Arm"
         case 5:
-            return "thigh"
+            return "Thigh"
         case 6:
-            return "shoulder"
+            return "Shoulder"
         case 7:
-            return "sleeve"
+            return "Sleeve"
         default:
             return ""
         }
