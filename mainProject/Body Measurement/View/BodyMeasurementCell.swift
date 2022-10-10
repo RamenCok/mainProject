@@ -18,15 +18,15 @@ class BodyMeasurementCell: UICollectionViewCell {
     private lazy var background: UIView = {
         let bg = UIView()
         bg.backgroundColor = .white
-        bg.layer.shadowColor = UIColor.black.cgColor
-        bg.layer.shadowOpacity = 1
-        bg.layer.shadowOffset = CGSize.zero
-        bg.layer.shadowPath = UIBezierPath(roundedRect: bg.bounds, cornerRadius: 10).cgPath
-        bg.layer.shadowRadius = 5
+//        bg.layer.shadowColor = UIColor.black.cgColor
+//        bg.layer.shadowOpacity = 1
+//        bg.layer.shadowOffset = CGSize.zero
+//        bg.layer.shadowPath = UIBezierPath(roundedRect: bg.bounds, cornerRadius: 30).cgPath
+//        bg.layer.shadowRadius = 50
         
         bg.layer.borderWidth = 1
         bg.layer.cornerRadius = 30
-        bg.layer.borderColor = UIColor.systemGray4.cgColor
+        bg.layer.borderColor = UIColor.systemGray5.cgColor
         return bg
     }()
     
@@ -39,8 +39,7 @@ class BodyMeasurementCell: UICollectionViewCell {
     }
     
     func configure() {
-        
-        contentView.backgroundColor = .white
+
         contentView.addSubview(background)
         
         let measurementType = ReusableLabel(style: .heading_3, textString: converter(type: self.type))
@@ -51,8 +50,8 @@ class BodyMeasurementCell: UICollectionViewCell {
             make.top.equalTo(background.snp.top).offset(15)
             make.leading.equalTo(background.snp.leading).offset(15)
         }
-        
-        let measurementNumber = ReusableLabel(style: .subHeading_1, textString: "\(self.numbers!) cm")
+            
+        let measurementNumber = ReusableLabel(style: .subHeading_1, textString: dash())
         measurementNumber.textAlignment = .left
         contentView.addSubview(measurementNumber)
         measurementNumber.snp.makeConstraints { make in
@@ -63,6 +62,14 @@ class BodyMeasurementCell: UICollectionViewCell {
         contentView.clipsToBounds = true
         
         background.frame = CGRect(x: 0, y: 0, width: contentView.frame.size.width, height: contentView.frame.size.height)
+    }
+    
+    private func dash() -> String {
+        if self.numbers != 0 {
+            return "\(self.numbers!) cm"
+        } else {
+            return "-"
+        }
     }
     
     private func converter(type: Int)->String {
@@ -87,11 +94,4 @@ class BodyMeasurementCell: UICollectionViewCell {
             return ""
         }
     }
-    
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//        background.frame = CGRect(x: 0, y: 0, width: contentView.frame.size.width, height: contentView.frame.size.width)
-//        measurementType.frame = CGRect(x: 50, y: contentView.frame.size.width-20, width: contentView.frame.size.width, height: 20)
-//        measurementNumber.frame = CGRect(x: 50, y: contentView.frame.size.width, width: contentView.frame.size.width, height: 20)
-//    }
 }

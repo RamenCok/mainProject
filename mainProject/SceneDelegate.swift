@@ -13,10 +13,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-        window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = BodyMeasurementVC()
-        window?.makeKeyAndVisible()
+        let navigationController = UINavigationController()
+        navigationController.isNavigationBarHidden = true
+        let vc = BodyMeasurementVC()
+        navigationController.pushViewController(vc, animated: false)
+        window?.rootViewController = navigationController
+        window?.overrideUserInterfaceStyle = .light
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

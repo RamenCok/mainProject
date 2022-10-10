@@ -22,11 +22,15 @@ class BodyMeasurementVM: ObservableObject {
             0: 20, // bust
             1: 21, // waist
             2: 22, // height
-            3: 23, // hips
-            4: 24, // arm
-            5: 25, // thigh
-            6: 26, // shoulder
-            7: 27, // sleeve
+            3: 0, // hips
+            4: 0, // arm
+            5: 0, // thigh
+            6: 0, // shoulder
+            7: 0, // sleeve
+            8: 0,
+            9: 0,
+            10: 0,
+            11: 0,
         ]
         
         DispatchQueue.main.async {
