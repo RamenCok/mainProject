@@ -9,7 +9,9 @@ import UIKit
 import SnapKit
 
 class BodyMeasurementCell: UICollectionViewCell {
+    
     static let identifier = "BodyMeasurementCell"
+    
     var type: Int!
     var numbers: Int!
     
@@ -24,7 +26,7 @@ class BodyMeasurementCell: UICollectionViewCell {
         
         bg.layer.borderWidth = 1
         bg.layer.cornerRadius = 30
-        bg.layer.borderColor = UIColor.black.cgColor
+        bg.layer.borderColor = UIColor.systemGray4.cgColor
         return bg
     }()
     
@@ -32,34 +34,35 @@ class BodyMeasurementCell: UICollectionViewCell {
         super.init(frame: frame)
     }
     
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     func configure() {
-        contentView.backgroundColor = .clear
+        
+        contentView.backgroundColor = .white
         contentView.addSubview(background)
         
         let measurementType = ReusableLabel(style: .heading_3, textString: converter(type: self.type))
         measurementType.textAlignment = .center
+        
         contentView.addSubview(measurementType)
         measurementType.snp.makeConstraints { make in
-            make.top.leading.equalTo(self).offset(20)
+            make.top.equalTo(background.snp.top).offset(15)
+            make.leading.equalTo(background.snp.leading).offset(15)
         }
         
         let measurementNumber = ReusableLabel(style: .subHeading_1, textString: "\(self.numbers!) cm")
         measurementNumber.textAlignment = .left
         contentView.addSubview(measurementNumber)
         measurementNumber.snp.makeConstraints { make in
-            make.bottom.trailing.equalTo(self).offset(-20)
+            make.trailing.equalTo(background.snp.trailing).offset(-20)
+            make.bottom.equalTo(background.snp.bottom).offset(-20)
         }
         
         contentView.clipsToBounds = true
         
-        background.frame = CGRect(x: 0, y: 0, width: contentView.frame.size.width, height: contentView.frame.size.width)
-        measurementType.frame = CGRect(x: 0, y: 0, width: contentView.frame.size.width, height: contentView.frame.size.width)
-        measurementNumber.frame = CGRect(x: 0, y: 0, width: contentView.frame.size.width, height: contentView.frame.size.width)
+        background.frame = CGRect(x: 0, y: 0, width: contentView.frame.size.width, height: contentView.frame.size.height)
     }
     
     private func converter(type: Int)->String {

@@ -10,9 +10,7 @@ import SnapKit
 
 class BodyMeasurementVC: UIViewController {
 
-    private var vm =  BodyMeasurementVM()
-    var user: User!
-    
+    // MARK: - Properties
     private lazy var backgroundImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "brand-catalogue")
@@ -23,16 +21,14 @@ class BodyMeasurementVC: UIViewController {
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 1
+        layout.minimumLineSpacing = 18
         layout.minimumInteritemSpacing = 1
-        layout.itemSize = CGSize(width: view.frame.size.width * 0.423, height: view.frame.size.height * 0.22)
+        layout.itemSize = CGSize(width: view.frame.width / 2.3636363636, height: view.frame.height / 5.5894039735)
         return layout
     }()
     
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .clear
-//        collectionView.backgroundView = backgroundImage
         collectionView.register(BodyMeasurementCell.self, forCellWithReuseIdentifier: BodyMeasurementCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -41,19 +37,26 @@ class BodyMeasurementVC: UIViewController {
         return collectionView
     }()
     
+    private var vm =  BodyMeasurementVM()
+    var user: User!
     
     //MARK: Lifecycle
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
         vm.getdata { [weak self] data in
             self?.user = data
             self?.configureUI()
         }
     }
 
+    // MARK: - Selectors
     
-    //MARK: Configure UI
+    
+    //MARK: - Helpers
     func configureNavigation() {
+        
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.blackTexts, NSAttributedString.Key.font: UIFont.heading_1()]
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.modalTitle()]
 
@@ -67,7 +70,6 @@ class BodyMeasurementVC: UIViewController {
         let rightBarBtn = UIBarButtonItem(image: UIImage(systemName: "questionmark.circle"), style: .plain, target: self, action: nil)
         rightBarBtn.tintColor = .greyColor
 
-
         let currWidth = rightBarBtn.customView?.widthAnchor.constraint(equalToConstant: 24)
         currWidth?.isActive = true
         let currHeight = rightBarBtn.customView?.heightAnchor.constraint(equalToConstant: 24)
@@ -76,6 +78,7 @@ class BodyMeasurementVC: UIViewController {
     }
     
     func configureUI() {
+        
         view.backgroundColor = .systemBackground
         
         view.addSubview(collectionView)
@@ -89,6 +92,7 @@ class BodyMeasurementVC: UIViewController {
 }
 
 extension BodyMeasurementVC: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return user.userBodyMeasurement.count
     }
