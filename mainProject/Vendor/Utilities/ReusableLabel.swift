@@ -1,5 +1,5 @@
 //
-//  ResuableLabel.swift
+//  ReusableLabel.swift
 //  mainProject
 //
 //  Created by Bryan Kenneth on 01/10/22.
@@ -60,9 +60,6 @@ class ReusableLabel: UILabel {
         let hyphenAttribute = [
             NSAttributedString.Key.paragraphStyle : paragraphStyle,
         ] as [NSAttributedString.Key : Any]
-        
-        
-        
         
         switch style {
             case .largeTitle_1:

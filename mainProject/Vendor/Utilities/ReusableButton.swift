@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 class ReusableButton: UIButton {
+    
     //MARK: Initializers
     enum Style{
         case primary
@@ -33,7 +34,6 @@ class ReusableButton: UIButton {
         super.init(frame: .zero)
         configureButton()
         configureTarget()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -45,46 +45,42 @@ class ReusableButton: UIButton {
         self.addTarget(target, action: selector, for: .touchUpInside)
     }
     
-    private func configureButton(){
-//        self.autoresizingMask = false
+    private func configureButton() {
+        
         self.setTitle(buttontext, for: .normal)
-        print(buttontext)
+        
         switch style {
-        case .primary:
-            self.backgroundColor = UIColor.primaryColor
-            self.layer.borderColor = UIColor.primaryColor.cgColor
-            self.layer.borderWidth = 1.5
-            self.tintColor = UIColor.whiteColor
+            case .primary:
+                self.backgroundColor = UIColor.primaryColor
+                self.layer.borderColor = UIColor.primaryColor.cgColor
+                self.layer.borderWidth = 1.5
+                self.tintColor = UIColor.whiteColor
             
-
-        case .secondary:
-            self.backgroundColor = .clear
-            self.layer.borderColor = UIColor.primaryColor.cgColor
-            self.layer.borderWidth = 1.5
-            self.setTitleColor(.primaryColor, for: .normal)
-            
-        case .primaryDisabled:
-            self.backgroundColor = UIColor.disabledColor
-            self.layer.borderColor = UIColor.disabledColor.cgColor
-            self.layer.borderWidth = 1.5
-            self.tintColor = UIColor.whiteColor
-            
-            
-        case .secondaryDisabled:
-            self.backgroundColor = UIColor.clear
-            self.layer.borderColor = UIColor.disabledColor.cgColor
-            self.layer.borderWidth = 1.5
-            self.tintColor = UIColor.disabledColor
-            
-            
-        case .delete:
-            self.backgroundColor = UIColor.redColor
-            self.layer.borderColor = UIColor.redColor.cgColor
-            self.layer.borderWidth = 1.5
-            self.tintColor = UIColor.whiteColor
-            
-            
+            case .secondary:
+                self.backgroundColor = .clear
+                self.layer.borderColor = UIColor.primaryColor.cgColor
+                self.layer.borderWidth = 1.5
+                self.setTitleColor(.primaryColor, for: .normal)
+                
+            case .primaryDisabled:
+                self.backgroundColor = UIColor.disabledColor
+                self.layer.borderColor = UIColor.disabledColor.cgColor
+                self.layer.borderWidth = 1.5
+                self.tintColor = UIColor.whiteColor
+                
+            case .secondaryDisabled:
+                self.backgroundColor = UIColor.clear
+                self.layer.borderColor = UIColor.disabledColor.cgColor
+                self.layer.borderWidth = 1.5
+                self.tintColor = UIColor.disabledColor
+                
+            case .delete:
+                self.backgroundColor = UIColor.redColor
+                self.layer.borderColor = UIColor.redColor.cgColor
+                self.layer.borderWidth = 1.5
+                self.tintColor = UIColor.whiteColor
         }
+        
         self.layer.cornerRadius = 10
         self.titleLabel?.font = UIFont.bodyText()
         self.setTitle(buttontext, for: .normal)
@@ -94,7 +90,8 @@ class ReusableButton: UIButton {
         }
     }
     
-    public func makeDisabled(isDisabled: Bool){
+    public func makeDisabled(isDisabled: Bool) {
+        
         self.isEnabled = !isDisabled
         self.backgroundColor = isDisabled ? .disabledColor : .primaryColor
     }
