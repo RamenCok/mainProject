@@ -17,6 +17,11 @@
 		0EB2125B28ED895E00FB1255 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB2125A28ED895E00FB1255 /* ProductModel.swift */; };
 		0EB2125D28EDDF4700FB1255 /* HeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB2125C28EDDF4700FB1255 /* HeadlineView.swift */; };
 		0EB2125F28EDE33200FB1255 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB2125E28EDE33200FB1255 /* DescriptionView.swift */; };
+		AC30932128F32A9F00766787 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC30932028F32A9F00766787 /* ProductCollectionViewCell.swift */; };
+		AC30932328F32C5200766787 /* ProductCatalogueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC30932228F32C5200766787 /* ProductCatalogueViewController.swift */; };
+		AC30932728F32D5100766787 /* ProductColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC30932628F32D5100766787 /* ProductColorView.swift */; };
+		AC30932928F32FD900766787 /* ProducCatalogueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC30932828F32FD900766787 /* ProducCatalogueViewModel.swift */; };
+		AC548F3D28EBFB52002C3CC8 /* ASHUButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC548F3C28EBFB52002C3CC8 /* ASHUButton.swift */; };
 		AC6F478028EDEADF00AAF1F6 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC6F477F28EDEADF00AAF1F6 /* IQKeyboardManagerSwift */; };
 		AC6F478428EE982F00AAF1F6 /* ReusableTextFieldAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */; };
 		AC6F478628EE9A5100AAF1F6 /* ReusablePasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478528EE9A5100AAF1F6 /* ReusablePasswordTextField.swift */; };
@@ -112,6 +117,11 @@
 		0EB2125A28ED895E00FB1255 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		0EB2125C28EDDF4700FB1255 /* HeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineView.swift; sourceTree = "<group>"; };
 		0EB2125E28EDE33200FB1255 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
+		AC30932028F32A9F00766787 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC30932228F32C5200766787 /* ProductCatalogueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCatalogueViewController.swift; sourceTree = "<group>"; };
+		AC30932628F32D5100766787 /* ProductColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductColorView.swift; sourceTree = "<group>"; };
+		AC30932828F32FD900766787 /* ProducCatalogueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProducCatalogueViewModel.swift; sourceTree = "<group>"; };
+		AC548F3C28EBFB52002C3CC8 /* ASHUButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASHUButton.swift; sourceTree = "<group>"; };
 		AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTextFieldAuth.swift; sourceTree = "<group>"; };
 		AC6F478528EE9A5100AAF1F6 /* ReusablePasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePasswordTextField.swift; sourceTree = "<group>"; };
 		ACB588A328E7E66F0025D230 /* ReusableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableLabel.swift; sourceTree = "<group>"; };
@@ -234,6 +244,40 @@
 			children = (
 				0EAFD7E528EAE6D10004E3DB /* ProductDetailVM.swift */,
 				0EB2125A28ED895E00FB1255 /* ProductModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AC1C7B0B28EFE0F10058CCB3 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		AC30931D28F32A7000766787 /* ProductCatalogue */ = {
+			isa = PBXGroup;
+			children = (
+				AC30931F28F32A7E00766787 /* ViewModel */,
+				AC30931E28F32A7900766787 /* View */,
+			);
+			path = ProductCatalogue;
+			sourceTree = "<group>";
+		};
+		AC30931E28F32A7900766787 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AC30932028F32A9F00766787 /* ProductCollectionViewCell.swift */,
+				AC30932228F32C5200766787 /* ProductCatalogueViewController.swift */,
+				AC30932628F32D5100766787 /* ProductColorView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AC30931F28F32A7E00766787 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AC30932828F32FD900766787 /* ProducCatalogueViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -408,6 +452,8 @@
 				DBE905FA28EFDF5B00B6E463 /* BrandCatalogue */,
 				0EAFD7DE28EA995E0004E3DB /* ProductDetail */,
 				DBA2FCCC28ED363400FDC148 /* Profile */,
+				AC30931D28F32A7000766787 /* ProductCatalogue */,
+				0EAFD7DE28EA995E0004E3DB /* Product Detail View */,
 				DBE905EC28EFDF4F00B6E463 /* Authentication */,
 				DB06455828F3D36E003501D9 /* Modal */,
 			);
@@ -760,6 +806,7 @@
 				DB8BCD8F28EBD81A00630CA3 /* DismissTappablePresentationController.swift in Sources */,
 				DB8BCDAA28EBF0F200630CA3 /* BuyModalVM.swift in Sources */,
 				DB9660E428EDD87C001D9A53 /* SetupBodyMeasurementModalVC.swift in Sources */,
+				AC30932728F32D5100766787 /* ProductColorView.swift in Sources */,
 				DB8BCDA328EBDE0800630CA3 /* SizeCalculatorModalVC.swift in Sources */,
 				DB8BCD9F28EBDD8500630CA3 /* BuyModalVC.swift in Sources */,
 				DBD144DF28EEA7A6006A3E40 /* ReusableSizeCalculatorButton.swift in Sources */,
@@ -779,7 +826,9 @@
 				DBE9060128EFDF5B00B6E463 /* BrandCatalogueViewController.swift in Sources */,
 				ACFEBEA728E7603000372297 /* ViewController.swift in Sources */,
 				0EB2126B28EE940D00FB1255 /* BodyMeasurementVM.swift in Sources */,
+				AC30932128F32A9F00766787 /* ProductCollectionViewCell.swift in Sources */,
 				ACB588A828E7E9C30025D230 /* ReusableButton.swift in Sources */,
+				AC30932328F32C5200766787 /* ProductCatalogueViewController.swift in Sources */,
 				DB8BCD9128EBD83900630CA3 /* NotTappablePresentationController.swift in Sources */,
 				DBA35F2628EDB118009D6917 /* ProfileViewController + KeyboardExtension.swift in Sources */,
 				ACFE713828ED6FA500A894D4 /* ReusableErrorLabel.swift in Sources */,
@@ -787,6 +836,7 @@
 				DB8BCD9928EBDD0F00630CA3 /* BodyMeasurementModalVC.swift in Sources */,
 				DBA35F2428EDB0D4009D6917 /* ProfileViewController + ImagePickerExtensions.swift in Sources */,
 				DBA2FCD028ED365900FDC148 /* ProfileViewController.swift in Sources */,
+				AC30932928F32FD900766787 /* ProducCatalogueViewModel.swift in Sources */,
 				DBE9060228EFDF5B00B6E463 /* BrandCollectionViewCell.swift in Sources */,
 				DB19AF2228ED6515003E6F61 /* ReusableProfileButtonView.swift in Sources */,
 				0E7BCE4328EBF431000820E0 /* ARView.swift in Sources */,
@@ -954,7 +1004,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L7SMRXB5WV;
+				DEVELOPMENT_TEAM = 8XZM6ZXT9F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mainProject/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = Test;
@@ -984,7 +1034,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L7SMRXB5WV;
+				DEVELOPMENT_TEAM = 8XZM6ZXT9F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mainProject/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = Test;
