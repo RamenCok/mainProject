@@ -93,6 +93,7 @@ class BrandCatalogueViewController: UIViewController, UIScrollViewDelegate, UISe
         // Panggil dari vm
         vm.brandList.sink { [weak self] data in
             self?.brandList = data
+            print(self?.brandList)
             self?.configureUI()
         }.store(in: &cancellables)
     }

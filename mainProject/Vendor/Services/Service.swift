@@ -41,7 +41,7 @@ struct MockService: Servicing {
     
     func getBrandImage(brandImage: String, completion: @escaping (UIImage)-> Void) {
         if let image = UIImage(named: brandImage) {
-            completion(image)
+            completion(image) 
         }
     }
 }
