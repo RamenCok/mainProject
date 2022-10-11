@@ -50,6 +50,7 @@
 		ACFEBF0128E7678900372297 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = ACFEBF0028E7678900372297 /* FirebaseRemoteConfigSwift */; };
 		ACFEBF0328E7678900372297 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = ACFEBF0228E7678900372297 /* FirebaseStorage */; };
 		ACFEBF0528E7678900372297 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = ACFEBF0428E7678900372297 /* FirebaseStorageCombine-Community */; };
+		DB76CD8B28F5157900F562CB /* BodyMeasurementVC + CollectionView Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB76CD8A28F5157900F562CB /* BodyMeasurementVC + CollectionView Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		ACFEBEBE28E7613000372297 /* Sora-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-Regular.otf"; sourceTree = "<group>"; };
 		ACFEBEC228E7613000372297 /* Sora-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-SemiBold.otf"; sourceTree = "<group>"; };
 		ACFEBEC528E7613000372297 /* Sora-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-Bold.otf"; sourceTree = "<group>"; };
+		DB76CD8A28F5157900F562CB /* BodyMeasurementVC + CollectionView Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BodyMeasurementVC + CollectionView Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 			children = (
 				0EB2126628EE937D00FB1255 /* BodyMeasurementVC.swift */,
 				0EB2126828EE939900FB1255 /* BodyMeasurementCell.swift */,
+				DB76CD8A28F5157900F562CB /* BodyMeasurementVC + CollectionView Extensions.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				ACB588A828E7E9C30025D230 /* ReusableButton.swift in Sources */,
 				ACB588A428E7E66F0025D230 /* ResuableLabel.swift in Sources */,
 				ACFEBEA328E7603000372297 /* AppDelegate.swift in Sources */,
+				DB76CD8B28F5157900F562CB /* BodyMeasurementVC + CollectionView Extensions.swift in Sources */,
 				ACFEBEA528E7603000372297 /* SceneDelegate.swift in Sources */,
 				0EB2126728EE937D00FB1255 /* BodyMeasurementVC.swift in Sources */,
 			);

@@ -36,9 +36,11 @@ class BodyMeasurementVC: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(BodyMeasurementCell.self, forCellWithReuseIdentifier: BodyMeasurementCell.identifier)
+//        collectionView.backgroundView = backgroundImage
+        collectionView.backgroundColor = .clear
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        collectionView.contentInset = UIEdgeInsets(top: 16, left: 20, bottom: 0, right: 20)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.backgroundColor = .clear
         return collectionView
@@ -49,8 +51,9 @@ class BodyMeasurementVC: UIViewController {
     
     //MARK: Lifecycle
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-//        configureNavigation()
+        configureNavigation()
         
         vm.getdata { [weak self] data in
             self?.user = data
@@ -59,75 +62,39 @@ class BodyMeasurementVC: UIViewController {
     }
 
     // MARK: - Selectors
-    
+    @objc func handleQuestionMarkButton() {
+        
+        print("Privacy gundulmu!")
+    }
     
     //MARK: - Helpers
     func configureNavigation() {
-//
-//        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.blackTexts, NSAttributedString.Key.font: UIFont.heading_1()]
-//        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.modalTitle()]
-//
-//        self.navigationController?.navigationBar.prefersLargeTitles = true
-//        self.navigationItem.largeTitleDisplayMode = .always
-//
-//        self.navigationItem.hidesSearchBarWhenScrolling = false
-//        self.title = "Body Measurement"
-//        self.navigationController?.title = "Body Measurementfolder.badge.questionmark"
 
-//        let rightBarBtn = UIBarButtonItem(image: UIImage(systemName: "questionmark.circle"), style: .plain, target: self, action: nil)
-//        rightBarBtn.tintColor = .greyColor
-//
-//        let currWidth = rightBarBtn.customView?.widthAnchor.constraint(equalToConstant: 24)
-//        currWidth?.isActive = true
-//        let currHeight = rightBarBtn.customView?.heightAnchor.constraint(equalToConstant: 24)
-//        currHeight?.isActive = true
-//        navigationItem.rightBarButtonItem = rightBarBtn
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.blackTexts, NSAttributedString.Key.font: UIFont.heading_1()]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.modalTitle()]
+
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.title = "Body Measurement"
+
+        let rightBarBtn = UIBarButtonItem(image: UIImage(systemName: "questionmark.circle"), style: .plain, target: self, action: #selector(handleQuestionMarkButton))
+        rightBarBtn.tintColor = .greyColor
+
+        let currWidth = rightBarBtn.customView?.widthAnchor.constraint(equalToConstant: 24)
+        currWidth?.isActive = true
+        
+        let currHeight = rightBarBtn.customView?.heightAnchor.constraint(equalToConstant: 24)
+        currHeight?.isActive = true
+        
+        navigationItem.rightBarButtonItem = rightBarBtn
     }
     
     func configureUI() {
         
-        view.addSubview(backgroundImage)
-        backgroundImage.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        view.addSubview(subtitle)
-        subtitle.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(40)
-            make.leading.trailing.equalToSuperview().inset(20)
-        }
+        view.backgroundColor = .systemBackground
 
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
-            make.top.equalTo(subtitle.snp.bottom).offset(20)
+            make.edges.equalToSuperview()
         }
-    }
-}
-
-extension BodyMeasurementVC: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return user.userBodyMeasurement.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BodyMeasurementCell.identifier, for: indexPath) as! BodyMeasurementCell
-        
-        let sorted = user.userBodyMeasurement.sorted {
-            return $0.key < $1.key
-        }
-        
-        cell.type = sorted[indexPath.row].key
-        cell.numbers = sorted[indexPath.row].value
-        cell.configure()
-        
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
     }
 }

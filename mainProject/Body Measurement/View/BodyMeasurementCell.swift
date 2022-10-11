@@ -17,15 +17,11 @@ class BodyMeasurementCell: UICollectionViewCell {
     
     private lazy var background: UIView = {
         let bg = UIView()
+        
         bg.backgroundColor = .white
-//        bg.layer.shadowColor = UIColor.black.cgColor
-//        bg.layer.shadowOpacity = 1
-//        bg.layer.shadowOffset = CGSize.zero
-//        bg.layer.shadowPath = UIBezierPath(roundedRect: bg.bounds, cornerRadius: 30).cgPath
-//        bg.layer.shadowRadius = 50
+        bg.layer.cornerRadius = 30
         
         bg.layer.borderWidth = 1
-        bg.layer.cornerRadius = 30
         bg.layer.borderColor = UIColor.systemGray5.cgColor
         return bg
     }()
@@ -43,11 +39,18 @@ class BodyMeasurementCell: UICollectionViewCell {
         contentView.addSubview(background)
         
         let measurementType = ReusableLabel(style: .heading_3, textString: converter(type: self.type))
-        measurementType.textAlignment = .center
-        
+        measurementType.textAlignment = .left
         contentView.addSubview(measurementType)
         measurementType.snp.makeConstraints { make in
             make.top.equalTo(background.snp.top).offset(15)
+            make.leading.equalTo(background.snp.leading).offset(15)
+        }
+        
+        let measurementCaption = ReusableLabel(style: .bodyText, textString: "Caption")
+        measurementType.textAlignment = .left
+        contentView.addSubview(measurementCaption)
+        measurementCaption.snp.makeConstraints { make in
+            make.top.equalTo(measurementType.snp.bottom).offset(3)
             make.leading.equalTo(background.snp.leading).offset(15)
         }
             

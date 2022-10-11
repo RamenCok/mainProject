@@ -13,10 +13,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        let navigationController = UINavigationController()
-        navigationController.isNavigationBarHidden = true
+        
         let vc = BodyMeasurementVC()
-        navigationController.pushViewController(vc, animated: false)
+        let navigationController = UINavigationController(rootViewController: vc)
+        navigationController.isNavigationBarHidden = false
+        
         window?.rootViewController = navigationController
         window?.overrideUserInterfaceStyle = .light
     }

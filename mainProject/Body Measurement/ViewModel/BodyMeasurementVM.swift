@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 struct User {
+    
     var name: String
     var gender: Int
     var profilePicture: String
@@ -18,6 +19,7 @@ struct User {
 class BodyMeasurementVM: ObservableObject {
     
     func getdata(_ completion: @escaping (User)-> Void) {
+        
         let bodymeasurement = [
             0: 20, // bust
             1: 21, // waist
