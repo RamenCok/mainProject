@@ -16,13 +16,18 @@ class ProductColorView: UIView {
     private var selectedBorderView: UIView?
     var selected = 0
     
+    private var plusLabel: UILabel = {
+        let label = ReusableLabel(style: .caption, textString: "")
+        return label
+    }()
+    
     //MARK: - Lifecycle
     
     required init(colorarray: [String]) {
         self.colorarray = colorarray
         super.init(frame: .zero)
         
-        backgroundColor = .systemBackground
+        backgroundColor = .clear
         configureRadioButton()
     }
     
@@ -45,10 +50,11 @@ class ProductColorView: UIView {
     
     private func createButton(colors: [String])->[UIView]{
         var currentTag = 0
+        
         let colorArray: [UIView] = colors.map { color in
             let circle = UIView()
             circle.setDimensions(height: 12, width: 12)
-            circle.layer.cornerRadius = 24 / 2
+            circle.layer.cornerRadius = 12 / 2
             circle.backgroundColor = UIColor(color)
             return circle
         }
@@ -89,16 +95,27 @@ class ProductColorView: UIView {
         
         let stack = UIStackView()
         for color in colors {
-            stack.addArrangedSubview(color)
+            if color.tag <= 2 {
+                stack.addArrangedSubview(color)
+            }
+            
         }
-        stack.axis = .horizontal
-        stack.spacing = 13
-        stack.distribution = .fill
-        self.addSubview(stack)
+        if colorarray.count > 3{
+            plusLabel.text = "+\(colorarray.count - 3)"
+            stack.addArrangedSubview(plusLabel)
+        }
         
+        stack.axis = .horizontal
+        stack.spacing = 5
+        stack.distribution = .fill
+        
+        self.addSubview(stack)
         stack.snp.makeConstraints { make in
             make.center.equalTo(self)
             make.width.height.equalTo(self)
         }
+        
+       
     }
+    
 }

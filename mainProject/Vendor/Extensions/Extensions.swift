@@ -29,7 +29,9 @@ extension UIColor {
     static let greenColor = UIColor.rgb(red: 155, green: 217, blue: 117, alpha: 1)
     static let microRed = UIColor.rgb(red: 215, green: 87, blue: 87, alpha: 0.2)
     static let microGreen = UIColor.rgb(red: 169, green: 225, blue: 134, alpha: 0.2)
+    
     static let lightGray = UIColor.rgb(red: 249, green: 249, blue: 249, alpha: 1)
+    static let lightGray3 = UIColor.rgb(red: 231, green: 231, blue: 231, alpha: 1)
     
     // Convert hex to UIColor
     convenience init(_ hex: String, alpha: CGFloat = 1.0) {

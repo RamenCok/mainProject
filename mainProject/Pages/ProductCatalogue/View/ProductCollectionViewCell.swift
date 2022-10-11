@@ -27,9 +27,15 @@ class ProductCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    private lazy var colorArray: ProductColorView = {
+       let view = ProductColorView(colorarray: ["7479EA", "B55DD3", "FF95BF"])
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .clear
+        contentView.clipsToBounds = false
+        
         contentView.addSubview(productImageView)
         productImageView.snp.makeConstraints { make in
             make.leading.equalTo(contentView.snp.leading).offset(16)
@@ -44,9 +50,23 @@ class ProductCollectionViewCell: UICollectionViewCell {
             make.trailing.equalTo(contentView.snp.trailing).offset(-15)
         }
         
-        contentView.backgroundColor = .red
-        contentView.roundCorners(.allCorners, radius: 20)
-        contentView.clipsToBounds = true
+        contentView.addSubview(colorArray)
+        colorArray.snp.makeConstraints { make in
+            make.top.equalTo(productLabel.snp.bottom).offset(9)
+            make.leading.equalTo(contentView.snp.leading).offset(15)
+        }
+        
+        contentView.layer.cornerRadius = 20
+        
+        contentView.backgroundColor = .systemBackground
+        contentView.layer.borderColor = UIColor.lightGray3.cgColor
+        contentView.layer.borderWidth = 1
+        
+        contentView.layer.shadowColor = UIColor.lightGray3.cgColor
+        contentView.layer.shadowOpacity = 1
+        contentView.layer.shadowOffset = CGSize.zero
+        contentView.layer.shadowRadius = 5
+        
     }
     
 
@@ -59,10 +79,6 @@ class ProductCollectionViewCell: UICollectionViewCell {
         
         productImageView.frame = CGRect(x: 0, y: 0, width: contentView.frame.size.width, height: contentView.frame.size.width)
         productLabel.frame = CGRect(x: 0, y: contentView.frame.size.width + 10, width: contentView.frame.size.width-10, height: 60)
-//        contentView.snp.makeConstraints { make in
-//            make.leading.equalToSuperview().offset(5)
-//            make.trailing.equalToSuperview().offset(5)
-//        }
-        
+        colorArray.frame = CGRect(x: 0, y: contentView.frame.size.width + 70, width: 20, height: 40)
     }
 }

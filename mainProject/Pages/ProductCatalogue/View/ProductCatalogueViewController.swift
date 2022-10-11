@@ -32,6 +32,8 @@ class ProductCatalogueViewController: UIViewController {
         return layout
     }()
     
+    
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         
