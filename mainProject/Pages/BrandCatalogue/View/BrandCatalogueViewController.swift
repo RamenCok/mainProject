@@ -7,10 +7,13 @@
 
 import UIKit
 import SnapKit
-class BrandCatalogueViewController: UIViewController {
-    
-    // MARK: - Properties
-    internal var brandVM =  BrandCatalogueViewModel()
+import Combine
+
+class BrandCatalogueViewController: UIViewController, UIScrollViewDelegate, UISearchControllerDelegate, UISearchBarDelegate {
+
+    private var vm =  BrandCatalogueViewModel(service: MockService())
+    private var brandList: [Brands]!
+    private var cancellables: Set<AnyCancellable> = []
     
     private lazy var backgroundImage: UIImageView = {
         let imageView = UIImageView()
@@ -57,7 +60,6 @@ class BrandCatalogueViewController: UIViewController {
         collectionView.showsVerticalScrollIndicator = false
         return collectionView
     }()
-
     
     internal lazy var search: UISearchController = {
         let search = UISearchController(searchResultsController: nil)
@@ -87,8 +89,17 @@ class BrandCatalogueViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        navigationController?.isNavigationBarHidden = false
-        configureUI()
+        // Panggil dari vm
+        vm.brandList.sink { [weak self] data in
+            self?.brandList = data
+            print(self?.brandList)
+            self?.configureUI()
+        }.store(in: &cancellables)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        vm.fetchData()
     }
 
     // MARK: - Selectors

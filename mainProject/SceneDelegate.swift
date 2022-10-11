@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard (scene is UIWindowScene) else { return }
         
         let navigationController = UINavigationController()
-        navigationController.isNavigationBarHidden = true
+        navigationController.isNavigationBarHidden = false
 
         let vc = ProductCatalogueViewController()
         
