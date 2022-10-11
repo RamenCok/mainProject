@@ -58,6 +58,7 @@ class OnboardingViewController: UIPageViewController {
     }
     
     //MARK: - Selectors
+    
     @objc func handleNextButton() {
         
         print("Next button pressed")
@@ -79,9 +80,9 @@ class OnboardingViewController: UIPageViewController {
     }
     
     @objc func handleNavigationButton() {
-        
-        print("Next Screen")
-        navigationController?.pushViewController(SignupLogin(), animated: true)
+        AuthServices.shared.anonymousAuth()
+//        print("Next Screen")
+//        navigationController?.pushViewController(SignupLogin(), animated: true)
     }
     
     @objc func handleSkipButton() {
