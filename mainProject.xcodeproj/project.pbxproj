@@ -68,6 +68,9 @@
 		DB19AF2228ED6515003E6F61 /* ReusableProfileButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB19AF2128ED6515003E6F61 /* ReusableProfileButtonView.swift */; };
 		DB58D06328E8059800A5C727 /* OnboardingViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB58D06128E8059800A5C727 /* OnboardingViewContainer.swift */; };
 		DB58D06428E8059800A5C727 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB58D06228E8059800A5C727 /* OnboardingViewController.swift */; };
+		DB76CD8D28F51AC700F562CB /* BrandCatalogueVC + CollectionView Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB76CD8C28F51AC700F562CB /* BrandCatalogueVC + CollectionView Extensions.swift */; };
+		DB76CD8F28F51BB100F562CB /* BrandCatalogueVC + ScrollView Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB76CD8E28F51BB100F562CB /* BrandCatalogueVC + ScrollView Extensions.swift */; };
+		DB76CD9128F51CAA00F562CB /* BrandCatalogueVC + SearchBar Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB76CD9028F51CAA00F562CB /* BrandCatalogueVC + SearchBar Extensions.swift */; };
 		DB8BCD8F28EBD81A00630CA3 /* DismissTappablePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCD8E28EBD81A00630CA3 /* DismissTappablePresentationController.swift */; };
 		DB8BCD9128EBD83900630CA3 /* NotTappablePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCD9028EBD83900630CA3 /* NotTappablePresentationController.swift */; };
 		DB8BCD9728EBDC8F00630CA3 /* SignUpModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCD9628EBDC8F00630CA3 /* SignUpModalVC.swift */; };
@@ -128,6 +131,9 @@
 		DB19AF2128ED6515003E6F61 /* ReusableProfileButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProfileButtonView.swift; sourceTree = "<group>"; };
 		DB58D06128E8059800A5C727 /* OnboardingViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewContainer.swift; sourceTree = "<group>"; };
 		DB58D06228E8059800A5C727 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		DB76CD8C28F51AC700F562CB /* BrandCatalogueVC + CollectionView Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandCatalogueVC + CollectionView Extensions.swift"; sourceTree = "<group>"; };
+		DB76CD8E28F51BB100F562CB /* BrandCatalogueVC + ScrollView Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandCatalogueVC + ScrollView Extensions.swift"; sourceTree = "<group>"; };
+		DB76CD9028F51CAA00F562CB /* BrandCatalogueVC + SearchBar Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandCatalogueVC + SearchBar Extensions.swift"; sourceTree = "<group>"; };
 		DB8BCD8E28EBD81A00630CA3 /* DismissTappablePresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissTappablePresentationController.swift; sourceTree = "<group>"; };
 		DB8BCD9028EBD83900630CA3 /* NotTappablePresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotTappablePresentationController.swift; sourceTree = "<group>"; };
 		DB8BCD9628EBDC8F00630CA3 /* SignUpModalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpModalVC.swift; sourceTree = "<group>"; };
@@ -596,6 +602,9 @@
 			children = (
 				DBE905FE28EFDF5B00B6E463 /* BrandCatalogueViewController.swift */,
 				DBE905FF28EFDF5B00B6E463 /* BrandCollectionViewCell.swift */,
+				DB76CD8C28F51AC700F562CB /* BrandCatalogueVC + CollectionView Extensions.swift */,
+				DB76CD8E28F51BB100F562CB /* BrandCatalogueVC + ScrollView Extensions.swift */,
+				DB76CD9028F51CAA00F562CB /* BrandCatalogueVC + SearchBar Extensions.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -718,7 +727,9 @@
 				DB9660E428EDD87C001D9A53 /* SetupBodyMeasurementModalVC.swift in Sources */,
 				DB8BCDA328EBDE0800630CA3 /* SizeCalculatorModalVC.swift in Sources */,
 				DB8BCD9F28EBDD8500630CA3 /* BuyModalVC.swift in Sources */,
+				DB76CD8D28F51AC700F562CB /* BrandCatalogueVC + CollectionView Extensions.swift in Sources */,
 				DBD144DF28EEA7A6006A3E40 /* ReusableSizeCalculatorButton.swift in Sources */,
+				DB76CD8F28F51BB100F562CB /* BrandCatalogueVC + ScrollView Extensions.swift in Sources */,
 				DB8BCD9728EBDC8F00630CA3 /* SignUpModalVC.swift in Sources */,
 				DB8BCDA428EBDE0800630CA3 /* SizeButtonView.swift in Sources */,
 				DBE905F728EFDF4F00B6E463 /* PersonalizeViewController.swift in Sources */,
@@ -741,6 +752,7 @@
 				DBA35F2428EDB0D4009D6917 /* ProfileViewController + ImagePickerExtensions.swift in Sources */,
 				DBA2FCD028ED365900FDC148 /* ProfileViewController.swift in Sources */,
 				DBE9060228EFDF5B00B6E463 /* BrandCollectionViewCell.swift in Sources */,
+				DB76CD9128F51CAA00F562CB /* BrandCatalogueVC + SearchBar Extensions.swift in Sources */,
 				DB19AF2228ED6515003E6F61 /* ReusableProfileButtonView.swift in Sources */,
 				0E7BCE4328EBF431000820E0 /* ARView.swift in Sources */,
 				ACFEBEA328E7603000372297 /* AppDelegate.swift in Sources */,
