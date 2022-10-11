@@ -6,7 +6,9 @@
 //
 
 import UIKit
-
+import GoogleSignIn
+import FirebaseAuth
+import FirebaseCore
 class SignupLogin: UIViewController {
 
     // MARK: - Properties
@@ -22,6 +24,8 @@ class SignupLogin: UIViewController {
         
         return view
     }()
+    
+   
     
     private lazy var titleLabel: UILabel = {
         let label = ReusableLabel(style: .largeTitle_2, textString: "Level up your shopping journey")
@@ -42,7 +46,7 @@ class SignupLogin: UIViewController {
     }()
     
     private lazy var googleBtn: UIButton = {
-        let button = ReusableButton(style: .secondary, buttonText: " Continue with Google", selector: #selector(printYeuy), target: self)
+        let button = ReusableButton(style: .secondary, buttonText: " Continue with Google", selector: #selector(handleGoogleLogIn), target: self)
         button.setImage(UIImage(named: "google.logo"), for: .normal)
         button.imageView?.contentMode = .scaleAspectFill
         return button
@@ -107,6 +111,41 @@ class SignupLogin: UIViewController {
     }
     
     // MARK: - Selectors
+    @objc func handleGoogleLogIn(){
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+
+        // Create Google Sign In configuration object.
+        let config = GIDConfiguration(clientID: clientID)
+
+        // Start the sign in flow!
+        GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { [unowned self] user, error in
+
+          if let error = error {
+            // ...
+            return
+          }
+
+          guard
+            let authentication = user?.authentication,
+            let idToken = authentication.idToken
+          else {
+            return
+          }
+
+          let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                         accessToken: authentication.accessToken)
+
+            Auth.auth().signIn(with: credential) { authResult, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                // User is signed in
+                print(authResult?.user.uid)
+                // ...
+            }
+        }
+    }
+    
     @objc func printYeuy(){
         print("")
     }

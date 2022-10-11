@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -17,10 +17,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard (scene is UIWindowScene) else { return }
         
+        var vc: UIViewController = OnboardingViewController()
+        
+        if let user = Auth.auth().currentUser {
+            print(user.uid)
+            print(user.isAnonymous)
+            if user.isAnonymous {
+                vc = SignupLogin()
+            } else {
+                vc = ProfileViewController()
+            }
+        } else {
+            print("no user")
+        }
+        
         let navigationController = UINavigationController()
         navigationController.isNavigationBarHidden = true
 
-        let vc = OnboardingViewController()
+        
         
         navigationController.pushViewController(vc, animated: false)
         window?.rootViewController = navigationController

@@ -17,7 +17,6 @@
 		0EB2125B28ED895E00FB1255 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB2125A28ED895E00FB1255 /* ProductModel.swift */; };
 		0EB2125D28EDDF4700FB1255 /* HeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB2125C28EDDF4700FB1255 /* HeadlineView.swift */; };
 		0EB2125F28EDE33200FB1255 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB2125E28EDE33200FB1255 /* DescriptionView.swift */; };
-		AC30932D28F51CA500766787 /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC30932C28F51CA500766787 /* AuthServices.swift */; };
 		AC30933028F51F5C00766787 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = AC30932F28F51F5C00766787 /* FirebaseAnalytics */; };
 		AC30933228F51F5C00766787 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = AC30933128F51F5C00766787 /* FirebaseAnalyticsOnDeviceConversion */; };
 		AC30933428F51F5C00766787 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC30933328F51F5C00766787 /* FirebaseAnalyticsSwift */; };
@@ -48,6 +47,9 @@
 		AC6F478028EDEADF00AAF1F6 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC6F477F28EDEADF00AAF1F6 /* IQKeyboardManagerSwift */; };
 		AC6F478428EE982F00AAF1F6 /* ReusableTextFieldAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */; };
 		AC6F478628EE9A5100AAF1F6 /* ReusablePasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478528EE9A5100AAF1F6 /* ReusablePasswordTextField.swift */; };
+		AC8608A328F52DC7002B0D3F /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = AC8608A228F52DC7002B0D3F /* GoogleSignIn */; };
+		AC8608A528F52DC7002B0D3F /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC8608A428F52DC7002B0D3F /* GoogleSignInSwift */; };
+		AC8608A928F53B24002B0D3F /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8608A828F53B24002B0D3F /* AuthServices.swift */; };
 		ACB588A428E7E66F0025D230 /* ReusableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A328E7E66F0025D230 /* ReusableLabel.swift */; };
 		ACB588A628E7E6D80025D230 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A528E7E6D80025D230 /* Extensions.swift */; };
 		ACB588A828E7E9C30025D230 /* ReusableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A728E7E9C30025D230 /* ReusableButton.swift */; };
@@ -105,9 +107,10 @@
 		0EB2125A28ED895E00FB1255 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		0EB2125C28EDDF4700FB1255 /* HeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineView.swift; sourceTree = "<group>"; };
 		0EB2125E28EDE33200FB1255 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
-		AC30932C28F51CA500766787 /* AuthServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthServices.swift; path = ../../../../../../mainProject/mainProject/Vendor/AuthServices.swift; sourceTree = "<group>"; };
 		AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTextFieldAuth.swift; sourceTree = "<group>"; };
 		AC6F478528EE9A5100AAF1F6 /* ReusablePasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePasswordTextField.swift; sourceTree = "<group>"; };
+		AC8608A828F53B24002B0D3F /* AuthServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
+		AC8608AA28F53EB1002B0D3F /* mainProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mainProject.entitlements; sourceTree = "<group>"; };
 		ACB588A328E7E66F0025D230 /* ReusableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableLabel.swift; sourceTree = "<group>"; };
 		ACB588A528E7E6D80025D230 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = mainProject/Vendor/Extensions/Extensions.swift; sourceTree = SOURCE_ROOT; };
 		ACB588A728E7E9C30025D230 /* ReusableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableButton.swift; sourceTree = "<group>"; };
@@ -165,6 +168,7 @@
 				AC30934C28F51F5C00766787 /* FirebaseFirestoreSwift in Frameworks */,
 				AC30933628F51F5C00766787 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				AC30934E28F51F5C00766787 /* FirebaseFunctions in Frameworks */,
+				AC8608A328F52DC7002B0D3F /* GoogleSignIn in Frameworks */,
 				AC6F478028EDEADF00AAF1F6 /* IQKeyboardManagerSwift in Frameworks */,
 				AC30933028F51F5C00766787 /* FirebaseAnalytics in Frameworks */,
 				AC30933C28F51F5C00766787 /* FirebaseAuth in Frameworks */,
@@ -182,6 +186,7 @@
 				AC30933228F51F5C00766787 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				AC30935428F51F5C00766787 /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
 				AC30936028F51F5C00766787 /* FirebaseRemoteConfigSwift in Frameworks */,
+				AC8608A528F52DC7002B0D3F /* GoogleSignInSwift in Frameworks */,
 				AC30933428F51F5C00766787 /* FirebaseAnalyticsSwift in Frameworks */,
 				AC30933A28F51F5C00766787 /* FirebaseAppDistribution-Beta in Frameworks */,
 				AC30935E28F51F5C00766787 /* FirebaseRemoteConfig in Frameworks */,
@@ -226,14 +231,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		AC30932B28F51C6C00766787 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				AC30932C28F51CA500766787 /* AuthServices.swift */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
 		ACB588BC28EA95EB0025D230 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +270,7 @@
 		ACFEBEA128E7603000372297 /* mainProject */ = {
 			isa = PBXGroup;
 			children = (
+				AC8608AA28F53EB1002B0D3F /* mainProject.entitlements */,
 				ACFEBEA228E7603000372297 /* AppDelegate.swift */,
 				ACFEBEA428E7603000372297 /* SceneDelegate.swift */,
 				DBE905E928EFDE9300B6E463 /* Model */,
@@ -294,7 +292,6 @@
 				ACB588BC28EA95EB0025D230 /* Extensions */,
 				ACFEBEB828E7611000372297 /* Utilities */,
 				ACFEBEBA28E7611000372297 /* Helper */,
-				AC30932B28F51C6C00766787 /* Services */,
 			);
 			path = Vendor;
 			sourceTree = "<group>";
@@ -316,6 +313,7 @@
 		ACFEBEBA28E7611000372297 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				AC8608A828F53B24002B0D3F /* AuthServices.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -649,6 +647,8 @@
 				AC30935F28F51F5C00766787 /* FirebaseRemoteConfigSwift */,
 				AC30936128F51F5C00766787 /* FirebaseStorage */,
 				AC30936328F51F5D00766787 /* FirebaseStorageCombine-Community */,
+				AC8608A228F52DC7002B0D3F /* GoogleSignIn */,
+				AC8608A428F52DC7002B0D3F /* GoogleSignInSwift */,
 			);
 			productName = mainProject;
 			productReference = ACFEBE9F28E7603000372297 /* mainProject.app */;
@@ -682,6 +682,7 @@
 				ACB588A928E7F08C0025D230 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				AC6F477E28EDEADF00AAF1F6 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				AC30932E28F51F5C00766787 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				AC8608A128F52DC7002B0D3F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = ACFEBEA028E7603000372297 /* Products */;
 			projectDirPath = "";
@@ -718,7 +719,7 @@
 				DB58D06328E8059800A5C727 /* OnboardingViewContainer.swift in Sources */,
 				DB8BCD8F28EBD81A00630CA3 /* DismissTappablePresentationController.swift in Sources */,
 				DB8BCDAA28EBF0F200630CA3 /* BuyModalVM.swift in Sources */,
-				AC30932D28F51CA500766787 /* AuthServices.swift in Sources */,
+				AC8608A928F53B24002B0D3F /* AuthServices.swift in Sources */,
 				DB9660E428EDD87C001D9A53 /* SetupBodyMeasurementModalVC.swift in Sources */,
 				DB8BCDA328EBDE0800630CA3 /* SizeCalculatorModalVC.swift in Sources */,
 				DB8BCD9F28EBDD8500630CA3 /* BuyModalVC.swift in Sources */,
@@ -907,6 +908,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = mainProject/mainProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8XZM6ZXT9F;
@@ -937,6 +939,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = mainProject/mainProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8XZM6ZXT9F;
@@ -1000,6 +1003,14 @@
 			requirement = {
 				branch = master;
 				kind = branch;
+			};
+		};
+		AC8608A128F52DC7002B0D3F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
 			};
 		};
 		ACB588A928E7F08C0025D230 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
@@ -1152,6 +1163,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AC6F477E28EDEADF00AAF1F6 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		AC8608A228F52DC7002B0D3F /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AC8608A128F52DC7002B0D3F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		AC8608A428F52DC7002B0D3F /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AC8608A128F52DC7002B0D3F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
 		};
 		ACB588AA28E7F08C0025D230 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
