@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Combine
 
-class BrandCatalogueViewController: UIViewController, UIScrollViewDelegate, UISearchControllerDelegate, UISearchBarDelegate {
+class BrandCatalogueViewController: UIViewController {
 
     private var vm =  BrandCatalogueViewModel(service: MockService())
     private var brandList: [Brands]!

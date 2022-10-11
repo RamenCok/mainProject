@@ -10,7 +10,7 @@ import UIKit
 extension BrandCatalogueViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(brandVM.brandList.count)
+        
         return 30
     }
     

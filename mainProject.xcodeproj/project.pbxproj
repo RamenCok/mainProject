@@ -30,7 +30,7 @@
 		AC6F478028EDEADF00AAF1F6 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC6F477F28EDEADF00AAF1F6 /* IQKeyboardManagerSwift */; };
 		AC6F478428EE982F00AAF1F6 /* ReusableTextFieldAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */; };
 		AC6F478628EE9A5100AAF1F6 /* ReusablePasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478528EE9A5100AAF1F6 /* ReusablePasswordTextField.swift */; };
-		ACB588A628E7E6D80025D230 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A528E7E6D80025D230 /* Extensions.swift */; };
+		AC8608A028F525D5002B0D3F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC86089F28F525D5002B0D3F /* Extensions.swift */; };
 		ACB588A828E7E9C30025D230 /* ReusableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A728E7E9C30025D230 /* ReusableButton.swift */; };
 		ACB588AB28E7F08C0025D230 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = ACB588AA28E7F08C0025D230 /* SnapKit */; };
 		ACB588B428EA8CC80025D230 /* Sora-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC528E7613000372297 /* Sora-Bold.otf */; };
@@ -129,7 +129,7 @@
 		AC30932828F32FD900766787 /* ProducCatalogueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProducCatalogueViewModel.swift; sourceTree = "<group>"; };
 		AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTextFieldAuth.swift; sourceTree = "<group>"; };
 		AC6F478528EE9A5100AAF1F6 /* ReusablePasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePasswordTextField.swift; sourceTree = "<group>"; };
-		ACB588A528E7E6D80025D230 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = mainProject/Vendor/Utilities/Extensions.swift; sourceTree = SOURCE_ROOT; };
+		AC86089F28F525D5002B0D3F /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		ACB588A728E7E9C30025D230 /* ReusableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableButton.swift; sourceTree = "<group>"; };
 		ACFE712E28ED207900A894D4 /* ReusablePinkCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePinkCapsule.swift; sourceTree = "<group>"; };
 		ACFE713028ED3C8000A894D4 /* ReusableAuthBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableAuthBackground.swift; sourceTree = "<group>"; };
@@ -307,7 +307,7 @@
 		ACB588BC28EA95EB0025D230 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				ACB588A528E7E6D80025D230 /* Extensions.swift */,
+				AC86089F28F525D5002B0D3F /* Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -814,7 +814,6 @@
 				DB8BCDA428EBDE0800630CA3 /* SizeButtonView.swift in Sources */,
 				DBE905F728EFDF4F00B6E463 /* PersonalizeViewController.swift in Sources */,
 				0EB2126928EE939900FB1255 /* BodyMeasurementCell.swift in Sources */,
-				ACB588A628E7E6D80025D230 /* Extensions.swift in Sources */,
 				DBEC708F28E93617005D0974 /* OnboardingViewController + Extensions.swift in Sources */,
 				0E0DE4DD28F524D3007AC831 /* ReusableLabel.swift in Sources */,
 				DB58D06428E8059800A5C727 /* OnboardingViewController.swift in Sources */,
@@ -823,6 +822,7 @@
 				ACFE712F28ED207900A894D4 /* ReusablePinkCapsule.swift in Sources */,
 				ACFE713428ED405C00A894D4 /* ReusableCapsuleTitle.swift in Sources */,
 				DBE905F528EFDF4F00B6E463 /* SignupLogin.swift in Sources */,
+				AC8608A028F525D5002B0D3F /* Extensions.swift in Sources */,
 				0EB2125D28EDDF4700FB1255 /* HeadlineView.swift in Sources */,
 				DBE9060128EFDF5B00B6E463 /* BrandCatalogueViewController.swift in Sources */,
 				0EB2126B28EE940D00FB1255 /* BodyMeasurementVM.swift in Sources */,
