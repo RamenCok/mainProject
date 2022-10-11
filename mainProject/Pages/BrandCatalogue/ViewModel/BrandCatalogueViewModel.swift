@@ -7,45 +7,21 @@
 
 import Foundation
 import UIKit
+import Combine
 
 class BrandCatalogueViewModel: ObservableObject {
     
-    var brandList = [
-        Brands(name: "H&M", logo: "sample-logo"),
-        Brands(name: "Lacoste", logo: "sample-logo"),
-        Brands(name: "Tommy Hilfiger", logo: "sample-logo"),
-        Brands(name: "Under Armour", logo: "sample-logo"),
-        Brands(name: "H&M", logo: "sample-logo"),
-        Brands(name: "Lacoste", logo: "sample-logo"),
-        Brands(name: "Tommy Hilfiger", logo: "sample-logo"),
-        Brands(name: "H&M", logo: "sample-logo"),
-        Brands(name: "Lacoste", logo: "sample-logo"),
-        Brands(name: "Tommy Hilfiger", logo: "sample-logo"),
-        Brands(name: "H&M", logo: "sample-logo"),
-        Brands(name: "Lacoste", logo: "sample-logo"),
-        Brands(name: "Tommy Hilfiger", logo: "sample-logo"),
-        Brands(name: "H&M", logo: "sample-logo"),
-        Brands(name: "Lacoste", logo: "sample-logo"),
-        Brands(name: "Tommy Hilfiger", logo: "sample-logo"),
-        Brands(name: "H&M", logo: "sample-logo"),
-        Brands(name: "Lacoste", logo: "sample-logo"),
-        Brands(name: "Tommy Hilfiger", logo: "sample-logo"),
-        Brands(name: "H&M", logo: "sample-logo"),
-        Brands(name: "Lacoste", logo: "sample-logo"),
-        Brands(name: "Tommy Hilfiger", logo: "sample-logo"),
-        Brands(name: "H&M", logo: "sample-logo"),
-        Brands(name: "Lacoste", logo: "sample-logo"),
-        Brands(name: "Tommy Hilfiger", logo: "sample-logo"),
-        Brands(name: "H&M", logo: "sample-logo"),
-        Brands(name: "Lacoste", logo: "sample-logo"),
-        Brands(name: "Tommy Hilfiger", logo: "sample-logo"),
-        Brands(name: "H&M", logo: "sample-logo"),
-        Brands(name: "Lacoste", logo: "sample-logo"),
-        Brands(name: "Tommy Hilfiger", logo: "sample-logo"),
-        Brands(name: "H&M", logo: "sample-logo"),
-        Brands(name: "Lacoste", logo: "sample-logo"),
-        Brands(name: "Tommy Hilfiger", logo: "sample-logo"),
-    ]
+    let service: Servicing
     
+    init(service: Servicing) {
+        self.service = service
+    }
     
+    let brandList = PassthroughSubject<[Brands], Never>()
+
+    func fetchData() {
+        service.getBrandList { [weak self] data in
+            self?.brandList.send(data)
+        }
+    }
 }

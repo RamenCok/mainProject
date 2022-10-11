@@ -10,10 +10,12 @@ import SnapKit
 
 class BrandCollectionViewCell: UICollectionViewCell {
     static let identifier = "BrandCollectionViewCell"
+    var brandName: String!
+    var brandImage: UIImage!
     
     private lazy var brandImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "sample-logo")
+//        imageView.image = UIImage(named: "sample-logo")
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = false
         imageView.backgroundColor = .white
@@ -21,7 +23,7 @@ class BrandCollectionViewCell: UICollectionViewCell {
         imageView.layer.shadowColor = UIColor.tesColor.cgColor
         imageView.layer.shadowOpacity = 1
         imageView.layer.shadowOffset = CGSize.zero
-//        imageView.layer.shadowPath = UIBezierPath(roundedRect: imageView.bounds, cornerRadius: 10).cgPath
+        imageView.layer.shadowPath = UIBezierPath(roundedRect: imageView.bounds, cornerRadius: 30).cgPath
         imageView.layer.shadowRadius = 5
         
         imageView.layer.borderWidth = 1
@@ -38,12 +40,6 @@ class BrandCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .clear
-        contentView.addSubview(brandImageView)
-        contentView.addSubview(brandLabel)
-        contentView.clipsToBounds = true
-        
-        
     }
     
 
@@ -51,14 +47,20 @@ class BrandCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func configure() {
+        
+        brandImageView.image = brandImage
+        contentView.addSubview(brandImageView)
+        
+        brandLabel.text = self.brandName!
+        contentView.addSubview(brandLabel)
+        
+        contentView.clipsToBounds = true
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         brandLabel.frame = CGRect(x: 0, y: contentView.frame.size.width + 10, width: contentView.frame.size.width-10, height: 20)
         brandImageView.frame = CGRect(x: 0, y: 0, width: contentView.frame.size.width, height: contentView.frame.size.width)
-//        contentView.snp.makeConstraints { make in
-//            make.leading.equalToSuperview().offset(5)
-//            make.trailing.equalToSuperview().offset(5)
-//        }
-        
     }
 }

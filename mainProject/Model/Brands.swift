@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import UIKit
 
-class Brands {
-    let name: String
-    let logo: String
+struct Brands {
+    var brandName: String
+    var brandImage: UIImage
     
-    init(name: String, logo: String) {
-        self.name = name
-        self.logo = logo
+    init(dictionary: [String: Any]) {
+        self.brandName = dictionary["brandName"] as? String ?? ""
+        self.brandImage = dictionary["brandImage"] as? UIImage ?? UIImage(named: "sample-logo")!
     }
 }

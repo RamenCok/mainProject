@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E0DE4D928F476A2007AC831 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0DE4D828F476A2007AC831 /* Service.swift */; };
+		0E0DE4DB28F47704007AC831 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0DE4DA28F47704007AC831 /* Product.swift */; };
 		0E7BCE3B28EB2FC8000820E0 /* AirForce.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0E7BCE3A28EB2FC8000820E0 /* AirForce.usdz */; };
 		0E7BCE4128EBF1C1000820E0 /* ProductDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7BCE4028EBF1C1000820E0 /* ProductDetailVC.swift */; };
 		0E7BCE4328EBF431000820E0 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7BCE4228EBF431000820E0 /* ARView.swift */; };
@@ -94,6 +96,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E0DE4D828F476A2007AC831 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		0E0DE4DA28F47704007AC831 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		0E7BCE3A28EB2FC8000820E0 /* AirForce.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = AirForce.usdz; sourceTree = "<group>"; };
 		0E7BCE4028EBF1C1000820E0 /* ProductDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailVC.swift; sourceTree = "<group>"; };
 		0E7BCE4228EBF431000820E0 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
@@ -313,6 +317,7 @@
 		ACFEBEBB28E7611000372297 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				0E0DE4D828F476A2007AC831 /* Service.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -550,6 +555,7 @@
 			isa = PBXGroup;
 			children = (
 				DBE905EA28EFDE9300B6E463 /* Brands.swift */,
+				0E0DE4DA28F47704007AC831 /* Product.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -715,6 +721,7 @@
 				DB58D06328E8059800A5C727 /* OnboardingViewContainer.swift in Sources */,
 				DB8BCD8F28EBD81A00630CA3 /* DismissTappablePresentationController.swift in Sources */,
 				DB8BCDAA28EBF0F200630CA3 /* BuyModalVM.swift in Sources */,
+				0E0DE4DB28F47704007AC831 /* Product.swift in Sources */,
 				DB9660E428EDD87C001D9A53 /* SetupBodyMeasurementModalVC.swift in Sources */,
 				DB8BCDA328EBDE0800630CA3 /* SizeCalculatorModalVC.swift in Sources */,
 				DB8BCD9F28EBDD8500630CA3 /* BuyModalVC.swift in Sources */,
@@ -753,6 +760,7 @@
 				ACFEBEA528E7603000372297 /* SceneDelegate.swift in Sources */,
 				ACFE713628ED6C1800A894D4 /* ReusableTextField.swift in Sources */,
 				0EAFD7E828EB06A30004E3DB /* RadioButtonView.swift in Sources */,
+				0E0DE4D928F476A2007AC831 /* Service.swift in Sources */,
 				0EAFD7E428EAE35B0004E3DB /* RadioButton.swift in Sources */,
 				0EB2125B28ED895E00FB1255 /* ProductModel.swift in Sources */,
 				0E7BCE4128EBF1C1000820E0 /* ProductDetailVC.swift in Sources */,

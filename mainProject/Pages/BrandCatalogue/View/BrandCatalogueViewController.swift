@@ -7,11 +7,13 @@
 
 import UIKit
 import SnapKit
-class BrandCatalogueViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate, UISearchControllerDelegate, UISearchBarDelegate {
-    
-    
-    
-    private var brandVM =  BrandCatalogueViewModel()
+import Combine
+
+class BrandCatalogueViewController: UIViewController, UIScrollViewDelegate, UISearchControllerDelegate, UISearchBarDelegate {
+
+    private var vm =  BrandCatalogueViewModel(service: MockService())
+    private var brandList: [Brands]!
+    private var cancellables: Set<AnyCancellable> = []
     
     private lazy var backgroundImage: UIImageView = {
         let imageView = UIImageView()
@@ -24,7 +26,6 @@ class BrandCatalogueViewController: UIViewController, UICollectionViewDelegate, 
        let searchBar = UISearchBar()
         return searchBar
     }()
-    
     
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -59,7 +60,6 @@ class BrandCatalogueViewController: UIViewController, UICollectionViewDelegate, 
         collectionView.showsVerticalScrollIndicator = false
         return collectionView
     }()
-
     
     private lazy var search: UISearchController = {
         let search = UISearchController(searchResultsController: nil)
@@ -90,9 +90,16 @@ class BrandCatalogueViewController: UIViewController, UICollectionViewDelegate, 
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("masuk")
-        
-       configureUI()
+        // Panggil dari vm
+        vm.brandList.sink { [weak self] data in
+            self?.brandList = data
+            self?.configureUI()
+        }.store(in: &cancellables)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        vm.fetchData()
     }
 
     
@@ -149,24 +156,13 @@ class BrandCatalogueViewController: UIViewController, UICollectionViewDelegate, 
         
 
     }
-    
    
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         return true
     }
     
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(brandVM.brandList.count)
-        return 30
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BrandCollectionViewCell.identifier, for: indexPath)
-        
-        cell.contentView.layer.masksToBounds = false
-        
-        return cell
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.row)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -215,8 +211,21 @@ class BrandCatalogueViewController: UIViewController, UICollectionViewDelegate, 
                 .scaledBy(x: scale, y: scale)
                 .translatedBy(x: xTranslation, y: yTranslation)
     }
- 
+}
+
+extension BrandCatalogueViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return brandList.count
+    }
     
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BrandCollectionViewCell.identifier, for: indexPath) as! BrandCollectionViewCell
+        cell.contentView.layer.masksToBounds = false
+        cell.brandName = brandList[indexPath.row].brandName
+        cell.brandImage = brandList[indexPath.row].brandImage
+        cell.configure()
+        return cell
+    }
 }
 
 private struct Const {
