@@ -20,7 +20,7 @@ class BrandCatalogueViewModel: ObservableObject {
     let brandList = PassthroughSubject<[Brands], Never>()
 
     func fetchData() {
-        service.getBrandList { [weak self] data in
+        service.getBrandList { [weak self] data, _ in
             self?.brandList.send(data)
         }
     }

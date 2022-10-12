@@ -8,14 +8,6 @@
 import Foundation
 import UIKit
 
-struct User {
-    
-    var name: String
-    var gender: Int
-    var profilePicture: String
-    var userBodyMeasurement: [Int: Int]
-}
-
 class BodyMeasurementVM: ObservableObject {
     
     func getdata(_ completion: @escaping (User)-> Void) {
@@ -35,11 +27,11 @@ class BodyMeasurementVM: ObservableObject {
             11: 0,
         ]
         
-        DispatchQueue.main.async {
-            completion(User(name: "Kevin",
-                            gender: 0,
-                            profilePicture: "Picture Path Here",
-                            userBodyMeasurement: bodymeasurement))
-        }
+//        DispatchQueue.main.async {
+//            completion(User(userName: "Kevin",
+//                            userGender: 0,
+//                            userProfilePicture: "Picture Path Here",
+//                            userBodyMeasurement: bodymeasurement))
+//        }
     }
 }
