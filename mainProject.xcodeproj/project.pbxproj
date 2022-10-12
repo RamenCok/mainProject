@@ -10,6 +10,7 @@
 		0E0DE4D928F476A2007AC831 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0DE4D828F476A2007AC831 /* Service.swift */; };
 		0E0DE4DB28F47704007AC831 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0DE4DA28F47704007AC831 /* Product.swift */; };
 		0E0DE4DD28F524D3007AC831 /* ReusableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0DE4DC28F524D2007AC831 /* ReusableLabel.swift */; };
+		0E4DA64C28F6773800FC6F4E /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 0E4DA64B28F6773800FC6F4E /* SDWebImage */; };
 		0E7BCE3B28EB2FC8000820E0 /* AirForce.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0E7BCE3A28EB2FC8000820E0 /* AirForce.usdz */; };
 		0E7BCE4128EBF1C1000820E0 /* ProductDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7BCE4028EBF1C1000820E0 /* ProductDetailVC.swift */; };
 		0E7BCE4328EBF431000820E0 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7BCE4228EBF431000820E0 /* ARView.swift */; };
@@ -208,6 +209,7 @@
 				ACFEBEFD28E7678900372297 /* FirebasePerformance in Frameworks */,
 				ACFEBEF528E7678900372297 /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
 				ACFEBF0328E7678900372297 /* FirebaseStorage in Frameworks */,
+				0E4DA64C28F6773800FC6F4E /* SDWebImage in Frameworks */,
 				ACFEBEE728E7678900372297 /* FirebaseDynamicLinks in Frameworks */,
 				ACFEBEEB28E7678900372297 /* FirebaseFirestoreCombine-Community in Frameworks */,
 				ACFEBEFB28E7678900372297 /* FirebaseMessaging in Frameworks */,
@@ -733,6 +735,7 @@
 				ACFEBF0428E7678900372297 /* FirebaseStorageCombine-Community */,
 				ACB588AA28E7F08C0025D230 /* SnapKit */,
 				AC6F477F28EDEADF00AAF1F6 /* IQKeyboardManagerSwift */,
+				0E4DA64B28F6773800FC6F4E /* SDWebImage */,
 			);
 			productName = mainProject;
 			productReference = ACFEBE9F28E7603000372297 /* mainProject.app */;
@@ -766,6 +769,7 @@
 				ACFEBECF28E7678900372297 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				ACB588A928E7F08C0025D230 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				AC6F477E28EDEADF00AAF1F6 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				0E4DA64A28F6773800FC6F4E /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = ACFEBEA028E7603000372297 /* Products */;
 			projectDirPath = "";
@@ -1082,6 +1086,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0E4DA64A28F6773800FC6F4E /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		AC6F477E28EDEADF00AAF1F6 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
@@ -1109,6 +1121,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0E4DA64B28F6773800FC6F4E /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0E4DA64A28F6773800FC6F4E /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
 		AC6F477F28EDEADF00AAF1F6 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AC6F477E28EDEADF00AAF1F6 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;

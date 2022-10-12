@@ -10,10 +10,10 @@ import UIKit
 
 struct Brands {
     var brandName: String
-    var brandImage: UIImage
+    var brandImage: String
     
     init(dictionary: [String: Any]) {
         self.brandName = dictionary["brandName"] as? String ?? ""
-        self.brandImage = dictionary["brandImage"] as? UIImage ?? UIImage(named: "sample-logo")!
+        self.brandImage = dictionary["brandImage"] as? String ?? ""
     }
 }

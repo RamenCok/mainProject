@@ -10,12 +10,11 @@ import Firebase
 import FirebaseStorage
 
 protocol Servicing {
-    func getData(_ completion: @escaping (Product)-> Void)
-    func getBrandList(_ completion: @escaping ([Brands])-> Void)
-    func getBrandImage(brandImage: String, completion: @escaping (UIImage)-> Void)
+    func getBrandList(_ completion: @escaping ([Brands],Error?)-> Void)
+    func getBrandImage(path: String, completion: @escaping (UIImage)-> Void)
 }
 
-struct MockService: Servicing {
+struct MockService {
     func getData(_ completion: @escaping (Product)-> Void) {
         //mock implementation
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -27,48 +26,35 @@ struct MockService: Servicing {
         }
     }
     
-    func getBrandList(_ completion: @escaping ([Brands])-> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            
-            getBrandImage(brandImage: "sample-logo") { image in
-                let dict = ["H&M": image, "Lacoste": image, "Tommy Hilfiger": image]
-                completion([
-                    Brands(dictionary: dict)
-                ])
-            }
-        }
-    }
-    
-    func getBrandImage(brandImage: String, completion: @escaping (UIImage)-> Void) {
-        if let image = UIImage(named: brandImage) {
-            completion(image) 
-        }
-    }
 }
 
 // Tes firebase asli disini
-struct Service {
+struct Service: Servicing {
+    
     func getBrandList(_ completion: @escaping ([Brands],Error?)-> Void) {
         var array = [Brands]()
         Firestore.firestore().collection("brand").getDocuments { snapshot, error in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                guard let snapshot = snapshot else {return}
-                for document in snapshot.documents {
-                    let data = document.data()
-                    let data2 = Brands(dictionary: data)
-                    array.append(data2)
-                }
-                print(array)
-                completion(array, nil)
+            guard let snapshot = snapshot else {return}
+            for document in snapshot.documents {
+                let data = document.data()
+                let dict = Brands(dictionary: data)
+                array.append(dict)
             }
+            completion(array, error)
         }
     }
     
-    func getBrandImage(brandImage: String, completion: @escaping (UIImage)-> Void) {
-        if let image = UIImage(named: brandImage) {
-            completion(image)
+    func getBrandImage(path: String, completion: @escaping (UIImage)-> Void) {
+        let ref = Storage.storage().reference(withPath: path)
+        ref.getData(maxSize: (3 * 1024 * 1024)) { data, error in
+            if let _error = error {
+                print(_error)
+            } else {
+                if let _data = data {
+                    let image: UIImage! = UIImage(data: _data)
+                    completion(image)
+                }
+            }
         }
     }
 }

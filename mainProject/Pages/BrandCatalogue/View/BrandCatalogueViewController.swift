@@ -10,10 +10,14 @@ import SnapKit
 import Combine
 
 class BrandCatalogueViewController: UIViewController {
-
-    private var vm =  BrandCatalogueViewModel(service: MockService())
-    private var brandList: [Brands]!
+    
+    internal var vm =  BrandCatalogueViewModel(service: Service())
+    internal var brandList: [Brands]!
+    internal var brandImage: UIImage!
     private var cancellables: Set<AnyCancellable> = []
+    
+    internal var searching = false
+    internal var searchedBrand = [Brands]()
     
     private lazy var backgroundImage: UIImageView = {
         let imageView = UIImageView()
@@ -37,27 +41,28 @@ class BrandCatalogueViewController: UIViewController {
     }()
     
     internal lazy var profileButton: UIButton = {
-       
+        
         let button = UIButton(type: .custom)
-//        button.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        //        button.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         button.setImage(UIImage(named: "profile-icon"), for: .normal)
-//        button.tintColor = .gray
-//        button.clipsToBounds = true
-//        button.layer.cornerRadius = 0.5 * button.bounds.size.width
-
+        //        button.tintColor = .gray
+        //        button.clipsToBounds = true
+        //        button.layer.cornerRadius = 0.5 * button.bounds.size.width
+        
         return button
     }()
     
-    private lazy var collectionView: UICollectionView = {
+    internal lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
-//        collectionView.backgroundView = backgroundImage
+        //        collectionView.backgroundView = backgroundImage
         
         collectionView.register(BrandCollectionViewCell.self, forCellWithReuseIdentifier: BrandCollectionViewCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.contentInset = UIEdgeInsets(top: 16, left: 20, bottom: 0, right: 20)
         collectionView.showsVerticalScrollIndicator = false
+        collectionView.delaysContentTouches = false
         return collectionView
     }()
     
@@ -68,14 +73,14 @@ class BrandCatalogueViewController: UIViewController {
         search.searchBar.tintColor = .primaryColor
         search.searchBar.searchTextField.font = UIFont.bodyText()
         search.searchBar.searchTextField.backgroundColor = .white
-
+        
         if let textfield = search.searchBar.value(forKey: "searchField") as? UITextField {
             //textfield.textColor = // Set text color
             if let backgroundview = textfield.subviews.first {
-
+                
                 // Background color
                 backgroundview.backgroundColor = UIColor.white
-
+                
                 // Rounded corner
                 backgroundview.layer.cornerRadius = 10
                 backgroundview.clipsToBounds = true
@@ -89,19 +94,22 @@ class BrandCatalogueViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        configureUI()
         // Panggil dari vm
-        vm.brandList.sink { [weak self] data in
+        vm.brandList.sink { completion in
+            print("DEBUG: \(completion)")
+        } receiveValue: { [weak self] data in
             self?.brandList = data
-            print(self?.brandList)
-            self?.configureUI()
+            self?.configureCollectionView()
+            self?.collectionView.reloadData()
         }.store(in: &cancellables)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        vm.fetchData()
+        vm.fetchBrandList()
     }
-
+    
     // MARK: - Selectors
     
     
@@ -109,19 +117,13 @@ class BrandCatalogueViewController: UIViewController {
     func configureUI() {
         
         view.backgroundColor = .white
-
+        
         searchBar.placeholder = "Your placeholder"
         searchBar.frame = CGRect(x: 0, y: 0, width: 200, height: 64)
         
         self.navigationItem.searchController = search
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.blackTexts, NSAttributedString.Key.font: UIFont.heading_1()]
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.modalTitle()]
-        
-        view.addSubview(collectionView)
-
-        collectionView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
         
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .always
@@ -130,26 +132,36 @@ class BrandCatalogueViewController: UIViewController {
         self.title = "Brands"
         self.navigationController?.title = "Brands"
         
-//        let rightBarBtn = UIBarButtonItem(customView: profileButton)
+        //        let rightBarBtn = UIBarButtonItem(customView: profileButton)
         
         guard let navigationBar = self.navigationController?.navigationBar else { return }
-            navigationBar.addSubview(profileButton)
-            profileButton.layer.cornerRadius = Const.ImageSizeForLargeState / 2
-            profileButton.clipsToBounds = true
-            profileButton.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                profileButton.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -Const.ImageRightMargin),
-                profileButton.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: -Const.ImageBottomMarginForLargeState),
-                profileButton.heightAnchor.constraint(equalToConstant: Const.ImageSizeForLargeState),
-                profileButton.widthAnchor.constraint(equalTo: profileButton.heightAnchor)
-                ])
-//        rightBarBtn.tintColor = .greyColor
-//
-//
-//        let currWidth = rightBarBtn.customView?.widthAnchor.constraint(equalToConstant: 24)
-//        currWidth?.isActive = true
-//        let currHeight = rightBarBtn.customView?.heightAnchor.constraint(equalToConstant: 24)
-//        currHeight?.isActive = true
-//        navigationItem.rightBarButtonItem = rightBarBtn
+        
+        profileButton.layer.cornerRadius = Const.ImageSizeForLargeState / 2
+        profileButton.clipsToBounds = true
+        profileButton.translatesAutoresizingMaskIntoConstraints = false
+        navigationBar.addSubview(profileButton)
+        NSLayoutConstraint.activate([
+            profileButton.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -Const.ImageRightMargin),
+            profileButton.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: -Const.ImageBottomMarginForLargeState),
+            profileButton.heightAnchor.constraint(equalToConstant: Const.ImageSizeForLargeState),
+            profileButton.widthAnchor.constraint(equalTo: profileButton.heightAnchor)
+        ])
+        
+        //        rightBarBtn.tintColor = .greyColor
+        //
+        //
+        //        let currWidth = rightBarBtn.customView?.widthAnchor.constraint(equalToConstant: 24)
+        //        currWidth?.isActive = true
+        //        let currHeight = rightBarBtn.customView?.heightAnchor.constraint(equalToConstant: 24)
+        //        currHeight?.isActive = true
+        //        navigationItem.rightBarButtonItem = rightBarBtn
+    }
+    
+    func configureCollectionView() {
+        
+        view.addSubview(collectionView)
+        collectionView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
 }
