@@ -17,7 +17,8 @@ protocol Servicing {
 protocol ProfileServices {
     
     func getUser(_ completion: @escaping (User, Error?) -> Void)
-    func updateUser(name: String, gender: String, completion: @escaping (Error?) -> Void)
+    func updateUser(name: String, gender: String, imageData: UIImage, completion: @escaping (Error?) -> Void)
+    
 }
 
 //struct MockService: Servicing {
@@ -54,7 +55,7 @@ protocol ProfileServices {
 
 struct Service: ProfileServices {
     
-    let uid = "9TvOS4pGCvPd6z10TIXazb4a6ZQ2"
+    let uid = "TONNJJA7N5aMZM63kZX6YhB7eSp1"
     
     func getUser(_ completion: @escaping (User, Error?) -> Void) {
         
@@ -72,13 +73,28 @@ struct Service: ProfileServices {
         }
     }
     
-    func updateUser(name: String, gender: String, completion: @escaping (Error?) -> Void) {
+    func updateUser(name: String, gender: String, imageData: UIImage, completion: @escaping (Error?) -> Void) {
         
         let reference = Firestore.firestore().collection("users").document(uid)
+        let storage = Storage.storage().reference().child("ProfilePicture/\(uid)")
         
-        reference.updateData([
-            "name": name,
-            "gender": gender
-        ])
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpg"
+        
+        guard let data = imageData.jpegData(compressionQuality: 1.0) else { return }
+        
+        storage.putData(data, metadata: metaData) { _ in
+            
+            storage.downloadURL { url, error in
+                
+                guard let profilePictureURL = url?.absoluteString else { return }
+                
+                reference.updateData([
+                    "name": name,
+                    "gender": gender,
+                    "userProfilePicture": profilePictureURL
+                ])
+            }
+        }
     }
 }

@@ -196,7 +196,8 @@ class ProfileViewController: UIViewController {
             
             self.vm.updateUser(
                 name: self.nameTF.text ?? "",
-                gender: self.genderLabel.text ?? ""
+                gender: self.genderLabel.text ?? "",
+                imageData: self.profileImage.image ?? UIImage()
             )
         }
     }

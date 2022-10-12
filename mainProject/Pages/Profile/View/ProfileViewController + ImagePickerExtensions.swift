@@ -30,10 +30,6 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         
         profileImage.image = image
         profileImage.contentMode = .scaleAspectFill
-        
-        var data = NSData()
-        data = profileImage.image!.jpegData(compressionQuality: 1.0)! as NSData
-        print("DEBUG: \(data)")
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import UIKit
 
 class ProfileViewModel: ObservableObject {
     
@@ -23,8 +24,8 @@ class ProfileViewModel: ObservableObject {
         }
     }
     
-    func updateUser(name: String, gender: String) {
-        service.updateUser(name: name, gender: gender) { error in
+    func updateUser(name: String, gender: String, imageData: UIImage) {
+        service.updateUser(name: name, gender: gender, imageData: imageData) { error in
             print("DEBUG: \(error)")
         }
     }
