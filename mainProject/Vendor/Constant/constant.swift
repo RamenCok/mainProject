@@ -10,3 +10,7 @@ import FirebaseAuth
 
 let FR_REF = Firestore.firestore()
 let FR_REF_USER = FR_REF.collection("users")
+
+let AUTH_REF = Auth.auth()
+let CURRENT_USER = AUTH_REF.currentUser
+

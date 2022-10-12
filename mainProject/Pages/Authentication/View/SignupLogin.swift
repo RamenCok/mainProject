@@ -315,13 +315,13 @@ extension SignupLogin: ASAuthorizationControllerDelegate, ASAuthorizationControl
                 options.direction = .toRight
                 options.duration = 0.4
                 options.style = .easeIn
-                if let user = AuthDataResult?.user {
-                    print("Nice you're now signed in as \(user.uid), email: \(user.email ?? "unknown email")")
+                if let users = AuthDataResult?.user {
+                    print("Nice you're now signed in as \(users.uid), email: \(users.email ?? "unknown email")")
                     
                     let user: [String: Any] = [
-                        "name" : user.displayName,
-                        "email" : user.email,
-                        "uid": user.uid,
+                        "name" : users.displayName,
+                        "email" : users.email,
+                        "uid": users.uid,
                         "gender": ""
                     ]
                     AuthServices.shared.checkUserData(uid: user["uid"] as! String) { document, error in
@@ -329,7 +329,7 @@ extension SignupLogin: ASAuthorizationControllerDelegate, ASAuthorizationControl
                             let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
 
                             if document.data()!["gender"] == nil || document.data()!["gender"] as! String == "" {
-                                wnd?.set(rootViewController: PersonalizeViewController(), options: options)
+                                wnd?.set(rootViewController: UINavigationController(rootViewController: PersonalizeViewController()) , options: options)
                             } else {
                                 wnd?.set(rootViewController: ProfileViewController(), options: options)
                             }

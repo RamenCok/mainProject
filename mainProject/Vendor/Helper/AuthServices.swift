@@ -22,18 +22,25 @@ struct AuthServices {
     
     func anonymousAuth() {
         Auth.auth().signInAnonymously { authResult, error in
-            print(authResult?.user.uid)
+            print(authResult?.user.uid as Any)
         }
     }
     
+    func registerWithEmail(email: String, password: String, completionFunc: @escaping (AuthDataResult?, Error?) -> Void) {
+        AUTH_REF.createUser(withEmail: email, password: password, completion: completionFunc)
+    }
+    
+    func loginWithEmail(email: String, password: String, completion: @escaping (AuthDataResult?, Error?) -> Void) {
+        
+       AUTH_REF.signIn(withEmail: email, password: password, completion: completion)
+    }
+    
     func checkUserData(uid: String, completionFunc: @escaping (DocumentSnapshot?, Error?) -> Void){
-        
         FR_REF_USER.document(uid).getDocument(completion: completionFunc)
-        
     }
     
     func writeUserData(credentials: Dictionary<String, Any>, completionFunc: @escaping () -> Void){
-        Firestore.firestore().collection("users").document(credentials["uid"] as! String).setData(credentials){err in
+        FR_REF_USER.document(credentials["uid"] as! String).setData(credentials){err in
             if let err = err {
                 print(err)
             } else {

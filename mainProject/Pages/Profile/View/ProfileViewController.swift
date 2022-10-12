@@ -187,7 +187,7 @@ class ProfileViewController: UIViewController {
             GIDSignIn.sharedInstance.disconnect()
 
             let loginVC = SignupLogin()
-            view.window?.rootViewController = loginVC
+            view.window?.rootViewController = UINavigationController(rootViewController: loginVC) 
 //            if var rootViewController = view.window?.rootViewController { // From iOS 13
 //                rootViewController = loginVC
 //                print("logout")

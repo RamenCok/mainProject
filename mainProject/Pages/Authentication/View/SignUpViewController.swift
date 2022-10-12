@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UIWindowTransitions
 
 class SignUpViewController: UIViewController {
 
@@ -32,7 +33,7 @@ class SignUpViewController: UIViewController {
     }()
     
     private lazy var emailError: ReusableLabel = {
-        let error = ReusableLabel(style: .caption, textString: "Email not registered")
+        let error = ReusableLabel(style: .caption, textString: "Email has been registered")
         error.textColor = .redColor
         return error
     }()
@@ -73,7 +74,37 @@ class SignUpViewController: UIViewController {
     }()
     
     @objc func handleSignUp(){
-        navigationController?.pushViewController(LoginViewController(), animated: true)
+        guard let email = emailTextField.text else {return}
+        guard let password = passwordTextField.text else {return}
+        
+        AuthServices.shared.registerWithEmail(email: email, password: password) { result, error in
+            if let error = error {
+                print(error.localizedDescription)
+                if error.localizedDescription ==  "The email address is already in use by another account." {
+                    self.emailError.isHidden = false
+                }
+            }
+            
+            if let user = result?.user {
+                let userInfo: [String: Any] = [
+                    "name" : "",
+                    "email" : user.email,
+                    "uid": user.uid,
+                    "gender": ""
+                ]
+                
+                AuthServices.shared.writeUserData(credentials: userInfo) {
+                    let wnd = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+                    var options = UIWindow.TransitionOptions()
+                    options.direction = .toRight
+                    options.duration = 0.4
+                    options.style = .easeIn
+                    
+                    wnd?.set(rootViewController: PersonalizeViewController(), options: options)
+                }
+            }
+        }
+        
     }
     
     // MARK: - Lifecycle

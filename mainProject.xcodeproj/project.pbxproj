@@ -51,6 +51,7 @@
 		AC8366C328F6A585000EBF5D /* UIWindowTransitions in Frameworks */ = {isa = PBXBuildFile; productRef = AC8366C228F6A585000EBF5D /* UIWindowTransitions */; };
 		AC8366C628F6B6B7000EBF5D /* constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8366C528F6B6B7000EBF5D /* constant.swift */; };
 		AC8366C928F6CB63000EBF5D /* PersonalizeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8366C828F6CB63000EBF5D /* PersonalizeViewModel.swift */; };
+		AC8366CB28F6D009000EBF5D /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8366CA28F6D009000EBF5D /* UserService.swift */; };
 		AC8608A328F52DC7002B0D3F /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = AC8608A228F52DC7002B0D3F /* GoogleSignIn */; };
 		AC8608A528F52DC7002B0D3F /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC8608A428F52DC7002B0D3F /* GoogleSignInSwift */; };
 		AC8608A928F53B24002B0D3F /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8608A828F53B24002B0D3F /* AuthServices.swift */; };
@@ -116,6 +117,7 @@
 		AC8366BD28F68076000EBF5D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AC8366C528F6B6B7000EBF5D /* constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constant.swift; sourceTree = "<group>"; };
 		AC8366C828F6CB63000EBF5D /* PersonalizeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizeViewModel.swift; sourceTree = "<group>"; };
+		AC8366CA28F6D009000EBF5D /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		AC8608A828F53B24002B0D3F /* AuthServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
 		AC8608AA28F53EB1002B0D3F /* mainProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mainProject.entitlements; sourceTree = "<group>"; };
 		ACB588A328E7E66F0025D230 /* ReusableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableLabel.swift; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 			isa = PBXGroup;
 			children = (
 				AC8608A828F53B24002B0D3F /* AuthServices.swift */,
+				AC8366CA28F6D009000EBF5D /* UserService.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -777,6 +780,7 @@
 				DBA35F2428EDB0D4009D6917 /* ProfileViewController + ImagePickerExtensions.swift in Sources */,
 				DBA2FCD028ED365900FDC148 /* ProfileViewController.swift in Sources */,
 				DBE9060228EFDF5B00B6E463 /* BrandCollectionViewCell.swift in Sources */,
+				AC8366CB28F6D009000EBF5D /* UserService.swift in Sources */,
 				DB19AF2228ED6515003E6F61 /* ReusableProfileButtonView.swift in Sources */,
 				0E7BCE4328EBF431000820E0 /* ARView.swift in Sources */,
 				ACFEBEA328E7603000372297 /* AppDelegate.swift in Sources */,
