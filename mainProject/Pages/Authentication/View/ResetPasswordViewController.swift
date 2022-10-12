@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ResetPasswordViewController: UIViewController {
 
@@ -118,24 +119,40 @@ class ResetPasswordViewController: UIViewController {
         
     }
     
+    @objc func handleCancel() {
+        print("Cancel")
+        navigationController?.popViewController(animated: true)
+    }
+    
     // MARK: - Helpers
     func configureUI() {
         view.backgroundColor = .systemBackground
         
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithTransparentBackground()
+        UINavigationBar.appearance().standardAppearance = appearance
+        
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .always
-        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.whiteColor, NSAttributedString.Key.font: UIFont.heading_1()]
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.white,
+            NSAttributedString.Key.font: UIFont.heading_1()
+        ]
         
-        self.navigationItem.hidesSearchBarWhenScrolling = false
         self.title = "Reset Password"
         self.navigationController?.title = "Reset Password"
         
+        let leftBarBtn = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
+        let navItemAttribute = [
+            NSAttributedString.Key.font: UIFont.bodyText()
+        ]
+        leftBarBtn.setTitleTextAttributes(navItemAttribute, for: .normal)
+        leftBarBtn.tintColor = .whiteColor
+        navigationItem.leftBarButtonItem = leftBarBtn
+        
         view.addSubview(backgroundImage)
         backgroundImage.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.equalToSuperview()
-            make.right.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
         }
         
         view.addSubview(oldPasswordTextField)

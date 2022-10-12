@@ -22,7 +22,7 @@ class SignUpModalVC: UIViewController {
     }()
     
     private lazy var signUpButton: ReusableButton = {
-        let button = ReusableButton(style: .primary, buttonText: "Sign Up", selector: #selector(handleDismiss), target: self)
+        let button = ReusableButton(style: .primary, buttonText: "Sign Up", selector: #selector(handleSignUpNavigationButton), target: self)
         return button
     }()
     
@@ -53,8 +53,12 @@ class SignUpModalVC: UIViewController {
     }
     
     // MARK: - Selectors
+    @objc func handleSignUpNavigationButton() {
+        
+        self.dismiss(animated: true)
+    }
+    
     @objc func handleDismiss() {
-        print("BYE FELICIA")
         self.dismiss(animated: true)
     }
     

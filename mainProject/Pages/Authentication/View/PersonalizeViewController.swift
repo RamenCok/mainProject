@@ -78,6 +78,12 @@ class PersonalizeViewController: UIViewController {
     // MARK: - Selectors
     @objc func handleSave(){
         
+        let vc = BrandCatalogueViewController()
+        let navController = UINavigationController(rootViewController: vc)
+        
+        navController.modalPresentationStyle = .fullScreen
+        navController.modalTransitionStyle = .coverVertical
+        self.present(navController, animated: true)
     }
     
     // MARK: - Helpers

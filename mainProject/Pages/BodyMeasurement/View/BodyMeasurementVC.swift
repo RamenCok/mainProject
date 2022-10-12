@@ -49,11 +49,16 @@ class BodyMeasurementVC: UIViewController {
     private var vm =  BodyMeasurementVM()
     var user: User!
     
+    var modalSize: Double?
+    var presentedVC: String?
+    
     //MARK: Lifecycle
     override func viewDidLoad() {
         
         super.viewDidLoad()
         configureNavigation()
+        
+        navigationItem.largeTitleDisplayMode = .always
         
         vm.getdata { [weak self] data in
             self?.user = data
@@ -64,7 +69,14 @@ class BodyMeasurementVC: UIViewController {
     // MARK: - Selectors
     @objc func handleQuestionMarkButton() {
         
-        print("Privacy gundulmu!")
+        let slideVC = SignUpModalVC()
+        
+        presentedVC = slideVC.modalType
+        modalSize = slideVC.modalSize
+        slideVC.modalPresentationStyle = .custom
+        slideVC.transitioningDelegate = self
+        
+        self.present(slideVC, animated: true, completion: nil)
     }
     
     //MARK: - Helpers
@@ -72,19 +84,10 @@ class BodyMeasurementVC: UIViewController {
 
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.blackTexts, NSAttributedString.Key.font: UIFont.heading_1()]
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.modalTitle()]
-
-        self.navigationController?.navigationBar.prefersLargeTitles = true
         self.title = "Body Measurement"
 
         let rightBarBtn = UIBarButtonItem(image: UIImage(systemName: "questionmark.circle"), style: .plain, target: self, action: #selector(handleQuestionMarkButton))
-        rightBarBtn.tintColor = .greyColor
-
-        let currWidth = rightBarBtn.customView?.widthAnchor.constraint(equalToConstant: 24)
-        currWidth?.isActive = true
-        
-        let currHeight = rightBarBtn.customView?.heightAnchor.constraint(equalToConstant: 24)
-        currHeight?.isActive = true
-        
+        rightBarBtn.tintColor = .primaryColor
         navigationItem.rightBarButtonItem = rightBarBtn
     }
     
@@ -95,6 +98,26 @@ class BodyMeasurementVC: UIViewController {
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+    }
+}
+
+extension BodyMeasurementVC: UIViewControllerTransitioningDelegate {
+    
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        
+        if presentedVC == "Tappable" {
+            return DismissTappablePresentationController(
+                modalTransitionSize: (view.frame.height/self.modalSize!)/view.frame.height,
+                presentedViewController: presented,
+                presenting: presenting
+            )
+        } else {
+            return NotTappablePresentationController(
+                modalTransitionSize: (view.frame.height/self.modalSize!)/view.frame.height,
+                presentedViewController: presented,
+                presenting: presenting
+            )
         }
     }
 }

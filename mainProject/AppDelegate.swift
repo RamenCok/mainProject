@@ -20,6 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
+        let navigation = UINavigationController()
+        navigation.navigationBar.topItem?.backButtonDisplayMode = .minimal
+        
         return true
     }
 

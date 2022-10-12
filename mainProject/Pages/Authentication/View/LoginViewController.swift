@@ -17,7 +17,7 @@ class LoginViewController: UIViewController {
     }()
     
     private lazy var pinkTitle: UIStackView = {
-        let sview = ReusableCapsuleTitle(title: "Login to your account")
+        let sview = ReusableCapsuleTitle(title: "Login to your\naccount")
         sview.spacing = view.frame.height * 0.019
         return sview
     }()
@@ -62,11 +62,16 @@ class LoginViewController: UIViewController {
             passwordTextField.updateImage(newImage: "eye")
             showPassword = false
         }
-        
     }
     
     @objc func handleLogin(){
-        navigationController?.pushViewController(PersonalizeViewController(), animated: true)
+        
+        let vc = BrandCatalogueViewController()
+        let navController = UINavigationController(rootViewController: vc)
+        
+        navController.modalPresentationStyle = .fullScreen
+        navController.modalTransitionStyle = .coverVertical
+        self.present(navController, animated: true)
     }
     
     // MARK: - Helpers

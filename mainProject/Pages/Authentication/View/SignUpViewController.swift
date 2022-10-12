@@ -21,7 +21,7 @@ class SignUpViewController: UIViewController {
     }()
     
     private lazy var pinkTitle: UIStackView = {
-        let sview = ReusableCapsuleTitle(title: "Create Your Account")
+        let sview = ReusableCapsuleTitle(title: "Create Your\nAccount")
         sview.spacing = view.frame.height * 0.019
         return sview
     }()
@@ -73,7 +73,7 @@ class SignUpViewController: UIViewController {
     }()
     
     @objc func handleSignUp(){
-        navigationController?.pushViewController(LoginViewController(), animated: true)
+        navigationController?.pushViewController(PersonalizeViewController(), animated: true)
     }
     
     // MARK: - Lifecycle
