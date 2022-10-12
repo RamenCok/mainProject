@@ -7,6 +7,8 @@
 
 import UIKit
 import SnapKit
+import FirebaseAuth
+import GoogleSignIn
 
 class ProfileViewController: UIViewController {
 
@@ -180,6 +182,24 @@ class ProfileViewController: UIViewController {
     }
     
     @objc func handleLogOutButton() {
+        do {
+            try Auth.auth().signOut()
+            GIDSignIn.sharedInstance.disconnect()
+
+            let loginVC = SignupLogin()
+            view.window?.rootViewController = loginVC
+//            if var rootViewController = view.window?.rootViewController { // From iOS 13
+//                rootViewController = loginVC
+//                print("logout")
+//            } else if var rootViewController = UIApplication.shared.windows.first?.rootViewController {
+//                    rootViewController = loginVC
+//                print("logout")
+//            }
+
+        } catch {
+            print ("Error signing out: %@", error)
+        }
+        
         print("Log out")
     }
     

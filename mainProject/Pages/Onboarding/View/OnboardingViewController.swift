@@ -82,7 +82,7 @@ class OnboardingViewController: UIPageViewController {
     @objc func handleNavigationButton() {
         AuthServices.shared.anonymousAuth()
 //        print("Next Screen")
-//        navigationController?.pushViewController(SignupLogin(), animated: true)
+        navigationController?.pushViewController(SignupLogin(), animated: true)
     }
     
     @objc func handleSkipButton() {

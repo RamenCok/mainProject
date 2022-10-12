@@ -47,6 +47,10 @@
 		AC6F478028EDEADF00AAF1F6 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC6F477F28EDEADF00AAF1F6 /* IQKeyboardManagerSwift */; };
 		AC6F478428EE982F00AAF1F6 /* ReusableTextFieldAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */; };
 		AC6F478628EE9A5100AAF1F6 /* ReusablePasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478528EE9A5100AAF1F6 /* ReusablePasswordTextField.swift */; };
+		AC8366BE28F68076000EBF5D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8366BD28F68076000EBF5D /* User.swift */; };
+		AC8366C328F6A585000EBF5D /* UIWindowTransitions in Frameworks */ = {isa = PBXBuildFile; productRef = AC8366C228F6A585000EBF5D /* UIWindowTransitions */; };
+		AC8366C628F6B6B7000EBF5D /* constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8366C528F6B6B7000EBF5D /* constant.swift */; };
+		AC8366C928F6CB63000EBF5D /* PersonalizeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8366C828F6CB63000EBF5D /* PersonalizeViewModel.swift */; };
 		AC8608A328F52DC7002B0D3F /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = AC8608A228F52DC7002B0D3F /* GoogleSignIn */; };
 		AC8608A528F52DC7002B0D3F /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC8608A428F52DC7002B0D3F /* GoogleSignInSwift */; };
 		AC8608A928F53B24002B0D3F /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8608A828F53B24002B0D3F /* AuthServices.swift */; };
@@ -109,6 +113,9 @@
 		0EB2125E28EDE33200FB1255 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
 		AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTextFieldAuth.swift; sourceTree = "<group>"; };
 		AC6F478528EE9A5100AAF1F6 /* ReusablePasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePasswordTextField.swift; sourceTree = "<group>"; };
+		AC8366BD28F68076000EBF5D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AC8366C528F6B6B7000EBF5D /* constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constant.swift; sourceTree = "<group>"; };
+		AC8366C828F6CB63000EBF5D /* PersonalizeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizeViewModel.swift; sourceTree = "<group>"; };
 		AC8608A828F53B24002B0D3F /* AuthServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
 		AC8608AA28F53EB1002B0D3F /* mainProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mainProject.entitlements; sourceTree = "<group>"; };
 		ACB588A328E7E66F0025D230 /* ReusableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableLabel.swift; sourceTree = "<group>"; };
@@ -170,6 +177,7 @@
 				AC30934E28F51F5C00766787 /* FirebaseFunctions in Frameworks */,
 				AC8608A328F52DC7002B0D3F /* GoogleSignIn in Frameworks */,
 				AC6F478028EDEADF00AAF1F6 /* IQKeyboardManagerSwift in Frameworks */,
+				AC8366C328F6A585000EBF5D /* UIWindowTransitions in Frameworks */,
 				AC30933028F51F5C00766787 /* FirebaseAnalytics in Frameworks */,
 				AC30933C28F51F5C00766787 /* FirebaseAuth in Frameworks */,
 				AC30934628F51F5C00766787 /* FirebaseDynamicLinks in Frameworks */,
@@ -231,6 +239,22 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		AC8366C428F6B6AD000EBF5D /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				AC8366C528F6B6B7000EBF5D /* constant.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		AC8366C728F6CB22000EBF5D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AC8366C828F6CB63000EBF5D /* PersonalizeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		ACB588BC28EA95EB0025D230 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,6 +312,7 @@
 		ACFEBEB628E7611000372297 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				AC8366C428F6B6AD000EBF5D /* Constant */,
 				ACFEBEBD28E7611D00372297 /* Fonts */,
 				ACB588BC28EA95EB0025D230 /* Extensions */,
 				ACFEBEB828E7611000372297 /* Utilities */,
@@ -551,6 +576,7 @@
 			isa = PBXGroup;
 			children = (
 				DBE905EA28EFDE9300B6E463 /* Brands.swift */,
+				AC8366BD28F68076000EBF5D /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -558,6 +584,7 @@
 		DBE905EC28EFDF4F00B6E463 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				AC8366C728F6CB22000EBF5D /* ViewModel */,
 				DBE905ED28EFDF4F00B6E463 /* View */,
 			);
 			path = Authentication;
@@ -649,6 +676,7 @@
 				AC30936328F51F5D00766787 /* FirebaseStorageCombine-Community */,
 				AC8608A228F52DC7002B0D3F /* GoogleSignIn */,
 				AC8608A428F52DC7002B0D3F /* GoogleSignInSwift */,
+				AC8366C228F6A585000EBF5D /* UIWindowTransitions */,
 			);
 			productName = mainProject;
 			productReference = ACFEBE9F28E7603000372297 /* mainProject.app */;
@@ -683,6 +711,7 @@
 				AC6F477E28EDEADF00AAF1F6 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				AC30932E28F51F5C00766787 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				AC8608A128F52DC7002B0D3F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				AC8366C128F6A585000EBF5D /* XCRemoteSwiftPackageReference "UIWindowTransitions" */,
 			);
 			productRefGroup = ACFEBEA028E7603000372297 /* Products */;
 			projectDirPath = "";
@@ -730,9 +759,11 @@
 				ACB588A628E7E6D80025D230 /* Extensions.swift in Sources */,
 				DBEC708F28E93617005D0974 /* OnboardingViewController + Extensions.swift in Sources */,
 				DB58D06428E8059800A5C727 /* OnboardingViewController.swift in Sources */,
+				AC8366C928F6CB63000EBF5D /* PersonalizeViewModel.swift in Sources */,
 				AC6F478628EE9A5100AAF1F6 /* ReusablePasswordTextField.swift in Sources */,
 				DBE905EB28EFDE9300B6E463 /* Brands.swift in Sources */,
 				ACFE712F28ED207900A894D4 /* ReusablePinkCapsule.swift in Sources */,
+				AC8366C628F6B6B7000EBF5D /* constant.swift in Sources */,
 				ACFE713428ED405C00A894D4 /* ReusableCapsuleTitle.swift in Sources */,
 				DBE905F528EFDF4F00B6E463 /* SignupLogin.swift in Sources */,
 				0EB2125D28EDDF4700FB1255 /* HeadlineView.swift in Sources */,
@@ -757,6 +788,7 @@
 				AC6F478428EE982F00AAF1F6 /* ReusableTextFieldAuth.swift in Sources */,
 				ACFEBEA528E7603000372297 /* SceneDelegate.swift in Sources */,
 				ACFE713628ED6C1800A894D4 /* ReusableTextField.swift in Sources */,
+				AC8366BE28F68076000EBF5D /* User.swift in Sources */,
 				0EAFD7E828EB06A30004E3DB /* RadioButtonView.swift in Sources */,
 				0EAFD7E428EAE35B0004E3DB /* RadioButton.swift in Sources */,
 				0EB2125B28ED895E00FB1255 /* ProductModel.swift in Sources */,
@@ -1005,6 +1037,14 @@
 				kind = branch;
 			};
 		};
+		AC8366C128F6A585000EBF5D /* XCRemoteSwiftPackageReference "UIWindowTransitions" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/malcommac/UIWindowTransitions.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		AC8608A128F52DC7002B0D3F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
@@ -1163,6 +1203,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AC6F477E28EDEADF00AAF1F6 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		AC8366C228F6A585000EBF5D /* UIWindowTransitions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AC8366C128F6A585000EBF5D /* XCRemoteSwiftPackageReference "UIWindowTransitions" */;
+			productName = UIWindowTransitions;
 		};
 		AC8608A228F52DC7002B0D3F /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -33,7 +33,7 @@
       "location" : "https://github.com/firebase/firebase-ios-sdk",
       "state" : {
         "branch" : "master",
-        "revision" : "174be0d92bd6706b30a7a9d18f6bbe2319809e03"
+        "revision" : "5fc774955536ed47b87386e65d50cc83658f32cf"
       }
     },
     {
@@ -151,6 +151,15 @@
       "state" : {
         "revision" : "88c7d15e1242fdb6ecbafbc7926426a19be1e98a",
         "version" : "1.20.2"
+      }
+    },
+    {
+      "identity" : "uiwindowtransitions",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/malcommac/UIWindowTransitions.git",
+      "state" : {
+        "revision" : "9fae35fc44e2742cb12f640afbad6111355bda85",
+        "version" : "1.0.0"
       }
     }
   ],
