@@ -32,7 +32,11 @@ class ProductCatalogueViewController: UIViewController {
     private lazy var productCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
-        collectionView.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: ProductCollectionViewCell.identifier)
+        collectionView.register(ProductCollectionViewCell.self,
+                                forCellWithReuseIdentifier: ProductCollectionViewCell.identifier)
+        
+        collectionView.register(ProductCatalogueHeaderView.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ProductCatalogueHeaderView.identifier)
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -86,7 +90,6 @@ class ProductCatalogueViewController: UIViewController {
             productVM.productList
                 .receive(on: RunLoop.main)
                 .sink {list in
-                
                 self.configureUI()
                 self.productList = list
                 self.productCollectionView.reloadData()
@@ -96,10 +99,10 @@ class ProductCatalogueViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("DEBUG: product ref \(brand.productRef)")
         productVM.fetchProductList(ref: brand.productRef)
         
-        self.navigationController?.navigationBar.prefersLargeTitles = false
+        navigationItem.title = "\(brand.brandName)"
+        navigationItem.largeTitleDisplayMode = .never
     }
     
     // MARK: - Selectors
@@ -145,7 +148,8 @@ class ProductCatalogueViewController: UIViewController {
     }
 }
 
-extension ProductCatalogueViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ProductCatalogueViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return brand.productRef.count
     }
@@ -169,4 +173,16 @@ extension ProductCatalogueViewController: UICollectionViewDelegate, UICollection
         navigationController?.pushViewController(ProductDetailVC(brandName: brand.brandName, product:  sorted[indexPath.row]), animated: true)
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ProductCatalogueHeaderView.identifier, for: indexPath) as! ProductCatalogueHeaderView
+        
+        header.numberOfItem = productList.count
+        header.configure()
+        
+        return header
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: view.frame.size.width, height: 50)
+    }
 }

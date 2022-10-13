@@ -12,14 +12,16 @@ class RadioButtonView: UIView {
     // MARK: - Properties
     
     private var colorarray: [String]
+    var selectedColor: Int
+    
     private var radioButton: RadioButtonManager<UIView>?
     private var selectedBorderView: UIView?
-    var selected = 0
     
     //MARK: - Lifecycle
     
-    required init(colorarray: [String]) {
+    required init(colorarray: [String], selectedColor: Int) {
         self.colorarray = colorarray
+        self.selectedColor = selectedColor
         super.init(frame: .zero)
         
         backgroundColor = .systemBackground
@@ -37,8 +39,7 @@ class RadioButtonView: UIView {
         radioButton?.selected = iv
         
         guard let getTag = sender.view?.tag else { return }
-        selected = getTag
-        print(selected)
+        selectedColor = getTag
     }
     
     // MARK: - Helpers

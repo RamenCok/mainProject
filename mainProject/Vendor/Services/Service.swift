@@ -16,6 +16,7 @@ protocol BrandServicing {
 protocol ProductServicing {
     func getProduct(ref: String, completion: @escaping (Product)-> Void)
     func get3DAsset(path: String) async
+//    func get3DAsset(path: String, completion: @escaping (String)-> Void)
 }
 
 // Tes firebase asli disini
@@ -53,7 +54,7 @@ struct ProductService: ProductServicing {
             let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
             let tempDirectory = URL.init(fileURLWithPath: paths, isDirectory: true)
             let targetUrl = tempDirectory.appendingPathComponent("\(path)")
-            
+
             modelPath.write(toFile: targetUrl) { (url, error) in
                 if error != nil {
                     print("ERROR: \(error!)")
@@ -63,5 +64,22 @@ struct ProductService: ProductServicing {
             }
         }
     }
+    
+//    func get3DAsset(path: String, completion: @escaping (String)-> Void) {
+//        let storage = Storage.storage().reference()
+//        let modelPath = storage.child("Product3DAsset/\(path)")
+//        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+//        let tempDirectory = URL.init(fileURLWithPath: paths, isDirectory: true)
+//        let targetUrl = tempDirectory.appendingPathComponent("\(path)")
+//
+//        modelPath.write(toFile: targetUrl) { (url, error) in
+//            if error != nil {
+//                print("ERROR: \(error!)")
+//            }else{
+//                print("DEBUG: modelPath.write OKAY")
+//                completion(path)
+//            }
+//        }
+//    }
 }
 

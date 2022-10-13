@@ -16,6 +16,7 @@ class ProductDetailVC: UIViewController {
     private var product: Product!
     private var cancellables: Set<AnyCancellable> = []
     private var filename: String!
+    private var selectedColor = 0
     
     init(brandName: String, product: Product) {
         self.brandName = brandName
@@ -61,6 +62,9 @@ class ProductDetailVC: UIViewController {
     override open func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        // Remove back button
+//        self.navigationItem.leftBarButtonItem = nil
+//        self.navigationItem.hidesBackButton = true
         Task.init {
             await productDetailVM.fetch3DAsset(path: product.colorsAsset.compactMap { $0["assetLink"] as? String }[0])
             setupScrollView()
@@ -74,7 +78,6 @@ class ProductDetailVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       
     }
     
     // MARK: - Selectors
@@ -124,7 +127,8 @@ class ProductDetailVC: UIViewController {
     
     private func configureContainerView() {
 //        let ArView = ARView(filename: filename)
-        let ArView = ARView(filename: product.colorsAsset.compactMap { $0["assetLink"] as? String }[0])
+        print("DEBUG: int2 \(selectedColor)")
+        let ArView = ARView(filename: product.colorsAsset.compactMap { $0["assetLink"] as? String }[selectedColor])
         contentView.addSubview(ArView)
         ArView.snp.makeConstraints { make in
             make.top.equalTo(contentView.snp.top)
@@ -155,7 +159,7 @@ class ProductDetailVC: UIViewController {
             make.trailing.equalTo(contentView.snp.trailing).offset(-20)
         }
 
-        let RadioButton = RadioButtonView(colorarray: product.colorsAsset.compactMap { $0["colors"] as? String })
+        let RadioButton = RadioButtonView(colorarray: product.colorsAsset.compactMap { $0["colors"] as? String }, selectedColor: selectedColor)
         contentView.addSubview(RadioButton)
         RadioButton.snp.makeConstraints { make in
             make.top.equalTo(productHeadline.snp.bottom).offset(view.frame.height * 0.02)

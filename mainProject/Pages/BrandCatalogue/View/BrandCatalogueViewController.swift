@@ -108,11 +108,9 @@ class BrandCatalogueViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         vm.fetchBrandList()
+        navigationItem.title = "Brands"
+        navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     // MARK: - Selectors
@@ -130,11 +128,11 @@ class BrandCatalogueViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.modalTitle()]
         
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.largeTitleDisplayMode = .always
+        
         
         self.navigationItem.hidesSearchBarWhenScrolling = false
-        self.title = "Brands"
-        self.navigationController?.title = "Brands"
+//        self.title = "Brands"
+//        self.navigationController?.title = "Brands"
         
         //        let rightBarBtn = UIBarButtonItem(customView: profileButton)
         

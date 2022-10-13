@@ -10,6 +10,7 @@
 		0E0DE4D928F476A2007AC831 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0DE4D828F476A2007AC831 /* Service.swift */; };
 		0E0DE4DB28F47704007AC831 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0DE4DA28F47704007AC831 /* Product.swift */; };
 		0E0DE4DD28F524D3007AC831 /* ReusableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0DE4DC28F524D2007AC831 /* ReusableLabel.swift */; };
+		0E40D9D528F81F0F003E485E /* ProductCatalogueHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E40D9D428F81F0F003E485E /* ProductCatalogueHeaderView.swift */; };
 		0E4DA64C28F6773800FC6F4E /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 0E4DA64B28F6773800FC6F4E /* SDWebImage */; };
 		0E7BCE3B28EB2FC8000820E0 /* AirForce.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0E7BCE3A28EB2FC8000820E0 /* AirForce.usdz */; };
 		0E7BCE4128EBF1C1000820E0 /* ProductDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7BCE4028EBF1C1000820E0 /* ProductDetailVC.swift */; };
@@ -111,6 +112,7 @@
 		0E0DE4D828F476A2007AC831 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		0E0DE4DA28F47704007AC831 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		0E0DE4DC28F524D2007AC831 /* ReusableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableLabel.swift; sourceTree = "<group>"; };
+		0E40D9D428F81F0F003E485E /* ProductCatalogueHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCatalogueHeaderView.swift; sourceTree = "<group>"; };
 		0E7BCE3A28EB2FC8000820E0 /* AirForce.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = AirForce.usdz; sourceTree = "<group>"; };
 		0E7BCE4028EBF1C1000820E0 /* ProductDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailVC.swift; sourceTree = "<group>"; };
 		0E7BCE4228EBF431000820E0 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 				AC30932028F32A9F00766787 /* ProductCollectionViewCell.swift */,
 				AC30932228F32C5200766787 /* ProductCatalogueViewController.swift */,
 				AC30932628F32D5100766787 /* ProductColorView.swift */,
+				0E40D9D428F81F0F003E485E /* ProductCatalogueHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -825,6 +828,7 @@
 				DBE905EB28EFDE9300B6E463 /* Brands.swift in Sources */,
 				ACFE712F28ED207900A894D4 /* ReusablePinkCapsule.swift in Sources */,
 				ACFE713428ED405C00A894D4 /* ReusableCapsuleTitle.swift in Sources */,
+				0E40D9D528F81F0F003E485E /* ProductCatalogueHeaderView.swift in Sources */,
 				DBE905F528EFDF4F00B6E463 /* SignupLogin.swift in Sources */,
 				AC8608A028F525D5002B0D3F /* Extensions.swift in Sources */,
 				0EB2125D28EDDF4700FB1255 /* HeadlineView.swift in Sources */,

@@ -16,8 +16,6 @@ class ProductDetailVM: ObservableObject {
         self.service = service
     }
 
-    let path = PassthroughSubject<String, Never>()
-
     func fetch3DAsset(path: String) async {
         await service.get3DAsset(path: path)
     }

@@ -30,7 +30,6 @@ class ARView: UIView {
         
         backgroundColor = .systemBackground
         
-//        setup3DModel()
         setup3D()
         
         addSubview(sceneKitView)
@@ -45,20 +44,6 @@ class ARView: UIView {
     }
 
     // MARK: - Helpers
-    
-//    private func setup3DModel() {
-//        guard let url = Bundle.main.url(forResource: "\(filename)", withExtension: "usdz") else { fatalError() }
-//        let mdlAsset = MDLAsset(url: url)
-//        let scene = SCNScene(mdlAsset: mdlAsset)
-//
-//        let light = SCNNode()
-//        light.light = SCNLight()
-//        light.light?.type = .directional
-//        light.light?.temperature = 6500
-//
-//        sceneKitView.scene = scene
-//        scene.rootNode.addChildNode(light)
-//    }
     
     private func setup3D() {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
