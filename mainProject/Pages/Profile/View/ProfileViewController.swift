@@ -134,6 +134,8 @@ class ProfileViewController: UIViewController {
         configureTextFieldObservers()
     }
     
+    
+    
     // MARK: - Selectors
     @objc func handleEdit() {
         print("Edit")
@@ -178,6 +180,11 @@ class ProfileViewController: UIViewController {
     }
     
     @objc func handleResetPasswordButton() {
+        AuthServices.shared.resetPassword { error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
         print("Reset Password")
     }
     

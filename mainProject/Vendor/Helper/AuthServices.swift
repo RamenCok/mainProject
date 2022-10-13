@@ -35,6 +35,10 @@ struct AuthServices {
        AUTH_REF.signIn(withEmail: email, password: password, completion: completion)
     }
     
+    func resetPassword(completion: @escaping (Error?) -> Void) {
+        AUTH_REF.sendPasswordReset(withEmail: (AUTH_REF.currentUser?.email)!, completion: completion)
+    }
+    
     func checkUserData(uid: String, completionFunc: @escaping (DocumentSnapshot?, Error?) -> Void){
         FR_REF_USER.document(uid).getDocument(completion: completionFunc)
     }
