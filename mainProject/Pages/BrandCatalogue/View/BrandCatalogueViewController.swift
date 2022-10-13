@@ -11,7 +11,7 @@ import Combine
 
 class BrandCatalogueViewController: UIViewController {
     
-    internal var vm =  BrandCatalogueViewModel(service: Service())
+    internal let vm =  BrandCatalogueViewModel(service: BrandService())
     internal var brandList: [Brands]!
     internal var brandImage: UIImage!
     private var cancellables: Set<AnyCancellable> = []
@@ -96,9 +96,9 @@ class BrandCatalogueViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         // Panggil dari vm
-        vm.brandList.sink { completion in
-            print("DEBUG: \(completion)")
-        } receiveValue: { [weak self] data in
+        vm.brandList
+            .receive(on: RunLoop.main)
+            .sink { [weak self] data in
             self?.brandList = data
             self?.configureCollectionView()
             self?.collectionView.reloadData()
@@ -108,10 +108,14 @@ class BrandCatalogueViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         vm.fetchBrandList()
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     // MARK: - Selectors
-    
     
     //MARK: - Helpers
     func configureUI() {
@@ -139,13 +143,13 @@ class BrandCatalogueViewController: UIViewController {
         profileButton.layer.cornerRadius = Const.ImageSizeForLargeState / 2
         profileButton.clipsToBounds = true
         profileButton.translatesAutoresizingMaskIntoConstraints = false
-        navigationBar.addSubview(profileButton)
-        NSLayoutConstraint.activate([
-            profileButton.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -Const.ImageRightMargin),
-            profileButton.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: -Const.ImageBottomMarginForLargeState),
-            profileButton.heightAnchor.constraint(equalToConstant: Const.ImageSizeForLargeState),
-            profileButton.widthAnchor.constraint(equalTo: profileButton.heightAnchor)
-        ])
+//        navigationBar.addSubview(profileButton)
+//        NSLayoutConstraint.activate([
+//            profileButton.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -Const.ImageRightMargin),
+//            profileButton.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: -Const.ImageBottomMarginForLargeState),
+//            profileButton.heightAnchor.constraint(equalToConstant: Const.ImageSizeForLargeState),
+//            profileButton.widthAnchor.constraint(equalTo: profileButton.heightAnchor)
+//        ])
         
         //        rightBarBtn.tintColor = .greyColor
         //
@@ -158,7 +162,6 @@ class BrandCatalogueViewController: UIViewController {
     }
     
     func configureCollectionView() {
-        
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()

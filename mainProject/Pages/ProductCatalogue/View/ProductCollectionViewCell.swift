@@ -7,9 +7,65 @@
 
 import UIKit
 import SnapKit
+import SDWebImage
 
 class ProductCollectionViewCell: UICollectionViewCell {
     static let identifier = "ProductCollectionViewCell"
+    
+    var productName: String!
+    var productImage: String!
+    var colorsAsset: [String]!
+    
+    //MARK: - Cell animation when touched
+    var disabledHighlightedAnimation = false
+    
+    // MARK: - Cell animation when touched
+    func freezeAnimations() {
+        disabledHighlightedAnimation = true
+        layer.removeAllAnimations()
+    }
+    
+    func unfreezeAnimations() {
+        disabledHighlightedAnimation = false
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        animate(isHighlighted: true)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        animate(isHighlighted: false)
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
+        animate(isHighlighted: false)
+    }
+    
+    private func animate(isHighlighted: Bool, completion: ((Bool) -> Void)?=nil) {
+        if disabledHighlightedAnimation {
+            return
+        }
+        if isHighlighted {
+            UIView.animate(withDuration: 0.5,
+                           delay: 0,
+                           usingSpringWithDamping: 1,
+                           initialSpringVelocity: 0,
+                           options: [.allowUserInteraction], animations: {
+                self.transform = .init(scaleX: 0.96, y: 0.96)
+            }, completion: completion)
+        } else {
+            UIView.animate(withDuration: 0.5,
+                           delay: 0,
+                           usingSpringWithDamping: 1,
+                           initialSpringVelocity: 0,
+                           options: [.allowUserInteraction], animations: {
+                self.transform = .identity
+            }, completion: completion)
+        }
+    }
     
     private lazy var productImageView: UIImageView = {
         let imageView = UIImageView()
@@ -27,15 +83,17 @@ class ProductCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private lazy var colorArray: ProductColorView = {
-       let view = ProductColorView(colorarray: ["7479EA", "B55DD3", "FF95BF"])
-        return view
-    }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
+    }
+    
+    func configure() {
         contentView.clipsToBounds = false
         
+        productLabel.text = productName
+        guard let url = URL(string: productImage) else { return }
+        productImageView.sd_setImage(with: url)
+
         contentView.addSubview(productImageView)
         productImageView.snp.makeConstraints { make in
             make.leading.equalTo(contentView.snp.leading).offset(16)
@@ -50,6 +108,8 @@ class ProductCollectionViewCell: UICollectionViewCell {
             make.trailing.equalTo(contentView.snp.trailing).offset(-15)
         }
         
+//        let colorArray = ProductColorView(colorarray: ["7479EA", "B55DD3", "FF95BF"])
+        let colorArray = ProductColorView(colorarray: colorsAsset)
         contentView.addSubview(colorArray)
         colorArray.snp.makeConstraints { make in
             make.top.equalTo(productLabel.snp.bottom).offset(9)
@@ -66,7 +126,6 @@ class ProductCollectionViewCell: UICollectionViewCell {
         contentView.layer.shadowOpacity = 1
         contentView.layer.shadowOffset = CGSize.zero
         contentView.layer.shadowRadius = 5
-        
     }
     
 
@@ -79,6 +138,5 @@ class ProductCollectionViewCell: UICollectionViewCell {
         
         productImageView.frame = CGRect(x: 0, y: 0, width: contentView.frame.size.width, height: contentView.frame.size.width)
         productLabel.frame = CGRect(x: 0, y: contentView.frame.size.width + 10, width: contentView.frame.size.width-10, height: 60)
-        colorArray.frame = CGRect(x: 0, y: contentView.frame.size.width + 70, width: 20, height: 40)
     }
 }

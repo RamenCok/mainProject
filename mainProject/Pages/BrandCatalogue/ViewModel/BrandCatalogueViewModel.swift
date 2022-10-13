@@ -11,9 +11,9 @@ import Combine
 
 class BrandCatalogueViewModel: ObservableObject {
     
-    let service: Servicing
+    let service: BrandServicing
     
-    init(service: Servicing) {
+    init(service: BrandServicing) {
         self.service = service
     }
     

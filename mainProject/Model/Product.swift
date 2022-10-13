@@ -8,9 +8,15 @@
 import Foundation
 
 struct Product {
-    var filename: String
-    var brandName: String
     var productName: String
     var productDesc: String
-    var colorsArray: [String]
+    var productImage: String
+    var colorsAsset: [[String: Any]]
+    
+    init(dictionary: [String: Any]) {
+        self.productName = dictionary["productName"] as? String ?? ""
+        self.productDesc = dictionary["productDesc"] as? String ?? ""
+        self.productImage = dictionary["productImage"] as? String ?? ""
+        self.colorsAsset = dictionary["colorsAsset"] as? [[String: Any]] ?? [[:]]
+    }
 }

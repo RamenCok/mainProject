@@ -38,7 +38,13 @@ extension BrandCatalogueViewController: UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("DEBUG: \(indexPath.row)")
+        if searching {
+            let sorted = searchedBrand.sorted { $0.brandName < $1.brandName }
+            navigationController?.pushViewController(ProductCatalogueViewController(brand: sorted[indexPath.row]), animated: true)
+        } else {
+            let sorted = brandList.sorted { $0.brandName < $1.brandName }
+            navigationController?.pushViewController(ProductCatalogueViewController(brand: sorted[indexPath.row]), animated: true)
+        }
     }
     
 }
