@@ -10,66 +10,91 @@ import Firebase
 import FirebaseStorage
 
 protocol Servicing {
-    func getData(_ completion: @escaping (Product)-> Void)
-    func getBrandList(_ completion: @escaping ([Brands])-> Void)
-    func getBrandImage(brandImage: String, completion: @escaping (UIImage)-> Void)
+    
+    func getBrandList(_ completion: @escaping ([Brands], Error?)-> Void)
 }
 
-struct MockService: Servicing {
-    func getData(_ completion: @escaping (Product)-> Void) {
-        //mock implementation
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            completion(Product(filename: "AirForce",
-                               brandName: "Love, Bonito",
-                               productName: "Lela Textured A-line Dress",
-                               productDesc: "Dreamy frills to brighten up your day. Crafted from sweat-wicking textured cotton, this mini dress features an A-line silhouette, V-neckline, and flared sleves. Comes with functional side pockets and zipper on the side. \n \n Dreamy frills to brighten up your day. Crafted from sweat-wicking textured cotton, this mini dress features an A-line silhouette, V-neckline, and flared sleves. Comes with functional side pockets and zipper on the side.",
-                               colorsArray: ["7479EA", "B55DD3", "FF95BF"]))
+protocol ProfileServices {
+    
+    func getUser(_ completion: @escaping (User, Error?) -> Void)
+    func updateUser(name: String, gender: String, imageData: UIImage, completion: @escaping (Error?) -> Void)
+    
+}
+
+//struct MockService: Servicing {
+//    func getData(_ completion: @escaping (Product)-> Void) {
+//        //mock implementation
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//            completion(Product(filename: "AirForce",
+//                               brandName: "Love, Bonito",
+//                               productName: "Lela Textured A-line Dress",
+//                               productDesc: "Dreamy frills to brighten up your day. Crafted from sweat-wicking textured cotton, this mini dress features an A-line silhouette, V-neckline, and flared sleves. Comes with functional side pockets and zipper on the side. \n \n Dreamy frills to brighten up your day. Crafted from sweat-wicking textured cotton, this mini dress features an A-line silhouette, V-neckline, and flared sleves. Comes with functional side pockets and zipper on the side.",
+//                               colorsArray: ["7479EA", "B55DD3", "FF95BF"]))
+//        }
+//    }
+//    
+//    func getBrandList(_ completion: @escaping ([Brands])-> Void) {
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//            
+//            getBrandImage(brandImage: "sample-logo") { image in
+//                let dict = ["H&M": image, "Lacoste": image, "Tommy Hilfiger": image]
+//                completion([
+//                    Brands(dictionary: dict)
+//                ])
+//            }
+//        }
+//    }
+//    
+//    func getBrandImage(brandImage: String, completion: @escaping (UIImage)-> Void) {
+//        if let image = UIImage(named: brandImage) {
+//            completion(image) 
+//        }
+//    }
+//}
+
+
+struct Service: ProfileServices {
+    
+    let uid = "TONNJJA7N5aMZM63kZX6YhB7eSp1"
+    
+    func getUser(_ completion: @escaping (User, Error?) -> Void) {
+        
+        let document = Firestore.firestore().collection("users").document(uid)
+        
+        document.getDocument { document, error in
+            
+            if let document = document, document.exists {
+                let dictionary = document.data()
+                let user = User(dictionary: dictionary ?? ["" : ""])
+                completion(user, error)
+            } else {
+                print("Document does not exist")
+            }
         }
     }
     
-    func getBrandList(_ completion: @escaping ([Brands])-> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+    func updateUser(name: String, gender: String, imageData: UIImage, completion: @escaping (Error?) -> Void) {
+        
+        let reference = Firestore.firestore().collection("users").document(uid)
+        let storage = Storage.storage().reference().child("ProfilePicture/\(uid)")
+        
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpg"
+        
+        guard let data = imageData.jpegData(compressionQuality: 1.0) else { return }
+        
+        storage.putData(data, metadata: metaData) { _ in
             
-            getBrandImage(brandImage: "sample-logo") { image in
-                let dict = ["H&M": image, "Lacoste": image, "Tommy Hilfiger": image]
-                completion([
-                    Brands(dictionary: dict)
+            storage.downloadURL { url, error in
+                
+                guard let profilePictureURL = url?.absoluteString else { return }
+                
+                reference.updateData([
+                    "name": name,
+                    "gender": gender,
+                    "userProfilePicture": profilePictureURL
                 ])
             }
         }
     }
-    
-    func getBrandImage(brandImage: String, completion: @escaping (UIImage)-> Void) {
-        if let image = UIImage(named: brandImage) {
-            completion(image) 
-        }
-    }
 }
-
-// Tes firebase asli disini
-struct Service {
-    func getBrandList(_ completion: @escaping ([Brands],Error?)-> Void) {
-        var array = [Brands]()
-        Firestore.firestore().collection("brand").getDocuments { snapshot, error in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                guard let snapshot = snapshot else {return}
-                for document in snapshot.documents {
-                    let data = document.data()
-                    let data2 = Brands(dictionary: data)
-                    array.append(data2)
-                }
-                print(array)
-                completion(array, nil)
-            }
-        }
-    }
-    
-    func getBrandImage(brandImage: String, completion: @escaping (UIImage)-> Void) {
-        if let image = UIImage(named: brandImage) {
-            completion(image)
-        }
-    }
-}
-

@@ -85,6 +85,9 @@
 		ACFEBEAF28E7603100372297 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEAD28E7603100372297 /* LaunchScreen.storyboard */; };
 		DB06455A28F3D60F003501D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB06455928F3D60F003501D9 /* GoogleService-Info.plist */; };
 		DB19AF2228ED6515003E6F61 /* ReusableProfileButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB19AF2128ED6515003E6F61 /* ReusableProfileButtonView.swift */; };
+		DB3CB1BF28F6F08D000C502C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3CB1BE28F6F08D000C502C /* User.swift */; };
+		DB3CB1C128F6F885000C502C /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3CB1C028F6F885000C502C /* ProfileViewModel.swift */; };
+		DB3CB1C428F7036A000C502C /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = DB3CB1C328F7036A000C502C /* SDWebImage */; };
 		DB58D06328E8059800A5C727 /* OnboardingViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB58D06128E8059800A5C727 /* OnboardingViewContainer.swift */; };
 		DB58D06428E8059800A5C727 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB58D06228E8059800A5C727 /* OnboardingViewController.swift */; };
 		DB76CD8B28F5157900F562CB /* BodyMeasurementVC + CollectionView Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB76CD8A28F5157900F562CB /* BodyMeasurementVC + CollectionView Extensions.swift */; };
@@ -165,6 +168,8 @@
 		ACFEBEC528E7613000372297 /* Sora-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sora-Bold.otf"; sourceTree = "<group>"; };
 		DB06455928F3D60F003501D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DB19AF2128ED6515003E6F61 /* ReusableProfileButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProfileButtonView.swift; sourceTree = "<group>"; };
+		DB3CB1BE28F6F08D000C502C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DB3CB1C028F6F885000C502C /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		DB58D06128E8059800A5C727 /* OnboardingViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewContainer.swift; sourceTree = "<group>"; };
 		DB58D06228E8059800A5C727 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		DB76CD8A28F5157900F562CB /* BodyMeasurementVC + CollectionView Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BodyMeasurementVC + CollectionView Extensions.swift"; sourceTree = "<group>"; };
@@ -207,6 +212,16 @@
 				AC30933628F51F5C00766787 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				AC30934E28F51F5C00766787 /* FirebaseFunctions in Frameworks */,
 				AC8608A328F52DC7002B0D3F /* GoogleSignIn in Frameworks */,
+				ACFEBEFF28E7678900372297 /* FirebaseRemoteConfig in Frameworks */,
+				ACFEBEDB28E7678900372297 /* FirebaseAppDistribution-Beta in Frameworks */,
+				ACFEBEDF28E7678900372297 /* FirebaseAuthCombine-Community in Frameworks */,
+				ACFEBEFD28E7678900372297 /* FirebasePerformance in Frameworks */,
+				ACFEBEF528E7678900372297 /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
+				ACFEBF0328E7678900372297 /* FirebaseStorage in Frameworks */,
+				DB3CB1C428F7036A000C502C /* SDWebImage in Frameworks */,
+				ACFEBEE728E7678900372297 /* FirebaseDynamicLinks in Frameworks */,
+				ACFEBEEB28E7678900372297 /* FirebaseFirestoreCombine-Community in Frameworks */,
+				ACFEBEFB28E7678900372297 /* FirebaseMessaging in Frameworks */,
 				AC6F478028EDEADF00AAF1F6 /* IQKeyboardManagerSwift in Frameworks */,
 				AC8366C328F6A585000EBF5D /* UIWindowTransitions in Frameworks */,
 				AC30933028F51F5C00766787 /* FirebaseAnalytics in Frameworks */,
@@ -664,6 +679,7 @@
 		DBA2FCCE28ED363F00FDC148 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				DB3CB1C028F6F885000C502C /* ProfileViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -673,7 +689,7 @@
 			children = (
 				DBE905EA28EFDE9300B6E463 /* Brands.swift */,
 				0E0DE4DA28F47704007AC831 /* Product.swift */,
-				AC8366BD28F68076000EBF5D /* User.swift */,
+				DB3CB1BE28F6F08D000C502C /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -777,6 +793,7 @@
 				AC8608A228F52DC7002B0D3F /* GoogleSignIn */,
 				AC8608A428F52DC7002B0D3F /* GoogleSignInSwift */,
 				AC8366C228F6A585000EBF5D /* UIWindowTransitions */,
+				DB3CB1C328F7036A000C502C /* SDWebImage */,
 			);
 			productName = mainProject;
 			productReference = ACFEBE9F28E7603000372297 /* mainProject.app */;
@@ -812,6 +829,7 @@
 				AC30932E28F51F5C00766787 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				AC8608A128F52DC7002B0D3F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				AC8366C128F6A585000EBF5D /* XCRemoteSwiftPackageReference "UIWindowTransitions" */,
+				DB3CB1C228F7036A000C502C /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = ACFEBEA028E7603000372297 /* Products */;
 			projectDirPath = "";
@@ -858,6 +876,7 @@
 				DBD144DF28EEA7A6006A3E40 /* ReusableSizeCalculatorButton.swift in Sources */,
 				DB76CD8F28F51BB100F562CB /* BrandCatalogueVC + ScrollView Extensions.swift in Sources */,
 				DB8BCD9728EBDC8F00630CA3 /* SignUpModalVC.swift in Sources */,
+				DB3CB1C128F6F885000C502C /* ProfileViewModel.swift in Sources */,
 				DB8BCDA428EBDE0800630CA3 /* SizeButtonView.swift in Sources */,
 				DBE905F728EFDF4F00B6E463 /* PersonalizeViewController.swift in Sources */,
 				0EB2126928EE939900FB1255 /* BodyMeasurementCell.swift in Sources */,
@@ -896,6 +915,7 @@
 				DBE905F628EFDF4F00B6E463 /* ResetPasswordViewController.swift in Sources */,
 				DBE905F428EFDF4F00B6E463 /* SignUpViewController.swift in Sources */,
 				DBE905F828EFDF4F00B6E463 /* LoginViewController.swift in Sources */,
+				DB3CB1BF28F6F08D000C502C /* User.swift in Sources */,
 				AC6F478428EE982F00AAF1F6 /* ReusableTextFieldAuth.swift in Sources */,
 				DB76CD8B28F5157900F562CB /* BodyMeasurementVC + CollectionView Extensions.swift in Sources */,
 				ACFEBEA528E7603000372297 /* SceneDelegate.swift in Sources */,
@@ -1175,6 +1195,22 @@
 				kind = branch;
 			};
 		};
+		ACFEBECF28E7678900372297 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+		DB3CB1C228F7036A000C502C /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1337,6 +1373,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = ACB588A928E7F08C0025D230 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		DB3CB1C328F7036A000C502C /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DB3CB1C228F7036A000C502C /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

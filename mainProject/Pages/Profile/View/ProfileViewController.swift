@@ -9,10 +9,16 @@ import UIKit
 import SnapKit
 import FirebaseAuth
 import GoogleSignIn
+import Combine
+import SDWebImage
 
 class ProfileViewController: UIViewController {
 
     // MARK: - Properties
+    let vm = ProfileViewModel(service: Service())
+    var user: User!
+    private var cancellables: Set<AnyCancellable> = []
+    
     private lazy var imageBG: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "profileBG")
@@ -57,13 +63,12 @@ class ProfileViewController: UIViewController {
         tf.snp.makeConstraints { make in
             make.height.equalTo(view.frame.height / 18)
         }
-        tf.text = "Test"
         tf.returnKeyType = .done
         return tf
     }()
     
     private lazy var genderLabel: ReusableLabel = {
-        let label = ReusableLabel(style: .subHeading_2, textString: "No Gender")
+        let label = ReusableLabel(style: .subHeading_2, textString: "")
         label.backgroundColor = .clear
         label.layer.cornerRadius = 15
         label.layer.masksToBounds = true
@@ -125,15 +130,56 @@ class ProfileViewController: UIViewController {
         navigationItem.backButtonTitle = ""
         
         super.viewDidLoad()
+        
+        vm.user.sink { user in
+            self.nameTF.text = user.userName
+            self.genderLabel.text = user.userGender
+            
+            let url = URL(string: user.userProfilePicture)
+            
+            if url != nil {
+                self.profileImage.sd_setImage(with: url)
+            } else {
+                self.profileImage.image = UIImage(named: "initialProfilePicture")
+            }
+            
+        }.store(in: &cancellables)
+        
         configureUI()
         configureTextFieldObservers()
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        vm.getUser()
+    }
     
     // MARK: - Selectors
     @objc func handleEditProfilePicture() {
         self.showImagePicker(selectedSource: .photoLibrary)
+    }
+    
+    @objc func handleDone() {
+        UIView.animate(withDuration: 0.2) {
+            self.editProfileImageButton.alpha = 0
+            
+            self.genderButton.alpha = 0
+            self.genderLabel.backgroundColor = .clear
+            
+            self.editButton.setTitle("Edit", for: .normal)
+            self.editButton.removeTarget(self, action: #selector(self.handleDone), for: .touchUpInside)
+            self.editButton.addTarget(self, action: #selector(self.handleEdit), for: .touchUpInside)
+            
+            self.nameTF.isEnabled = false
+            self.nameTF.backgroundColor = .clear
+            
+            self.vm.updateUser(
+                name: self.nameTF.text ?? "",
+                gender: self.genderLabel.text ?? "",
+                imageData: self.profileImage.image ?? UIImage()
+            )
+        }
     }
     
     @objc func handleBodyMeasurementButton() {

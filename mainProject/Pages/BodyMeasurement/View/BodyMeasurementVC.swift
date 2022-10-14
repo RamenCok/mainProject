@@ -38,8 +38,8 @@ class BodyMeasurementVC: UIViewController {
         collectionView.register(BodyMeasurementCell.self, forCellWithReuseIdentifier: BodyMeasurementCell.identifier)
 //        collectionView.backgroundView = backgroundImage
         collectionView.backgroundColor = .clear
-        collectionView.delegate = self
-        collectionView.dataSource = self
+//        collectionView.delegate = self
+//        collectionView.dataSource = self
         collectionView.contentInset = UIEdgeInsets(top: 16, left: 20, bottom: 0, right: 20)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.backgroundColor = .clear

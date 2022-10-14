@@ -11,7 +11,7 @@ import Combine
 
 class BrandCatalogueViewController: UIViewController {
 
-    private var vm =  BrandCatalogueViewModel(service: MockService())
+    private var vm =  BrandCatalogueViewModel(service: Service() as! Servicing)
     private var brandList: [Brands]!
     private var cancellables: Set<AnyCancellable> = []
     

@@ -19,8 +19,8 @@ class ProductDetailVM: ObservableObject {
     let updatedData = PassthroughSubject<Product, Never>()
     
     func fetchData() {
-        service.getData { [weak self] data in
-            self?.updatedData.send(data)
-        }
+//        service.getData { [weak self] data in
+//            self?.updatedData.send(data)
+//        }
     }
 }
