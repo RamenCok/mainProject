@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard (scene is UIWindowScene) else { return }
         
         var vc: UIViewController = OnboardingViewController()
-        
+
         if let user = Auth.auth().currentUser {
             print(user.uid)
             print(user.isAnonymous)
@@ -29,11 +29,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         } else {
             print("no user")
         }
-        
+
         let navigationController = UINavigationController()
         navigationController.isNavigationBarHidden = false
-
-        
         
         navigationController.pushViewController(vc, animated: false)
         window?.rootViewController = navigationController

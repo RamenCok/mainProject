@@ -157,4 +157,11 @@ class BrandCatalogueViewController: UIViewController {
 //        currHeight?.isActive = true
 //        navigationItem.rightBarButtonItem = rightBarBtn
     }
+    
+    func configureCollectionView() {
+        view.addSubview(collectionView)
+        collectionView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
 }
