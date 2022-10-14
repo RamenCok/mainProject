@@ -28,7 +28,7 @@ class OnboardingViewController: UIPageViewController {
     internal lazy var skipButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Skip", for: .normal)
-        button.setTitleColor(UIColor.primaryColor, for: .normal)
+        button.setTitleColor(.primaryColor, for: .normal)
         button.titleLabel?.font = UIFont.bodyText()
         button.addTarget(self, action: #selector(handleSkipButton), for: .touchUpInside)
         return button
@@ -83,6 +83,13 @@ class OnboardingViewController: UIPageViewController {
         AuthServices.shared.anonymousAuth()
 //        print("Next Screen")
         navigationController?.pushViewController(SignupLogin(), animated: true)
+        
+        let vc = BrandCatalogueViewController()
+        let navController = UINavigationController(rootViewController: vc)
+        
+        navController.modalPresentationStyle = .fullScreen
+        navController.modalTransitionStyle = .coverVertical
+        self.present(navController, animated: true)
     }
     
     @objc func handleSkipButton() {

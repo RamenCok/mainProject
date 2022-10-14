@@ -23,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        GIDSignIn.sharedInstance.clientID = FirebaseApp.app()?.options.clientID
         
+        let navigation = UINavigationController()
+        navigation.navigationBar.topItem?.backButtonDisplayMode = .minimal
+        
         return true
     }
 

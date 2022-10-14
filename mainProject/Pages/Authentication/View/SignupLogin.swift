@@ -114,6 +114,9 @@ class SignupLogin: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        navigationItem.largeTitleDisplayMode = .never
+        
         configureUI()
     }
     
@@ -200,21 +203,44 @@ class SignupLogin: UIViewController {
     
     @objc func printYeuy(){
         print("")
+    @objc func handleCancelButton() {
+        self.dismiss(animated: true)
     }
     
-    @objc func goToSignUp(){
-        print("goToSignUp")
+    @objc func goToSignUp() {
         navigationController?.pushViewController(SignUpViewController(), animated: true)
     }
     
-    @objc func handleLogin(){
+    @objc func handleLogin() {
         navigationController?.pushViewController(LoginViewController(), animated: true)
     }
     
+    @objc func handleGoogleButton() {
+        print("Google")
+    }
+    
+    @objc func handleAppleButton() {
+        print("Apple")
+    }
     
     // MARK: - Helpers
     func configureUI() {
+     
         view.backgroundColor = .systemBackground
+        
+        // To set transparent background for navigation bar
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithTransparentBackground()
+        UINavigationBar.appearance().standardAppearance = appearance
+        
+        let leftBarBtn = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancelButton))
+        let navItemAttribute = [
+            NSAttributedString.Key.font: UIFont.bodyText()
+        ]
+        leftBarBtn.setTitleTextAttributes(navItemAttribute, for: .normal)
+        leftBarBtn.tintColor = .primaryColor
+        navigationItem.leftBarButtonItem = leftBarBtn
+        navigationController?.navigationBar.tintColor = .primaryColor
         
         view.addSubview(bgLogin)
         bgLogin.snp.makeConstraints { make in
@@ -222,7 +248,7 @@ class SignupLogin: UIViewController {
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
         }
-
+        
         view.addSubview(stackView)
         stackView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(20)
@@ -235,8 +261,6 @@ class SignupLogin: UIViewController {
         stackViewBtn.axis = .vertical
         stackViewBtn.alignment = .leading
         stackViewBtn.spacing = view.frame.height * 0.0095
-        
-    
         
         view.addSubview(stackViewBtn)
         stackViewBtn.snp.makeConstraints { make in

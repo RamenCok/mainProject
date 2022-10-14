@@ -19,14 +19,6 @@ class ProfileViewController: UIViewController {
         return image
     }()
     
-    private lazy var editButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Edit", for: .normal)
-        button.setTitleColor(.primaryColor, for: .normal)
-        button.addTarget(self, action: #selector(handleEdit), for: .touchUpInside)
-        return button
-    }()
-    
     internal lazy var profileImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "initialProfilePicture")
@@ -129,6 +121,9 @@ class ProfileViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         
+        navigationItem.largeTitleDisplayMode = .never
+        navigationItem.backButtonTitle = ""
+        
         super.viewDidLoad()
         configureUI()
         configureTextFieldObservers()
@@ -137,46 +132,12 @@ class ProfileViewController: UIViewController {
     
     
     // MARK: - Selectors
-    @objc func handleEdit() {
-        print("Edit")
-        UIView.animate(withDuration: 0.2) {
-            self.editProfileImageButton.alpha = 1
-            
-            self.genderButton.alpha = 1
-            self.genderLabel.backgroundColor = .systemGray6
-            
-            self.editButton.setTitle("Done", for: .normal)
-            self.editButton.removeTarget(self, action: #selector(self.handleEdit), for: .touchUpInside)
-            self.editButton.addTarget(self, action: #selector(self.handleDone), for: .touchUpInside)
-            
-            self.nameTF.isEnabled = true
-            self.nameTF.backgroundColor = .systemGray6
-        }
-    }
-    
     @objc func handleEditProfilePicture() {
         self.showImagePicker(selectedSource: .photoLibrary)
     }
     
-    @objc func handleDone() {
-        print("Done")
-        UIView.animate(withDuration: 0.2) {
-            self.editProfileImageButton.alpha = 0
-            
-            self.genderButton.alpha = 0
-            self.genderLabel.backgroundColor = .clear
-            
-            self.editButton.setTitle("Edit", for: .normal)
-            self.editButton.removeTarget(self, action: #selector(self.handleDone), for: .touchUpInside)
-            self.editButton.addTarget(self, action: #selector(self.handleEdit), for: .touchUpInside)
-            
-            self.nameTF.isEnabled = false
-            self.nameTF.backgroundColor = .clear
-        }
-    }
-    
     @objc func handleBodyMeasurementButton() {
-        print("Body Measurement")
+        navigationController?.pushViewController(BodyMeasurementVC(), animated: true)
     }
     
     @objc func handleResetPasswordButton() {
@@ -213,32 +174,35 @@ class ProfileViewController: UIViewController {
     // MARK: - Helpers
     func configureUI() {
         
-        view.addSubview(imageBG)
-        imageBG.snp.makeConstraints { make in
-            make.top.bottom.leading.trailing.equalToSuperview()
-        }
-        
-        view.addSubview(editButton)
-        editButton.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.trailing.equalToSuperview().offset(-20)
-        }
-        
         // To set transparent background for navigation bar
         let appearance = UINavigationBarAppearance()
         appearance.configureWithTransparentBackground()
         UINavigationBar.appearance().standardAppearance = appearance
         
+        let editBarButtonItem = self.editButtonItem
+        let navItemAttribute = [
+            NSAttributedString.Key.font: UIFont.bodyText()
+        ]
+        editBarButtonItem.setTitleTextAttributes(navItemAttribute, for: .normal)
+        editBarButtonItem.tintColor = .primaryColor
+        navigationItem.rightBarButtonItem = editBarButtonItem
+    
+        navigationController?.navigationBar.tintColor = .primaryColor
+        
+        view.addSubview(imageBG)
+        imageBG.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
         view.addSubview(profileImage)
         profileImage.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(view.frame.height / 11.25)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(view.frame.height / 13.25)
         }
         
         view.addSubview(editProfileImageButton)
         editProfileImageButton.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(view.frame.height / 11.25)
+            make.center.equalTo(profileImage.snp.center)
         }
         
         view.addSubview(nameTF)
@@ -277,6 +241,38 @@ class ProfileViewController: UIViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-37)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
+        }
+    }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+
+        // overriding this method means we can attach custom functions to the button
+        super.setEditing(editing, animated: animated)
+
+        // attaching custom actions here
+        if editing {
+            
+            print("Edit")
+            UIView.animate(withDuration: 0.2) {
+                self.editProfileImageButton.alpha = 1
+                
+                self.genderButton.alpha = 1
+                self.genderLabel.backgroundColor = .systemGray6
+                
+                self.nameTF.isEnabled = true
+                self.nameTF.backgroundColor = .systemGray6
+            }
+        } else {
+            print("Done")
+            UIView.animate(withDuration: 0.2) {
+                self.editProfileImageButton.alpha = 0
+                
+                self.genderButton.alpha = 0
+                self.genderLabel.backgroundColor = .clear
+                
+                self.nameTF.isEnabled = false
+                self.nameTF.backgroundColor = .clear
+            }
         }
     }
 }

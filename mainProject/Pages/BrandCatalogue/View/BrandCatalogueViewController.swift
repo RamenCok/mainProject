@@ -38,13 +38,9 @@ class BrandCatalogueViewController: UIViewController {
     
     internal lazy var profileButton: UIButton = {
        
-        let button = UIButton(type: .custom)
-//        button.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-        button.setImage(UIImage(named: "profile-icon"), for: .normal)
-//        button.tintColor = .gray
-//        button.clipsToBounds = true
-//        button.layer.cornerRadius = 0.5 * button.bounds.size.width
-
+        let button = UIButton()
+        button.setImage(UIImage(named: "initialProfilePicture"), for: .normal)
+        button.addTarget(self, action: #selector(handleProfileButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -103,7 +99,9 @@ class BrandCatalogueViewController: UIViewController {
     }
 
     // MARK: - Selectors
-    
+    @objc func handleProfileButtonTapped() {
+        navigationController?.pushViewController(ProfileViewController(), animated: true)
+    }
     
     //MARK: - Helpers
     func configureUI() {
@@ -116,6 +114,7 @@ class BrandCatalogueViewController: UIViewController {
         self.navigationItem.searchController = search
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.blackTexts, NSAttributedString.Key.font: UIFont.heading_1()]
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.modalTitle()]
+        self.navigationController?.navigationBar.topItem?.backButtonDisplayMode = .minimal
         
         view.addSubview(collectionView)
 
@@ -133,16 +132,17 @@ class BrandCatalogueViewController: UIViewController {
 //        let rightBarBtn = UIBarButtonItem(customView: profileButton)
         
         guard let navigationBar = self.navigationController?.navigationBar else { return }
-            navigationBar.addSubview(profileButton)
-            profileButton.layer.cornerRadius = Const.ImageSizeForLargeState / 2
-            profileButton.clipsToBounds = true
-            profileButton.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                profileButton.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -Const.ImageRightMargin),
-                profileButton.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: -Const.ImageBottomMarginForLargeState),
-                profileButton.heightAnchor.constraint(equalToConstant: Const.ImageSizeForLargeState),
-                profileButton.widthAnchor.constraint(equalTo: profileButton.heightAnchor)
-                ])
+        navigationBar.addSubview(profileButton)
+        profileButton.layer.cornerRadius = Const.ImageSizeForLargeState / 2
+        profileButton.imageView?.contentMode = .scaleAspectFill
+        profileButton.clipsToBounds = true
+        profileButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            profileButton.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -Const.ImageRightMargin),
+            profileButton.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: -Const.ImageBottomMarginForLargeState),
+            profileButton.heightAnchor.constraint(equalToConstant: Const.ImageSizeForLargeState),
+            profileButton.widthAnchor.constraint(equalTo: profileButton.heightAnchor)
+        ])
 //        rightBarBtn.tintColor = .greyColor
 //
 //
