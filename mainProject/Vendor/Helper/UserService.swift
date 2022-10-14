@@ -28,7 +28,7 @@ struct UserService: UserServicing {
     func getUserInfo(_ completion: @escaping (User) -> Void) {
         FR_REF_USER.document(Auth.auth().currentUser!.uid).getDocument { document, error in
             if let document = document {
-                let user = User(credential: document.data()!)
+                let user = User(dictionary: document.data()!)
                 completion(user)
             }
             

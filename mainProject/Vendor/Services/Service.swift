@@ -19,6 +19,58 @@ protocol ProductServicing {
 //    func get3DAsset(path: String, completion: @escaping (String)-> Void)
 }
 
+protocol ProfileServices {
+    
+    func getUser(_ completion: @escaping (User, Error?) -> Void)
+    func updateUser(name: String, gender: String, imageData: UIImage, completion: @escaping (Error?) -> Void)
+    
+}
+struct Service: ProfileServices {
+    
+    let uid = "TONNJJA7N5aMZM63kZX6YhB7eSp1"
+    
+    func getUser(_ completion: @escaping (User, Error?) -> Void) {
+        
+        let document = Firestore.firestore().collection("users").document(uid)
+        
+        document.getDocument { document, error in
+            
+            if let document = document, document.exists {
+                let dictionary = document.data()
+                let user = User(dictionary: dictionary ?? ["" : ""])
+                completion(user, error)
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
+    
+    func updateUser(name: String, gender: String, imageData: UIImage, completion: @escaping (Error?) -> Void) {
+        
+        let reference = Firestore.firestore().collection("users").document(uid)
+        let storage = Storage.storage().reference().child("ProfilePicture/\(uid)")
+        
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpg"
+        
+        guard let data = imageData.jpegData(compressionQuality: 1.0) else { return }
+        
+        storage.putData(data, metadata: metaData) { _ in
+            
+            storage.downloadURL { url, error in
+                
+                guard let profilePictureURL = url?.absoluteString else { return }
+                
+                reference.updateData([
+                    "name": name,
+                    "gender": gender,
+                    "userProfilePicture": profilePictureURL
+                ])
+            }
+        }
+    }
+}
+
 // Tes firebase asli disini
 struct BrandService: BrandServicing {
     
@@ -66,9 +118,10 @@ struct ProductService: ProductServicing {
     }
     
     func updateUser(name: String, gender: String, imageData: UIImage, completion: @escaping (Error?) -> Void) {
+        let uid = AUTH_REF.currentUser?.uid
         
-        let reference = Firestore.firestore().collection("users").document(uid)
-        let storage = Storage.storage().reference().child("ProfilePicture/\(uid)")
+        let reference = Firestore.firestore().collection("users").document(uid!)
+        let storage = Storage.storage().reference().child("ProfilePicture/\(uid!)")
         
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpg"

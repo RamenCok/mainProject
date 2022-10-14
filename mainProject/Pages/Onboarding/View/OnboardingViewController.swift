@@ -82,14 +82,14 @@ class OnboardingViewController: UIPageViewController {
     @objc func handleNavigationButton() {
         AuthServices.shared.anonymousAuth()
 //        print("Next Screen")
-        navigationController?.pushViewController(SignupLogin(), animated: true)
+        navigationController?.pushViewController(UINavigationController(rootViewController: BrandCatalogueViewController()) , animated: true)
         
-        let vc = BrandCatalogueViewController()
-        let navController = UINavigationController(rootViewController: vc)
-        
-        navController.modalPresentationStyle = .fullScreen
-        navController.modalTransitionStyle = .coverVertical
-        self.present(navController, animated: true)
+//        let vc = BrandCatalogueViewController()
+//        let navController = UINavigationController(rootViewController: vc)
+//
+//        navController.modalPresentationStyle = .fullScreen
+//        navController.modalTransitionStyle = .coverVertical
+//        self.present(navController, animated: true)
     }
     
     @objc func handleSkipButton() {

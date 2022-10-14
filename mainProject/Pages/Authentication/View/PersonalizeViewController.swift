@@ -80,8 +80,8 @@ class PersonalizeViewController: UIViewController {
         
         vm.userInfo.sink { user in
             self.user = user
-            self.nameTextField.text = user.name
-            self.genderLabel.text = user.gender != "" ? user.gender : "No Gender"
+            self.nameTextField.text = user.userName
+            self.genderLabel.text = user.userGender != "" ? user.userGender : "No Gender"
         }.store(in: &cancellables)
     }
     
