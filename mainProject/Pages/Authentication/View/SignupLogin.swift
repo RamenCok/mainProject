@@ -6,10 +6,19 @@
 //
 
 import UIKit
+import GoogleSignIn
+import FirebaseAuth
+import FirebaseCore
+import FirebaseFirestore
+import AuthenticationServices
+import UIWindowTransitions
+import CryptoKit
 
 class SignupLogin: UIViewController {
-
+    
     // MARK: - Properties
+    fileprivate var currentNonce: String?
+    
     private lazy var bgLogin: UIImageView = {
         let imageView = AuthBackground()
         return imageView
@@ -23,6 +32,8 @@ class SignupLogin: UIViewController {
         return view
     }()
     
+   
+    
     private lazy var titleLabel: UILabel = {
         let label = ReusableLabel(style: .largeTitle_2, textString: "Level up your shopping journey")
         return label
@@ -34,7 +45,7 @@ class SignupLogin: UIViewController {
     }()
     
     private lazy var appleBtn: ReusableButton = {
-        let button = ReusableButton(style: .secondary, buttonText: " Continue with Apple", selector: #selector(printYeuy), target: self)
+        let button = ReusableButton(style: .secondary, buttonText: " Continue with Apple", selector: #selector(handleAppleLogin), target: self)
         button.setImage(UIImage(systemName: "apple.logo"), for: .normal)
         button.tintColor = .primaryColor
 //        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 10)
@@ -42,7 +53,7 @@ class SignupLogin: UIViewController {
     }()
     
     private lazy var googleBtn: UIButton = {
-        let button = ReusableButton(style: .secondary, buttonText: " Continue with Google", selector: #selector(printYeuy), target: self)
+        let button = ReusableButton(style: .secondary, buttonText: " Continue with Google", selector: #selector(handleGoogleLogIn), target: self)
         button.setImage(UIImage(named: "google.logo"), for: .normal)
         button.imageView?.contentMode = .scaleAspectFill
         return button
@@ -107,6 +118,86 @@ class SignupLogin: UIViewController {
     }
     
     // MARK: - Selectors
+    @objc func handleGoogleLogIn(){
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+
+        // Create Google Sign In configuration object.
+        let config = GIDConfiguration(clientID: clientID)
+
+        // Start the sign in flow!
+        GIDSignIn.sharedInstance.signIn(with: config, presenting: self) {[unowned self] user, error in
+            
+          if let error = error {
+              print(error.localizedDescription)
+          }
+
+          guard let authentication = user?.authentication, let idToken = authentication.idToken else {return}
+
+          let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: authentication.accessToken)
+
+            Auth.auth().signIn(with: credential) { authResult, error in
+                print(authResult?.user.providerData)
+                
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                
+                // User is signed in
+                let user: [String: Any] = [
+                    "name" : authResult?.user.displayName,
+                    "email" : authResult?.user.email,
+                    "uid": authResult?.user.uid,
+                    "gender": ""
+                ]
+                
+                let wnd = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+                var options = UIWindow.TransitionOptions()
+                options.direction = .toRight
+                options.duration = 0.4
+                options.style = .easeIn
+                
+                AuthServices.shared.checkUserData(uid: user["uid"] as! String) { document, error in
+                    if let document = document, document.exists {
+                          let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+
+                        if document.data()!["gender"] == nil || document.data()!["gender"] as! String == "" {
+                            wnd?.set(rootViewController: PersonalizeViewController(), options: options)
+                        } else {
+                            wnd?.set(rootViewController: ProfileViewController(), options: options)
+                        }
+                          print("Document data: \(dataDescription)")
+                    } else {
+                        AuthServices.shared.writeUserData(credentials: user) {
+                            wnd?.set(rootViewController: ProfileViewController(), options: options)
+                        }
+                    }
+               
+                }
+               
+            }
+        }
+    }
+    
+    @objc func handleAppleLogin(){
+        let request = createAppleIDRequest()
+        let authorizationcontroller = ASAuthorizationController(authorizationRequests: [request])
+        authorizationcontroller.delegate = self
+        authorizationcontroller.presentationContextProvider = self
+        
+        authorizationcontroller.performRequests()
+    }
+    func createAppleIDRequest() -> ASAuthorizationAppleIDRequest {
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        
+        let nonce = AuthServices.shared.randomNonceString()
+        request.nonce = AuthServices.shared.sha256(nonce)
+        currentNonce = nonce
+        return request
+    }
+    
     @objc func printYeuy(){
         print("")
     }
@@ -196,4 +287,67 @@ class SignupLogin: UIViewController {
 
     }
 
+}
+
+
+extension SignupLogin: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            print("Complete authorization")
+            guard currentNonce != nil else {
+                fatalError("Invalid state: A login callback was received, but no login request was sent")
+            }
+            guard let appleIDtoken = appleIDCredential.identityToken else {
+                print("Unable to fetch identity token")
+                return
+            }
+            guard let idTokenString = String(data: appleIDtoken, encoding: .utf8) else {
+                print("Unable to fetch idTokenString")
+                return
+            }
+            
+            let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: currentNonce)
+            print("Email")
+            Auth.auth().signIn(with: credential) { (AuthDataResult, error) in
+                let wnd = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+                var options = UIWindow.TransitionOptions()
+                options.direction = .toRight
+                options.duration = 0.4
+                options.style = .easeIn
+                if let users = AuthDataResult?.user {
+                    print("Nice you're now signed in as \(users.uid), email: \(users.email ?? "unknown email")")
+                    
+                    let user: [String: Any] = [
+                        "name" : users.displayName,
+                        "email" : users.email,
+                        "uid": users.uid,
+                        "gender": ""
+                    ]
+                    AuthServices.shared.checkUserData(uid: user["uid"] as! String) { document, error in
+                        if let document = document, document.exists {
+                            let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+
+                            if document.data()!["gender"] == nil || document.data()!["gender"] as! String == "" {
+                                wnd?.set(rootViewController: UINavigationController(rootViewController: PersonalizeViewController()) , options: options)
+                            } else {
+                                wnd?.set(rootViewController: ProfileViewController(), options: options)
+                            }
+                              print("Document data: \(dataDescription)")
+                        } else {
+                            AuthServices.shared.writeUserData(credentials: user) {
+                                wnd?.set(rootViewController: ProfileViewController(), options: options)
+                            }
+                        }
+                    }
+                    
+                    
+                }
+            }
+        }
+    }
+    
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
 }

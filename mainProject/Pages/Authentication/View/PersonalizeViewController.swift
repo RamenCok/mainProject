@@ -6,9 +6,13 @@
 //
 
 import UIKit
-
+import Combine
+import UIWindowTransitions
 class PersonalizeViewController: UIViewController {
 
+    let vm = PersonalizeViewModel(service: UserService())
+    var user: User!
+    var cancellables = Set<AnyCancellable>()
     // MARK: - Properties
     private lazy var bgLogin: UIImageView = {
         let imageView = AuthBackground()
@@ -73,11 +77,35 @@ class PersonalizeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        
+        vm.userInfo.sink { user in
+            self.user = user
+            self.nameTextField.text = user.name
+            self.genderLabel.text = user.gender != "" ? user.gender : "No Gender"
+        }.store(in: &cancellables)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        vm.fetchUser()
     }
     
     // MARK: - Selectors
     @objc func handleSave(){
-        
+        if genderLabel.text != "No Gender" && nameTextField.text != "" {
+            let updatedUserData = [
+                "gender": genderLabel.text,
+                "name": nameTextField.text
+            ]
+            vm.saveData(updatedData: updatedUserData) {
+                let wnd = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+                var options = UIWindow.TransitionOptions()
+                options.direction = .toRight
+                options.duration = 0.4
+                options.style = .easeIn
+                wnd?.set(rootViewController: ProfileViewController(), options: options)
+            }
+            
+        }
     }
     
     // MARK: - Helpers
