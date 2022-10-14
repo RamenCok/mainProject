@@ -10,17 +10,13 @@ import Combine
 
 class ProductDetailVM: ObservableObject {
     
-    let service: Servicing
-    
-    init(service: Servicing) {
+    let service: ProductServicing
+
+    init(service: ProductServicing) {
         self.service = service
     }
-    
-    let updatedData = PassthroughSubject<Product, Never>()
-    
-    func fetchData() {
-//        service.getData { [weak self] data in
-//            self?.updatedData.send(data)
-//        }
+
+    func fetch3DAsset(path: String) async {
+        await service.get3DAsset(path: path)
     }
 }

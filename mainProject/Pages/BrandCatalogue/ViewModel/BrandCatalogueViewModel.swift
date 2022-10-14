@@ -11,17 +11,17 @@ import Combine
 
 class BrandCatalogueViewModel: ObservableObject {
     
-    let service: Servicing
+    let service: BrandServicing
     
-    init(service: Servicing) {
+    init(service: BrandServicing) {
         self.service = service
     }
     
     let brandList = PassthroughSubject<[Brands], Never>()
 
-    func fetchData() {
-        service.getBrandList { [weak self] data, _ in
-            self?.brandList.send(data)
+    func fetchBrandList() {
+        service.getBrandList { list, _ in
+            self.brandList.send(list)
         }
     }
 }

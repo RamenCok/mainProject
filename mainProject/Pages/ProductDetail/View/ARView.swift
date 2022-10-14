@@ -30,7 +30,7 @@ class ARView: UIView {
         
         backgroundColor = .systemBackground
         
-        setup3DModel()
+        setup3D()
         
         addSubview(sceneKitView)
         sceneKitView.snp.makeConstraints { make in
@@ -45,18 +45,23 @@ class ARView: UIView {
 
     // MARK: - Helpers
     
-    private func setup3DModel() {
-        guard let url = Bundle.main.url(forResource: "\(filename)", withExtension: "usdz") else { fatalError() }
-        let mdlAsset = MDLAsset(url: url)
-        let scene = SCNScene(mdlAsset: mdlAsset)
-    
+    private func setup3D() {
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+        let tempDirectory = URL.init(fileURLWithPath: paths, isDirectory: true)
+        let targetUrl = tempDirectory.appendingPathComponent("\(filename)")
+        
+        let scene = try! SCNScene(url: targetUrl, options: [.checkConsistency: true])
+        
         let light = SCNNode()
         light.light = SCNLight()
-        light.light?.type = .directional
-        light.light?.temperature = 6500
+        light.light?.type = .ambient
+        light.light?.temperature = 6700
     
         sceneKitView.scene = scene
         scene.rootNode.addChildNode(light)
+        let camera = SCNNode()
+        camera.camera = SCNCamera()
+        scene.rootNode.addChildNode(camera)
     }
     
 }

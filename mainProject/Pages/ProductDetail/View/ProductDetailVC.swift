@@ -11,9 +11,22 @@ import Combine
 class ProductDetailVC: UIViewController {
     
     // MARK: - Properties
-    var vm: ProductDetailVM!
+    var productDetailVM = ProductDetailVM(service: ProductService())
+    private var brandName: String!
     private var product: Product!
     private var cancellables: Set<AnyCancellable> = []
+    private var filename: String!
+    private var selectedColor = 0
+    
+    init(brandName: String, product: Product) {
+        self.brandName = brandName
+        self.product = product
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private let scrollView: UIScrollView = {
         let view = UIScrollView()
@@ -49,16 +62,22 @@ class ProductDetailVC: UIViewController {
     override open func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        // Panggil dari vm
-        vm.updatedData.sink { [weak self] data in
-            self?.product = data
-            self?.setupScrollView()
-        }.store(in: &cancellables)
+        // Remove back button
+//        self.navigationItem.leftBarButtonItem = nil
+//        self.navigationItem.hidesBackButton = true
+        Task.init {
+            await productDetailVM.fetch3DAsset(path: product.colorsAsset.compactMap { $0["assetLink"] as? String }[0])
+            setupScrollView()
+        }
+//        productDetailVM.path.sink { [weak self] path in
+//            self?.filename = path
+//            print("DEBUG: 2 \(self!.filename)")
+//            self?.setupScrollView()
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        vm.fetchData()
     }
     
     // MARK: - Selectors
@@ -107,8 +126,9 @@ class ProductDetailVC: UIViewController {
     }
     
     private func configureContainerView() {
-        
-        let ArView = ARView(filename: product.filename)
+//        let ArView = ARView(filename: filename)
+        print("DEBUG: int2 \(selectedColor)")
+        let ArView = ARView(filename: product.colorsAsset.compactMap { $0["assetLink"] as? String }[selectedColor])
         contentView.addSubview(ArView)
         ArView.snp.makeConstraints { make in
             make.top.equalTo(contentView.snp.top)
@@ -131,7 +151,7 @@ class ProductDetailVC: UIViewController {
             make.height.equalTo(view.frame.height * 0.053)
         }
         
-        let productHeadline = HeadlineView(brandName: product.brandName, productName: product.productName)
+        let productHeadline = HeadlineView(brandName: brandName, productName: product.productName)
         contentView.addSubview(productHeadline)
         productHeadline.snp.makeConstraints { make in
             make.top.equalTo(ArView.snp.bottom).offset(view.frame.height * 0.02)
@@ -139,7 +159,7 @@ class ProductDetailVC: UIViewController {
             make.trailing.equalTo(contentView.snp.trailing).offset(-20)
         }
 
-        let RadioButton = RadioButtonView(colorarray: product.colorsArray)
+        let RadioButton = RadioButtonView(colorarray: product.colorsAsset.compactMap { $0["colors"] as? String }, selectedColor: selectedColor)
         contentView.addSubview(RadioButton)
         RadioButton.snp.makeConstraints { make in
             make.top.equalTo(productHeadline.snp.bottom).offset(view.frame.height * 0.02)

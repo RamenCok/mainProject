@@ -10,10 +10,14 @@ import SnapKit
 import Combine
 
 class BrandCatalogueViewController: UIViewController {
-
-    private var vm =  BrandCatalogueViewModel(service: Service() as! Servicing)
-    private var brandList: [Brands]!
+    
+    internal let vm =  BrandCatalogueViewModel(service: BrandService())
+    internal var brandList: [Brands]!
+    internal var brandImage: UIImage!
     private var cancellables: Set<AnyCancellable> = []
+    
+    internal var searching = false
+    internal var searchedBrand = [Brands]()
     
     private lazy var backgroundImage: UIImageView = {
         let imageView = UIImageView()
@@ -44,16 +48,17 @@ class BrandCatalogueViewController: UIViewController {
         return button
     }()
     
-    private lazy var collectionView: UICollectionView = {
+    internal lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
-//        collectionView.backgroundView = backgroundImage
+        //        collectionView.backgroundView = backgroundImage
         
         collectionView.register(BrandCollectionViewCell.self, forCellWithReuseIdentifier: BrandCollectionViewCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.contentInset = UIEdgeInsets(top: 16, left: 20, bottom: 0, right: 20)
         collectionView.showsVerticalScrollIndicator = false
+        collectionView.delaysContentTouches = false
         return collectionView
     }()
     
@@ -64,14 +69,14 @@ class BrandCatalogueViewController: UIViewController {
         search.searchBar.tintColor = .primaryColor
         search.searchBar.searchTextField.font = UIFont.bodyText()
         search.searchBar.searchTextField.backgroundColor = .white
-
+        
         if let textfield = search.searchBar.value(forKey: "searchField") as? UITextField {
             //textfield.textColor = // Set text color
             if let backgroundview = textfield.subviews.first {
-
+                
                 // Background color
                 backgroundview.backgroundColor = UIColor.white
-
+                
                 // Rounded corner
                 backgroundview.layer.cornerRadius = 10
                 backgroundview.clipsToBounds = true
@@ -85,19 +90,25 @@ class BrandCatalogueViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        configureUI()
         // Panggil dari vm
-        vm.brandList.sink { [weak self] data in
+        vm.brandList
+            .receive(on: RunLoop.main)
+            .sink { [weak self] data in
             self?.brandList = data
-            print(self?.brandList)
-            self?.configureUI()
+            self?.configureCollectionView()
+            self?.collectionView.reloadData()
         }.store(in: &cancellables)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        vm.fetchData()
+        vm.fetchBrandList()
+        navigationItem.title = "Brands"
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
-
+    
     // MARK: - Selectors
     @objc func handleProfileButtonTapped() {
         navigationController?.pushViewController(ProfileViewController(), animated: true)
@@ -107,7 +118,7 @@ class BrandCatalogueViewController: UIViewController {
     func configureUI() {
         
         view.backgroundColor = .white
-
+        
         searchBar.placeholder = "Your placeholder"
         searchBar.frame = CGRect(x: 0, y: 0, width: 200, height: 64)
         
@@ -116,20 +127,14 @@ class BrandCatalogueViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.modalTitle()]
         self.navigationController?.navigationBar.topItem?.backButtonDisplayMode = .minimal
         
-        view.addSubview(collectionView)
-
-        collectionView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.largeTitleDisplayMode = .always
+        
         
         self.navigationItem.hidesSearchBarWhenScrolling = false
-        self.title = "Brands"
-        self.navigationController?.title = "Brands"
+//        self.title = "Brands"
+//        self.navigationController?.title = "Brands"
         
-//        let rightBarBtn = UIBarButtonItem(customView: profileButton)
+        //        let rightBarBtn = UIBarButtonItem(customView: profileButton)
         
         guard let navigationBar = self.navigationController?.navigationBar else { return }
         navigationBar.addSubview(profileButton)

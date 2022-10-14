@@ -9,66 +9,58 @@ import Foundation
 import Firebase
 import FirebaseStorage
 
-protocol Servicing {
-    
-    func getBrandList(_ completion: @escaping ([Brands], Error?)-> Void)
+protocol BrandServicing {
+    func getBrandList(_ completion: @escaping ([Brands],Error?)-> Void)
 }
 
-protocol ProfileServices {
-    
-    func getUser(_ completion: @escaping (User, Error?) -> Void)
-    func updateUser(name: String, gender: String, imageData: UIImage, completion: @escaping (Error?) -> Void)
-    
+protocol ProductServicing {
+    func getProduct(ref: String, completion: @escaping (Product)-> Void)
+    func get3DAsset(path: String) async
+//    func get3DAsset(path: String, completion: @escaping (String)-> Void)
 }
 
-//struct MockService: Servicing {
-//    func getData(_ completion: @escaping (Product)-> Void) {
-//        //mock implementation
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//            completion(Product(filename: "AirForce",
-//                               brandName: "Love, Bonito",
-//                               productName: "Lela Textured A-line Dress",
-//                               productDesc: "Dreamy frills to brighten up your day. Crafted from sweat-wicking textured cotton, this mini dress features an A-line silhouette, V-neckline, and flared sleves. Comes with functional side pockets and zipper on the side. \n \n Dreamy frills to brighten up your day. Crafted from sweat-wicking textured cotton, this mini dress features an A-line silhouette, V-neckline, and flared sleves. Comes with functional side pockets and zipper on the side.",
-//                               colorsArray: ["7479EA", "B55DD3", "FF95BF"]))
-//        }
-//    }
-//    
-//    func getBrandList(_ completion: @escaping ([Brands])-> Void) {
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//            
-//            getBrandImage(brandImage: "sample-logo") { image in
-//                let dict = ["H&M": image, "Lacoste": image, "Tommy Hilfiger": image]
-//                completion([
-//                    Brands(dictionary: dict)
-//                ])
-//            }
-//        }
-//    }
-//    
-//    func getBrandImage(brandImage: String, completion: @escaping (UIImage)-> Void) {
-//        if let image = UIImage(named: brandImage) {
-//            completion(image) 
-//        }
-//    }
-//}
-
-
-struct Service: ProfileServices {
+// Tes firebase asli disini
+struct BrandService: BrandServicing {
     
-    let uid = "TONNJJA7N5aMZM63kZX6YhB7eSp1"
+    func getBrandList(_ completion: @escaping ([Brands],Error?)-> Void) {
+        var result = [Brands]()
+        Firestore.firestore().collection("brand").getDocuments { snapshot, error in
+            guard let snapshot = snapshot else {return}
+            for document in snapshot.documents {
+                let dict = document.data()
+                let data = Brands(dictionary: dict)
+                result.append(data)
+            }
+            completion(result, error)
+        }
+    }
+}
+
+struct ProductService: ProductServicing {
     
-    func getUser(_ completion: @escaping (User, Error?) -> Void) {
-        
-        let document = Firestore.firestore().collection("users").document(uid)
-        
-        document.getDocument { document, error in
-            
-            if let document = document, document.exists {
-                let dictionary = document.data()
-                let user = User(dictionary: dictionary ?? ["" : ""])
-                completion(user, error)
-            } else {
-                print("Document does not exist")
+    func getProduct(ref: String, completion: @escaping (Product)-> Void) {
+        let data = Firestore.firestore().collection("product").document(ref)
+        data.addSnapshotListener { snapshot, error in
+            let dict = snapshot?.data()
+            let data = Product(dictionary: dict ?? [:])
+            completion(data)
+        }
+    }
+    
+    func get3DAsset(path: String) async {
+        do {
+            let storage = Storage.storage().reference()
+            let modelPath = storage.child("Product3DAsset/\(path)")
+            let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+            let tempDirectory = URL.init(fileURLWithPath: paths, isDirectory: true)
+            let targetUrl = tempDirectory.appendingPathComponent("\(path)")
+
+            modelPath.write(toFile: targetUrl) { (url, error) in
+                if error != nil {
+                    print("ERROR: \(error!)")
+                }else{
+                    print("DEBUG: modelPath.write OKAY")
+                }
             }
         }
     }
@@ -97,4 +89,20 @@ struct Service: ProfileServices {
             }
         }
     }
+//    func get3DAsset(path: String, completion: @escaping (String)-> Void) {
+//        let storage = Storage.storage().reference()
+//        let modelPath = storage.child("Product3DAsset/\(path)")
+//        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+//        let tempDirectory = URL.init(fileURLWithPath: paths, isDirectory: true)
+//        let targetUrl = tempDirectory.appendingPathComponent("\(path)")
+//
+//        modelPath.write(toFile: targetUrl) { (url, error) in
+//            if error != nil {
+//                print("ERROR: \(error!)")
+//            }else{
+//                print("DEBUG: modelPath.write OKAY")
+//                completion(path)
+//            }
+//        }
+//    }
 }

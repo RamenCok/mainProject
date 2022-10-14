@@ -10,6 +10,8 @@
 		0E0DE4D928F476A2007AC831 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0DE4D828F476A2007AC831 /* Service.swift */; };
 		0E0DE4DB28F47704007AC831 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0DE4DA28F47704007AC831 /* Product.swift */; };
 		0E0DE4DD28F524D3007AC831 /* ReusableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0DE4DC28F524D2007AC831 /* ReusableLabel.swift */; };
+		0E40D9D528F81F0F003E485E /* ProductCatalogueHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E40D9D428F81F0F003E485E /* ProductCatalogueHeaderView.swift */; };
+		0E4DA64C28F6773800FC6F4E /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 0E4DA64B28F6773800FC6F4E /* SDWebImage */; };
 		0E7BCE3B28EB2FC8000820E0 /* AirForce.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0E7BCE3A28EB2FC8000820E0 /* AirForce.usdz */; };
 		0E7BCE4128EBF1C1000820E0 /* ProductDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7BCE4028EBF1C1000820E0 /* ProductDetailVC.swift */; };
 		0E7BCE4328EBF431000820E0 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7BCE4228EBF431000820E0 /* ARView.swift */; };
@@ -17,7 +19,7 @@
 		0EAFD7E628EAE6D10004E3DB /* ProductDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAFD7E528EAE6D10004E3DB /* ProductDetailVM.swift */; };
 		0EAFD7E828EB06A30004E3DB /* RadioButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAFD7E728EB06A30004E3DB /* RadioButtonView.swift */; };
 		0EB2125928ED706800FB1255 /* BuyAndSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB2125828ED706800FB1255 /* BuyAndSizeView.swift */; };
-		0EB2125B28ED895E00FB1255 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB2125A28ED895E00FB1255 /* ProductModel.swift */; };
+		0EB2125B28ED895E00FB1255 /* DependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB2125A28ED895E00FB1255 /* DependencyProvider.swift */; };
 		0EB2125D28EDDF4700FB1255 /* HeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB2125C28EDDF4700FB1255 /* HeadlineView.swift */; };
 		0EB2125F28EDE33200FB1255 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB2125E28EDE33200FB1255 /* DescriptionView.swift */; };
 		0EB2126728EE937D00FB1255 /* BodyMeasurementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB2126628EE937D00FB1255 /* BodyMeasurementVC.swift */; };
@@ -54,6 +56,7 @@
 		AC30936028F51F5C00766787 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC30935F28F51F5C00766787 /* FirebaseRemoteConfigSwift */; };
 		AC30936228F51F5C00766787 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = AC30936128F51F5C00766787 /* FirebaseStorage */; };
 		AC30936428F51F5D00766787 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = AC30936328F51F5D00766787 /* FirebaseStorageCombine-Community */; };
+		AC30932928F32FD900766787 /* ProductCatalogueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC30932828F32FD900766787 /* ProductCatalogueViewModel.swift */; };
 		AC6F478028EDEADF00AAF1F6 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC6F477F28EDEADF00AAF1F6 /* IQKeyboardManagerSwift */; };
 		AC6F478428EE982F00AAF1F6 /* ReusableTextFieldAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */; };
 		AC6F478628EE9A5100AAF1F6 /* ReusablePasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478528EE9A5100AAF1F6 /* ReusablePasswordTextField.swift */; };
@@ -123,6 +126,7 @@
 		0E0DE4D828F476A2007AC831 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		0E0DE4DA28F47704007AC831 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		0E0DE4DC28F524D2007AC831 /* ReusableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableLabel.swift; sourceTree = "<group>"; };
+		0E40D9D428F81F0F003E485E /* ProductCatalogueHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCatalogueHeaderView.swift; sourceTree = "<group>"; };
 		0E7BCE3A28EB2FC8000820E0 /* AirForce.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = AirForce.usdz; sourceTree = "<group>"; };
 		0E7BCE4028EBF1C1000820E0 /* ProductDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailVC.swift; sourceTree = "<group>"; };
 		0E7BCE4228EBF431000820E0 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
@@ -130,7 +134,7 @@
 		0EAFD7E528EAE6D10004E3DB /* ProductDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailVM.swift; sourceTree = "<group>"; };
 		0EAFD7E728EB06A30004E3DB /* RadioButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonView.swift; sourceTree = "<group>"; };
 		0EB2125828ED706800FB1255 /* BuyAndSizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyAndSizeView.swift; sourceTree = "<group>"; };
-		0EB2125A28ED895E00FB1255 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		0EB2125A28ED895E00FB1255 /* DependencyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyProvider.swift; sourceTree = "<group>"; };
 		0EB2125C28EDDF4700FB1255 /* HeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineView.swift; sourceTree = "<group>"; };
 		0EB2125E28EDE33200FB1255 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
 		0EB2126628EE937D00FB1255 /* BodyMeasurementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyMeasurementVC.swift; sourceTree = "<group>"; };
@@ -139,7 +143,7 @@
 		AC30932028F32A9F00766787 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC30932228F32C5200766787 /* ProductCatalogueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCatalogueViewController.swift; sourceTree = "<group>"; };
 		AC30932628F32D5100766787 /* ProductColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductColorView.swift; sourceTree = "<group>"; };
-		AC30932828F32FD900766787 /* ProducCatalogueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProducCatalogueViewModel.swift; sourceTree = "<group>"; };
+		AC30932828F32FD900766787 /* ProductCatalogueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCatalogueViewModel.swift; sourceTree = "<group>"; };
 		AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTextFieldAuth.swift; sourceTree = "<group>"; };
 		AC6F478528EE9A5100AAF1F6 /* ReusablePasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePasswordTextField.swift; sourceTree = "<group>"; };
 		AC8366BD28F68076000EBF5D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -280,7 +284,6 @@
 			isa = PBXGroup;
 			children = (
 				0EAFD7E528EAE6D10004E3DB /* ProductDetailVM.swift */,
-				0EB2125A28ED895E00FB1255 /* ProductModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				AC30932028F32A9F00766787 /* ProductCollectionViewCell.swift */,
 				AC30932228F32C5200766787 /* ProductCatalogueViewController.swift */,
 				AC30932628F32D5100766787 /* ProductColorView.swift */,
+				0E40D9D428F81F0F003E485E /* ProductCatalogueHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -334,7 +338,7 @@
 		AC30931F28F32A7E00766787 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				AC30932828F32FD900766787 /* ProducCatalogueViewModel.swift */,
+				AC30932828F32FD900766787 /* ProductCatalogueViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -430,6 +434,7 @@
 				0E0DE4DC28F524D2007AC831 /* ReusableLabel.swift */,
 				ACFE713528ED6C1800A894D4 /* ReusableTextField.swift */,
 				ACFE712E28ED207900A894D4 /* ReusablePinkCapsule.swift */,
+				0EB2125A28ED895E00FB1255 /* DependencyProvider.swift */,
 				0EAFD7E328EAE35B0004E3DB /* RadioButton.swift */,
 			);
 			path = Utilities;
@@ -889,6 +894,7 @@
 				ACFE712F28ED207900A894D4 /* ReusablePinkCapsule.swift in Sources */,
 				AC8366C628F6B6B7000EBF5D /* constant.swift in Sources */,
 				ACFE713428ED405C00A894D4 /* ReusableCapsuleTitle.swift in Sources */,
+				0E40D9D528F81F0F003E485E /* ProductCatalogueHeaderView.swift in Sources */,
 				DBE905F528EFDF4F00B6E463 /* SignupLogin.swift in Sources */,
 				AC8608A028F525D5002B0D3F /* Extensions.swift in Sources */,
 				0EB2125D28EDDF4700FB1255 /* HeadlineView.swift in Sources */,
@@ -903,7 +909,7 @@
 				DB8BCD9928EBDD0F00630CA3 /* BodyMeasurementModalVC.swift in Sources */,
 				DBA35F2428EDB0D4009D6917 /* ProfileViewController + ImagePickerExtensions.swift in Sources */,
 				DBA2FCD028ED365900FDC148 /* ProfileViewController.swift in Sources */,
-				AC30932928F32FD900766787 /* ProducCatalogueViewModel.swift in Sources */,
+				AC30932928F32FD900766787 /* ProductCatalogueViewModel.swift in Sources */,
 				DBE9060228EFDF5B00B6E463 /* BrandCollectionViewCell.swift in Sources */,
 				DB76CD9128F51CAA00F562CB /* BrandCatalogueVC + SearchBar Extensions.swift in Sources */,
 				AC8366CB28F6D009000EBF5D /* UserService.swift in Sources */,
@@ -924,7 +930,7 @@
 				0EAFD7E828EB06A30004E3DB /* RadioButtonView.swift in Sources */,
 				0E0DE4D928F476A2007AC831 /* Service.swift in Sources */,
 				0EAFD7E428EAE35B0004E3DB /* RadioButton.swift in Sources */,
-				0EB2125B28ED895E00FB1255 /* ProductModel.swift in Sources */,
+				0EB2125B28ED895E00FB1255 /* DependencyProvider.swift in Sources */,
 				0E7BCE4128EBF1C1000820E0 /* ProductDetailVC.swift in Sources */,
 				0EB2125F28EDE33200FB1255 /* DescriptionView.swift in Sources */,
 				0EB2125928ED706800FB1255 /* BuyAndSizeView.swift in Sources */,
@@ -1077,7 +1083,7 @@
 				CODE_SIGN_ENTITLEMENTS = mainProject/mainProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8XZM6ZXT9F;
+				DEVELOPMENT_TEAM = 625ZX732CB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mainProject/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = Test;
@@ -1108,7 +1114,7 @@
 				CODE_SIGN_ENTITLEMENTS = mainProject/mainProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8XZM6ZXT9F;
+				DEVELOPMENT_TEAM = 625ZX732CB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mainProject/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = Test;
@@ -1163,6 +1169,14 @@
 				kind = branch;
 			};
 		};
+		0E4DA64A28F6773800FC6F4E /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		AC6F477E28EDEADF00AAF1F6 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
@@ -1214,7 +1228,22 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		AC30932F28F51F5C00766787 /* FirebaseAnalytics */ = {
+		0E4DA64B28F6773800FC6F4E /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0E4DA64A28F6773800FC6F4E /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		AC6F477F28EDEADF00AAF1F6 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AC6F477E28EDEADF00AAF1F6 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+		ACB588AA28E7F08C0025D230 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ACB588A928E7F08C0025D230 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		ACFEBED028E7678900372297 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AC30932E28F51F5C00766787 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;

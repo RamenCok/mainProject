@@ -7,15 +7,66 @@
 
 import UIKit
 import SnapKit
+import SDWebImage
 
 class BrandCollectionViewCell: UICollectionViewCell {
     static let identifier = "BrandCollectionViewCell"
     var brandName: String!
-    var brandImage: UIImage!
+    var brandImage: String!
     
+    var disabledHighlightedAnimation = false
+    
+    // MARK: - Cell animation when touched
+    func freezeAnimations() {
+        disabledHighlightedAnimation = true
+        layer.removeAllAnimations()
+    }
+    
+    func unfreezeAnimations() {
+        disabledHighlightedAnimation = false
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        animate(isHighlighted: true)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        animate(isHighlighted: false)
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
+        animate(isHighlighted: false)
+    }
+    
+    private func animate(isHighlighted: Bool, completion: ((Bool) -> Void)?=nil) {
+        if disabledHighlightedAnimation {
+            return
+        }
+        if isHighlighted {
+            UIView.animate(withDuration: 0.5,
+                           delay: 0,
+                           usingSpringWithDamping: 1,
+                           initialSpringVelocity: 0,
+                           options: [.allowUserInteraction], animations: {
+                self.transform = .init(scaleX: 0.96, y: 0.96)
+            }, completion: completion)
+        } else {
+            UIView.animate(withDuration: 0.5,
+                           delay: 0,
+                           usingSpringWithDamping: 1,
+                           initialSpringVelocity: 0,
+                           options: [.allowUserInteraction], animations: {
+                self.transform = .identity
+            }, completion: completion)
+        }
+    }
+    
+    // MARK: - cell init
     private lazy var brandImageView: UIImageView = {
         let imageView = UIImageView()
-//        imageView.image = UIImage(named: "sample-logo")
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = false
         imageView.backgroundColor = .white
@@ -42,17 +93,17 @@ class BrandCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
     }
     
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - configure the cell
     func configure() {
-        
-        brandImageView.image = brandImage
+        guard let brandImageUrl = URL(string: brandImage) else { return }
+        brandImageView.sd_setImage(with: brandImageUrl)
         contentView.addSubview(brandImageView)
         
-        brandLabel.text = self.brandName!
+        brandLabel.text = brandName!
         contentView.addSubview(brandLabel)
         
         contentView.clipsToBounds = true
