@@ -138,6 +138,17 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
     let modalType = "Tappable"
     var modalSize = 1.24
     
+    var productSizeChart: [ProductSizeChart]?
+    
+    init(productSizeChart: [ProductSizeChart]) {
+        self.productSizeChart = productSizeChart
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         

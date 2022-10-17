@@ -16,7 +16,6 @@ protocol BrandServicing {
 protocol ProductServicing {
     func getProduct(ref: String, completion: @escaping (Product)-> Void)
     func get3DAsset(path: String) async
-//    func get3DAsset(path: String, completion: @escaping (String)-> Void)
 }
 
 protocol ProfileServices {

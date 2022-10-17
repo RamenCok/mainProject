@@ -8,6 +8,12 @@
 import UIKit
 import Combine
 
+protocol ProductDetailDelegate: AnyObject {
+    
+    func showSizeCalc()
+    func showBuyModal()
+}
+
 class ProductDetailVC: UIViewController {
     
     // MARK: - Properties
@@ -58,22 +64,19 @@ class ProductDetailVC: UIViewController {
         return rect
     }()
     
+    var modalSize: Double?
+    var presentedVC: String?
+    
     // MARK: - Lifecycle
     override open func viewDidLoad() {
+        
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        // Remove back button
-//        self.navigationItem.leftBarButtonItem = nil
-//        self.navigationItem.hidesBackButton = true
+        
         Task.init {
             await productDetailVM.fetch3DAsset(path: product.colorsAsset.compactMap { $0["assetLink"] as? String }[0])
             setupScrollView()
         }
-//        productDetailVM.path.sink { [weak self] path in
-//            self?.filename = path
-//            print("DEBUG: 2 \(self!.filename)")
-//            self?.setupScrollView()
-//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -112,6 +115,7 @@ class ProductDetailVC: UIViewController {
         }
         
         let buyandsize = BuyAndSizeView()
+        buyandsize.delegate = self
         view.addSubview(buyandsize)
         buyandsize.snp.makeConstraints { make in
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
@@ -175,6 +179,51 @@ class ProductDetailVC: UIViewController {
             make.bottom.equalTo(contentView.snp.bottom)
         }
     }
-    
 }
 
+extension ProductDetailVC: UIViewControllerTransitioningDelegate {
+    
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        
+        if presentedVC == "Tappable" {
+            return DismissTappablePresentationController(
+                modalTransitionSize: (view.frame.height/self.modalSize!)/view.frame.height,
+                presentedViewController: presented,
+                presenting: presenting
+            )
+        } else {
+            return NotTappablePresentationController(
+                modalTransitionSize: (view.frame.height/self.modalSize!)/view.frame.height,
+                presentedViewController: presented,
+                presenting: presenting
+            )
+        }
+    }
+}
+
+extension ProductDetailVC: ProductDetailDelegate {
+    
+    func showSizeCalc() {
+        
+        let slideVC = SizeCalculatorModalVC(productSizeChart: product.productSizeChart)
+        
+        presentedVC = slideVC.modalType
+        modalSize = slideVC.modalSize
+        slideVC.modalPresentationStyle = .custom
+        slideVC.transitioningDelegate = self
+        
+        self.present(slideVC, animated: true, completion: nil)
+    }
+    
+    func showBuyModal() {
+        
+        let slideVC = BuyModalVC()
+        
+        presentedVC = slideVC.modalType
+        modalSize = slideVC.vm.setModalHeight(numberOfButtons: 4)
+        slideVC.modalPresentationStyle = .custom
+        slideVC.transitioningDelegate = self
+        
+        self.present(slideVC, animated: true, completion: nil)
+    }
+}
