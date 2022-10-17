@@ -22,9 +22,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             print(user.uid)
             print(user.isAnonymous)
             if user.isAnonymous {
-                vc = SignupLogin()
+                vc = BrandCatalogueViewController()
             } else {
-                vc = ProfileViewController()
+                vc = BrandCatalogueViewController()
             }
         } else {
             print("no user")

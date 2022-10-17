@@ -25,14 +25,6 @@ class ProfileViewController: UIViewController {
         return image
     }()
     
-    private lazy var editButton: UIButton = {
-           let button = UIButton()
-           button.setTitle("Edit", for: .normal)
-           button.setTitleColor(.primaryColor, for: .normal)
-           button.addTarget(self, action: #selector(handleEdit), for: .touchUpInside)
-           return button
-       }()
-    
     internal lazy var profileImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "initialProfilePicture")
@@ -168,44 +160,7 @@ class ProfileViewController: UIViewController {
         self.showImagePicker(selectedSource: .photoLibrary)
     }
     
-    @objc func handleDone() {
-        UIView.animate(withDuration: 0.2) {
-            self.editProfileImageButton.alpha = 0
-            
-            self.genderButton.alpha = 0
-            self.genderLabel.backgroundColor = .clear
-            
-            self.editButton.setTitle("Edit", for: .normal)
-            self.editButton.removeTarget(self, action: #selector(self.handleDone), for: .touchUpInside)
-            self.editButton.addTarget(self, action: #selector(self.handleEdit), for: .touchUpInside)
-            
-            self.nameTF.isEnabled = false
-            self.nameTF.backgroundColor = .clear
-            
-            self.vm.updateUser(
-                name: self.nameTF.text ?? "",
-                gender: self.genderLabel.text ?? "",
-                imageData: self.profileImage.image ?? UIImage()
-            )
-        }
-    }
     
-    @objc func handleEdit() {
-        print("Edit")
-        UIView.animate(withDuration: 0.2) {
-            self.editProfileImageButton.alpha = 1
-            
-            self.genderButton.alpha = 1
-            self.genderLabel.backgroundColor = .systemGray6
-            
-            self.editButton.setTitle("Done", for: .normal)
-            self.editButton.removeTarget(self, action: #selector(self.handleEdit), for: .touchUpInside)
-            self.editButton.addTarget(self, action: #selector(self.handleDone), for: .touchUpInside)
-            
-            self.nameTF.isEnabled = true
-            self.nameTF.backgroundColor = .systemGray6
-        }
-    }
     
     @objc func handleBodyMeasurementButton() {
         navigationController?.pushViewController(BodyMeasurementVC(), animated: true)
@@ -256,6 +211,7 @@ class ProfileViewController: UIViewController {
         ]
         editBarButtonItem.setTitleTextAttributes(navItemAttribute, for: .normal)
         editBarButtonItem.tintColor = .primaryColor
+        
         navigationItem.rightBarButtonItem = editBarButtonItem
     
         navigationController?.navigationBar.tintColor = .primaryColor
@@ -333,6 +289,7 @@ class ProfileViewController: UIViewController {
                 self.nameTF.isEnabled = true
                 self.nameTF.backgroundColor = .systemGray6
             }
+            
         } else {
             print("Done")
             UIView.animate(withDuration: 0.2) {
@@ -343,6 +300,12 @@ class ProfileViewController: UIViewController {
                 
                 self.nameTF.isEnabled = false
                 self.nameTF.backgroundColor = .clear
+                
+                self.vm.updateUser(
+                    name: self.nameTF.text ?? "",
+                    gender: self.genderLabel.text ?? "",
+                    imageData: self.profileImage.image ?? UIImage()
+                )
             }
         }
     }

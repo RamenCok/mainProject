@@ -90,7 +90,7 @@ class LoginViewController: UIViewController {
                         if document.data()!["gender"] == nil || document.data()!["gender"] as! String == "" {
                             wnd?.set(rootViewController: UINavigationController(rootViewController:  PersonalizeViewController()) , options: options)
                         } else {
-                            wnd?.set(rootViewController: UINavigationController(rootViewController:  ProfileViewController()), options: options)
+                            wnd?.set(rootViewController: UINavigationController(rootViewController:  BrandCatalogueViewController()), options: options)
                         }
                         print("Document data: \(dataDescription)")
                     } else {

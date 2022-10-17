@@ -27,11 +27,11 @@ protocol ProfileServices {
 }
 struct Service: ProfileServices {
     
-    let uid = "TONNJJA7N5aMZM63kZX6YhB7eSp1"
+    let uid = AUTH_REF.currentUser?.uid
     
     func getUser(_ completion: @escaping (User, Error?) -> Void) {
         
-        let document = Firestore.firestore().collection("users").document(uid)
+        let document = Firestore.firestore().collection("users").document(uid!)
         
         document.getDocument { document, error in
             
@@ -47,7 +47,8 @@ struct Service: ProfileServices {
     
     func updateUser(name: String, gender: String, imageData: UIImage, completion: @escaping (Error?) -> Void) {
         
-        let reference = Firestore.firestore().collection("users").document(uid)
+       
+        let reference = Firestore.firestore().collection("users").document(uid!)
         let storage = Storage.storage().reference().child("ProfilePicture/\(uid)")
         
         let metaData = StorageMetadata()

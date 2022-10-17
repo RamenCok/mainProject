@@ -10,7 +10,7 @@ import IQKeyboardManagerSwift
 import FirebaseCore
 import GoogleSignIn
 
-                       @main
+@main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 

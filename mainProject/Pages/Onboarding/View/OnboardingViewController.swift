@@ -82,7 +82,14 @@ class OnboardingViewController: UIPageViewController {
     @objc func handleNavigationButton() {
         AuthServices.shared.anonymousAuth()
 //        print("Next Screen")
-        navigationController?.pushViewController(UINavigationController(rootViewController: BrandCatalogueViewController()) , animated: true)
+        let wnd = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        var options = UIWindow.TransitionOptions()
+        options.direction = .toRight
+        options.duration = 0.4
+        options.style = .easeIn
+        wnd?.set(rootViewController: UINavigationController(rootViewController: BrandCatalogueViewController()), options: options)
+        
+//        navigationController?.pushViewController(BrandCatalogueViewController() , animated: true)
         
 //        let vc = BrandCatalogueViewController()
 //        let navController = UINavigationController(rootViewController: vc)
@@ -114,7 +121,7 @@ class OnboardingViewController: UIPageViewController {
     func configureUI() {
         
         view.backgroundColor = .systemBackground
-        
+        navigationController?.navigationBar.isHidden = true
         view.addSubview(skipButton)
         skipButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(55)
