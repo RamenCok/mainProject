@@ -12,8 +12,58 @@ class BodyMeasurementCell: UICollectionViewCell {
     
     static let identifier = "BodyMeasurementCell"
     
-    var type: Int!
+    var type: String!
     var numbers: Int!
+    
+    var disabledHighlightedAnimation = false
+    
+    // MARK: - Cell animation when touched
+    func freezeAnimations() {
+        disabledHighlightedAnimation = true
+        layer.removeAllAnimations()
+    }
+    
+    func unfreezeAnimations() {
+        disabledHighlightedAnimation = false
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        animate(isHighlighted: true)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        animate(isHighlighted: false)
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
+        animate(isHighlighted: false)
+    }
+    
+    private func animate(isHighlighted: Bool, completion: ((Bool) -> Void)?=nil) {
+        if disabledHighlightedAnimation {
+            return
+        }
+        if isHighlighted {
+            UIView.animate(withDuration: 0.5,
+                           delay: 0,
+                           usingSpringWithDamping: 1,
+                           initialSpringVelocity: 0,
+                           options: [.allowUserInteraction], animations: {
+                self.transform = .init(scaleX: 0.96, y: 0.96)
+            }, completion: completion)
+        } else {
+            UIView.animate(withDuration: 0.5,
+                           delay: 0,
+                           usingSpringWithDamping: 1,
+                           initialSpringVelocity: 0,
+                           options: [.allowUserInteraction], animations: {
+                self.transform = .identity
+            }, completion: completion)
+        }
+    }
     
     private lazy var background: UIView = {
         let bg = UIView()
@@ -38,7 +88,7 @@ class BodyMeasurementCell: UICollectionViewCell {
 
         contentView.addSubview(background)
         
-        let measurementType = ReusableLabel(style: .heading_3, textString: converter(type: self.type))
+        let measurementType = ReusableLabel(style: .heading_3, textString: self.type)
         measurementType.textAlignment = .left
         contentView.addSubview(measurementType)
         measurementType.snp.makeConstraints { make in
@@ -46,7 +96,7 @@ class BodyMeasurementCell: UICollectionViewCell {
             make.leading.equalTo(background.snp.leading).offset(15)
         }
         
-        let measurementCaption = ReusableLabel(style: .bodyText, textString: "Caption")
+        let measurementCaption = ReusableLabel(style: .bodyText, textString: "")
         measurementType.textAlignment = .left
         contentView.addSubview(measurementCaption)
         measurementCaption.snp.makeConstraints { make in
@@ -72,29 +122,6 @@ class BodyMeasurementCell: UICollectionViewCell {
             return "\(self.numbers!) cm"
         } else {
             return "-"
-        }
-    }
-    
-    private func converter(type: Int)->String {
-        switch type {
-        case 0:
-            return "Bust"
-        case 1:
-            return "Waist"
-        case 2:
-            return "Height"
-        case 3:
-            return "Hips"
-        case 4:
-            return "Arm"
-        case 5:
-            return "Thigh"
-        case 6:
-            return "Shoulder"
-        case 7:
-            return "Sleeve"
-        default:
-            return ""
         }
     }
 }

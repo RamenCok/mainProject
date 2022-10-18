@@ -143,15 +143,23 @@ class ProfileViewController: UIViewController {
                 self.profileImage.image = UIImage(named: "initialProfilePicture")
             }
             
+            self.user = user
+            
+            
         }.store(in: &cancellables)
         
         configureUI()
-        configureTextFieldObservers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
+        vm.getUser()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        super.viewWillDisappear(animated)
         vm.getUser()
     }
     
@@ -163,7 +171,7 @@ class ProfileViewController: UIViewController {
     
     
     @objc func handleBodyMeasurementButton() {
-        navigationController?.pushViewController(BodyMeasurementVC(), animated: true)
+        navigationController?.pushViewController(BodyMeasurementVC(user: user), animated: true)
     }
     
     @objc func handleResetPasswordButton() {
@@ -278,8 +286,6 @@ class ProfileViewController: UIViewController {
 
         // attaching custom actions here
         if editing {
-            
-            print("Edit")
             UIView.animate(withDuration: 0.2) {
                 self.editProfileImageButton.alpha = 1
                 
@@ -291,7 +297,6 @@ class ProfileViewController: UIViewController {
             }
             
         } else {
-            print("Done")
             UIView.animate(withDuration: 0.2) {
                 self.editProfileImageButton.alpha = 0
                 
@@ -301,11 +306,24 @@ class ProfileViewController: UIViewController {
                 self.nameTF.isEnabled = false
                 self.nameTF.backgroundColor = .clear
                 
+                // Add alert here
+                
                 self.vm.updateUser(
                     name: self.nameTF.text ?? "",
                     gender: self.genderLabel.text ?? "",
                     imageData: self.profileImage.image ?? UIImage()
                 )
+                
+                if self.user.userGender != self.genderLabel.text {
+                    print("DEBUG: Helloooo")
+                    self.vm.service.resetBodyMeasurementToZero()
+                    self.user.userBodyMeasurement = ["Chest": 0, "Height": 0, "Waist": 0]
+                }
+                
+                self.user.userName = self.nameTF.text!
+                self.user.userGender = self.genderLabel.text!
+                
+                self.configureUI()
             }
         }
     }

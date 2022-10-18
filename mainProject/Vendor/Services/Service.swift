@@ -22,7 +22,8 @@ protocol ProfileServices {
     
     func getUser(_ completion: @escaping (User, Error?) -> Void)
     func updateUser(name: String, gender: String, imageData: UIImage, completion: @escaping (Error?) -> Void)
-    
+    func updateBodyMeasurement(type: String, value: Int,  completion: @escaping() -> Void)
+    func resetBodyMeasurementToZero()
 }
 struct Service: ProfileServices {
     
@@ -46,9 +47,8 @@ struct Service: ProfileServices {
     
     func updateUser(name: String, gender: String, imageData: UIImage, completion: @escaping (Error?) -> Void) {
         
-       
         let reference = Firestore.firestore().collection("users").document(uid!)
-        let storage = Storage.storage().reference().child("ProfilePicture/\(uid)")
+        let storage = Storage.storage().reference().child("ProfilePicture/\(uid!)")
         
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpg"
@@ -68,6 +68,17 @@ struct Service: ProfileServices {
                 ])
             }
         }
+    }
+    
+    func updateBodyMeasurement(type: String, value: Int,  completion: @escaping() -> Void) {
+        let reference = Firestore.firestore().collection("users").document(uid!)
+        reference.setData(["userBodyMeasurement": [type: value]], merge: true)
+    }
+    
+    func resetBodyMeasurementToZero() {
+        
+        let reference = Firestore.firestore().collection("users").document(uid!)
+        reference.setData(["userBodyMeasurement": ["Chest": 0, "Height": 0, "Waist": 0]], merge: true)
     }
 }
 

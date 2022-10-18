@@ -7,6 +7,11 @@
 
 import UIKit
 import SnapKit
+import Combine
+
+protocol BodyMeasurementDelegate: AnyObject {
+    func reload()
+}
 
 class BodyMeasurementVC: UIViewController {
 
@@ -36,47 +41,48 @@ class BodyMeasurementVC: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(BodyMeasurementCell.self, forCellWithReuseIdentifier: BodyMeasurementCell.identifier)
-//        collectionView.backgroundView = backgroundImage
         collectionView.backgroundColor = .clear
-//        collectionView.delegate = self
-//        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
         collectionView.contentInset = UIEdgeInsets(top: 16, left: 20, bottom: 0, right: 20)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.backgroundColor = .clear
         return collectionView
     }()
     
-    private var vm =  BodyMeasurementVM()
+    internal var vm =  BodyMeasurementVM(service: Service())
     var user: User!
     
     var modalSize: Double?
     var presentedVC: String?
     
+    var cancellables: Set<AnyCancellable> = []
+    
     //MARK: Lifecycle
+    init(user: User) {
+        
+        self.user = user
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         configureNavigation()
+        configureUI()
         
         navigationItem.largeTitleDisplayMode = .always
-        
-        vm.getdata { [weak self] data in
-            self?.user = data
-            self?.configureUI()
-        }
     }
 
     // MARK: - Selectors
     @objc func handleQuestionMarkButton() {
         
-        let slideVC = SignUpModalVC()
-        
-        presentedVC = slideVC.modalType
-        modalSize = slideVC.modalSize
-        slideVC.modalPresentationStyle = .custom
-        slideVC.transitioningDelegate = self
-        
-        self.present(slideVC, animated: true, completion: nil)
+        print("Privacy GUNDULMU!")
     }
     
     //MARK: - Helpers
@@ -119,5 +125,18 @@ extension BodyMeasurementVC: UIViewControllerTransitioningDelegate {
                 presenting: presenting
             )
         }
+    }
+}
+
+extension BodyMeasurementVC: BodyMeasurementDelegate {
+    
+    func reload() {
+        
+        vm.getUser()
+        vm.user.sink { [weak self] user in
+            self?.user = user
+            print("DEBUG: \(user)")
+            self?.collectionView.reloadData()
+        }.store(in: &cancellables)
     }
 }
