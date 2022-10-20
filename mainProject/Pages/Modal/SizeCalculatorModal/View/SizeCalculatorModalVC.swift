@@ -303,7 +303,7 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
         sizeStack.spacing = (view.frame.width - 40) / 43.75
         view.addSubview(sizeStack)
         sizeStack.snp.makeConstraints { make in
-            make.height.equalTo(sizeStack.snp.height)
+            make.height.equalTo(view.frame.height / 18)
             make.top.equalTo(productDetailStack.snp.bottom).offset(20)
             make.leading.equalToSuperview().inset(20)
         }
@@ -353,7 +353,7 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
             tapGesture.view?.tag = $0.sizeInt
             
             $0.snp.makeConstraints { make in
-                make.height.equalTo(view.frame.height / 21.1)
+                make.height.equalTo(view.frame.height / 18)
                 make.width.equalTo(view.frame.width / 6.2)
             }
             

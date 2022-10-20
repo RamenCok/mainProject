@@ -75,23 +75,3 @@ class SizeButtonView: UIView {
         sizeNameLabel.text = sizeName
     }
 }
-
-//extension ViewController: UIViewControllerTransitioningDelegate {
-//    
-//    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-//        
-//        if presentedVC == "Tappable" {
-//            return DismissTappablePresentationController(
-//                modalTransitionSize: (view.frame.height/self.modalSize)/view.frame.height,
-//                presentedViewController: presented,
-//                presenting: presenting
-//            )
-//        } else {
-//            return NotTappablePresentationController(
-//                modalTransitionSize: (view.frame.height/self.modalSize)/view.frame.height,
-//                presentedViewController: presented,
-//                presenting: presenting
-//            )
-//        }
-//    }
-//}
