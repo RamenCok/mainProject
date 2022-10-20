@@ -29,6 +29,8 @@ class SizeButtonView: UIView {
         }
     }
     
+    var sizeInt: Int = 0
+    
     //MARK: - Lifecycle
     required init?(coder: NSCoder) {
         
@@ -42,9 +44,10 @@ class SizeButtonView: UIView {
         commonInit()
     }
     
-    init(sizeName: String) {
+    init(sizeName: String, sizeInt: Int) {
         
         self.sizeName = sizeName
+        self.sizeInt = sizeInt
         
         super.init(frame: .zero)
         commonInit()

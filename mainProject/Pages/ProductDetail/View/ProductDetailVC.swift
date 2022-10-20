@@ -205,7 +205,7 @@ extension ProductDetailVC: ProductDetailDelegate {
     
     func showSizeCalc() {
         
-        let slideVC = SizeCalculatorModalVC(productSizeChart: product.productSizeChart)
+        let slideVC = SizeCalculatorModalVC(productSizeChart: product.productSizeChart, brandName: brandName, productName: product.productName)
         
         presentedVC = slideVC.modalType
         modalSize = slideVC.modalSize

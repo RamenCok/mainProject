@@ -20,12 +20,12 @@ struct Product {
         self.productDesc = dictionary["productDesc"] as? String ?? ""
         self.productImage = dictionary["productImage"] as? String ?? ""
         self.colorsAsset = dictionary["colorsAsset"] as? [[String: Any]] ?? [[:]]
-        self.productSizeChart = dictionary["productSizeChart"] as? [ProductSizeChart] ?? [ProductSizeChart(sizeName: 1, sizeDimesion: [:])]
+        self.productSizeChart = dictionary["productSizeChart"] as? [ProductSizeChart] ?? [ProductSizeChart(sizeName: 10, sizeDimension: [:])]
     }
 }
 
-struct ProductSizeChart{
+struct ProductSizeChart {
     
     var sizeName: Int
-    var sizeDimesion: [String: Any]
+    var sizeDimension: [String: Int]
 }

@@ -102,10 +102,27 @@ struct BrandService: BrandServicing {
 struct ProductService: ProductServicing {
     
     func getProduct(ref: String, completion: @escaping (Product)-> Void) {
+        
         let data = Firestore.firestore().collection("product").document(ref)
         data.addSnapshotListener { snapshot, error in
+            
             let dict = snapshot?.data()
-            let data = Product(dictionary: dict ?? [:])
+            var data = Product(dictionary: dict ?? [:])
+            
+            if data.productName == "Product 1" {
+                
+                let productSizeChartDict = snapshot?.get("productSizeChart") as! [[String: Any]]
+                
+                var productSizeChart: [ProductSizeChart] = []
+                
+                for product in productSizeChartDict {
+                    let productSize = ProductSizeChart(sizeName: product["sizeName"] as! Int, sizeDimension: product["sizeDimension"] as! [String : Int])
+                    productSizeChart.append(productSize)
+                }
+                
+                data.productSizeChart = productSizeChart
+            }
+            
             completion(data)
         }
     }
@@ -127,46 +144,4 @@ struct ProductService: ProductServicing {
             }
         }
     }
-    
-    func updateUser(name: String, gender: String, imageData: UIImage, completion: @escaping (Error?) -> Void) {
-        let uid = AUTH_REF.currentUser?.uid
-        
-        let reference = Firestore.firestore().collection("users").document(uid!)
-        let storage = Storage.storage().reference().child("ProfilePicture/\(uid!)")
-        
-        let metaData = StorageMetadata()
-        metaData.contentType = "image/jpg"
-        
-        guard let data = imageData.jpegData(compressionQuality: 1.0) else { return }
-        
-        storage.putData(data, metadata: metaData) { _ in
-            
-            storage.downloadURL { url, error in
-                
-                guard let profilePictureURL = url?.absoluteString else { return }
-                
-                reference.updateData([
-                    "name": name,
-                    "gender": gender,
-                    "userProfilePicture": profilePictureURL
-                ])
-            }
-        }
-    }
-//    func get3DAsset(path: String, completion: @escaping (String)-> Void) {
-//        let storage = Storage.storage().reference()
-//        let modelPath = storage.child("Product3DAsset/\(path)")
-//        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-//        let tempDirectory = URL.init(fileURLWithPath: paths, isDirectory: true)
-//        let targetUrl = tempDirectory.appendingPathComponent("\(path)")
-//
-//        modelPath.write(toFile: targetUrl) { (url, error) in
-//            if error != nil {
-//                print("ERROR: \(error!)")
-//            }else{
-//                print("DEBUG: modelPath.write OKAY")
-//                completion(path)
-//            }
-//        }
-//    }
 }

@@ -20,7 +20,6 @@ class ProfileViewModel: ObservableObject {
     
     func getUser() {
         service.getUser { user, error in
-            print("DEBUG: Hallo")
             self.user.send(user)
         }
     }

@@ -37,7 +37,7 @@ class ProfileViewController: UIViewController {
         return image
     }()
     
-    private lazy var editProfileImageButton: UIButton = {
+    internal lazy var editProfileImageButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "editProfilePicture"), for: .normal)
         button.backgroundColor = UIColor(red: 54/255, green: 54/255, blue: 54/255, alpha: 0.45)
@@ -67,7 +67,7 @@ class ProfileViewController: UIViewController {
         return tf
     }()
     
-    private lazy var genderLabel: ReusableLabel = {
+    internal lazy var genderLabel: ReusableLabel = {
         let label = ReusableLabel(style: .subHeading_2, textString: "")
         label.backgroundColor = .clear
         label.layer.cornerRadius = 15
@@ -98,7 +98,7 @@ class ProfileViewController: UIViewController {
         return menu
     }()
     
-    private lazy var genderButton: UIButton = {
+    internal lazy var genderButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
         button.showsMenuAsPrimaryAction = true
@@ -167,8 +167,6 @@ class ProfileViewController: UIViewController {
     @objc func handleEditProfilePicture() {
         self.showImagePicker(selectedSource: .photoLibrary)
     }
-    
-    
     
     @objc func handleBodyMeasurementButton() {
         navigationController?.pushViewController(BodyMeasurementVC(user: user), animated: true)
@@ -276,55 +274,6 @@ class ProfileViewController: UIViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-37)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
-        }
-    }
-    
-    override func setEditing(_ editing: Bool, animated: Bool) {
-
-        // overriding this method means we can attach custom functions to the button
-        super.setEditing(editing, animated: animated)
-
-        // attaching custom actions here
-        if editing {
-            UIView.animate(withDuration: 0.2) {
-                self.editProfileImageButton.alpha = 1
-                
-                self.genderButton.alpha = 1
-                self.genderLabel.backgroundColor = .systemGray6
-                
-                self.nameTF.isEnabled = true
-                self.nameTF.backgroundColor = .systemGray6
-            }
-            
-        } else {
-            UIView.animate(withDuration: 0.2) {
-                self.editProfileImageButton.alpha = 0
-                
-                self.genderButton.alpha = 0
-                self.genderLabel.backgroundColor = .clear
-                
-                self.nameTF.isEnabled = false
-                self.nameTF.backgroundColor = .clear
-                
-                // Add alert here
-                
-                self.vm.updateUser(
-                    name: self.nameTF.text ?? "",
-                    gender: self.genderLabel.text ?? "",
-                    imageData: self.profileImage.image ?? UIImage()
-                )
-                
-                if self.user.userGender != self.genderLabel.text {
-                    print("DEBUG: Helloooo")
-                    self.vm.service.resetBodyMeasurementToZero()
-                    self.user.userBodyMeasurement = ["Chest": 0, "Height": 0, "Waist": 0]
-                }
-                
-                self.user.userName = self.nameTF.text!
-                self.user.userGender = self.genderLabel.text!
-                
-                self.configureUI()
-            }
         }
     }
 }

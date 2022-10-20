@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Combine
 
 class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDelegate {
 
@@ -18,7 +19,7 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
     }()
     
     private lazy var sizeLabel: ReusableLabel = {
-        let label = ReusableLabel(style: .heading_1, textString: "M")
+        let label = ReusableLabel(style: .heading_1, textString: "")
         label.textAlignment = .right
         return label
     }()
@@ -38,7 +39,7 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
     
     private lazy var divider: UIView = {
         let view = UIView()
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .systemGray3
         view.snp.makeConstraints { make in
             make.height.equalTo(1)
         }
@@ -46,13 +47,13 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
     }()
     
     private lazy var brandLabel: ReusableLabel = {
-        let label = ReusableLabel(style: .productDetailBrand, textString: "Love, Bonito")
+        let label = ReusableLabel(style: .productDetailBrand, textString: "")
         label.textColor = .systemGray
         return label
     }()
     
     private lazy var productNameLabel: ReusableLabel = {
-        let label = ReusableLabel(style: .heading_2, textString: "Lela Textured A-line Dress")
+        let label = ReusableLabel(style: .heading_2, textString: "")
         return label
     }()
     
@@ -70,11 +71,7 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
         return label
     }()
     
-    let xsSizeView = SizeButtonView(sizeName: "XS")
-    let sSizeView = SizeButtonView(sizeName: "S")
-    let mSizeView = SizeButtonView(sizeName: "M")
-    let lSizeView = SizeButtonView(sizeName: "L")
-    let xlSizeView = SizeButtonView(sizeName: "XL")
+    let sizeStack = UIStackView()
     
     weak var selectedView: SizeButtonView? {
         willSet {
@@ -90,45 +87,24 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
         }
     }
     
-    private lazy var sizeStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [xsSizeView, sSizeView, mSizeView, lSizeView, xlSizeView])
-        stack.axis = .horizontal
-        stack.alignment = .center
-        stack.distribution = .fill
-        stack.spacing = (view.frame.width - 40) / 43.75
-        stack.snp.makeConstraints { make in
-            make.height.equalTo(xsSizeView.snp.height)
-        }
-        return stack
-    }()
-    
-    private lazy var viewStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [recommendedSizeStack, divider, productDetailStack, sizeStack])
-        stack.alignment = .leading
-        stack.spacing = 20
-        stack.axis = .vertical
-        stack.distribution = .equalSpacing
-        return stack
-    }()
-    
     private lazy var mannequinImageView: UIImageView = {
-        let image = UIImageView(image: UIImage(named: "SizeCalculatorBody-Woman"))
+        let image = UIImageView(image: UIImage(named: "SizeCalculatorBody-Empty"))
         image.contentMode = .scaleAspectFill
         return image
     }()
     
-    private lazy var button: ReusableSizeCalculatorButton = {
-        let button = ReusableSizeCalculatorButton(buttomImage: "greenExclamation", selector: #selector(handleButton), target: self)
+    private lazy var chestButton: ReusableSizeCalculatorButton = {
+        let button = ReusableSizeCalculatorButton(buttomImage: "sizeButtonInitial", selector: #selector(handleChestButton), target: self)
         return button
     }()
     
-    private lazy var button2: ReusableSizeCalculatorButton = {
-        let button = ReusableSizeCalculatorButton(buttomImage: "greenExclamation", selector: #selector(handleButton), target: self)
+    private lazy var heightButton: ReusableSizeCalculatorButton = {
+        let button = ReusableSizeCalculatorButton(buttomImage: "sizeButtonInitial", selector: #selector(handleHeightButton), target: self)
         return button
     }()
     
-    private lazy var button3: ReusableSizeCalculatorButton = {
-        let button = ReusableSizeCalculatorButton(buttomImage: "greenExclamation", selector: #selector(handleButton), target: self)
+    private lazy var waistButton: ReusableSizeCalculatorButton = {
+        let button = ReusableSizeCalculatorButton(buttomImage: "sizeButtonInitial", selector: #selector(handleWaistButton), target: self)
         return button
     }()
     
@@ -139,9 +115,24 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
     var modalSize = 1.24
     
     var productSizeChart: [ProductSizeChart]?
+    var brandName: String
+    var productName: String
     
-    init(productSizeChart: [ProductSizeChart]) {
+    let profileVM = ProfileViewModel(service: Service())
+    var user: User!
+    private var cancellables: Set<AnyCancellable> = []
+    
+    let sizeCalcVM = SizeCalcViewModel()
+    
+    var chestButtonCurrentSize = 0
+    var heightButtonCurrentSize = 0
+    var waistButtonCurrentSize = 0
+    
+    init(productSizeChart: [ProductSizeChart], brandName: String, productName: String) {
         self.productSizeChart = productSizeChart
+        self.brandName = brandName
+        self.productName = productName
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -153,8 +144,33 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        profileVM.user.sink { user in
+            self.user = user
+            self.sizeLabel.text = self.sizeCalcVM.recommendationSize(
+                chestUser: user.userBodyMeasurement["Chest"]!,
+                waistUser: user.userBodyMeasurement["Waist"]!,
+                heightUser: user.userBodyMeasurement["Height"]!,
+                productSizeChart: self.productSizeChart!
+            )
+            
+            self.mannequinImageView.image = UIImage(named: "SizeCalculatorBody-\(user.userGender)")
+            self.configureSizeButton()
+        }.store(in: &cancellables)
+        
         configureUI()
-        configureSizeButton()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        profileVM.getUser()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        super.viewWillDisappear(animated)
+        profileVM.getUser()
     }
     
     override func viewDidLayoutSubviews() {
@@ -169,12 +185,40 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
     @objc func handleDismiss() {
         self.dismiss(animated: true)
     }
-    @objc func handleButton() {
-        print("Test")
+    
+    @objc func handleChestButton() {
+        
+        print("DEBUG: \(sizeCalcVM.setChestButtonMessage(currSize: chestButtonCurrentSize))")
+    }
+    
+    @objc func handleHeightButton() {
+        
+        print("DEBUG: \(sizeCalcVM.setHeightButtonMessage(currSize: chestButtonCurrentSize))")
+    }
+    
+    @objc func handleWaistButton() {
+        
+        print("DEBUG: \(sizeCalcVM.setWaistButtonMessage(currSize: chestButtonCurrentSize))")
     }
     
     @objc func onViewSelected(_ sender: UITapGestureRecognizer) {
+        
         selectedView = sender.view as? SizeButtonView
+        
+        chestButtonCurrentSize = sender.view?.tag ?? 100
+        chestButton.setImage(UIImage(
+            named: sizeCalcVM.setChestButtonImage(currSize: chestButtonCurrentSize)),
+                             for: .normal)
+        
+        heightButtonCurrentSize = sender.view?.tag ?? 100
+        heightButton.setImage(UIImage(
+            named: sizeCalcVM.setHeightButtonImage(currSize: heightButtonCurrentSize)),
+                              for: .normal)
+        
+        waistButtonCurrentSize = sender.view?.tag ?? 100
+        waistButton.setImage(UIImage(
+            named: sizeCalcVM.setWaistButtonImage(currSize: waistButtonCurrentSize)),
+                             for: .normal)
     }
     
     @objc func panGestureRecognizerAction(sender: UIPanGestureRecognizer) {
@@ -245,16 +289,23 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
             make.leading.trailing.equalToSuperview().inset(20)
         }
         
+        brandLabel.text = brandName
+        productNameLabel.text = productName
         view.addSubview(productDetailStack)
         productDetailStack.snp.makeConstraints { make in
             make.top.equalTo(divider.snp.bottom).offset(20)
             make.leading.trailing.equalToSuperview().inset(20)
         }
         
+        sizeStack.axis = .horizontal
+        sizeStack.alignment = .center
+        sizeStack.distribution = .fill
+        sizeStack.spacing = (view.frame.width - 40) / 43.75
         view.addSubview(sizeStack)
         sizeStack.snp.makeConstraints { make in
+            make.height.equalTo(sizeStack.snp.height)
             make.top.equalTo(productDetailStack.snp.bottom).offset(20)
-            make.leading.trailing.equalToSuperview().inset(20)
+            make.leading.equalToSuperview().inset(20)
         }
         
         view.addSubview(mannequinImageView)
@@ -264,22 +315,22 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
             make.leading.trailing.equalToSuperview().inset(0)
         }
         
-        view.addSubview(button)
-        button.snp.makeConstraints { make in
+        view.addSubview(chestButton)
+        chestButton.snp.makeConstraints { make in
             make.leading.equalTo(mannequinImageView.snp.leading).offset(view.frame.width / 2.03)
             make.top.equalTo(mannequinImageView.snp.top).offset(mannequinImageView.frame.height / 3.76)
             make.width.height.equalTo(view.frame.width / 8.67)
         }
         
-        view.addSubview(button2)
-        button2.snp.makeConstraints { make in
+        view.addSubview(heightButton)
+        heightButton.snp.makeConstraints { make in
             make.leading.equalTo(mannequinImageView.snp.leading).offset(view.frame.width / 13)
             make.top.equalTo(mannequinImageView.snp.top).offset(mannequinImageView.frame.height / 2.71)
             make.width.height.equalTo(view.frame.width / 8.67)
         }
         
-        view.addSubview(button3)
-        button3.snp.makeConstraints { make in
+        view.addSubview(waistButton)
+        waistButton.snp.makeConstraints { make in
             make.leading.equalTo(mannequinImageView.snp.leading).offset(view.frame.width / 2.03)
             make.top.equalTo(mannequinImageView.snp.top).offset(mannequinImageView.frame.height / 2.15)
             make.width.height.equalTo(view.frame.width / 8.67)
@@ -288,10 +339,18 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
     
     func configureSizeButton() {
         
-        let views = [xsSizeView, sSizeView, mSizeView, lSizeView, xlSizeView]
+        let views = sizeCalcVM.setupSizeButton()
+        
         views.forEach {
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onViewSelected(_:)))
+            
+            let tapGesture = UITapGestureRecognizer(
+                target: self,
+                action: #selector(onViewSelected(_:))
+            )
+            
             $0.addGestureRecognizer(tapGesture)
+            
+            tapGesture.view?.tag = $0.sizeInt
             
             $0.snp.makeConstraints { make in
                 make.height.equalTo(view.frame.height / 21.1)
@@ -299,8 +358,7 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
             }
             
             $0.layer.cornerRadius = 10
+            sizeStack.addArrangedSubview($0)
         }
-        
-        selectedView = mSizeView
     }
 }
