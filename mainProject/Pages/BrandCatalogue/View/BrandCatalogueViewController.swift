@@ -107,6 +107,12 @@ class BrandCatalogueViewController: UIViewController {
         navigationItem.title = "Brands"
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
+        showImage(true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+      super.viewWillDisappear(animated)
+      showImage(false)
     }
     
     // MARK: - Selectors
@@ -131,10 +137,7 @@ class BrandCatalogueViewController: UIViewController {
         
         
         self.navigationItem.hidesSearchBarWhenScrolling = false
-//        self.title = "Brands"
-//        self.navigationController?.title = "Brands"
-        
-        //        let rightBarBtn = UIBarButtonItem(customView: profileButton)
+//        let rightBarBtn = UIBarButtonItem(customView: profileButton)
         
         guard let navigationBar = self.navigationController?.navigationBar else { return }
         navigationBar.addSubview(profileButton)
@@ -158,10 +161,16 @@ class BrandCatalogueViewController: UIViewController {
 //        navigationItem.rightBarButtonItem = rightBarBtn
     }
     
-    func configureCollectionView() {
+    private func configureCollectionView() {
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+    }
+    
+    private func showImage(_ show: Bool) {
+      UIView.animate(withDuration: 0.25) {
+        self.profileButton.alpha = show ? 1.0 : 0.0
+      }
     }
 }

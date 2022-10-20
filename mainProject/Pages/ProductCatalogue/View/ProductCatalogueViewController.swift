@@ -24,6 +24,7 @@ class ProductCatalogueViewController: UIViewController {
     
     var productList: [Product]!
     let productVM = ProductCatalogueViewModel(service: ProductService())
+    
     private var cancellables: Set<AnyCancellable> = []
     
     // bikin product array
@@ -86,7 +87,6 @@ class ProductCatalogueViewController: UIViewController {
         if brand.productRef.isEmpty {
             configureNoProduct()
         } else {
-            self.title = brand.brandName
             productVM.productList
                 .receive(on: RunLoop.main)
                 .sink {list in
@@ -103,6 +103,8 @@ class ProductCatalogueViewController: UIViewController {
         
         navigationItem.title = "\(brand.brandName)"
         navigationItem.largeTitleDisplayMode = .never
+        navigationItem.backButtonDisplayMode = .minimal
+        navigationController?.navigationBar.tintColor = .primaryColor
     }
     
     // MARK: - Selectors
@@ -110,7 +112,6 @@ class ProductCatalogueViewController: UIViewController {
     
     // MARK: - Helpers
     func configureNoProduct() {
-        self.title = brand.brandName
         
         view.addSubview(rect)
         rect.snp.makeConstraints { make in

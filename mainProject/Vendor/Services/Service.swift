@@ -15,16 +15,13 @@ protocol BrandServicing {
 
 protocol ProductServicing {
     func getProduct(ref: String, completion: @escaping (Product)-> Void)
-    func get3DAsset(path: String) async
-//    func get3DAsset(path: String, completion: @escaping (String)-> Void)
 }
 
 protocol ProfileServices {
-    
     func getUser(_ completion: @escaping (User, Error?) -> Void)
     func updateUser(name: String, gender: String, imageData: UIImage, completion: @escaping (Error?) -> Void)
-    
 }
+
 struct Service: ProfileServices {
     
     let uid = AUTH_REF.currentUser?.uid
@@ -49,7 +46,7 @@ struct Service: ProfileServices {
         
        
         let reference = Firestore.firestore().collection("users").document(uid!)
-        let storage = Storage.storage().reference().child("ProfilePicture/\(uid)")
+        let storage = Storage.storage().reference().child("ProfilePicture/\(uid!)")
         
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpg"
@@ -72,7 +69,6 @@ struct Service: ProfileServices {
     }
 }
 
-// Tes firebase asli disini
 struct BrandService: BrandServicing {
     
     func getBrandList(_ completion: @escaping ([Brands],Error?)-> Void) {
@@ -99,64 +95,4 @@ struct ProductService: ProductServicing {
             completion(data)
         }
     }
-    
-    func get3DAsset(path: String) async {
-        do {
-            let storage = Storage.storage().reference()
-            let modelPath = storage.child("Product3DAsset/\(path)")
-            let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-            let tempDirectory = URL.init(fileURLWithPath: paths, isDirectory: true)
-            let targetUrl = tempDirectory.appendingPathComponent("\(path)")
-
-            modelPath.write(toFile: targetUrl) { (url, error) in
-                if error != nil {
-                    print("ERROR: \(error!)")
-                }else{
-                    print("DEBUG: modelPath.write OKAY")
-                }
-            }
-        }
-    }
-    
-    func updateUser(name: String, gender: String, imageData: UIImage, completion: @escaping (Error?) -> Void) {
-        let uid = AUTH_REF.currentUser?.uid
-        
-        let reference = Firestore.firestore().collection("users").document(uid!)
-        let storage = Storage.storage().reference().child("ProfilePicture/\(uid!)")
-        
-        let metaData = StorageMetadata()
-        metaData.contentType = "image/jpg"
-        
-        guard let data = imageData.jpegData(compressionQuality: 1.0) else { return }
-        
-        storage.putData(data, metadata: metaData) { _ in
-            
-            storage.downloadURL { url, error in
-                
-                guard let profilePictureURL = url?.absoluteString else { return }
-                
-                reference.updateData([
-                    "name": name,
-                    "gender": gender,
-                    "userProfilePicture": profilePictureURL
-                ])
-            }
-        }
-    }
-//    func get3DAsset(path: String, completion: @escaping (String)-> Void) {
-//        let storage = Storage.storage().reference()
-//        let modelPath = storage.child("Product3DAsset/\(path)")
-//        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-//        let tempDirectory = URL.init(fileURLWithPath: paths, isDirectory: true)
-//        let targetUrl = tempDirectory.appendingPathComponent("\(path)")
-//
-//        modelPath.write(toFile: targetUrl) { (url, error) in
-//            if error != nil {
-//                print("ERROR: \(error!)")
-//            }else{
-//                print("DEBUG: modelPath.write OKAY")
-//                completion(path)
-//            }
-//        }
-//    }
 }

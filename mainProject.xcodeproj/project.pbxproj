@@ -10,12 +10,12 @@
 		0E0DE4D928F476A2007AC831 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0DE4D828F476A2007AC831 /* Service.swift */; };
 		0E0DE4DB28F47704007AC831 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0DE4DA28F47704007AC831 /* Product.swift */; };
 		0E0DE4DD28F524D3007AC831 /* ReusableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0DE4DC28F524D2007AC831 /* ReusableLabel.swift */; };
+		0E15213629005122000D9191 /* ARModelsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E15213529005121000D9191 /* ARModelsViewModel.swift */; };
+		0E1521382900513D000D9191 /* FirebaseStorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1521372900513D000D9191 /* FirebaseStorageHelper.swift */; };
 		0E40D9D528F81F0F003E485E /* ProductCatalogueHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E40D9D428F81F0F003E485E /* ProductCatalogueHeaderView.swift */; };
 		0E7BCE3B28EB2FC8000820E0 /* AirForce.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0E7BCE3A28EB2FC8000820E0 /* AirForce.usdz */; };
 		0E7BCE4128EBF1C1000820E0 /* ProductDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7BCE4028EBF1C1000820E0 /* ProductDetailVC.swift */; };
-		0E7BCE4328EBF431000820E0 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7BCE4228EBF431000820E0 /* ARView.swift */; };
 		0EAFD7E428EAE35B0004E3DB /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAFD7E328EAE35B0004E3DB /* RadioButton.swift */; };
-		0EAFD7E628EAE6D10004E3DB /* ProductDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAFD7E528EAE6D10004E3DB /* ProductDetailVM.swift */; };
 		0EAFD7E828EB06A30004E3DB /* RadioButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAFD7E728EB06A30004E3DB /* RadioButtonView.swift */; };
 		0EB2125928ED706800FB1255 /* BuyAndSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB2125828ED706800FB1255 /* BuyAndSizeView.swift */; };
 		0EB2125B28ED895E00FB1255 /* DependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB2125A28ED895E00FB1255 /* DependencyProvider.swift */; };
@@ -124,12 +124,12 @@
 		0E0DE4D828F476A2007AC831 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Service.swift; path = mainProject/Vendor/Services/Service.swift; sourceTree = "<group>"; };
 		0E0DE4DA28F47704007AC831 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		0E0DE4DC28F524D2007AC831 /* ReusableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableLabel.swift; sourceTree = "<group>"; };
+		0E15213529005121000D9191 /* ARModelsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARModelsViewModel.swift; sourceTree = "<group>"; };
+		0E1521372900513D000D9191 /* FirebaseStorageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseStorageHelper.swift; sourceTree = "<group>"; };
 		0E40D9D428F81F0F003E485E /* ProductCatalogueHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCatalogueHeaderView.swift; sourceTree = "<group>"; };
 		0E7BCE3A28EB2FC8000820E0 /* AirForce.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = AirForce.usdz; sourceTree = "<group>"; };
 		0E7BCE4028EBF1C1000820E0 /* ProductDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailVC.swift; sourceTree = "<group>"; };
-		0E7BCE4228EBF431000820E0 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		0EAFD7E328EAE35B0004E3DB /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
-		0EAFD7E528EAE6D10004E3DB /* ProductDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailVM.swift; sourceTree = "<group>"; };
 		0EAFD7E728EB06A30004E3DB /* RadioButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonView.swift; sourceTree = "<group>"; };
 		0EB2125828ED706800FB1255 /* BuyAndSizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyAndSizeView.swift; sourceTree = "<group>"; };
 		0EB2125A28ED895E00FB1255 /* DependencyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyProvider.swift; sourceTree = "<group>"; };
@@ -261,7 +261,6 @@
 			children = (
 				0E7BCE4028EBF1C1000820E0 /* ProductDetailVC.swift */,
 				0EB2125828ED706800FB1255 /* BuyAndSizeView.swift */,
-				0E7BCE4228EBF431000820E0 /* ARView.swift */,
 				0EB2125C28EDDF4700FB1255 /* HeadlineView.swift */,
 				0EAFD7E728EB06A30004E3DB /* RadioButtonView.swift */,
 				0EB2125E28EDE33200FB1255 /* DescriptionView.swift */,
@@ -272,7 +271,7 @@
 		0EAFD7E028EA99760004E3DB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				0EAFD7E528EAE6D10004E3DB /* ProductDetailVM.swift */,
+				0E15213529005121000D9191 /* ARModelsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -452,6 +451,7 @@
 		ACFEBEBA28E7611000372297 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				0E1521372900513D000D9191 /* FirebaseStorageHelper.swift */,
 				AC8608A828F53B24002B0D3F /* AuthServices.swift */,
 				AC8366CA28F6D009000EBF5D /* UserService.swift */,
 			);
@@ -888,6 +888,7 @@
 				DBEC708F28E93617005D0974 /* OnboardingViewController + Extensions.swift in Sources */,
 				0E0DE4DD28F524D3007AC831 /* ReusableLabel.swift in Sources */,
 				DB58D06428E8059800A5C727 /* OnboardingViewController.swift in Sources */,
+				0E15213629005122000D9191 /* ARModelsViewModel.swift in Sources */,
 				AC8366C928F6CB63000EBF5D /* PersonalizeViewModel.swift in Sources */,
 				AC6F478628EE9A5100AAF1F6 /* ReusablePasswordTextField.swift in Sources */,
 				DBE905EB28EFDE9300B6E463 /* Brands.swift in Sources */,
@@ -914,7 +915,6 @@
 				DB76CD9128F51CAA00F562CB /* BrandCatalogueVC + SearchBar Extensions.swift in Sources */,
 				AC8366CB28F6D009000EBF5D /* UserService.swift in Sources */,
 				DB19AF2228ED6515003E6F61 /* ReusableProfileButtonView.swift in Sources */,
-				0E7BCE4328EBF431000820E0 /* ARView.swift in Sources */,
 				AC4A007D28F92160000B09C9 /* Service.swift in Sources */,
 				ACFEBEA328E7603000372297 /* AppDelegate.swift in Sources */,
 				ACFE713128ED3C8000A894D4 /* ReusableAuthBackground.swift in Sources */,
@@ -924,6 +924,7 @@
 				DBE905F828EFDF4F00B6E463 /* LoginViewController.swift in Sources */,
 				DB3CB1BF28F6F08D000C502C /* User.swift in Sources */,
 				AC2D5C3128F924BD006DCD59 /* Extensions.swift in Sources */,
+				0E1521382900513D000D9191 /* FirebaseStorageHelper.swift in Sources */,
 				AC6F478428EE982F00AAF1F6 /* ReusableTextFieldAuth.swift in Sources */,
 				DB76CD8B28F5157900F562CB /* BodyMeasurementVC + CollectionView Extensions.swift in Sources */,
 				ACFEBEA528E7603000372297 /* SceneDelegate.swift in Sources */,
@@ -936,7 +937,6 @@
 				0E7BCE4128EBF1C1000820E0 /* ProductDetailVC.swift in Sources */,
 				0EB2125F28EDE33200FB1255 /* DescriptionView.swift in Sources */,
 				0EB2125928ED706800FB1255 /* BuyAndSizeView.swift in Sources */,
-				0EAFD7E628EAE6D10004E3DB /* ProductDetailVM.swift in Sources */,
 				0EB2126728EE937D00FB1255 /* BodyMeasurementVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

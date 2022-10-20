@@ -19,7 +19,7 @@ extension BrandCatalogueViewController: UIScrollViewDelegate {
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y == 0 {
-          print("top!")
+            print("top!")
         }
     }
     
@@ -30,30 +30,42 @@ extension BrandCatalogueViewController: UIScrollViewDelegate {
     func moveAndResizeImage(for height: CGFloat) {
         
         let coeff: CGFloat = {
-                let delta = height - Const.NavBarHeightSmallState
-                let heightDifferenceBetweenStates = (Const.NavBarHeightLargeState - Const.NavBarHeightSmallState)
-                return delta / heightDifferenceBetweenStates
-            }()
+            let delta = height - Const.NavBarHeightSmallState
+            let heightDifferenceBetweenStates = (Const.NavBarHeightLargeState - Const.NavBarHeightSmallState)
+            return delta / heightDifferenceBetweenStates
+        }()
+        
+        let factor = Const.ImageSizeForSmallState / Const.ImageSizeForLargeState
+        
+        let scale: CGFloat = {
+            let sizeAddendumFactor = coeff * (1.0 - factor)
+            return min(1.0, sizeAddendumFactor + factor)
+        }()
+        
+        // Value of difference between icons for large and small states
+        let sizeDiff = Const.ImageSizeForLargeState * (1.0 - factor) // 8.0
+        let yTranslation: CGFloat = {
+            /// This value = 14. It equals to difference of 12 and 6 (bottom margin for large and small states). Also it adds 8.0 (size difference when the image gets smaller size)
+            let maxYTranslation = Const.ImageBottomMarginForLargeState - Const.ImageBottomMarginForSmallState + sizeDiff
+            return max(0, min(maxYTranslation, (maxYTranslation - coeff * (Const.ImageBottomMarginForSmallState + sizeDiff))))
+        }()
+        
+        let xTranslation = max(0, sizeDiff - coeff * sizeDiff)
+        
+        profileButton.transform = CGAffineTransform.identity
+            .scaledBy(x: 1/scale, y: 1/scale)
+            .translatedBy(x: xTranslation, y: yTranslation)
 
-            let factor = Const.ImageSizeForSmallState / Const.ImageSizeForLargeState
-
-            let scale: CGFloat = {
-                let sizeAddendumFactor = coeff * (1.0 - factor)
-                return min(1.0, sizeAddendumFactor + factor)
-            }()
-
-            // Value of difference between icons for large and small states
-            let sizeDiff = Const.ImageSizeForLargeState * (1.0 - factor) // 8.0
-            let yTranslation: CGFloat = {
-                /// This value = 14. It equals to difference of 12 and 6 (bottom margin for large and small states). Also it adds 8.0 (size difference when the image gets smaller size)
-                let maxYTranslation = Const.ImageBottomMarginForLargeState - Const.ImageBottomMarginForSmallState + sizeDiff
-                return max(0, min(maxYTranslation, (maxYTranslation - coeff * (Const.ImageBottomMarginForSmallState + sizeDiff))))
-            }()
-
-            let xTranslation = max(0, sizeDiff - coeff * sizeDiff)
-            profileButton.transform = CGAffineTransform.identity
-                .scaledBy(x: 1/scale, y: 1/scale)
-                .translatedBy(x: xTranslation, y: yTranslation)
+        if height < 100 {
+            UIView.animate(withDuration: 0.2) {
+                self.profileButton.alpha = 0
+            }
+        } else {
+            UIView.animate(withDuration: 0.2) {
+                self.profileButton.alpha = 1
+            }
+        }
+        
     }
 }
 
