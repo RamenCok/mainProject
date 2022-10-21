@@ -94,17 +94,20 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
     }()
     
     private lazy var chestButton: ReusableSizeCalculatorButton = {
-        let button = ReusableSizeCalculatorButton(buttomImage: "sizeButtonInitial", selector: #selector(handleChestButton), target: self)
+        let button = ReusableSizeCalculatorButton(buttomImage: "", selector: #selector(handleChestButton), target: self)
+        button.isEnabled = false
         return button
     }()
     
     private lazy var heightButton: ReusableSizeCalculatorButton = {
-        let button = ReusableSizeCalculatorButton(buttomImage: "sizeButtonInitial", selector: #selector(handleHeightButton), target: self)
+        let button = ReusableSizeCalculatorButton(buttomImage: "", selector: #selector(handleHeightButton), target: self)
+        button.isEnabled = false
         return button
     }()
     
     private lazy var waistButton: ReusableSizeCalculatorButton = {
-        let button = ReusableSizeCalculatorButton(buttomImage: "sizeButtonInitial", selector: #selector(handleWaistButton), target: self)
+        let button = ReusableSizeCalculatorButton(buttomImage: "", selector: #selector(handleWaistButton), target: self)
+        button.isEnabled = false
         return button
     }()
     
@@ -155,6 +158,10 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
             )
             
             self.mannequinImageView.image = UIImage(named: "SizeCalculatorBody-\(user.userGender)")
+            self.chestButton.setImage(UIImage(named: "sizeButtonInitial"), for: .normal)
+            self.heightButton.setImage(UIImage(named: "sizeButtonInitial"), for: .normal)
+            self.waistButton.setImage(UIImage(named: "sizeButtonInitial"), for: .normal)
+            
             self.configureSizeButton()
         }.store(in: &cancellables)
         
@@ -209,16 +216,19 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
         chestButton.setImage(UIImage(
             named: sizeCalcVM.setChestButtonImage(currSize: chestButtonCurrentSize)),
                              for: .normal)
+        chestButton.isEnabled = true
         
         heightButtonCurrentSize = sender.view?.tag ?? 100
         heightButton.setImage(UIImage(
             named: sizeCalcVM.setHeightButtonImage(currSize: heightButtonCurrentSize)),
                               for: .normal)
+        heightButton.isEnabled = true
         
         waistButtonCurrentSize = sender.view?.tag ?? 100
         waistButton.setImage(UIImage(
             named: sizeCalcVM.setWaistButtonImage(currSize: waistButtonCurrentSize)),
                              for: .normal)
+        waistButton.isEnabled = true
     }
     
     @objc func panGestureRecognizerAction(sender: UIPanGestureRecognizer) {
@@ -325,14 +335,14 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
         view.addSubview(heightButton)
         heightButton.snp.makeConstraints { make in
             make.leading.equalTo(mannequinImageView.snp.leading).offset(view.frame.width / 13)
-            make.top.equalTo(mannequinImageView.snp.top).offset(mannequinImageView.frame.height / 2.71)
+            make.top.equalTo(mannequinImageView.snp.top).offset(mannequinImageView.frame.height / 2.5)
             make.width.height.equalTo(view.frame.width / 8.67)
         }
         
         view.addSubview(waistButton)
         waistButton.snp.makeConstraints { make in
             make.leading.equalTo(mannequinImageView.snp.leading).offset(view.frame.width / 2.03)
-            make.top.equalTo(mannequinImageView.snp.top).offset(mannequinImageView.frame.height / 2.15)
+            make.top.equalTo(mannequinImageView.snp.top).offset(mannequinImageView.frame.height / 2)
             make.width.height.equalTo(view.frame.width / 8.67)
         }
     }
