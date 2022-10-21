@@ -75,7 +75,7 @@ class ProductDetailVC: UIViewController {
     }()
     
     private lazy var progressView: UIProgressView = {
-        let pv = UIProgressView(progressViewStyle: .bar)
+        let pv = UIProgressView(progressViewStyle: .default)
         pv.trackTintColor = .lightGray
         pv.tintColor = .primaryColor
         return pv
@@ -100,8 +100,10 @@ class ProductDetailVC: UIViewController {
         vm.isDownloading.sink { [weak self] isDownloading in
             if isDownloading {
                 self?.progressView.alpha = 1
+                self?.sceneKitView.alpha = 0
             } else {
                 self?.progressView.alpha = 0
+                self?.sceneKitView.alpha = 1
             }
         }.store(in: &cancellables)
         
@@ -241,6 +243,7 @@ extension ProductDetailVC: ProductDetailDelegate {
     func changeSelected(selected: Int) {
         if selectedIndex != selected {
             selectedIndex = selected
+            
             // reload view
             vm.asyncLoadModel(filename: product.colorsAsset.compactMap { ($0["assetLink"] as! String)}[selectedIndex])
             progressView.setProgress(0, animated: false)
