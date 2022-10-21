@@ -33,7 +33,7 @@
       "location" : "https://github.com/firebase/firebase-ios-sdk",
       "state" : {
         "branch" : "master",
-        "revision" : "ab83e543633b36fb109c4fafd5c71e8d109ffc7d"
+        "revision" : "77b891af1669eeb08f4daad3ad2ff24d44f7a0d2"
       }
     },
     {
@@ -138,7 +138,7 @@
     {
       "identity" : "sdwebimage",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SDWebImage/SDWebImage",
+      "location" : "https://github.com/SDWebImage/SDWebImage.git",
       "state" : {
         "revision" : "9248fe561a2a153916fb9597e3af4434784c6d32",
         "version" : "5.13.4"

@@ -206,7 +206,7 @@ class SignupLogin: UIViewController {
         
     }
     @objc func handleCancelButton() {
-        self.dismiss(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc func goToSignUp() {

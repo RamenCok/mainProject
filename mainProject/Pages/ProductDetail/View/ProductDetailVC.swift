@@ -14,6 +14,7 @@ protocol ProductDetailDelegate: AnyObject {
     
     func showSizeCalc()
     func showBuyModal()
+    func changeSelected(selected: Int)
 }
 
 class ProductDetailVC: UIViewController {
@@ -235,6 +236,20 @@ class ProductDetailVC: UIViewController {
             make.bottom.equalTo(contentView.snp.bottom)
         }
     }
+    
+    private func setup3D(url: URL) {
+        let scene = try! SCNScene(url: url, options: [.checkConsistency: true])
+        let light = SCNNode()
+        light.light = SCNLight()
+        light.light?.type = .ambient
+        light.light?.temperature = 6700
+    
+        sceneKitView.scene = scene
+        scene.rootNode.addChildNode(light)
+        let camera = SCNNode()
+        camera.camera = SCNCamera()
+        scene.rootNode.addChildNode(camera)
+    }
 }
 
 extension ProductDetailVC: UIViewControllerTransitioningDelegate {
@@ -282,24 +297,7 @@ extension ProductDetailVC: ProductDetailDelegate {
         
         self.present(slideVC, animated: true, completion: nil)
     }
-}
     
-    private func setup3D(url: URL) {
-        let scene = try! SCNScene(url: url, options: [.checkConsistency: true])
-        let light = SCNNode()
-        light.light = SCNLight()
-        light.light?.type = .ambient
-        light.light?.temperature = 6700
-    
-        sceneKitView.scene = scene
-        scene.rootNode.addChildNode(light)
-        let camera = SCNNode()
-        camera.camera = SCNCamera()
-        scene.rootNode.addChildNode(camera)
-    }
-}
-
-extension ProductDetailVC: ProductDetailDelegate {
     func changeSelected(selected: Int) {
         if selectedIndex != selected {
             selectedIndex = selected
@@ -309,8 +307,4 @@ extension ProductDetailVC: ProductDetailDelegate {
             progressView.setProgress(0, animated: false)
         }
     }
-}
-
-protocol ProductDetailDelegate: AnyObject {
-    func changeSelected(selected: Int)
 }
