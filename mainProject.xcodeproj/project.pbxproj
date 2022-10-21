@@ -91,6 +91,8 @@
 		DB3CB1C428F7036A000C502C /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = DB3CB1C328F7036A000C502C /* SDWebImage */; };
 		DB58D06328E8059800A5C727 /* OnboardingViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB58D06128E8059800A5C727 /* OnboardingViewContainer.swift */; };
 		DB58D06428E8059800A5C727 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB58D06228E8059800A5C727 /* OnboardingViewController.swift */; };
+		DB6F3CCD28FE55770043FDC3 /* SetupBodyMeasurementModalVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6F3CCC28FE55770043FDC3 /* SetupBodyMeasurementModalVM.swift */; };
+		DB703CB728FD0E7000524184 /* SizeCalcViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB703CB628FD0E7000524184 /* SizeCalcViewModel.swift */; };
 		DB76CD8B28F5157900F562CB /* BodyMeasurementVC + CollectionView Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB76CD8A28F5157900F562CB /* BodyMeasurementVC + CollectionView Extensions.swift */; };
 		DB76CD8D28F51AC700F562CB /* BrandCatalogueVC + CollectionView Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB76CD8C28F51AC700F562CB /* BrandCatalogueVC + CollectionView Extensions.swift */; };
 		DB76CD8F28F51BB100F562CB /* BrandCatalogueVC + ScrollView Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB76CD8E28F51BB100F562CB /* BrandCatalogueVC + ScrollView Extensions.swift */; };
@@ -174,6 +176,8 @@
 		DB3CB1C028F6F885000C502C /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		DB58D06128E8059800A5C727 /* OnboardingViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewContainer.swift; sourceTree = "<group>"; };
 		DB58D06228E8059800A5C727 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		DB6F3CCC28FE55770043FDC3 /* SetupBodyMeasurementModalVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupBodyMeasurementModalVM.swift; sourceTree = "<group>"; };
+		DB703CB628FD0E7000524184 /* SizeCalcViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCalcViewModel.swift; sourceTree = "<group>"; };
 		DB76CD8A28F5157900F562CB /* BodyMeasurementVC + CollectionView Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BodyMeasurementVC + CollectionView Extensions.swift"; sourceTree = "<group>"; };
 		DB76CD8C28F51AC700F562CB /* BrandCatalogueVC + CollectionView Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandCatalogueVC + CollectionView Extensions.swift"; sourceTree = "<group>"; };
 		DB76CD8E28F51BB100F562CB /* BrandCatalogueVC + ScrollView Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandCatalogueVC + ScrollView Extensions.swift"; sourceTree = "<group>"; };
@@ -634,6 +638,7 @@
 		DB8BCDA528EBDE0B00630CA3 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				DB703CB628FD0E7000524184 /* SizeCalcViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -658,6 +663,7 @@
 		DB9660E028EDD7AF001D9A53 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				DB6F3CCC28FE55770043FDC3 /* SetupBodyMeasurementModalVM.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -914,6 +920,7 @@
 				DB76CD9128F51CAA00F562CB /* BrandCatalogueVC + SearchBar Extensions.swift in Sources */,
 				AC8366CB28F6D009000EBF5D /* UserService.swift in Sources */,
 				DB19AF2228ED6515003E6F61 /* ReusableProfileButtonView.swift in Sources */,
+				DB703CB728FD0E7000524184 /* SizeCalcViewModel.swift in Sources */,
 				0E7BCE4328EBF431000820E0 /* ARView.swift in Sources */,
 				AC4A007D28F92160000B09C9 /* Service.swift in Sources */,
 				ACFEBEA328E7603000372297 /* AppDelegate.swift in Sources */,
@@ -926,6 +933,7 @@
 				AC2D5C3128F924BD006DCD59 /* Extensions.swift in Sources */,
 				AC6F478428EE982F00AAF1F6 /* ReusableTextFieldAuth.swift in Sources */,
 				DB76CD8B28F5157900F562CB /* BodyMeasurementVC + CollectionView Extensions.swift in Sources */,
+				DB6F3CCD28FE55770043FDC3 /* SetupBodyMeasurementModalVM.swift in Sources */,
 				ACFEBEA528E7603000372297 /* SceneDelegate.swift in Sources */,
 				ACFE713628ED6C1800A894D4 /* ReusableTextField.swift in Sources */,
 				AC8366BE28F68076000EBF5D /* User.swift in Sources */,

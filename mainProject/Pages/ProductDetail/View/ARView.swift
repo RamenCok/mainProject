@@ -48,7 +48,7 @@ class ARView: UIView {
     private func setup3D() {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
         let tempDirectory = URL.init(fileURLWithPath: paths, isDirectory: true)
-        let targetUrl = tempDirectory.appendingPathComponent("\(filename)")
+        let targetUrl = tempDirectory.appendingPathComponent("\(filename).usdz")
         
         let scene = try! SCNScene(url: targetUrl, options: [.checkConsistency: true])
         

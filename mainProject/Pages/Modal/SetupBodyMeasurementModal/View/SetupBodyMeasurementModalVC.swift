@@ -44,7 +44,6 @@ class SetupBodyMeasurementModalVC: UIViewController {
         tf.keyboardType = .numberPad
         tf.layer.cornerRadius = 14
         tf.font = UIFont.bodyText()
-        tf.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
         tf.snp.makeConstraints { make in
             make.height.equalTo(45)
         }
@@ -57,24 +56,29 @@ class SetupBodyMeasurementModalVC: UIViewController {
     let modalSize = 2.187
     let modalType = "NotTappable"
     
-    init(modalTitle: String, helperImageName: String) {
+    let vm = SetupBodyMeasurementModalVM(service: Service())
+    
+    weak var delegate: BodyMeasurementDelegate?
+    
+    // MARK: - Lifecycle
+    
+    init(modalTitle: String, helperImageName: String, currentValue: Int) {
         
         super.init(nibName: nil, bundle: nil)
         
         self.modalTitle = modalTitle
         self.helperImageName = helperImageName
+        self.textField.text = String(currentValue)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Lifecycle
     override func viewDidLoad() {
         
         super.viewDidLoad()
         configureUI()
-        configureTextFieldObservers()
     }
     
     // MARK: - Selectors
@@ -82,8 +86,10 @@ class SetupBodyMeasurementModalVC: UIViewController {
         self.dismiss(animated: true)
     }
     
-    @objc func tapDone(sender: Any) {
-        textField.endEditing(true)
+    @objc func handleSave(sender: Any) {
+        vm.updateData(type: modalTitle!, value: Int(textField.text!) ?? 0)
+        delegate?.reload()
+        self.dismiss(animated: true)
     }
 
     // MARK: - Helpers
@@ -106,7 +112,7 @@ class SetupBodyMeasurementModalVC: UIViewController {
         
         // To set bar items and custom font
         let cancelItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: #selector(handleDismiss))
-        let saveItem = UIBarButtonItem(title: "Save", style: .done, target: nil, action: #selector(handleDismiss))
+        let saveItem = UIBarButtonItem(title: "Save", style: .done, target: nil, action: #selector(handleSave))
         let navItemAttribute = [NSAttributedString.Key.font: UIFont.bodyText()]
         UIBarButtonItem.appearance().setTitleTextAttributes(navItemAttribute, for: .normal)
         UIBarButtonItem.appearance().tintColor = .label
@@ -143,18 +149,5 @@ class SetupBodyMeasurementModalVC: UIViewController {
             make.leading.equalTo(lengthLabel.snp.trailing).offset(view.frame.width / 4.48)
             make.trailing.equalToSuperview().offset(-20)
         }
-    }
-}
-
-extension SetupBodyMeasurementModalVC {
-    
-    @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
-        textField.resignFirstResponder()
-    }
-    
-    func configureTextFieldObservers() {
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard(_:)))
-        self.view.addGestureRecognizer(tap)
     }
 }

@@ -37,7 +37,7 @@ class ProfileViewController: UIViewController {
         return image
     }()
     
-    private lazy var editProfileImageButton: UIButton = {
+    internal lazy var editProfileImageButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "editProfilePicture"), for: .normal)
         button.backgroundColor = UIColor(red: 54/255, green: 54/255, blue: 54/255, alpha: 0.45)
@@ -67,7 +67,7 @@ class ProfileViewController: UIViewController {
         return tf
     }()
     
-    private lazy var genderLabel: ReusableLabel = {
+    internal lazy var genderLabel: ReusableLabel = {
         let label = ReusableLabel(style: .subHeading_2, textString: "")
         label.backgroundColor = .clear
         label.layer.cornerRadius = 15
@@ -98,7 +98,7 @@ class ProfileViewController: UIViewController {
         return menu
     }()
     
-    private lazy var genderButton: UIButton = {
+    internal lazy var genderButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
         button.showsMenuAsPrimaryAction = true
@@ -143,10 +143,12 @@ class ProfileViewController: UIViewController {
                 self.profileImage.image = UIImage(named: "initialProfilePicture")
             }
             
+            self.user = user
+            
+            
         }.store(in: &cancellables)
         
         configureUI()
-        configureTextFieldObservers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -155,15 +157,19 @@ class ProfileViewController: UIViewController {
         vm.getUser()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        super.viewWillDisappear(animated)
+        vm.getUser()
+    }
+    
     // MARK: - Selectors
     @objc func handleEditProfilePicture() {
         self.showImagePicker(selectedSource: .photoLibrary)
     }
     
-    
-    
     @objc func handleBodyMeasurementButton() {
-        navigationController?.pushViewController(BodyMeasurementVC(), animated: true)
+        navigationController?.pushViewController(BodyMeasurementVC(user: user), animated: true)
     }
     
     @objc func handleResetPasswordButton() {
@@ -268,45 +274,6 @@ class ProfileViewController: UIViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-37)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
-        }
-    }
-    
-    override func setEditing(_ editing: Bool, animated: Bool) {
-
-        // overriding this method means we can attach custom functions to the button
-        super.setEditing(editing, animated: animated)
-
-        // attaching custom actions here
-        if editing {
-            
-            print("Edit")
-            UIView.animate(withDuration: 0.2) {
-                self.editProfileImageButton.alpha = 1
-                
-                self.genderButton.alpha = 1
-                self.genderLabel.backgroundColor = .systemGray6
-                
-                self.nameTF.isEnabled = true
-                self.nameTF.backgroundColor = .systemGray6
-            }
-            
-        } else {
-            print("Done")
-            UIView.animate(withDuration: 0.2) {
-                self.editProfileImageButton.alpha = 0
-                
-                self.genderButton.alpha = 0
-                self.genderLabel.backgroundColor = .clear
-                
-                self.nameTF.isEnabled = false
-                self.nameTF.backgroundColor = .clear
-                
-                self.vm.updateUser(
-                    name: self.nameTF.text ?? "",
-                    gender: self.genderLabel.text ?? "",
-                    imageData: self.profileImage.image ?? UIImage()
-                )
-            }
         }
     }
 }

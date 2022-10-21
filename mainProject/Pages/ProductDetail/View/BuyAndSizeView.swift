@@ -27,6 +27,8 @@ class BuyAndSizeView: UIView {
         return button
     }()
     
+    weak var delegate: ProductDetailDelegate?
+    
     //MARK: - Lifecycle
     required init() {
         super.init(frame: .zero)
@@ -65,11 +67,10 @@ class BuyAndSizeView: UIView {
     
     // MARK: - Selectors
     @objc func handleBuyButton() {
-        print("Buy modal popout")
+        delegate?.showBuyModal()
     }
     
     @objc func handleSizeCalculator() {
-        print("Size calc modal popout")
+        delegate?.showSizeCalc()
     }
-    
 }
