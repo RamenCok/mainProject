@@ -7,13 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E0DE4D928F476A2007AC831 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0DE4D828F476A2007AC831 /* Service.swift */; };
 		0E0DE4DB28F47704007AC831 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0DE4DA28F47704007AC831 /* Product.swift */; };
 		0E0DE4DD28F524D3007AC831 /* ReusableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0DE4DC28F524D2007AC831 /* ReusableLabel.swift */; };
 		0E15213629005122000D9191 /* ARModelsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E15213529005121000D9191 /* ARModelsViewModel.swift */; };
 		0E1521382900513D000D9191 /* FirebaseStorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1521372900513D000D9191 /* FirebaseStorageHelper.swift */; };
 		0E40D9D528F81F0F003E485E /* ProductCatalogueHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E40D9D428F81F0F003E485E /* ProductCatalogueHeaderView.swift */; };
-		0E7BCE3B28EB2FC8000820E0 /* AirForce.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 0E7BCE3A28EB2FC8000820E0 /* AirForce.usdz */; };
 		0E7BCE4128EBF1C1000820E0 /* ProductDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7BCE4028EBF1C1000820E0 /* ProductDetailVC.swift */; };
 		0EAFD7E428EAE35B0004E3DB /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAFD7E328EAE35B0004E3DB /* RadioButton.swift */; };
 		0EAFD7E828EB06A30004E3DB /* RadioButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAFD7E728EB06A30004E3DB /* RadioButtonView.swift */; };
@@ -60,7 +58,6 @@
 		AC6F478028EDEADF00AAF1F6 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC6F477F28EDEADF00AAF1F6 /* IQKeyboardManagerSwift */; };
 		AC6F478428EE982F00AAF1F6 /* ReusableTextFieldAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */; };
 		AC6F478628EE9A5100AAF1F6 /* ReusablePasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478528EE9A5100AAF1F6 /* ReusablePasswordTextField.swift */; };
-		AC8366BE28F68076000EBF5D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8366BD28F68076000EBF5D /* User.swift */; };
 		AC8366C328F6A585000EBF5D /* UIWindowTransitions in Frameworks */ = {isa = PBXBuildFile; productRef = AC8366C228F6A585000EBF5D /* UIWindowTransitions */; };
 		AC8366C628F6B6B7000EBF5D /* constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8366C528F6B6B7000EBF5D /* constant.swift */; };
 		AC8366C928F6CB63000EBF5D /* PersonalizeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8366C828F6CB63000EBF5D /* PersonalizeViewModel.swift */; };
@@ -123,13 +120,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0E0DE4D828F476A2007AC831 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Service.swift; path = mainProject/Vendor/Services/Service.swift; sourceTree = "<group>"; };
 		0E0DE4DA28F47704007AC831 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		0E0DE4DC28F524D2007AC831 /* ReusableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableLabel.swift; sourceTree = "<group>"; };
 		0E15213529005121000D9191 /* ARModelsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARModelsViewModel.swift; sourceTree = "<group>"; };
 		0E1521372900513D000D9191 /* FirebaseStorageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseStorageHelper.swift; sourceTree = "<group>"; };
 		0E40D9D428F81F0F003E485E /* ProductCatalogueHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCatalogueHeaderView.swift; sourceTree = "<group>"; };
-		0E7BCE3A28EB2FC8000820E0 /* AirForce.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = AirForce.usdz; sourceTree = "<group>"; };
 		0E7BCE4028EBF1C1000820E0 /* ProductDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailVC.swift; sourceTree = "<group>"; };
 		0EAFD7E328EAE35B0004E3DB /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		0EAFD7E728EB06A30004E3DB /* RadioButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonView.swift; sourceTree = "<group>"; };
@@ -148,7 +143,6 @@
 		AC4A007C28F92160000B09C9 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTextFieldAuth.swift; sourceTree = "<group>"; };
 		AC6F478528EE9A5100AAF1F6 /* ReusablePasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePasswordTextField.swift; sourceTree = "<group>"; };
-		AC8366BD28F68076000EBF5D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = mainProject/Model/User.swift; sourceTree = "<group>"; };
 		AC8366C528F6B6B7000EBF5D /* constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constant.swift; sourceTree = "<group>"; };
 		AC8366C828F6CB63000EBF5D /* PersonalizeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizeViewModel.swift; sourceTree = "<group>"; };
 		AC8366CA28F6D009000EBF5D /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -335,15 +329,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		AC4A007A28F92050000B09C9 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				AC8366BD28F68076000EBF5D /* User.swift */,
-				0E0DE4D828F476A2007AC831 /* Service.swift */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		AC4A007B28F92160000B09C9 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,7 +379,6 @@
 			children = (
 				ACFEBEA128E7603000372297 /* mainProject */,
 				ACFEBEA028E7603000372297 /* Products */,
-				AC4A007A28F92050000B09C9 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -420,7 +404,6 @@
 				ACFEBEAB28E7603100372297 /* Assets.xcassets */,
 				DB06455928F3D60F003501D9 /* GoogleService-Info.plist */,
 				ACFEBEB028E7603100372297 /* Info.plist */,
-				0E7BCE3A28EB2FC8000820E0 /* AirForce.usdz */,
 			);
 			path = mainProject;
 			sourceTree = "<group>";
@@ -860,7 +843,6 @@
 				DB06455A28F3D60F003501D9 /* GoogleService-Info.plist in Resources */,
 				ACB588B628EA8CCD0025D230 /* Sora-SemiBold.otf in Resources */,
 				ACFEBEAC28E7603100372297 /* Assets.xcassets in Resources */,
-				0E7BCE3B28EB2FC8000820E0 /* AirForce.usdz in Resources */,
 				ACFEBEAA28E7603000372297 /* Main.storyboard in Resources */,
 				ACB588B428EA8CC80025D230 /* Sora-Bold.otf in Resources */,
 				ACB588B528EA8CCA0025D230 /* Sora-Regular.otf in Resources */,
@@ -922,7 +904,6 @@
 				AC8366CB28F6D009000EBF5D /* UserService.swift in Sources */,
 				DB19AF2228ED6515003E6F61 /* ReusableProfileButtonView.swift in Sources */,
 				DB703CB728FD0E7000524184 /* SizeCalcViewModel.swift in Sources */,
-				0E7BCE4328EBF431000820E0 /* ARView.swift in Sources */,
 				AC4A007D28F92160000B09C9 /* Service.swift in Sources */,
 				ACFEBEA328E7603000372297 /* AppDelegate.swift in Sources */,
 				ACFE713128ED3C8000A894D4 /* ReusableAuthBackground.swift in Sources */,
@@ -938,9 +919,7 @@
 				DB6F3CCD28FE55770043FDC3 /* SetupBodyMeasurementModalVM.swift in Sources */,
 				ACFEBEA528E7603000372297 /* SceneDelegate.swift in Sources */,
 				ACFE713628ED6C1800A894D4 /* ReusableTextField.swift in Sources */,
-				AC8366BE28F68076000EBF5D /* User.swift in Sources */,
 				0EAFD7E828EB06A30004E3DB /* RadioButtonView.swift in Sources */,
-				0E0DE4D928F476A2007AC831 /* Service.swift in Sources */,
 				0EAFD7E428EAE35B0004E3DB /* RadioButton.swift in Sources */,
 				0EB2125B28ED895E00FB1255 /* DependencyProvider.swift in Sources */,
 				0E7BCE4128EBF1C1000820E0 /* ProductDetailVC.swift in Sources */,
@@ -1097,13 +1076,14 @@
 				DEVELOPMENT_TEAM = 625ZX732CB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mainProject/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Fitze;
 				INFOPLIST_KEY_NSCameraUsageDescription = Test;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = Test;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1111,9 +1091,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bryankenneth.mainProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1128,13 +1111,14 @@
 				DEVELOPMENT_TEAM = 625ZX732CB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mainProject/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Fitze;
 				INFOPLIST_KEY_NSCameraUsageDescription = Test;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = Test;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1142,9 +1126,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bryankenneth.mainProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
