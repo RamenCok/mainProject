@@ -92,6 +92,7 @@ class ProductDetailVC: UIViewController {
     
     // MARK: - Helpers
     private func setupScrollView() {
+        
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints { make in
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)

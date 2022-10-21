@@ -8,13 +8,17 @@
 import UIKit
 import SnapKit
 import Combine
+import FirebaseAuth
+import SDWebImage
 
 class BrandCatalogueViewController: UIViewController {
     
     internal let vm =  BrandCatalogueViewModel(service: BrandService())
     internal var brandList: [Brands]!
+    internal var profilePict: String!
     internal var brandImage: UIImage!
     private var cancellables: Set<AnyCancellable> = []
+    
     
     internal var searching = false
     internal var searchedBrand = [Brands]()
@@ -99,19 +103,47 @@ class BrandCatalogueViewController: UIViewController {
             self?.configureCollectionView()
             self?.collectionView.reloadData()
         }.store(in: &cancellables)
+        vm.userProfile
+            .receive(on: RunLoop.main)
+            .sink { [weak self] data in
+                let url = URL(string: data)
+                if url != nil {
+                    self?.profileButton.sd_setImage(with: url, for: .normal)
+                } else {
+                    self?.profileButton.setImage(UIImage(named: "initialProfilePicture"), for: .normal)
+                }
+        }.store(in: &cancellables)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("Hello")
         vm.fetchBrandList()
+        vm.fetchUserProfile()
         navigationItem.title = "Brands"
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
+        profileButton.alpha = 1
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        profileButton.alpha = 0
+    }
+    
+    
     
     // MARK: - Selectors
     @objc func handleProfileButtonTapped() {
-        navigationController?.pushViewController(ProfileViewController(), animated: true)
+        if let user = Auth.auth().currentUser {
+            if user.isAnonymous {
+                profileButton.alpha = 0
+                navigationController?.pushViewController(SignupLogin(), animated: true)
+            } else {
+                profileButton.alpha = 0
+                navigationController?.pushViewController(ProfileViewController(), animated: true)
+            }
+        }
     }
     
     //MARK: - Helpers
@@ -131,10 +163,6 @@ class BrandCatalogueViewController: UIViewController {
         
         
         self.navigationItem.hidesSearchBarWhenScrolling = false
-//        self.title = "Brands"
-//        self.navigationController?.title = "Brands"
-        
-        //        let rightBarBtn = UIBarButtonItem(customView: profileButton)
         
         guard let navigationBar = self.navigationController?.navigationBar else { return }
         navigationBar.addSubview(profileButton)
@@ -148,14 +176,6 @@ class BrandCatalogueViewController: UIViewController {
             profileButton.heightAnchor.constraint(equalToConstant: Const.ImageSizeForLargeState),
             profileButton.widthAnchor.constraint(equalTo: profileButton.heightAnchor)
         ])
-//        rightBarBtn.tintColor = .greyColor
-//
-//
-//        let currWidth = rightBarBtn.customView?.widthAnchor.constraint(equalToConstant: 24)
-//        currWidth?.isActive = true
-//        let currHeight = rightBarBtn.customView?.heightAnchor.constraint(equalToConstant: 24)
-//        currHeight?.isActive = true
-//        navigationItem.rightBarButtonItem = rightBarBtn
     }
     
     func configureCollectionView() {

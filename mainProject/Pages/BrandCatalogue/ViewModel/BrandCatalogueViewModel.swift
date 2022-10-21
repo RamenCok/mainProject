@@ -18,10 +18,17 @@ class BrandCatalogueViewModel: ObservableObject {
     }
     
     let brandList = PassthroughSubject<[Brands], Never>()
+    let userProfile = PassthroughSubject<String, Never>()
 
     func fetchBrandList() {
         service.getBrandList { list, _ in
             self.brandList.send(list)
+        }
+    }
+    
+    func fetchUserProfile() {
+        service.getUser { user, error in
+            self.userProfile.send(user.userProfilePicture)
         }
     }
 }

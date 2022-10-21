@@ -183,7 +183,7 @@ class ProfileViewController: UIViewController {
             let loginVC = SignupLogin()
             view.window?.rootViewController = UINavigationController(rootViewController: loginVC) 
 //            if var rootViewController = view.window?.rootViewController { // From iOS 13
-//                rootViewController = loginVC
+//                rootViewController = loginV
 //                print("logout")
 //            } else if var rootViewController = UIApplication.shared.windows.first?.rootViewController {
 //                    rootViewController = loginVC
