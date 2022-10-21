@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SceneKit
+import SceneKit.ModelIO
 import Combine
 
 protocol ProductDetailDelegate: AnyObject {
@@ -17,12 +19,13 @@ protocol ProductDetailDelegate: AnyObject {
 class ProductDetailVC: UIViewController {
     
     // MARK: - Properties
-    var productDetailVM = ProductDetailVM(service: ProductService())
+    private var vm = ARModelsViewModel()
+    private var cancellables: Set<AnyCancellable> = []
+    
     private var brandName: String!
     private var product: Product!
-    private var cancellables: Set<AnyCancellable> = []
-    private var filename: String!
-    private var selectedColor = 0
+    
+    private var selectedIndex = 0
     
     init(brandName: String, product: Product) {
         self.brandName = brandName
@@ -44,6 +47,13 @@ class ProductDetailVC: UIViewController {
         return view
     }()
     
+    private lazy var sceneKitView: SCNView = {
+        let view = SCNView()
+        view.allowsCameraControl = true
+        view.backgroundColor = .clear
+        return view
+    }()
+    
     private let viewInAR: UIButton = {
         let button = UIButton()
         button.backgroundColor = .primaryColor
@@ -58,10 +68,23 @@ class ProductDetailVC: UIViewController {
         return button
     }()
     
-    private lazy var rectangle: UIView = {
+    private lazy var topRectangle: UIView = {
         let rect = UIView()
         rect.backgroundColor = .systemBackground
         return rect
+    }()
+    
+    private lazy var bottomRectangle: UIView = {
+        let rect = UIView()
+        rect.backgroundColor = .systemBackground
+        return rect
+    }()
+    
+    private lazy var progressView: UIProgressView = {
+        let pv = UIProgressView(progressViewStyle: .default)
+        pv.trackTintColor = .lightGray
+        pv.tintColor = .primaryColor
+        return pv
     }()
     
     var modalSize: Double?
@@ -73,21 +96,39 @@ class ProductDetailVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         
-        Task.init {
-            await productDetailVM.fetch3DAsset(path: product.colorsAsset.compactMap { $0["assetLink"] as? String }[0])
-            setupScrollView()
-        }
+        self.navigationItem.backButtonDisplayMode = .minimal
+        setupScrollView()
+        
+        configureProgressView()
+        progressView.alpha = 0
+        
+        vm.model.sink { [weak self] url in
+            print("DEBUG: Called in view")
+            self?.setup3D(url: url)
+        }.store(in: &cancellables)
+        
+        vm.isDownloading.sink { [weak self] isDownloading in
+            if isDownloading {
+                self?.progressView.alpha = 1
+                self?.sceneKitView.alpha = 0
+            } else {
+                self?.progressView.alpha = 0
+                self?.sceneKitView.alpha = 1
+            }
+        }.store(in: &cancellables)
+        
+        vm.percentage.sink { [weak self] progress in
+            self?.progressView.setProgress(progress, animated: true)
+        }.store(in: &cancellables)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        vm.asyncLoadModel(filename: product.colorsAsset.compactMap { ($0["assetLink"] as! String)}[selectedIndex])
     }
     
     // MARK: - Selectors
-    
-    @objc func handleBackButton() {
-        print("Back")
-    }
     
     @objc func handleARButton() {
         print("AR Button")
@@ -106,6 +147,8 @@ class ProductDetailVC: UIViewController {
         
         scrollView.contentInsetAdjustmentBehavior = .never
         scrollView.showsVerticalScrollIndicator = false
+        
+        configureContentView()
         
         scrollView.addSubview(contentView)
         self.contentView.snp.makeConstraints { make in
@@ -126,31 +169,42 @@ class ProductDetailVC: UIViewController {
             make.height.equalTo(view.frame.height * 0.194)
             print(view.frame.height * 0.194)
         }
-
-        configureContainerView()
     }
     
-    private func configureContainerView() {
-//        let ArView = ARView(filename: filename)
-        print("DEBUG: int2 \(selectedColor)")
-        let ArView = ARView(filename: product.colorsAsset.compactMap { $0["assetLink"] as? String }[selectedColor])
-        contentView.addSubview(ArView)
-        ArView.snp.makeConstraints { make in
+    private func configureProgressView() {
+        contentView.addSubview(progressView)
+        progressView.snp.makeConstraints { make in
+            make.center.equalTo(topRectangle)
+            make.width.equalTo(topRectangle.snp.width).inset(40)
+        }
+    }
+    
+    private func configureContentView() {
+        
+        contentView.addSubview(topRectangle)
+        topRectangle.snp.makeConstraints { make in
             make.top.equalTo(contentView.snp.top)
             make.width.equalTo(contentView.snp.width)
             make.height.equalTo(view.frame.height * 0.448)
         }
         
-        contentView.addSubview(rectangle)
-        rectangle.snp.makeConstraints { make in
-            make.top.equalTo(ArView.snp.bottom)
+        contentView.addSubview(sceneKitView)
+        sceneKitView.snp.makeConstraints { make in
+            make.top.equalTo(contentView.snp.top)
+            make.width.equalTo(contentView.snp.width)
+            make.height.equalTo(view.frame.height * 0.448)
+        }
+        
+        contentView.addSubview(bottomRectangle)
+        bottomRectangle.snp.makeConstraints { make in
+            make.top.equalTo(topRectangle.snp.bottom)
             make.width.height.equalTo(contentView.snp.height)
         }
-        rectangle.setupShadow(opacity: 0.15, radius: 58, offset: CGSize(width: 1, height: 8), color: .systemGray)
+        bottomRectangle.setupShadow(opacity: 0.15, radius: 58, offset: CGSize(width: 1, height: 8), color: .systemGray)
         
         contentView.addSubview(viewInAR)
         viewInAR.snp.makeConstraints { make in
-            make.bottom.equalTo(rectangle.snp.top).offset(view.frame.height * -0.014)
+            make.bottom.equalTo(bottomRectangle.snp.top).offset(view.frame.height * -0.014)
             make.trailing.equalTo(contentView.snp.trailing).offset(-20)
             make.width.equalTo(view.frame.width * 0.374)
             make.height.equalTo(view.frame.height * 0.053)
@@ -159,19 +213,20 @@ class ProductDetailVC: UIViewController {
         let productHeadline = HeadlineView(brandName: brandName, productName: product.productName)
         contentView.addSubview(productHeadline)
         productHeadline.snp.makeConstraints { make in
-            make.top.equalTo(ArView.snp.bottom).offset(view.frame.height * 0.02)
+            make.top.equalTo(topRectangle.snp.bottom).offset(view.frame.height * 0.02)
             make.leading.equalTo(contentView.snp.leading).offset(20)
             make.trailing.equalTo(contentView.snp.trailing).offset(-20)
         }
 
-        let RadioButton = RadioButtonView(colorarray: product.colorsAsset.compactMap { $0["colors"] as? String }, selectedColor: selectedColor)
+        let RadioButton = RadioButtonView(colorarray: product.colorsAsset.compactMap { $0["colors"] as? String }, selectedColor: selectedIndex)
+        RadioButton.delegate = self
         contentView.addSubview(RadioButton)
         RadioButton.snp.makeConstraints { make in
             make.top.equalTo(productHeadline.snp.bottom).offset(view.frame.height * 0.02)
             make.leading.equalTo(contentView.snp.leading).offset(20)
         }
         
-        let productDescription = DescriptionView(productDesc: product.productDesc)
+        let productDescription = DescriptionView(productDesc: product.productDesc.replacingOccurrences(of: "\\n", with: "\n"))
         contentView.addSubview(productDescription)
         productDescription.snp.makeConstraints { make in
             make.top.equalTo(RadioButton.snp.bottom).offset(view.frame.height * 0.02)
@@ -227,4 +282,35 @@ extension ProductDetailVC: ProductDetailDelegate {
         
         self.present(slideVC, animated: true, completion: nil)
     }
+}
+    
+    private func setup3D(url: URL) {
+        let scene = try! SCNScene(url: url, options: [.checkConsistency: true])
+        let light = SCNNode()
+        light.light = SCNLight()
+        light.light?.type = .ambient
+        light.light?.temperature = 6700
+    
+        sceneKitView.scene = scene
+        scene.rootNode.addChildNode(light)
+        let camera = SCNNode()
+        camera.camera = SCNCamera()
+        scene.rootNode.addChildNode(camera)
+    }
+}
+
+extension ProductDetailVC: ProductDetailDelegate {
+    func changeSelected(selected: Int) {
+        if selectedIndex != selected {
+            selectedIndex = selected
+            
+            // reload view
+            vm.asyncLoadModel(filename: product.colorsAsset.compactMap { ($0["assetLink"] as! String)}[selectedIndex])
+            progressView.setProgress(0, animated: false)
+        }
+    }
+}
+
+protocol ProductDetailDelegate: AnyObject {
+    func changeSelected(selected: Int)
 }

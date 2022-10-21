@@ -178,10 +178,16 @@ class BrandCatalogueViewController: UIViewController {
         ])
     }
     
-    func configureCollectionView() {
+    private func configureCollectionView() {
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+    }
+    
+    private func showImage(_ show: Bool) {
+      UIView.animate(withDuration: 0.25) {
+        self.profileButton.alpha = show ? 1.0 : 0.0
+      }
     }
 }

@@ -44,6 +44,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This occurs shortly after the scene enters the background, or when its session is discarded.
         // Release any resources associated with this scene that can be re-created the next time the scene connects.
         // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
+        
+        // Hapus semua file di cache
+        let docsUrl = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+        if FileManager.default.fileExists(atPath: docsUrl.path) {
+            do {
+                print("DEBUG: Deleting files")
+                try FileManager.default.removeItem(at: docsUrl)
+            } catch {
+                print("DEBUG: Cannot delete file")
+            }
+        }
     }
     
     func sceneDidBecomeActive(_ scene: UIScene) {

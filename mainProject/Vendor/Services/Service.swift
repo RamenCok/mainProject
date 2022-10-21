@@ -16,16 +16,15 @@ protocol BrandServicing {
 
 protocol ProductServicing {
     func getProduct(ref: String, completion: @escaping (Product)-> Void)
-    func get3DAsset(path: String) async
 }
 
 protocol ProfileServices {
-    
     func getUser(_ completion: @escaping (User, Error?) -> Void)
     func updateUser(name: String, gender: String, imageData: UIImage, completion: @escaping (Error?) -> Void)
     func updateBodyMeasurement(type: String, value: Int,  completion: @escaping() -> Void)
     func resetBodyMeasurementToZero()
 }
+
 struct Service: ProfileServices {
     
     let uid = AUTH_REF.currentUser?.uid
@@ -83,7 +82,6 @@ struct Service: ProfileServices {
     }
 }
 
-// Tes firebase asli disini
 struct BrandService: BrandServicing {
     
     let uid = AUTH_REF.currentUser?.uid
@@ -145,24 +143,6 @@ struct ProductService: ProductServicing {
             }
             
             completion(data)
-        }
-    }
-    
-    func get3DAsset(path: String) async {
-        do {
-            let storage = Storage.storage().reference()
-            let modelPath = storage.child("Product3DAsset/\(path)")
-            let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-            let tempDirectory = URL.init(fileURLWithPath: paths, isDirectory: true)
-            let targetUrl = tempDirectory.appendingPathComponent("\(path)")
-
-            modelPath.write(toFile: targetUrl) { (url, error) in
-                if error != nil {
-                    print("ERROR: \(error!)")
-                }else{
-                    print("DEBUG: modelPath.write OKAY")
-                }
-            }
         }
     }
 }

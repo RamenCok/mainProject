@@ -17,6 +17,8 @@ class RadioButtonView: UIView {
     private var radioButton: RadioButtonManager<UIView>?
     private var selectedBorderView: UIView?
     
+    weak var delegate: ProductDetailDelegate?
+    
     //MARK: - Lifecycle
     
     required init(colorarray: [String], selectedColor: Int) {
@@ -40,6 +42,8 @@ class RadioButtonView: UIView {
         
         guard let getTag = sender.view?.tag else { return }
         selectedColor = getTag
+        
+        delegate?.changeSelected(selected: getTag)
     }
     
     // MARK: - Helpers
@@ -51,6 +55,8 @@ class RadioButtonView: UIView {
             circle.setDimensions(height: 24, width: 24)
             circle.layer.cornerRadius = 24 / 2
             circle.backgroundColor = UIColor(color)
+            circle.layer.borderColor = UIColor("DBDBDB").cgColor
+            circle.layer.borderWidth = 1
             return circle
         }
         
@@ -84,7 +90,7 @@ class RadioButtonView: UIView {
                 selectedBorderView?.removeFromSuperview()
             })
         // set default selected index to be 0
-        radioButton?.selectedIndex = 0
+        radioButton?.selectedIndex = selectedColor
         
         colorArray.forEach { color in
             let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapColor(_:)))
