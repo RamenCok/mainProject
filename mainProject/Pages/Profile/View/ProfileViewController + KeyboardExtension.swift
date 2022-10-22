@@ -38,9 +38,25 @@ extension ProfileViewController {
                 
                 if self.user.userGender != self.genderLabel.text {
                     self.changeGenderAlertConfirmation()
+                } else {
+                    self.sendUpdates()
                 }
             }
         }
+    }
+    
+    func sendUpdates() {
+        
+        self.vm.updateUser(
+            name: self.nameTF.text ?? "",
+            gender: self.genderLabel.text ?? "",
+            imageData: self.profileImage.image ?? UIImage()
+        )
+        
+        self.user.userName = self.nameTF.text!
+        self.user.userGender = self.genderLabel.text!
+        
+        self.configureUI()
     }
 
     func changeGenderAlertConfirmation() {
@@ -52,16 +68,7 @@ extension ProfileViewController {
             self.vm.service.resetBodyMeasurementToZero()
             self.user.userBodyMeasurement = ["Chest": 0, "Height": 0, "Waist": 0]
             
-            self.vm.updateUser(
-                name: self.nameTF.text ?? "",
-                gender: self.genderLabel.text ?? "",
-                imageData: self.profileImage.image ?? UIImage()
-            )
-            
-            self.user.userName = self.nameTF.text!
-            self.user.userGender = self.genderLabel.text!
-            
-            self.configureUI()
+            self.sendUpdates()
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in

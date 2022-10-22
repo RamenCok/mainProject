@@ -128,7 +128,8 @@ struct ProductService: ProductServicing {
             let dict = snapshot?.data()
             var data = Product(dictionary: dict ?? [:])
             
-            if data.productName == "Product 1" {
+            // REMOVE IF STATEMENT WHEN ALL PRODUCT HAS SIZE CHART!!!
+            if data.productName == "Skelly Kaos Stripe Pria Wanita Evenlike" {
                 
                 let productSizeChartDict = snapshot?.get("productSizeChart") as! [[String: Any]]
                 
