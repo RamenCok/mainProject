@@ -55,6 +55,7 @@
 		AC30936228F51F5C00766787 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = AC30936128F51F5C00766787 /* FirebaseStorage */; };
 		AC30936428F51F5D00766787 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = AC30936328F51F5D00766787 /* FirebaseStorageCombine-Community */; };
 		AC4A007D28F92160000B09C9 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4A007C28F92160000B09C9 /* Service.swift */; };
+		AC52D7E22904045500AD136A /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC52D7E12904045500AD136A /* ARViewController.swift */; };
 		AC6F478028EDEADF00AAF1F6 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC6F477F28EDEADF00AAF1F6 /* IQKeyboardManagerSwift */; };
 		AC6F478428EE982F00AAF1F6 /* ReusableTextFieldAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */; };
 		AC6F478628EE9A5100AAF1F6 /* ReusablePasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478528EE9A5100AAF1F6 /* ReusablePasswordTextField.swift */; };
@@ -141,6 +142,7 @@
 		AC30932628F32D5100766787 /* ProductColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductColorView.swift; sourceTree = "<group>"; };
 		AC30932828F32FD900766787 /* ProductCatalogueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCatalogueViewModel.swift; sourceTree = "<group>"; };
 		AC4A007C28F92160000B09C9 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		AC52D7E12904045500AD136A /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTextFieldAuth.swift; sourceTree = "<group>"; };
 		AC6F478528EE9A5100AAF1F6 /* ReusablePasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePasswordTextField.swift; sourceTree = "<group>"; };
 		AC8366C528F6B6B7000EBF5D /* constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constant.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				0EB2125C28EDDF4700FB1255 /* HeadlineView.swift */,
 				0EAFD7E728EB06A30004E3DB /* RadioButtonView.swift */,
 				0EB2125E28EDE33200FB1255 /* DescriptionView.swift */,
+				AC52D7E12904045500AD136A /* ARViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -864,6 +867,7 @@
 				DB9660E428EDD87C001D9A53 /* SetupBodyMeasurementModalVC.swift in Sources */,
 				AC30932728F32D5100766787 /* ProductColorView.swift in Sources */,
 				DB8BCDA328EBDE0800630CA3 /* SizeCalculatorModalVC.swift in Sources */,
+				AC52D7E22904045500AD136A /* ARViewController.swift in Sources */,
 				DB8BCD9F28EBDD8500630CA3 /* BuyModalVC.swift in Sources */,
 				DB76CD8D28F51AC700F562CB /* BrandCatalogueVC + CollectionView Extensions.swift in Sources */,
 				DBD144DF28EEA7A6006A3E40 /* ReusableSizeCalculatorButton.swift in Sources */,
@@ -1073,12 +1077,12 @@
 				CODE_SIGN_ENTITLEMENTS = mainProject/mainProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 625ZX732CB;
+				DEVELOPMENT_TEAM = 8XZM6ZXT9F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mainProject/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Fitze;
 				INFOPLIST_KEY_NSCameraUsageDescription = Test;
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = Test;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Would like to access camera for AR Usage";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1108,12 +1112,12 @@
 				CODE_SIGN_ENTITLEMENTS = mainProject/mainProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 625ZX732CB;
+				DEVELOPMENT_TEAM = 8XZM6ZXT9F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mainProject/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Fitze;
 				INFOPLIST_KEY_NSCameraUsageDescription = Test;
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = Test;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Would like to access camera for AR Usage";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
