@@ -88,18 +88,23 @@ struct BrandService: BrandServicing {
     
     func getUser(_ completion: @escaping (User, Error?) -> Void) {
         
-        let document = Firestore.firestore().collection("users").document(uid!)
-        
-        document.getDocument { document, error in
+        guard let user = AUTH_REF.currentUser else { return }
+        if !user.isAnonymous {
+            let document = Firestore.firestore().collection("users").document(uid!)
             
-            if let document = document, document.exists {
-                let dictionary = document.data()
-                let user = User(dictionary: dictionary ?? ["" : ""])
-                completion(user, error)
-            } else {
-                print("Document does not exist")
+            document.getDocument { document, error in
+                
+                if let document = document, document.exists {
+                    let dictionary = document.data()
+                    let user = User(dictionary: dictionary ?? ["" : ""])
+                    completion(user, error)
+                } else {
+                    print("Document does not exist")
+                }
             }
         }
+        
+       
     }
     
     func getBrandList(_ completion: @escaping ([Brands],Error?)-> Void) {
