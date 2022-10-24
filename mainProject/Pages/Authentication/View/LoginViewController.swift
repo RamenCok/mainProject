@@ -110,9 +110,7 @@ class LoginViewController: UIViewController {
             
             view.addSubview(bgLogin)
             bgLogin.snp.makeConstraints { make in
-                make.top.equalToSuperview()
-                make.leading.equalToSuperview()
-                make.trailing.equalToSuperview()
+                make.edges.equalToSuperview()
             }
             
             view.addSubview(pinkTitle)

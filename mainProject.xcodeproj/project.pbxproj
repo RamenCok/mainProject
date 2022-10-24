@@ -1073,12 +1073,12 @@
 				CODE_SIGN_ENTITLEMENTS = mainProject/mainProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 625ZX732CB;
+				DEVELOPMENT_TEAM = L7SMRXB5WV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mainProject/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Fitze;
 				INFOPLIST_KEY_NSCameraUsageDescription = Test;
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = Test;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Fitze uses your photos to personalise your profile picture.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1089,7 +1089,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bryankenneth.mainProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bryankenneth.mainProject2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1113,7 +1113,7 @@
 				INFOPLIST_FILE = mainProject/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Fitze;
 				INFOPLIST_KEY_NSCameraUsageDescription = Test;
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = Test;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Fitze uses your photos to personalise your profile picture.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

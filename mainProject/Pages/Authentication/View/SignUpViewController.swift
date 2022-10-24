@@ -7,6 +7,7 @@
 
 import UIKit
 import UIWindowTransitions
+import SnapKit
 
 class SignUpViewController: UIViewController {
 
@@ -199,9 +200,7 @@ class SignUpViewController: UIViewController {
         
         view.addSubview(bgLogin)
         bgLogin.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
+            make.edges.equalToSuperview()
         }
         
         view.addSubview(pinkTitle)

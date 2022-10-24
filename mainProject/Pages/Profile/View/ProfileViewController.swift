@@ -20,9 +20,8 @@ class ProfileViewController: UIViewController {
     private var cancellables: Set<AnyCancellable> = []
     
     private lazy var imageBG: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "profileBG")
-        return image
+        let imageView = AuthBackground()
+        return imageView
     }()
     
     internal lazy var profileImage: UIImageView = {
@@ -221,6 +220,8 @@ class ProfileViewController: UIViewController {
         navigationItem.rightBarButtonItem = editBarButtonItem
     
         navigationController?.navigationBar.tintColor = .primaryColor
+        
+        view.backgroundColor = .whiteColor
         
         view.addSubview(imageBG)
         imageBG.snp.makeConstraints { make in
