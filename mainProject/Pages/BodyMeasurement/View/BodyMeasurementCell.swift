@@ -90,6 +90,7 @@ class BodyMeasurementCell: UICollectionViewCell {
         
         let measurementType = ReusableLabel(style: .heading_3, textString: self.type)
         measurementType.textAlignment = .left
+        measurementType.textColor = .black
         contentView.addSubview(measurementType)
         measurementType.snp.makeConstraints { make in
             make.top.equalTo(background.snp.top).offset(15)
@@ -97,7 +98,8 @@ class BodyMeasurementCell: UICollectionViewCell {
         }
         
         let measurementCaption = ReusableLabel(style: .bodyText, textString: "")
-        measurementType.textAlignment = .left
+        measurementCaption.textAlignment = .left
+        measurementCaption.textColor = .black
         contentView.addSubview(measurementCaption)
         measurementCaption.snp.makeConstraints { make in
             make.top.equalTo(measurementType.snp.bottom).offset(3)
@@ -106,6 +108,7 @@ class BodyMeasurementCell: UICollectionViewCell {
             
         let measurementNumber = ReusableLabel(style: .subHeading_1, textString: dash())
         measurementNumber.textAlignment = .left
+        measurementNumber.textColor = .black
         contentView.addSubview(measurementNumber)
         measurementNumber.snp.makeConstraints { make in
             make.trailing.equalTo(background.snp.trailing).offset(-20)

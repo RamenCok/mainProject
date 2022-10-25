@@ -112,7 +112,8 @@ class PersonalizeViewController: UIViewController {
     
     // MARK: - Helpers
     func configureUI() {
-        view.backgroundColor = .systemBackground
+        
+        view.backgroundColor = .backgroundColor
         
         view.addSubview(bgLogin)
         bgLogin.snp.makeConstraints { make in

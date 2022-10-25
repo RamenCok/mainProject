@@ -17,7 +17,7 @@ class SizeButtonView: UIView {
         return label
     }()
     
-    var fontColor: UIColor = .primaryColor {
+    var fontColor: UIColor = .primaryColor! {
         didSet {
             sizeNameLabel.textColor = fontColor
         }

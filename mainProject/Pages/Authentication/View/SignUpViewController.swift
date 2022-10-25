@@ -30,6 +30,8 @@ class SignUpViewController: UIViewController {
     
     private lazy var emailTextField: TextField = {
         let textField = ReusableTextFieldAuth(placeholders: "Email")
+        textField.keyboardType = .emailAddress
+        textField.autocapitalizationType = .none
         return textField
     }()
     
@@ -196,7 +198,10 @@ class SignUpViewController: UIViewController {
     
     // MARK: - Helpers
     func configureUI() {
-        view.backgroundColor = .systemBackground
+        
+        view.backgroundColor = .backgroundColor
+        
+        navigationController?.navigationBar.topItem?.backButtonDisplayMode = .minimal
         
         view.addSubview(bgLogin)
         bgLogin.snp.makeConstraints { make in

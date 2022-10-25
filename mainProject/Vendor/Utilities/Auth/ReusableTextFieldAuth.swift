@@ -21,9 +21,15 @@ class ReusableTextFieldAuth: TextField {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureTextField(){
-        self.backgroundColor = UIColor.lightGray
-        self.attributedPlaceholder = NSAttributedString(string: placeholders)
+    func configureTextField() {
+        
+        self.backgroundColor = UIColor.textFieldBG
+        self.attributedPlaceholder = NSAttributedString(
+            string: placeholders,
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray3]
+        )
         self.layer.cornerRadius = 15
+        self.textColor = .black
+        self.font = UIFont.bodyText()
     }
 }

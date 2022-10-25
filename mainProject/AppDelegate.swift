@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let navigation = UINavigationController()
         navigation.navigationBar.topItem?.backButtonDisplayMode = .minimal
+        UINavigationBar.appearance().barTintColor = UIColor.navBar
         
         return true
     }

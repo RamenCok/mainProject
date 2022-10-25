@@ -43,6 +43,7 @@ class ProductCatalogueViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         collectionView.showsVerticalScrollIndicator = false
+        collectionView.backgroundColor = .backgroundColor
         
         return collectionView
     }()
@@ -113,6 +114,8 @@ class ProductCatalogueViewController: UIViewController {
     // MARK: - Helpers
     func configureNoProduct() {
         
+        view.backgroundColor = .backgroundColor
+        
         view.addSubview(rect)
         rect.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
@@ -140,6 +143,9 @@ class ProductCatalogueViewController: UIViewController {
     }
     
     func configureUI(){
+        
+        view.backgroundColor = .backgroundColor
+        
         view.addSubview(productCollectionView)
         productCollectionView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()

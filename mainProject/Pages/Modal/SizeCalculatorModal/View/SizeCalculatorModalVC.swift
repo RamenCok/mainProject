@@ -78,7 +78,7 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
             UIView.animate(withDuration: 0.15) {
                 // set unselected state
                 self.selectedView?.backgroundColor = UIColor.systemGray3
-                self.selectedView?.fontColor = .primaryColor
+                self.selectedView?.fontColor = .primaryColor!
                 
                 // set new view to selected state
                 newValue?.backgroundColor = .primaryColor
@@ -257,7 +257,7 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
     // MARK: - Helpers
     func configureUI() {
         
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .backgroundColor
         
         let navBar = UINavigationBar(frame: CGRect(x: 0, y: 10, width: UIScreen.main.bounds.width, height: 44))
         

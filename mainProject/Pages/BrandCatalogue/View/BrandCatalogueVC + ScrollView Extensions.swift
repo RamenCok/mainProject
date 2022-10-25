@@ -59,13 +59,14 @@ extension BrandCatalogueViewController: UIScrollViewDelegate {
         if height < 100 {
             UIView.animate(withDuration: 0.2) {
                 self.profileButton.alpha = 0
+                self.collectionView.backgroundView?.alpha = 0
             }
         } else {
             UIView.animate(withDuration: 0.2) {
                 self.profileButton.alpha = 1
+                self.collectionView.backgroundView?.alpha = 1
             }
         }
-        
     }
 }
 

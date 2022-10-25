@@ -51,21 +51,17 @@ class ReusableButton: UIButton {
         
         switch style {
             case .primary:
-                self.backgroundColor = UIColor.primaryColor
-                self.layer.borderColor = UIColor.primaryColor.cgColor
-                self.layer.borderWidth = 1.5
+                self.backgroundColor = UIColor.primaryButtonColor
                 self.tintColor = UIColor.whiteColor
             
             case .secondary:
                 self.backgroundColor = .clear
-                self.layer.borderColor = UIColor.primaryColor.cgColor
+                self.layer.borderColor = UIColor.primaryColor?.cgColor
                 self.layer.borderWidth = 1.5
                 self.setTitleColor(.primaryColor, for: .normal)
                 
             case .primaryDisabled:
                 self.backgroundColor = UIColor.disabledColor
-                self.layer.borderColor = UIColor.disabledColor.cgColor
-                self.layer.borderWidth = 1.5
                 self.tintColor = UIColor.whiteColor
                 
             case .secondaryDisabled:
@@ -76,8 +72,6 @@ class ReusableButton: UIButton {
                 
             case .delete:
                 self.backgroundColor = UIColor.redColor
-                self.layer.borderColor = UIColor.redColor.cgColor
-                self.layer.borderWidth = 1.5
                 self.tintColor = UIColor.whiteColor
         }
         
@@ -93,7 +87,7 @@ class ReusableButton: UIButton {
     public func makeDisabled(isDisabled: Bool) {
         
         self.isEnabled = !isDisabled
-        self.backgroundColor = isDisabled ? .disabledColor : .primaryColor
+        self.backgroundColor = isDisabled ? .disabledColor : .primaryButtonColor
     }
     
     //MARK: Animate
@@ -121,5 +115,15 @@ class ReusableButton: UIButton {
                 self.transform = .identity
                 self.alpha = 1
             }
+    }
+    
+    private func updateColors() {
+        self.layer.borderColor = UIColor.primaryColor?.cgColor
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        self.updateColors()
+        self.setNeedsDisplay()
     }
 }

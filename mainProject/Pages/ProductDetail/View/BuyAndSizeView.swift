@@ -43,6 +43,9 @@ class BuyAndSizeView: UIView {
 
     // MARK: - Helpers
     private func configureUI() {
+        
+        self.backgroundColor = .backgroundColor
+        
         addSubview(rectangle)
         rectangle.snp.makeConstraints { make in
             make.center.equalTo(self)

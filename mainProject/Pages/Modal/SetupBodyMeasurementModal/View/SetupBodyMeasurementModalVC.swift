@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class SetupBodyMeasurementModalVC: UIViewController {
     
@@ -17,6 +18,12 @@ class SetupBodyMeasurementModalVC: UIViewController {
             make.width.equalTo(view.frame.width)
         }
         return image
+    }()
+    
+    private lazy var helperImageBG: UIView = {
+        let view = UIView()
+        view.backgroundColor = .bodyMeasurementModalBG
+        return view
     }()
     
     private lazy var lengthLabel: ReusableLabel = {
@@ -35,12 +42,15 @@ class SetupBodyMeasurementModalVC: UIViewController {
     
     private lazy var textField: UITextField = {
         let tf = UITextField()
-        tf.backgroundColor = .systemGray6
-        tf.placeholder = "Input size"
+        tf.backgroundColor = .textFieldBG
+        tf.attributedPlaceholder = NSAttributedString(
+            string: "Input size",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray3]
+        )
         tf.leftViewMode = .always
         tf.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 45))
         tf.leftViewMode = .always
-        tf.textColor = .blackTexts
+        tf.textColor = .black
         tf.keyboardType = .numberPad
         tf.layer.cornerRadius = 14
         tf.font = UIFont.bodyText()
@@ -95,7 +105,7 @@ class SetupBodyMeasurementModalVC: UIViewController {
     // MARK: - Helpers
     func configureUI() {
         
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .backgroundColor
         
         let navBar = UINavigationBar(frame: CGRect(x: 0, y: 10, width: UIScreen.main.bounds.width, height: 44))
         
@@ -125,11 +135,17 @@ class SetupBodyMeasurementModalVC: UIViewController {
         navBar.setItems([navItem], animated: false)
         view.addSubview(navBar)
         
-        view.addSubview(helperImage)
+        helperImageBG.addSubview(helperImage)
         helperImage.image = UIImage(named: helperImageName ?? "")
         helperImage.snp.makeConstraints { make in
+            make.edges.equalTo(helperImageBG.snp.edges)
+        }
+        
+        view.addSubview(helperImageBG)
+        helperImageBG.snp.makeConstraints { make in
+            make.height.equalTo(view.frame.height / 3.89)
+            make.width.equalTo(view.frame.width)
             make.top.equalTo(navBar.snp.bottom).offset(15)
-            make.centerX.equalToSuperview()
         }
         
         view.addSubview(lengthLabel)

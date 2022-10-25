@@ -216,7 +216,7 @@ class SignupLogin: UIViewController {
     // MARK: - Helpers
     func configureUI() {
      
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .backgroundColor
         
         // To set transparent background for navigation bar
         let appearance = UINavigationBarAppearance()

@@ -221,7 +221,7 @@ class ProfileViewController: UIViewController {
     
         navigationController?.navigationBar.tintColor = .primaryColor
         
-        view.backgroundColor = .whiteColor
+        view.backgroundColor = .backgroundColor
         
         view.addSubview(imageBG)
         imageBG.snp.makeConstraints { make in

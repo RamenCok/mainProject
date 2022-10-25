@@ -107,7 +107,7 @@ class ReusableLabel: UILabel {
                 self.font = UIFont.modalTitle()
         }
         
-        self.textColor = .black
+        self.textColor = .blackTexts
         self.numberOfLines = 100
         let attributedString = NSMutableAttributedString(string: textString, attributes: hyphenAttribute)
         self.attributedText = attributedString

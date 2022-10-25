@@ -36,10 +36,7 @@ class ReusableProfileButtonView: UIButton {
     
     private func configureButton() {
         
-        self.backgroundColor = .white
-        
-//        self.layer.borderColor = UIColor.systemGray5.cgColor
-//        self.layer.borderWidth = 1
+        self.backgroundColor = .bodyMeasurementModalBG
         
         self.layer.cornerRadius = 14
         
@@ -51,14 +48,14 @@ class ReusableProfileButtonView: UIButton {
         self.contentHorizontalAlignment = .leading
         
         self.setTitle(buttonText, for: .normal)
-        self.setTitleColor(.black, for: .normal)
+        self.setTitleColor(.blackTexts, for: .normal)
         self.titleLabel?.font = UIFont.bodyText()
         self.titleEdgeInsets = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 0)
         
-        self.setImage(UIImage(named: logo), for: .normal)
+        self.setImage(UIImage(named: logo)?.withRenderingMode(.alwaysTemplate), for: .normal)
         self.imageView?.contentMode = .scaleAspectFill
         self.imageEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
-        self.tintColor = .black
+        self.tintColor = .blackTexts
         
         self.snp.makeConstraints { make in
             make.height.equalTo(64)
@@ -90,5 +87,15 @@ class ReusableProfileButtonView: UIButton {
                 self.transform = .identity
                 self.layer.shadowOpacity = 0.15
             }
+    }
+    
+    private func updateColors() {
+        self.layer.shadowColor = UIColor.systemGray2.cgColor
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        self.updateColors()
+        self.setNeedsDisplay()
     }
 }

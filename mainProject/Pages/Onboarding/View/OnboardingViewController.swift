@@ -129,7 +129,7 @@ class OnboardingViewController: UIPageViewController {
     //MARK: - Helpers
     func configureUI() {
         
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .backgroundColor
         navigationController?.navigationBar.isHidden = true
         view.addSubview(skipButton)
         skipButton.snp.makeConstraints { make in
