@@ -15,6 +15,7 @@ protocol ProductDetailDelegate: AnyObject {
     func showSizeCalc()
     func showBuyModal()
     func changeSelected(selected: Int)
+    func goToBodyMeasurement()
 }
 
 class ProductDetailVC: UIViewController {
@@ -275,15 +276,38 @@ extension ProductDetailVC: UIViewControllerTransitioningDelegate {
 extension ProductDetailVC: ProductDetailDelegate {
     
     func showSizeCalc() {
+        var sizeMeasurementExist = false
         
-        let slideVC = SizeCalculatorModalVC(productSizeChart: product.productSizeChart, brandName: brandName, productName: product.productName)
+        if let user = defaults.object(forKey: "User") as? Data {
+            if let loadUser = try? decoder.decode(User.self, from: user) {
+                if loadUser.userBodyMeasurement.values.contains(0) {
+                    sizeMeasurementExist = false
+                } else {
+                    sizeMeasurementExist = true
+                }
+            }
+        }
         
-        presentedVC = slideVC.modalType
-        modalSize = slideVC.modalSize
-        slideVC.modalPresentationStyle = .custom
-        slideVC.transitioningDelegate = self
-        
-        self.present(slideVC, animated: true, completion: nil)
+        if sizeMeasurementExist {
+            let slideVC = SizeCalculatorModalVC(productSizeChart: product.productSizeChart, brandName: brandName, productName: product.productName)
+            
+            presentedVC = slideVC.modalType
+            modalSize = slideVC.modalSize
+            slideVC.modalPresentationStyle = .custom
+            slideVC.transitioningDelegate = self
+            
+            self.present(slideVC, animated: true, completion: nil)
+            
+        } else {
+            let slideVC = BodyMeasurementModalVC()
+            slideVC.delegate = self
+            presentedVC = slideVC.modalType
+            modalSize = slideVC.modalSize
+            slideVC.modalPresentationStyle = .custom
+            slideVC.transitioningDelegate = self
+            
+            self.present(slideVC, animated: true, completion: nil)
+        }
     }
     
     func showBuyModal() {
@@ -305,6 +329,14 @@ extension ProductDetailVC: ProductDetailDelegate {
             // reload view
             vm.asyncLoadModel(filename: product.colorsAsset.compactMap { ($0["assetLink"] as! String)}[selectedIndex])
             progressView.setProgress(0, animated: false)
+        }
+    }
+    
+    func goToBodyMeasurement() {
+        if let user = defaults.object(forKey: "User") as? Data {
+            if let loadUser = try? decoder.decode(User.self, from: user) {
+                self.navigationController?.pushViewController(BodyMeasurementVC(user: loadUser), animated: true)
+            }
         }
     }
 }

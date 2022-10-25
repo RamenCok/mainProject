@@ -14,3 +14,5 @@ let FR_REF_USER = FR_REF.collection("users")
 let AUTH_REF = Auth.auth()
 let CURRENT_USER = AUTH_REF.currentUser
 
+let defaults = UserDefaults.standard
+let decoder = JSONDecoder()

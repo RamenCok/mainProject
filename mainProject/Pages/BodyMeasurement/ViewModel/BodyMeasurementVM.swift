@@ -20,6 +20,11 @@ class BodyMeasurementVM: ObservableObject {
     func getUser() {
         service.getUser { user, error in
             self.user.send(user)
+            // Save user state to UserDefaults
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(user) {
+                defaults.set(encoded, forKey: "User")
+            }
         }
     }
 }
