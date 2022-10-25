@@ -288,7 +288,7 @@ extension ProductDetailVC: ProductDetailDelegate {
     
     func showBuyModal() {
         
-        let slideVC = BuyModalVC()
+        let slideVC = BuyModalVC(productLinks: product.productLinks)
         
         presentedVC = slideVC.modalType
         modalSize = slideVC.vm.setModalHeight(numberOfButtons: 4)

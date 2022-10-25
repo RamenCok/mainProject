@@ -7,10 +7,21 @@
 
 import UIKit
 import SnapKit
+import SafariServices
 
 class BuyModalVC: UIViewController {
 
     // MARK: - Properties
+    let productLinks: [ProductLink]
+    
+    init(productLinks: [ProductLink]) {
+        self.productLinks = productLinks
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     
     // MAKE THIS REUSABLE LIKE COLOR RADIO BUTTON DI PRODUCT DETAIL VIEW
@@ -40,7 +51,22 @@ class BuyModalVC: UIViewController {
     }()
     
     public lazy var stack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [button1, button5, button4, button2])
+        var buttons: [ReusableButton] = []
+       
+        for links in productLinks {
+            let tapGesture = CustomTapGestureRecognizer(target: self, action: #selector(handleLink(sender:)))
+            tapGesture.ourCustomValue = links.link
+            let button = ReusableButton(style: .secondary, buttonText: links.siteName, selector: #selector(handleLink(sender:)), target: self)
+            button.addGestureRecognizer(tapGesture)
+            buttons.append(button)
+        }
+        
+        let stack = UIStackView(arrangedSubviews: buttons)
+        stack.spacing = 10
+        stack.alignment = .center
+        stack.axis = .vertical
+        stack.distribution = .equalSpacing
+        
         return stack
     }()
     
@@ -73,6 +99,16 @@ class BuyModalVC: UIViewController {
     @objc func handleDismiss() {
         print("BYE FELICIA")
         self.dismiss(animated: true)
+    }
+    
+    @objc func handleLink(sender: CustomTapGestureRecognizer) {
+        if let url = URL(string: sender.ourCustomValue!) {
+                let config = SFSafariViewController.Configuration()
+                config.entersReaderIfAvailable = true
+
+                let vc = SFSafariViewController(url: url, configuration: config)
+                present(vc, animated: true)
+        }
     }
     
     @objc func panGestureRecognizerAction(sender: UIPanGestureRecognizer) {
@@ -131,10 +167,7 @@ class BuyModalVC: UIViewController {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction))
         view.addGestureRecognizer(panGesture)
         
-        stack.spacing = 10
-        stack.alignment = .center
-        stack.axis = .vertical
-        stack.distribution = .equalCentering
+        
         
         view.addSubview(stack)
         stack.snp.makeConstraints { make in
@@ -143,4 +176,9 @@ class BuyModalVC: UIViewController {
             make.trailing.equalToSuperview().offset(-20)
         }
     }
+}
+
+
+class CustomTapGestureRecognizer: UITapGestureRecognizer {
+    var ourCustomValue: String?
 }
