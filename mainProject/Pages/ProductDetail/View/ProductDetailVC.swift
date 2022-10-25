@@ -9,6 +9,7 @@ import UIKit
 import SceneKit
 import SceneKit.ModelIO
 import Combine
+import Firebase
 
 protocol ProductDetailDelegate: AnyObject {
     
@@ -276,6 +277,20 @@ extension ProductDetailVC: UIViewControllerTransitioningDelegate {
 extension ProductDetailVC: ProductDetailDelegate {
     
     func showSizeCalc() {
+        // Checking for Authentication of User
+        if let user = Auth.auth().currentUser {
+            if user.isAnonymous {
+                let slideVC = SignUpModalVC()
+                slideVC.delegate = self
+                presentedVC = slideVC.modalType
+                modalSize = slideVC.modalSize
+                slideVC.modalPresentationStyle = .custom
+                slideVC.transitioningDelegate = self
+                
+                self.present(slideVC, animated: true, completion: nil)
+            }
+        }
+        
         var sizeMeasurementExist = false
         
         if let user = defaults.object(forKey: "User") as? Data {
@@ -288,6 +303,7 @@ extension ProductDetailVC: ProductDetailDelegate {
             }
         }
         
+        // Checking for Size Measurement of User
         if sizeMeasurementExist {
             let slideVC = SizeCalculatorModalVC(productSizeChart: product.productSizeChart, brandName: brandName, productName: product.productName)
             
@@ -338,5 +354,15 @@ extension ProductDetailVC: ProductDetailDelegate {
                 self.navigationController?.pushViewController(BodyMeasurementVC(user: loadUser), animated: true)
             }
         }
+    }
+}
+
+extension ProductDetailVC:ProductCatalogueDelegate {
+    func goToSignUp() {
+        self.navigationController?.pushViewController(SignupLogin(), animated: true)
+    }
+    
+    func skip() {
+        self.dismiss(animated: true)
     }
 }

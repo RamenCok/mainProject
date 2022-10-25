@@ -27,7 +27,7 @@ class SignUpModalVC: UIViewController {
     }()
     
     private lazy var skipButton: ReusableButton = {
-        let button = ReusableButton(style: .secondary, buttonText: "Skip", selector: #selector(handleDismiss), target: self)
+        let button = ReusableButton(style: .secondary, buttonText: "Skip", selector: #selector(handleSkip), target: self)
         return button
     }()
     
@@ -36,6 +36,8 @@ class SignUpModalVC: UIViewController {
     
     let modalSize = 2.24
     let modalType = "NotTappable"
+    
+    weak var delegate: ProductCatalogueDelegate?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -54,12 +56,13 @@ class SignUpModalVC: UIViewController {
     
     // MARK: - Selectors
     @objc func handleSignUpNavigationButton() {
-        
         self.dismiss(animated: true)
+        delegate?.goToSignUp()
     }
     
-    @objc func handleDismiss() {
+    @objc func handleSkip() {
         self.dismiss(animated: true)
+        delegate?.skip()
     }
     
     // MARK: - Helpers
