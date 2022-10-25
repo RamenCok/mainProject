@@ -66,7 +66,7 @@ class ReusableButton: UIButton {
                 
             case .secondaryDisabled:
                 self.backgroundColor = UIColor.clear
-                self.layer.borderColor = UIColor.disabledColor.cgColor
+                self.layer.borderColor = UIColor.disabledColor?.cgColor
                 self.layer.borderWidth = 1.5
                 self.tintColor = UIColor.disabledColor
                 
@@ -88,6 +88,7 @@ class ReusableButton: UIButton {
         
         self.isEnabled = !isDisabled
         self.backgroundColor = isDisabled ? .disabledColor : .primaryButtonColor
+        self.setTitleColor(isDisabled ? .disabledColorButtonText : .whiteColor, for: .normal)
     }
     
     //MARK: Animate

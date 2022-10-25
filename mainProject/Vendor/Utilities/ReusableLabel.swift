@@ -61,6 +61,8 @@ class ReusableLabel: UILabel {
             NSAttributedString.Key.paragraphStyle : paragraphStyle,
         ] as [NSAttributedString.Key : Any]
         
+        let attributedString = NSMutableAttributedString(string: textString, attributes: hyphenAttribute)
+        
         switch style {
             case .largeTitle_1:
                 self.font = UIFont.largeTitle_1()
@@ -93,6 +95,7 @@ class ReusableLabel: UILabel {
                 
             case .bodyText:
                 self.font = UIFont.bodyText()
+                self.attributedText = attributedString
                 
             case .caption:
                 self.font = UIFont.caption()
@@ -109,7 +112,5 @@ class ReusableLabel: UILabel {
         
         self.textColor = .blackTexts
         self.numberOfLines = 100
-        let attributedString = NSMutableAttributedString(string: textString, attributes: hyphenAttribute)
-        self.attributedText = attributedString
     }
 }

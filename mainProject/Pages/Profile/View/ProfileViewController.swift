@@ -102,7 +102,7 @@ class ProfileViewController: UIViewController {
         button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
         button.showsMenuAsPrimaryAction = true
         button.menu = genderMenu
-        button.tintColor = .primaryColor
+        button.tintColor = UIColor.rgb(red: 35, green: 49, blue: 97, alpha: 1)
         button.alpha = 0
         return button
     }()

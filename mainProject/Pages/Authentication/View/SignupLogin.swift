@@ -34,7 +34,7 @@ class SignupLogin: UIViewController {
     }()
     
     private lazy var titleLabel: UILabel = {
-        let label = ReusableLabel(style: .largeTitle_2, textString: "Level up your shopping journey")
+        let label = ReusableLabel(style: .largeTitle_2, textString: "Level up your\nshopping journey")
         return label
     }()
     

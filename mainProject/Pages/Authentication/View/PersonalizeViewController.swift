@@ -63,7 +63,7 @@ class PersonalizeViewController: UIViewController {
            button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
            button.showsMenuAsPrimaryAction = true
            button.menu = genderMenu
-           button.tintColor = .primaryColor
+           button.tintColor = UIColor.rgb(red: 35, green: 49, blue: 97, alpha: 1)
            button.alpha = 1
            return button
        }()
@@ -146,10 +146,9 @@ class PersonalizeViewController: UIViewController {
         view.addSubview(genderButton)
         genderButton.snp.makeConstraints { make in
             make.centerY.equalTo(genderLabel.snp.centerY)
-            make.trailing.equalTo(genderLabel.snp.trailing).offset(-14)
+            make.trailing.equalTo(genderLabel.snp.trailing)
             make.height.width.equalTo(view.frame.height / 18)
         }
-        
         
         view.addSubview(saveButton)
         saveButton.snp.makeConstraints { make in

@@ -77,11 +77,11 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
         willSet {
             UIView.animate(withDuration: 0.15) {
                 // set unselected state
-                self.selectedView?.backgroundColor = UIColor.systemGray3
-                self.selectedView?.fontColor = .primaryColor!
+                self.selectedView?.backgroundColor = UIColor.sizeButtonViewBG
+                self.selectedView?.fontColor = .primaryButtonColor!
                 
                 // set new view to selected state
-                newValue?.backgroundColor = .primaryColor
+                newValue?.backgroundColor = .primaryButtonColor!
                 newValue?.fontColor = .white
             }
         }

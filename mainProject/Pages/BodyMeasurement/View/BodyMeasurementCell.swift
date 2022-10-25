@@ -127,4 +127,14 @@ class BodyMeasurementCell: UICollectionViewCell {
             return "-"
         }
     }
+    
+    private func updateColors() {
+        self.background.layer.borderColor = UIColor.systemGray5.cgColor
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        self.updateColors()
+        self.setNeedsDisplay()
+    }
 }

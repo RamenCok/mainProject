@@ -23,7 +23,7 @@ class SignUpViewController: UIViewController {
     }()
     
     private lazy var pinkTitle: UIStackView = {
-        let sview = ReusableCapsuleTitle(title: "Create Your\nAccount")
+        let sview = ReusableCapsuleTitle(title: "Create your\naccount")
         sview.spacing = view.frame.height * 0.019
         return sview
     }()

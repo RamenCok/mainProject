@@ -17,8 +17,9 @@ extension UIColor {
     //System-Based Color
     static let primaryColor = UIColor.init(named: "primaryColor")
     static let secondaryColor = UIColor.rgb(red: 51, green: 70, blue: 178, alpha: 1)
-    static let tertiaryColor = UIColor.rgb(red: 221, green: 74, blue: 162, alpha: 1)
-    static let disabledColor = UIColor.rgb(red: 188, green: 198, blue: 232, alpha: 1)
+    static let tertiaryColor = UIColor.init(named: "tertiaryColor")
+    static let disabledColor = UIColor.init(named: "disabledColor")
+    static let disabledColorButtonText = UIColor.init(named: "disabledColorButtonText")
     static let whiteColor = UIColor.rgb(red: 255, green: 255, blue: 255, alpha: 1)
     static let blackTexts = UIColor.init(named: "textColor")
     static let tesColor = UIColor.rgb(red: 231, green: 231, blue: 231, alpha: 1)
@@ -27,6 +28,7 @@ extension UIColor {
     static let navBar = UIColor.init(named: "navBar")
     static let textFieldBG = UIColor.init(named: "textFieldBG")
     static let bodyMeasurementModalBG = UIColor.init(named: "bodyMeasurementModalBG")
+    static let sizeButtonViewBG = UIColor.init(named: "sizeButtonViewBG")
     
     //Color-based Color
     static let greyColor = UIColor.rgb(red: 73, green: 73, blue: 73, alpha: 1)
@@ -34,7 +36,7 @@ extension UIColor {
     static let greenColor = UIColor.init(named: "green")
     
     static let lightGray = UIColor.rgb(red: 249, green: 249, blue: 249, alpha: 1)
-    static let lightGray3 = UIColor.rgb(red: 220, green: 220, blue: 220, alpha: 1)
+    static let lightGray3 = UIColor.rgb(red: 200, green: 200, blue: 200, alpha: 1)
     
     // Convert hex to UIColor
     convenience init(_ hex: String, alpha: CGFloat = 1.0) {

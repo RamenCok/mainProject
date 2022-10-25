@@ -20,10 +20,12 @@ extension ProfileViewController {
                 self.editProfileImageButton.alpha = 1
                 
                 self.genderButton.alpha = 1
-                self.genderLabel.backgroundColor = .systemGray6
+                self.genderLabel.backgroundColor = .textFieldBG
+                self.genderLabel.textColor = .black
                 
                 self.nameTF.isEnabled = true
-                self.nameTF.backgroundColor = .systemGray6
+                self.nameTF.backgroundColor = .textFieldBG
+                self.nameTF.textColor = .black
             }
             
         } else {
@@ -32,9 +34,11 @@ extension ProfileViewController {
                 
                 self.genderButton.alpha = 0
                 self.genderLabel.backgroundColor = .clear
+                self.genderLabel.textColor = .blackTexts
                 
                 self.nameTF.isEnabled = false
                 self.nameTF.backgroundColor = .clear
+                self.nameTF.textColor = .blackTexts
                 
                 if self.user.userGender != self.genderLabel.text {
                     self.changeGenderAlertConfirmation()
