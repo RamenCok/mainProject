@@ -117,6 +117,7 @@
 		DBE9060128EFDF5B00B6E463 /* BrandCatalogueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905FE28EFDF5B00B6E463 /* BrandCatalogueViewController.swift */; };
 		DBE9060228EFDF5B00B6E463 /* BrandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905FF28EFDF5B00B6E463 /* BrandCollectionViewCell.swift */; };
 		DBEC708F28E93617005D0974 /* OnboardingViewController + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEC708E28E93617005D0974 /* OnboardingViewController + Extensions.swift */; };
+		DBF092C52908315E00CB1D7E /* PrivacyModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF092C42908315E00CB1D7E /* PrivacyModalVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -199,6 +200,7 @@
 		DBE905FE28EFDF5B00B6E463 /* BrandCatalogueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandCatalogueViewController.swift; sourceTree = "<group>"; };
 		DBE905FF28EFDF5B00B6E463 /* BrandCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandCollectionViewCell.swift; sourceTree = "<group>"; };
 		DBEC708E28E93617005D0974 /* OnboardingViewController + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingViewController + Extensions.swift"; sourceTree = "<group>"; };
+		DBF092C42908315E00CB1D7E /* PrivacyModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyModalVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -467,6 +469,7 @@
 		DB06455828F3D36E003501D9 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
+				DBF092C12908312B00CB1D7E /* PrivacyModal */,
 				DB9660DE28EDD784001D9A53 /* SetupBodyMeasurementModal */,
 				DB8BCD9528EBDC5C00630CA3 /* SizeCalculatorModal */,
 				DB8BCD9428EBDC5400630CA3 /* BuyLinkModal */,
@@ -739,6 +742,30 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		DBF092C12908312B00CB1D7E /* PrivacyModal */ = {
+			isa = PBXGroup;
+			children = (
+				DBF092C32908313E00CB1D7E /* View Model */,
+				DBF092C22908313700CB1D7E /* View */,
+			);
+			path = PrivacyModal;
+			sourceTree = "<group>";
+		};
+		DBF092C22908313700CB1D7E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DBF092C42908315E00CB1D7E /* PrivacyModalVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DBF092C32908313E00CB1D7E /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -865,6 +892,7 @@
 				AC30932728F32D5100766787 /* ProductColorView.swift in Sources */,
 				DB8BCDA328EBDE0800630CA3 /* SizeCalculatorModalVC.swift in Sources */,
 				DB8BCD9F28EBDD8500630CA3 /* BuyModalVC.swift in Sources */,
+				DBF092C52908315E00CB1D7E /* PrivacyModalVC.swift in Sources */,
 				DB76CD8D28F51AC700F562CB /* BrandCatalogueVC + CollectionView Extensions.swift in Sources */,
 				DBD144DF28EEA7A6006A3E40 /* ReusableSizeCalculatorButton.swift in Sources */,
 				DB76CD8F28F51BB100F562CB /* BrandCatalogueVC + ScrollView Extensions.swift in Sources */,
@@ -1073,7 +1101,7 @@
 				CODE_SIGN_ENTITLEMENTS = mainProject/mainProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 625ZX732CB;
+				DEVELOPMENT_TEAM = L7SMRXB5WV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mainProject/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Fitze;
@@ -1089,7 +1117,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bryankenneth.mainProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bryankenneth.mainProject2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
