@@ -115,6 +115,7 @@ class BrandCatalogueViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         profileButton.alpha = 0
+        UIApplication.shared.setStatusBarStyle(.default, animated: true)
     }
     
     // MARK: - Selectors

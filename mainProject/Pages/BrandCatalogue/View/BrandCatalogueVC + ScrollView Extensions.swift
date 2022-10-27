@@ -60,11 +60,24 @@ extension BrandCatalogueViewController: UIScrollViewDelegate {
             UIView.animate(withDuration: 0.2) {
                 self.profileButton.alpha = 0
                 self.collectionView.backgroundView?.alpha = 0
+                
+                let currentTheme = self.traitCollection.userInterfaceStyle
+                
+                switch currentTheme {
+                    case .dark:
+                        UIApplication.shared.statusBarStyle = .lightContent
+                    case .light:
+                        UIApplication.shared.statusBarStyle = .darkContent
+                    default:
+                        UIApplication.shared.statusBarStyle = .darkContent
+                }
             }
         } else {
             UIView.animate(withDuration: 0.2) {
                 self.profileButton.alpha = 1
                 self.collectionView.backgroundView?.alpha = 1
+                
+                UIApplication.shared.statusBarStyle = .lightContent
             }
         }
     }
