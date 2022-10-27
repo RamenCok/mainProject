@@ -43,11 +43,13 @@ class ReusableSizeCalcExplanation: UIView {
     
     private lazy var mySizeHeadingLabel: UILabel = {
         let label = ReusableLabel(style: .productDetailBrand, textString: "My Size")
+        label.textColor = .systemGray
         return label
     }()
     
     private lazy var mySizeResultLabel: UILabel = {
         let label = ReusableLabel(style: .productDetailBrand, textString: "20cm")
+        label.textColor = .systemGray
         return label
     }()
     
