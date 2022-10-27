@@ -10,15 +10,49 @@ import SceneKit
 import ARKit
 import SnapKit
 import RealityKit
+import AVFoundation
 
 class ARViewController: UIViewController, ARSCNViewDelegate {
     
     var filename: URL!
+    let session: AVCaptureSession = AVCaptureSession()
     
     private lazy var sceneARView: ARView = {
         let view = ARView(frame: .zero, cameraMode: .ar, automaticallyConfigureSession: true)
         return view
     }()
+    
+    private lazy var blurView: UIView = {
+        let view = UIView()
+        let blur = UIBlurEffect(style: .regular)
+        let blurView = UIVisualEffectView(effect: blur)
+        blurView.frame = self.view.bounds
+        blurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(blurView)
+        
+        let guideImage = UIImageView(image: UIImage(named: "PointCameraAR"))
+        view.addSubview(guideImage)
+        guideImage.contentMode = .scaleAspectFit
+        guideImage.snp.makeConstraints { make in
+            make.centerX.equalTo(view.snp.centerX)
+            make.centerY.equalTo(view.snp.centerY)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+        }
+        return view
+    }()
+    
+    private lazy var closeBtn: UIButton = {
+        let button = ReusableButton(style: .primary, buttonText: "", selector: #selector(handleCloseBtn), target: self)
+        button.setImage(UIImage(systemName: "xmark.circle"), for: .normal)
+//        button.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        return button
+    }()
+    
+    @objc func handleCloseBtn() {
+        print("Close")
+        dismiss(animated: true)
+    }
     
     init(filename: URL) {
         self.filename = filename
@@ -33,39 +67,48 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set the view's delegate
-//        sceneARView.delegate = self
-        
-        // Show statistics such as fps and timing information
-//        sceneARView.showsStatistics = true
-//        let tempDirectory = URL.init(fileURLWithPath: paths, isDirectory: true)
-//        let targetUrl = tempDirectory.appendingPathComponent("\(filename)")
-        
-//        let scene = try! SCNScene(url: filename, options: [.checkConsistency: true])
-//        let scene = SCNScene(named: "AirForce.usdz")!
-        
-//        sceneARView.environment.sceneUnderstanding.options.insert(.physics)
-        // Set the scene to the view
-//        sceneARView.scene = scene
-        
+        navigationController?.navigationBar.isHidden = true
         view.addSubview(sceneARView)
         sceneARView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(0)
-            make.width.equalTo(view.snp.width)
-            make.height.equalTo(view.snp.height)
+            make.top.equalTo(view.snp.top).offset(0)
+            make.left.equalTo(view.snp.left)
+            make.right.equalTo(view.snp.right)
+            make.bottom.equalTo(view.snp.bottom)
         }
+        
+        view.addSubview(blurView)
+        blurView.snp.makeConstraints { make in
+            make.left.equalTo(view.snp.left)
+            make.right.equalTo(view.snp.right)
+            make.bottom.equalTo(view.snp.bottom)
+            make.top.equalTo(view.snp.top)
+        }
+        blurView.alpha = 1
+        
+        view.addSubview(closeBtn)
+//        closeBtn.alpha = 2
+        closeBtn.snp.makeConstraints { make in
+            make.left.equalTo(view.safeAreaLayoutGuide.snp.left).offset(30)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(0)
+            make.width.equalTo(80)
+//            make.height.equalTo(20)
+        }
+        let timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { (_) in
+            print("done")
+            UIView.animate(withDuration: 0.5, animations: {
+                self.blurView.alpha = 0
+            })
+         }
+//        timer.fire()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         // Create a session configuration
         let config = ARWorldTrackingConfiguration()
         config.planeDetection = [.horizontal, .vertical]
-        let anchor = AnchorEntity(plane: .horizontal,
-                                  classification: .any, // Plane classification can be set such as .floor and .any
-                                  minimumBounds: [0.2,0.2])
-//        let anchor = AnchorEntity(.body)
+//        let anchor = AnchorEntity()
+        let anchor = AnchorEntity(plane: [.horizontal, .vertical], classification: .any, minimumBounds: [0.2, 0.2])
 //        print(scene)
         let usdzModel = try! Entity.loadModel(contentsOf: filename)
         print("DEBUG: \(filename)")
@@ -73,7 +116,11 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 //        usdzModel.scale = simd_make_float3(0.8, 0.8, 0.8)
         print(anchor.scale)
         anchor.addChild(usdzModel)
+        
+                
+        
         sceneARView.scene.anchors.append(anchor)
+//        sceneARView.addSubview(blurView)
 //        configuration.planeDetection = .horizontal
 
         // Run the view's session

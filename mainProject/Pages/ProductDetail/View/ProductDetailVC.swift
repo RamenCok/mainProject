@@ -136,7 +136,7 @@ class ProductDetailVC: UIViewController {
     @objc func handleARButton() {
         let rootVC = ARViewController(filename: urlFile)
         let navVC = UINavigationController(rootViewController: rootVC)
-        navVC.modalPresentationStyle = .pageSheet
+        navVC.modalPresentationStyle = .fullScreen
         present(navVC, animated: true)
     }
     
