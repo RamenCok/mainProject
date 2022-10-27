@@ -102,6 +102,8 @@
 		DB8BCDA328EBDE0800630CA3 /* SizeCalculatorModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCDA128EBDE0800630CA3 /* SizeCalculatorModalVC.swift */; };
 		DB8BCDA428EBDE0800630CA3 /* SizeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCDA228EBDE0800630CA3 /* SizeButtonView.swift */; };
 		DB8BCDAA28EBF0F200630CA3 /* BuyModalVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8BCDA928EBF0F200630CA3 /* BuyModalVM.swift */; };
+		DB925200290A3858006C35FC /* ReusableSizeCalcExplanation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9251FF290A3858006C35FC /* ReusableSizeCalcExplanation.swift */; };
+		DB925202290A3E56006C35FC /* InitialSizeCalcExplanationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB925201290A3E56006C35FC /* InitialSizeCalcExplanationView.swift */; };
 		DB9660E428EDD87C001D9A53 /* SetupBodyMeasurementModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9660E328EDD87C001D9A53 /* SetupBodyMeasurementModalVC.swift */; };
 		DBA2FCD028ED365900FDC148 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA2FCCF28ED365900FDC148 /* ProfileViewController.swift */; };
 		DBA35F2428EDB0D4009D6917 /* ProfileViewController + ImagePickerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA35F2328EDB0D4009D6917 /* ProfileViewController + ImagePickerExtensions.swift */; };
@@ -184,6 +186,8 @@
 		DB8BCDA128EBDE0800630CA3 /* SizeCalculatorModalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeCalculatorModalVC.swift; sourceTree = "<group>"; };
 		DB8BCDA228EBDE0800630CA3 /* SizeButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeButtonView.swift; sourceTree = "<group>"; };
 		DB8BCDA928EBF0F200630CA3 /* BuyModalVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyModalVM.swift; sourceTree = "<group>"; };
+		DB9251FF290A3858006C35FC /* ReusableSizeCalcExplanation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableSizeCalcExplanation.swift; sourceTree = "<group>"; };
+		DB925201290A3E56006C35FC /* InitialSizeCalcExplanationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialSizeCalcExplanationView.swift; sourceTree = "<group>"; };
 		DB9660E328EDD87C001D9A53 /* SetupBodyMeasurementModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupBodyMeasurementModalVC.swift; sourceTree = "<group>"; };
 		DBA2FCCF28ED365900FDC148 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		DBA35F2328EDB0D4009D6917 /* ProfileViewController + ImagePickerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController + ImagePickerExtensions.swift"; sourceTree = "<group>"; };
@@ -614,6 +618,8 @@
 				DB8BCDA228EBDE0800630CA3 /* SizeButtonView.swift */,
 				DB8BCDA128EBDE0800630CA3 /* SizeCalculatorModalVC.swift */,
 				DBD144DE28EEA7A6006A3E40 /* ReusableSizeCalculatorButton.swift */,
+				DB9251FF290A3858006C35FC /* ReusableSizeCalcExplanation.swift */,
+				DB925201290A3E56006C35FC /* InitialSizeCalcExplanationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -863,6 +869,7 @@
 				AC8608A928F53B24002B0D3F /* AuthServices.swift in Sources */,
 				DB9660E428EDD87C001D9A53 /* SetupBodyMeasurementModalVC.swift in Sources */,
 				AC30932728F32D5100766787 /* ProductColorView.swift in Sources */,
+				DB925200290A3858006C35FC /* ReusableSizeCalcExplanation.swift in Sources */,
 				DB8BCDA328EBDE0800630CA3 /* SizeCalculatorModalVC.swift in Sources */,
 				DB8BCD9F28EBDD8500630CA3 /* BuyModalVC.swift in Sources */,
 				DB76CD8D28F51AC700F562CB /* BrandCatalogueVC + CollectionView Extensions.swift in Sources */,
@@ -892,6 +899,7 @@
 				AC30932128F32A9F00766787 /* ProductCollectionViewCell.swift in Sources */,
 				ACB588A828E7E9C30025D230 /* ReusableButton.swift in Sources */,
 				AC30932328F32C5200766787 /* ProductCatalogueViewController.swift in Sources */,
+				DB925202290A3E56006C35FC /* InitialSizeCalcExplanationView.swift in Sources */,
 				DB8BCD9128EBD83900630CA3 /* NotTappablePresentationController.swift in Sources */,
 				DBA35F2628EDB118009D6917 /* ProfileViewController + KeyboardExtension.swift in Sources */,
 				ACFE713828ED6FA500A894D4 /* ReusableErrorLabel.swift in Sources */,
