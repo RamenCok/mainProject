@@ -26,12 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigation = UINavigationController()
         navigation.navigationBar.topItem?.backButtonDisplayMode = .minimal
         
-        try! FileManager.default.removeItem(atPath: NSHomeDirectory()+"/Library/SplashBoard")
-        
-        do {
-            sleep(1)
-        }
-        
         return true
     }
 
