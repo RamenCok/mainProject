@@ -80,7 +80,9 @@ class OnboardingViewController: UIPageViewController {
     }
     
     @objc func handleNavigationButton() {
-        AuthServices.shared.anonymousAuth()
+        AuthServices.shared.anonymousAuth(completion: {authResult, error in
+            
+        })
 //        print("Next Screen")
 //        let wnd = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
         

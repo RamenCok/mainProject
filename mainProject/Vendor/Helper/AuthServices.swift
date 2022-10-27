@@ -20,9 +20,9 @@ import AuthenticationServices
 struct AuthServices {
     static let shared = AuthServices()
     
-    func anonymousAuth() {
+    func anonymousAuth(completion: @escaping (AuthDataResult?, Error?) -> Void) {
         Auth.auth().signInAnonymously { authResult, error in
-            print(authResult?.user.uid as Any)
+            completion(authResult, error)
         }
     }
     

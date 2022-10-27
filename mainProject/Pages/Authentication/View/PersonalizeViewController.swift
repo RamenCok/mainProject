@@ -102,7 +102,7 @@ class PersonalizeViewController: UIViewController {
                 options.direction = .toRight
                 options.duration = 0.4
                 options.style = .easeIn
-                wnd?.set(rootViewController: ProfileViewController(), options: options)
+                wnd?.set(rootViewController: UINavigationController(rootViewController: BrandCatalogueViewController()), options: options)
             }
             
         }

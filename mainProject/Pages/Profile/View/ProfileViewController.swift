@@ -11,6 +11,7 @@ import FirebaseAuth
 import GoogleSignIn
 import Combine
 import SDWebImage
+import UIWindowTransitions
 
 class ProfileViewController: UIViewController {
 
@@ -186,8 +187,21 @@ class ProfileViewController: UIViewController {
             try Auth.auth().signOut()
             GIDSignIn.sharedInstance.disconnect()
 
-            let loginVC = SignupLogin()
-            view.window?.rootViewController = UINavigationController(rootViewController: loginVC) 
+            let wnd = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+            var options = UIWindow.TransitionOptions()
+            options.direction = .toRight
+            options.duration = 0.4
+            options.style = .easeIn
+            AuthServices.shared.anonymousAuth(completion: {authResult, error in
+                if let error = error {
+                    let alert = UIAlertController(title: "Navigate Failed", message: error.localizedDescription, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    wnd?.set(rootViewController: UINavigationController(rootViewController: BrandCatalogueViewController()), options: options)
+                }
+            })
+            
 //            if var rootViewController = view.window?.rootViewController { // From iOS 13
 //                rootViewController = loginV
 //                print("logout")
@@ -197,7 +211,9 @@ class ProfileViewController: UIViewController {
 //            }
 
         } catch {
-            print ("Error signing out: %@", error)
+            let alert = UIAlertController(title: "Logout Failed", message: error.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
         
         print("Log out")
