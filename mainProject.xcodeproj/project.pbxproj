@@ -67,6 +67,7 @@
 		AC8608A328F52DC7002B0D3F /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = AC8608A228F52DC7002B0D3F /* GoogleSignIn */; };
 		AC8608A528F52DC7002B0D3F /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC8608A428F52DC7002B0D3F /* GoogleSignInSwift */; };
 		AC8608A928F53B24002B0D3F /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8608A828F53B24002B0D3F /* AuthServices.swift */; };
+		AC879535290AB634005B8E0B /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = AC879534290AB634005B8E0B /* Lottie */; };
 		ACB588A828E7E9C30025D230 /* ReusableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A728E7E9C30025D230 /* ReusableButton.swift */; };
 		ACB588AB28E7F08C0025D230 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = ACB588AA28E7F08C0025D230 /* SnapKit */; };
 		ACB588B428EA8CC80025D230 /* Sora-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC528E7613000372297 /* Sora-Bold.otf */; };
@@ -231,6 +232,7 @@
 				AC30935C28F51F5C00766787 /* FirebasePerformance in Frameworks */,
 				AC30933828F51F5C00766787 /* FirebaseAppCheck in Frameworks */,
 				AC30933228F51F5C00766787 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
+				AC879535290AB634005B8E0B /* Lottie in Frameworks */,
 				AC30935428F51F5C00766787 /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
 				AC30936028F51F5C00766787 /* FirebaseRemoteConfigSwift in Frameworks */,
 				AC8608A528F52DC7002B0D3F /* GoogleSignInSwift in Frameworks */,
@@ -791,6 +793,7 @@
 				AC8608A428F52DC7002B0D3F /* GoogleSignInSwift */,
 				AC8366C228F6A585000EBF5D /* UIWindowTransitions */,
 				DB3CB1C328F7036A000C502C /* SDWebImage */,
+				AC879534290AB634005B8E0B /* Lottie */,
 			);
 			productName = mainProject;
 			productReference = ACFEBE9F28E7603000372297 /* mainProject.app */;
@@ -827,6 +830,7 @@
 				AC8608A128F52DC7002B0D3F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				AC8366C128F6A585000EBF5D /* XCRemoteSwiftPackageReference "UIWindowTransitions" */,
 				DB3CB1C228F7036A000C502C /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				AC879533290AB634005B8E0B /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = ACFEBEA028E7603000372297 /* Products */;
 			projectDirPath = "";
@@ -1195,6 +1199,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		AC879533290AB634005B8E0B /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		ACB588A928E7F08C0025D230 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -1363,6 +1375,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AC8608A128F52DC7002B0D3F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
+		};
+		AC879534290AB634005B8E0B /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AC879533290AB634005B8E0B /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 		ACB588AA28E7F08C0025D230 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

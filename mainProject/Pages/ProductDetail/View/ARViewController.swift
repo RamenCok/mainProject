@@ -11,6 +11,7 @@ import ARKit
 import SnapKit
 import RealityKit
 import AVFoundation
+import Lottie
 
 class ARViewController: UIViewController, ARSCNViewDelegate {
     
@@ -22,23 +23,42 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         return view
     }()
     
+    private var animationView: LottieAnimationView {
+        let animationView = LottieAnimationView.init(name: "arAnimation")
+        animationView.frame = view.bounds
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
+        animationView.animationSpeed = 0.5
+        animationView.play()
+        let text = ReusableLabel(style: .heading_2, textString: "Point your Camera to a Flat Surface")
+        text.textColor = .white
+        text.textAlignment = .center
+        animationView.addSubview(text)
+        text.snp.makeConstraints { make in
+            make.top.equalTo(animationView.snp.top).offset(animationView.frame.height * 0.2)
+            make.centerX.equalTo(animationView.snp.centerX)
+            make.width.equalTo(animationView.snp.width)
+        }
+        return animationView
+    }
+    
     private lazy var blurView: UIView = {
         let view = UIView()
-        let blur = UIBlurEffect(style: .regular)
-        let blurView = UIVisualEffectView(effect: blur)
-        blurView.frame = self.view.bounds
-        blurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(blurView)
+//        let blur = UIBlurEffect(style: .regular)
+//        let blurView = UIVisualEffectView(effect: blur)
+//        blurView.frame = self.view.bounds
+//        blurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        view.addSubview(blurView)
+        view.backgroundColor = .black
         
-        let guideImage = UIImageView(image: UIImage(named: "PointCameraAR"))
-        view.addSubview(guideImage)
-        guideImage.contentMode = .scaleAspectFit
-        guideImage.snp.makeConstraints { make in
-            make.centerX.equalTo(view.snp.centerX)
-            make.centerY.equalTo(view.snp.centerY)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
-        }
+        view.addSubview(animationView)
+//        animationView.snp.makeConstraints { make in
+//            make.centerX.equalTo(view.snp.centerX)
+//            make.centerY.equalTo(view.snp.centerY)
+//        }
+       
+
+        
         return view
     }()
     
@@ -83,7 +103,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
             make.bottom.equalTo(view.snp.bottom)
             make.top.equalTo(view.snp.top)
         }
-        blurView.alpha = 1
+        blurView.alpha = 0.8
         
         view.addSubview(closeBtn)
 //        closeBtn.alpha = 2
@@ -91,9 +111,9 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
             make.left.equalTo(view.safeAreaLayoutGuide.snp.left).offset(30)
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(0)
             make.width.equalTo(80)
-//            make.height.equalTo(20)
         }
-        let timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { (_) in
+        
+        let timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { (_) in
             print("done")
             UIView.animate(withDuration: 0.5, animations: {
                 self.blurView.alpha = 0
@@ -108,7 +128,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         let config = ARWorldTrackingConfiguration()
         config.planeDetection = [.horizontal, .vertical]
 //        let anchor = AnchorEntity()
-        let anchor = AnchorEntity(plane: [.horizontal, .vertical], classification: .any, minimumBounds: [0.2, 0.2])
+        let anchor = AnchorEntity(.plane([.horizontal, .vertical], classification: .any, minimumBounds: [0.2, 0.2]))
 //        print(scene)
         let usdzModel = try! Entity.loadModel(contentsOf: filename)
         print("DEBUG: \(filename)")
