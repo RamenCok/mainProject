@@ -48,6 +48,7 @@ struct AuthServices {
             if let err = err {
                 print(err)
             } else {
+                FR_REF_USER.document(credentials["uid"] as! String).setData(["userBodyMeasurement": ["Chest": 0, "Height": 0, "Waist": 0]])
                completionFunc()
             }
         }

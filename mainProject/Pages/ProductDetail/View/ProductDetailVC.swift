@@ -114,9 +114,11 @@ class ProductDetailVC: UIViewController {
             if isDownloading {
                 self?.progressView.alpha = 1
                 self?.sceneKitView.alpha = 0
+                self?.viewInAR.alpha = 0
             } else {
                 self?.progressView.alpha = 0
                 self?.sceneKitView.alpha = 1
+                self?.viewInAR.alpha = 1
             }
         }.store(in: &cancellables)
         
