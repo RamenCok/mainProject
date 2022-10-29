@@ -66,7 +66,7 @@ class HeadlineView: UIView {
         productInfo.alignment = .leading
         productInfo.spacing = 3
         
-        let productHeadline = UIStackView(arrangedSubviews: [productInfo, shareButton])
+        let productHeadline = UIStackView(arrangedSubviews: [productInfo])
         productHeadline.axis = .horizontal
         productHeadline.alignment = .center
         productHeadline.distribution = .fill

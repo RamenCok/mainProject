@@ -27,6 +27,7 @@ class ProductDetailVC: UIViewController {
     
     private var brandName: String!
     private var product: Product!
+    private var urlFile: URL!
     
     private var selectedIndex = 0
     
@@ -111,6 +112,7 @@ class ProductDetailVC: UIViewController {
         vm.model.sink { [weak self] url in
             print("DEBUG: Called in view")
             self?.setup3D(url: url)
+            self?.urlFile = url
         }.store(in: &cancellables)
         
         vm.isDownloading.sink { [weak self] isDownloading in
@@ -139,7 +141,10 @@ class ProductDetailVC: UIViewController {
     // MARK: - Selectors
     
     @objc func handleARButton() {
-        print("AR Button")
+        let rootVC = ARViewController(filename: urlFile)
+        let navVC = UINavigationController(rootViewController: rootVC)
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: true)
     }
     
     // MARK: - Helpers

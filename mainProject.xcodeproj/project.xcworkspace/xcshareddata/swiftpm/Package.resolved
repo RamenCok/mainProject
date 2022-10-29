@@ -33,7 +33,7 @@
       "location" : "https://github.com/firebase/firebase-ios-sdk",
       "state" : {
         "branch" : "master",
-        "revision" : "77b891af1669eeb08f4daad3ad2ff24d44f7a0d2"
+        "revision" : "ab83e543633b36fb109c4fafd5c71e8d109ffc7d"
       }
     },
     {
@@ -115,6 +115,15 @@
       "state" : {
         "revision" : "0706abcc6b0bd9cedfbb015ba840e4a780b5159b",
         "version" : "1.22.2"
+      }
+    },
+    {
+      "identity" : "lottie-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/airbnb/lottie-ios.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "4be04995e8b7d079ef8a6fde79b449e3fa93487a"
       }
     },
     {
