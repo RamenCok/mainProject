@@ -111,6 +111,13 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
         return button
     }()
     
+    private lazy var unselectedSizeExplanationView: UIView = {
+        let view = InitialSizeCalcExplanationView()
+        return view
+    }()
+    
+    var sizeExplanationView = ReusableSizeCalcExplanation()
+    
     var hasSetPointOrigin = false
     var pointOrigin: CGPoint?
 
@@ -163,6 +170,7 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
             self.waistButton.setImage(UIImage(named: "sizeButtonInitial"), for: .normal)
             
             self.configureSizeButton()
+            self.configureSizeExplanationUI()
         }.store(in: &cancellables)
         
         configureUI()
@@ -195,22 +203,58 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
     
     @objc func handleChestButton() {
         
-        print("DEBUG: \(sizeCalcVM.setChestButtonMessage(currSize: chestButtonCurrentSize))")
+        unselectedSizeExplanationView.alpha = 0
+        
+        let result = sizeCalcVM.setChestButtonMessage(currSize: chestButtonCurrentSize)
+        
+        sizeExplanationView.overallFit = result.overallFit
+        sizeExplanationView.overallFitColor = result.color
+        sizeExplanationView.productSize = result.productSize
+        sizeExplanationView.userSize = result.buyerSize
+        
+        sizeExplanationView.bodyArea = "Chest"
+        sizeExplanationView.awakeFromNib()
+        sizeExplanationView.alpha = 1
     }
     
     @objc func handleHeightButton() {
         
-        print("DEBUG: \(sizeCalcVM.setHeightButtonMessage(currSize: chestButtonCurrentSize))")
+        unselectedSizeExplanationView.alpha = 0
+        
+        let result = sizeCalcVM.setHeightButtonMessage(currSize: heightButtonCurrentSize)
+        
+        sizeExplanationView.overallFit = result.overallFit
+        sizeExplanationView.overallFitColor = result.color
+        sizeExplanationView.productSize = result.productSize
+        sizeExplanationView.userSize = result.buyerSize
+        
+        sizeExplanationView.bodyArea = "Height"
+        sizeExplanationView.awakeFromNib()
+        sizeExplanationView.alpha = 1
     }
     
     @objc func handleWaistButton() {
         
-        print("DEBUG: \(sizeCalcVM.setWaistButtonMessage(currSize: chestButtonCurrentSize))")
+        unselectedSizeExplanationView.alpha = 0
+        
+        let result = sizeCalcVM.setWaistButtonMessage(currSize: waistButtonCurrentSize)
+        
+        sizeExplanationView.overallFit = result.overallFit
+        sizeExplanationView.overallFitColor = result.color
+        sizeExplanationView.productSize = result.productSize
+        sizeExplanationView.userSize = result.buyerSize
+        
+        sizeExplanationView.bodyArea = "Waist"
+        sizeExplanationView.awakeFromNib()
+        sizeExplanationView.alpha = 1
     }
     
     @objc func onViewSelected(_ sender: UITapGestureRecognizer) {
         
         selectedView = sender.view as? SizeButtonView
+        
+        unselectedSizeExplanationView.alpha = 1
+        sizeExplanationView.alpha = 0
         
         chestButtonCurrentSize = sender.view?.tag ?? 100
         chestButton.setImage(UIImage(
@@ -369,6 +413,25 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
             
             $0.layer.cornerRadius = 10
             sizeStack.addArrangedSubview($0)
+        }
+    }
+    
+    func configureSizeExplanationUI() {
+        view.addSubview(unselectedSizeExplanationView)
+        unselectedSizeExplanationView.snp.makeConstraints { make in
+            make.height.equalTo(view.frame.height / 5.1779141104)
+            make.width.equalTo(view.frame.width / 3.25)
+            make.right.equalTo(mannequinImageView.snp.right).offset(-20)
+            make.centerY.equalTo(mannequinImageView.snp.centerY)
+        }
+        
+        view.addSubview(sizeExplanationView)
+        sizeExplanationView.alpha = 0
+        sizeExplanationView.snp.makeConstraints { make in
+            make.height.equalTo(view.frame.height / 5.1779141104)
+            make.width.equalTo(view.frame.width / 3.25)
+            make.right.equalTo(mannequinImageView.snp.right).offset(-20)
+            make.centerY.equalTo(mannequinImageView.snp.centerY)
         }
     }
 }
