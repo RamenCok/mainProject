@@ -65,21 +65,34 @@ class BrandCollectionViewCell: UICollectionViewCell {
     }
     
     // MARK: - cell init
+    private lazy var brandView: UIView = {
+        let view = UIView()
+        
+        view.clipsToBounds = false
+        view.backgroundColor = .white
+        
+        view.layer.shadowColor = UIColor.tesColor.cgColor
+        view.layer.shadowOpacity = 1
+        view.layer.shadowOffset = CGSize.zero
+        view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: 30).cgPath
+        view.layer.shadowRadius = 5
+        
+        view.layer.borderWidth = 1
+        view.layer.cornerRadius = 30
+        view.layer.masksToBounds = true
+        view.layer.borderColor = UIColor.tesColor.cgColor
+        view.addSubview(brandImageView)
+        brandImageView.snp.makeConstraints { make in
+            make.width.equalTo(view.snp.width)
+            make.height.equalTo(view.snp.height)
+        }
+        return view
+    }()
+    
     private lazy var brandImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.clipsToBounds = false
-        imageView.backgroundColor = .white
-        
-        imageView.layer.shadowColor = UIColor.tesColor.cgColor
-        imageView.layer.shadowOpacity = 1
-        imageView.layer.shadowOffset = CGSize.zero
-        imageView.layer.shadowPath = UIBezierPath(roundedRect: imageView.bounds, cornerRadius: 30).cgPath
-        imageView.layer.shadowRadius = 5
-        
-        imageView.layer.borderWidth = 1
+        imageView.contentMode = .scaleToFill
         imageView.layer.cornerRadius = 30
-        imageView.layer.borderColor = UIColor.tesColor.cgColor
         return imageView
     }()
     
@@ -101,10 +114,20 @@ class BrandCollectionViewCell: UICollectionViewCell {
     func configure() {
         guard let brandImageUrl = URL(string: brandImage) else { return }
         brandImageView.sd_setImage(with: brandImageUrl)
-        contentView.addSubview(brandImageView)
+        
+        contentView.addSubview(brandView)
+        brandView.snp.makeConstraints { make in
+            make.width.equalTo(contentView.frame.width)
+            make.height.equalTo(contentView.frame.width)
+        }
         
         brandLabel.text = brandName!
+        brandLabel.textAlignment = .center
         contentView.addSubview(brandLabel)
+        brandLabel.snp.makeConstraints { make in
+            make.top.equalTo(brandView.snp.bottom).offset(contentView.frame.height * 0.05102040816)
+            make.width.equalTo(contentView.frame.width)
+        }
         
         contentView.clipsToBounds = true
     }
@@ -112,6 +135,6 @@ class BrandCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         brandLabel.frame = CGRect(x: 0, y: contentView.frame.size.width + 10, width: contentView.frame.size.width, height: 20)
-        brandImageView.frame = CGRect(x: 0, y: 0, width: contentView.frame.size.width, height: contentView.frame.size.width)
+        brandView.frame = CGRect(x: 0, y: 0, width: contentView.frame.size.width, height: contentView.frame.size.width)
     }
 }

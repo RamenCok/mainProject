@@ -164,9 +164,9 @@ class SignupLogin: UIViewController {
                           let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
 
                         if document.data()!["gender"] == nil || document.data()!["gender"] as! String == "" {
-                            wnd?.set(rootViewController: PersonalizeViewController(), options: options)
+                            wnd?.set(rootViewController: UINavigationController(rootViewController: PersonalizeViewController()), options: options)
                         } else {
-                            wnd?.set(rootViewController: ProfileViewController(), options: options)
+                            wnd?.set(rootViewController: UINavigationController(rootViewController: BrandCatalogueViewController()), options: options)
                         }
                           print("Document data: \(dataDescription)")
                     } else {
@@ -343,12 +343,12 @@ extension SignupLogin: ASAuthorizationControllerDelegate, ASAuthorizationControl
                             if document.data()!["gender"] == nil || document.data()!["gender"] as! String == "" {
                                 wnd?.set(rootViewController: UINavigationController(rootViewController: PersonalizeViewController()) , options: options)
                             } else {
-                                wnd?.set(rootViewController: ProfileViewController(), options: options)
+                                wnd?.set(rootViewController: UINavigationController(rootViewController: BrandCatalogueViewController()), options: options)
                             }
                               print("Document data: \(dataDescription)")
                         } else {
                             AuthServices.shared.writeUserData(credentials: user) {
-                                wnd?.set(rootViewController: ProfileViewController(), options: options)
+                                wnd?.set(rootViewController: UINavigationController(rootViewController: BrandCatalogueViewController()), options: options)
                             }
                         }
                     }

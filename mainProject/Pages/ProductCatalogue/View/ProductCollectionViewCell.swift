@@ -70,9 +70,23 @@ class ProductCollectionViewCell: UICollectionViewCell {
     private lazy var productImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "sample-picture")
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = false
+        
         return imageView
+    }()
+    
+    private lazy var productView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 20.0
+        view.layer.masksToBounds = true
+        view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        view.addSubview(productImageView)
+        productImageView.snp.makeConstraints { make in
+            make.width.equalTo(view.snp.width)
+            make.height.equalTo(view.snp.height)
+        }
+        return view
     }()
     
     private lazy var productLabel: UILabel = {
@@ -95,11 +109,13 @@ class ProductCollectionViewCell: UICollectionViewCell {
         guard let url = URL(string: productImage) else { return }
         productImageView.sd_setImage(with: url)
 
-        contentView.addSubview(productImageView)
-        productImageView.snp.makeConstraints { make in
-            make.leading.equalTo(contentView.snp.leading).offset(16)
-            make.trailing.equalTo(contentView.snp.trailing).offset(-16)
-            make.top.equalTo(contentView.snp.top).offset(25)
+        contentView.addSubview(productView)
+        productView.backgroundColor = .red
+        productView.snp.makeConstraints { make in
+            make.leading.equalTo(contentView.snp.leading).offset(0)
+            make.trailing.equalTo(contentView.snp.trailing).offset(0)
+//            make.top.equalTo(contentView.snp.top).offset(25)
+            make.height.equalTo(contentView.frame.height * 0.6377952756)
         }
         
         contentView.addSubview(productLabel)
