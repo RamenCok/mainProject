@@ -83,7 +83,14 @@ class BodyMeasurementVC: UIViewController {
     // MARK: - Selectors
     @objc func handleQuestionMarkButton() {
         
-        print("Privacy GUNDULMU!")
+        let slideVC = PrivacyModalVC()
+        
+        presentedVC = slideVC.modalType
+        modalSize = slideVC.modalSize
+        slideVC.modalPresentationStyle = .custom
+        slideVC.transitioningDelegate = self
+        
+        self.present(slideVC, animated: true, completion: nil)
     }
     
     //MARK: - Helpers
