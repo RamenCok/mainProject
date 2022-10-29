@@ -1,0 +1,258 @@
+//
+//  BrandCatalogueViewController.swift
+//  mainProject
+//
+//  Created by Bryan Kenneth on 03/10/22.
+//
+
+import UIKit
+import SnapKit
+<<<<<<< HEAD
+class BrandCatalogueViewController: UIViewController {
+    
+    // MARK: - Properties
+    internal var brandVM =  BrandCatalogueViewModel()
+=======
+import Combine
+
+class BrandCatalogueViewController: UIViewController, UIScrollViewDelegate, UISearchControllerDelegate, UISearchBarDelegate {
+
+    private var vm =  BrandCatalogueViewModel(service: MockService())
+    private var brandList: [Brands]!
+    private var cancellables: Set<AnyCancellable> = []
+>>>>>>> feature/BrandCatalogue_Functionality
+    
+    private lazy var backgroundImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "brand-catalogue")
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    
+    private lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        return searchBar
+    }()
+    
+    private lazy var layout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 1
+        layout.minimumInteritemSpacing = 1
+        layout.itemSize = CGSize(width: (view.frame.size.width/2)-25, height: (100/84 * (view.frame.size.width/2)))
+        return layout
+    }()
+    
+    internal lazy var profileButton: UIButton = {
+       
+        let button = UIButton(type: .custom)
+//        button.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        button.setImage(UIImage(named: "profile-icon"), for: .normal)
+//        button.tintColor = .gray
+//        button.clipsToBounds = true
+//        button.layer.cornerRadius = 0.5 * button.bounds.size.width
+
+        return button
+    }()
+    
+    private lazy var collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
+//        collectionView.backgroundView = backgroundImage
+        
+        collectionView.register(BrandCollectionViewCell.self, forCellWithReuseIdentifier: BrandCollectionViewCell.identifier)
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.contentInset = UIEdgeInsets(top: 16, left: 20, bottom: 0, right: 20)
+        collectionView.showsVerticalScrollIndicator = false
+        return collectionView
+    }()
+    
+    internal lazy var search: UISearchController = {
+        let search = UISearchController(searchResultsController: nil)
+        search.delegate = self
+        search.searchBar.delegate = self
+        search.searchBar.tintColor = .primaryColor
+        search.searchBar.searchTextField.font = UIFont.bodyText()
+        search.searchBar.searchTextField.backgroundColor = .white
+
+        if let textfield = search.searchBar.value(forKey: "searchField") as? UITextField {
+            //textfield.textColor = // Set text color
+            if let backgroundview = textfield.subviews.first {
+
+                // Background color
+                backgroundview.backgroundColor = UIColor.white
+
+                // Rounded corner
+                backgroundview.layer.cornerRadius = 10
+                backgroundview.clipsToBounds = true
+            }
+        }
+        
+        return search
+    }()
+    
+    // MARK: - Lifecycle
+    override func viewDidLoad() {
+<<<<<<< HEAD
+        
+        super.viewDidLoad()
+        navigationController?.isNavigationBarHidden = false
+        configureUI()
+=======
+        super.viewDidLoad()
+        // Panggil dari vm
+        vm.brandList.sink { [weak self] data in
+            self?.brandList = data
+            print(self?.brandList)
+            self?.configureUI()
+        }.store(in: &cancellables)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        vm.fetchData()
+>>>>>>> feature/BrandCatalogue_Functionality
+    }
+
+    // MARK: - Selectors
+    
+    
+    //MARK: - Helpers
+    func configureUI() {
+        
+        view.backgroundColor = .white
+
+        searchBar.placeholder = "Your placeholder"
+        searchBar.frame = CGRect(x: 0, y: 0, width: 200, height: 64)
+        
+        self.navigationItem.searchController = search
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.blackTexts, NSAttributedString.Key.font: UIFont.heading_1()]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.modalTitle()]
+        
+        view.addSubview(collectionView)
+
+        collectionView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.largeTitleDisplayMode = .always
+        
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+        self.title = "Brands"
+        self.navigationController?.title = "Brands"
+        
+//        let rightBarBtn = UIBarButtonItem(customView: profileButton)
+        
+        guard let navigationBar = self.navigationController?.navigationBar else { return }
+            navigationBar.addSubview(profileButton)
+            profileButton.layer.cornerRadius = Const.ImageSizeForLargeState / 2
+            profileButton.clipsToBounds = true
+            profileButton.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                profileButton.rightAnchor.constraint(equalTo: navigationBar.rightAnchor, constant: -Const.ImageRightMargin),
+                profileButton.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: -Const.ImageBottomMarginForLargeState),
+                profileButton.heightAnchor.constraint(equalToConstant: Const.ImageSizeForLargeState),
+                profileButton.widthAnchor.constraint(equalTo: profileButton.heightAnchor)
+                ])
+//        rightBarBtn.tintColor = .greyColor
+//
+//
+//        let currWidth = rightBarBtn.customView?.widthAnchor.constraint(equalToConstant: 24)
+//        currWidth?.isActive = true
+//        let currHeight = rightBarBtn.customView?.heightAnchor.constraint(equalToConstant: 24)
+//        currHeight?.isActive = true
+//        navigationItem.rightBarButtonItem = rightBarBtn
+    }
+<<<<<<< HEAD
+=======
+   
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        return true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.row)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let height = navigationController?.navigationBar.frame.height else { return }
+        moveAndResizeImage(for: height)
+        let svtop = scrollView.frame.origin.y
+        let v3top = scrollView.superview! .convert(view.bounds.origin, from:view).y
+        if v3top < svtop { print ("now") }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y == 0 {
+          print("top!")
+        }
+    }
+    
+    func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
+        print("yay")
+    }
+
+    private func moveAndResizeImage(for height: CGFloat) {
+        
+        let coeff: CGFloat = {
+                let delta = height - Const.NavBarHeightSmallState
+                let heightDifferenceBetweenStates = (Const.NavBarHeightLargeState - Const.NavBarHeightSmallState)
+                return delta / heightDifferenceBetweenStates
+            }()
+
+            let factor = Const.ImageSizeForSmallState / Const.ImageSizeForLargeState
+
+            let scale: CGFloat = {
+                let sizeAddendumFactor = coeff * (1.0 - factor)
+                return min(1.0, sizeAddendumFactor + factor)
+            }()
+
+            // Value of difference between icons for large and small states
+            let sizeDiff = Const.ImageSizeForLargeState * (1.0 - factor) // 8.0
+            let yTranslation: CGFloat = {
+                /// This value = 14. It equals to difference of 12 and 6 (bottom margin for large and small states). Also it adds 8.0 (size difference when the image gets smaller size)
+                let maxYTranslation = Const.ImageBottomMarginForLargeState - Const.ImageBottomMarginForSmallState + sizeDiff
+                return max(0, min(maxYTranslation, (maxYTranslation - coeff * (Const.ImageBottomMarginForSmallState + sizeDiff))))
+            }()
+
+            let xTranslation = max(0, sizeDiff - coeff * sizeDiff)
+            profileButton.transform = CGAffineTransform.identity
+                .scaledBy(x: scale, y: scale)
+                .translatedBy(x: xTranslation, y: yTranslation)
+    }
+}
+
+extension BrandCatalogueViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return brandList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BrandCollectionViewCell.identifier, for: indexPath) as! BrandCollectionViewCell
+        cell.contentView.layer.masksToBounds = false
+        cell.brandName = brandList[indexPath.row].brandName
+        cell.brandImage = brandList[indexPath.row].brandImage
+        cell.configure()
+        return cell
+    }
+}
+
+private struct Const {
+    /// Image height/width for Large NavBar state
+    static let ImageSizeForLargeState: CGFloat = 60
+    /// Margin from right anchor of safe area to right anchor of Image
+    static let ImageRightMargin: CGFloat = 20
+    /// Margin from bottom anchor of NavBar to bottom anchor of Image for Large NavBar state
+    static let ImageBottomMarginForLargeState: CGFloat = 54
+    /// Margin from bottom anchor of NavBar to bottom anchor of Image for Small NavBar state
+    static let ImageBottomMarginForSmallState: CGFloat = 0
+    /// Image height/width for Small NavBar state
+    static let ImageSizeForSmallState: CGFloat = 10
+    /// Height of NavBar for Small state. Usually it's just 44
+    static let NavBarHeightSmallState: CGFloat = 44
+    /// Height of NavBar for Large state. Usually it's just 96.5 but if you have a custom font for the title, please make sure to edit this value since it changes the height for Large state of NavBar
+    static let NavBarHeightLargeState: CGFloat = 76
+>>>>>>> feature/BrandCatalogue_Functionality
+}

@@ -158,9 +158,9 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
         profileVM.user.sink { user in
             self.user = user
             self.sizeLabel.text = self.sizeCalcVM.recommendationSize(
-                chestUser: user.userBodyMeasurement["chest"]!,
-                waistUser: user.userBodyMeasurement["waist"]!,
-                heightUser: user.userBodyMeasurement["height"]!,
+                chestUser: user.userBodyMeasurement["Chest"]!,
+                waistUser: user.userBodyMeasurement["Waist"]!,
+                heightUser: user.userBodyMeasurement["Height"]!,
                 productSizeChart: self.productSizeChart!
             )
             

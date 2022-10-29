@@ -13,7 +13,7 @@ class InitialSizeCalcExplanationView: UIView {
     private lazy var initialImage: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "sizeCalculatorExplanationEmpty")?.withRenderingMode(.alwaysTemplate)
-        iv.tintColor = .systemGray3
+        iv.tintColor = .sizeCalcInitialTintColor
         iv.contentMode = .scaleAspectFit
         return iv
     }()
