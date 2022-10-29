@@ -147,6 +147,23 @@ struct ProductService: ProductServicing {
                 
                 data.productSizeChart = productSizeChart
             }
+            print("DEBUG DICT: \(snapshot!.data())")
+            
+            if let productLinksDict = snapshot?.get("buyLink") {
+                
+                var productLinks: [ProductLink] = []
+                
+                for productLink in productLinksDict as! [[String: Any]] {
+                    let productLink = ProductLink(siteName: productLink["siteName"] as! String, link: productLink["link"] as! String)
+                    productLinks.append(productLink)
+                }
+                
+                data.productLinks = productLinks
+            }
+            
+           
+            
+            
             
             completion(data)
         }
