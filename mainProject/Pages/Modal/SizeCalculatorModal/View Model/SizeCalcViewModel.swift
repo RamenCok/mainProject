@@ -171,27 +171,27 @@ class SizeCalcViewModel: ObservableObject {
     func setChestButtonMessage(currSize: Int) -> (overallFit: String, color: UIColor, productSize: Int, buyerSize: Int) {
         
         if chest <= sortedChest[currSize].value {
-            return ("Fit", UIColor.greenColor, sortedChest[currSize].value, chest)
+            return ("Fit", UIColor.greenColor!, sortedChest[currSize].value, chest)
         } else {
-            return ("Too tight", UIColor.redColor, sortedChest[currSize].value, chest)
+            return ("Too tight", UIColor.redColor!, sortedChest[currSize].value, chest)
         }
     }
     
     func setHeightButtonMessage(currSize: Int) -> (overallFit: String, color: UIColor, productSize: Int, buyerSize: Int) {
         
         if height <= sortedHeight[currSize].value {
-            return ("Fit", UIColor.greenColor, sortedHeight[currSize].value, height)
+            return ("Fit", UIColor.greenColor!, sortedHeight[currSize].value, height)
         } else {
-            return ("Too tight", UIColor.redColor, sortedHeight[currSize].value, height)
+            return ("Too tight", UIColor.redColor!, sortedHeight[currSize].value, height)
         }
     }
     
     func setWaistButtonMessage(currSize: Int) -> (overallFit: String, color: UIColor, productSize: Int, buyerSize: Int) {
         
         if waist <= sortedWaist[currSize].value {
-            return ("Fit", UIColor.greenColor, sortedWaist[currSize].value, waist)
+            return ("Fit", UIColor.greenColor!, sortedWaist[currSize].value, waist)
         } else {
-            return ("Too tight", UIColor.redColor, sortedWaist[currSize].value, waist)
+            return ("Too tight", UIColor.redColor!, sortedWaist[currSize].value, waist)
         }
     }
     

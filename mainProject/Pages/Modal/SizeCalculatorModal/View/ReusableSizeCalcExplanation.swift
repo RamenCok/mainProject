@@ -54,7 +54,7 @@ class ReusableSizeCalcExplanation: UIView {
     }()
     
     var overallFit: String = ""
-    var overallFitColor: UIColor = UIColor.greenColor
+    var overallFitColor: UIColor = UIColor.greenColor!
     
     var bodyArea: String = ""
     

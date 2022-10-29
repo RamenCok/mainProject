@@ -171,7 +171,9 @@ class SignupLogin: UIViewController {
                           print("Document data: \(dataDescription)")
                     } else {
                         AuthServices.shared.writeUserData(credentials: user) {
-                            wnd?.set(rootViewController: ProfileViewController(), options: options)
+                            print(user)
+                            print("Yow")
+                            wnd?.set(rootViewController: UINavigationController(rootViewController: PersonalizeViewController()), options: options)
                         }
                     }
                
