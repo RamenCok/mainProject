@@ -8,6 +8,13 @@
 import UIKit
 import SnapKit
 import Combine
+import Firebase
+
+protocol ProductCatalogueDelegate: AnyObject {
+    
+    func goToSignUp()
+    func skip()
+}
 
 class ProductCatalogueViewController: UIViewController {
     
@@ -24,6 +31,9 @@ class ProductCatalogueViewController: UIViewController {
     
     var productList: [Product]!
     let productVM = ProductCatalogueViewModel(service: ProductService())
+    
+    var modalSize: Double?
+    var presentedVC: String?
     
     private var cancellables: Set<AnyCancellable> = []
     
@@ -149,6 +159,26 @@ class ProductCatalogueViewController: UIViewController {
     }
 }
 
+extension ProductCatalogueViewController: UIViewControllerTransitioningDelegate {
+    
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        
+        if presentedVC == "Tappable" {
+            return DismissTappablePresentationController(
+                modalTransitionSize: (view.frame.height/self.modalSize!)/view.frame.height,
+                presentedViewController: presented,
+                presenting: presenting
+            )
+        } else {
+            return NotTappablePresentationController(
+                modalTransitionSize: (view.frame.height/self.modalSize!)/view.frame.height,
+                presentedViewController: presented,
+                presenting: presenting
+            )
+        }
+    }
+}
+
 extension ProductCatalogueViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -171,6 +201,20 @@ extension ProductCatalogueViewController: UICollectionViewDelegate, UICollection
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let sorted = productList.sorted { $0.productName < $1.productName }
+        if let user = Auth.auth().currentUser {
+            if user.isAnonymous {
+                let slideVC = SignUpModalVC()
+                slideVC.delegate = self
+                presentedVC = slideVC.modalType
+                modalSize = slideVC.modalSize
+                slideVC.modalPresentationStyle = .custom
+                slideVC.transitioningDelegate = self
+                
+                self.present(slideVC, animated: true, completion: nil)
+                
+                UserDefaults.standard.set(indexPath.row, forKey: "ProductDetail")
+            }
+        }
         navigationController?.pushViewController(ProductDetailVC(brandName: brand.brandName, product:  sorted[indexPath.row]), animated: true)
     }
     
@@ -187,3 +231,19 @@ extension ProductCatalogueViewController: UICollectionViewDelegate, UICollection
         return CGSize(width: view.frame.size.width, height: 50)
     }
 }
+
+
+extension ProductCatalogueViewController: ProductCatalogueDelegate {
+    
+    func goToSignUp() {
+        self.navigationController?.pushViewController(SignupLogin(), animated: true)
+    }
+    
+    func skip() {
+        print("DEBUG: Go to product detail")
+        let sorted = productList.sorted { $0.productName < $1.productName }
+        let index = UserDefaults.standard.integer(forKey: "ProductDetail")
+        self.navigationController?.pushViewController(ProductDetailVC(brandName: brand.brandName, product:  sorted[index]), animated: true)
+    }
+}
+

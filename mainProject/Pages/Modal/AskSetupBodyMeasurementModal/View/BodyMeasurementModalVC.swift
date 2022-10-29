@@ -12,17 +12,17 @@ class BodyMeasurementModalVC: UIViewController {
 
     // MARK: - Properties
     private lazy var heading: ReusableLabel = {
-        let label = ReusableLabel(style: .heading_1, textString: "Oops! We don’t have your measurement")
+        let label = ReusableLabel(style: .heading_1, textString: "Oops! You can’t use this feature yet.")
         return label
     }()
     
     private lazy var subheading: ReusableLabel = {
-        let label = ReusableLabel(style: .subHeading_2, textString: "You can’t use this feature before you set up your body measurement.")
+        let label = ReusableLabel(style: .subHeading_2, textString: "You can’t use this feature before you set up all your body measurement.")
         return label
     }()
     
     private lazy var setBodyMeasurement: ReusableButton = {
-        let button = ReusableButton(style: .primary, buttonText: "Set up body measurement", selector: #selector(handleDismiss), target: self)
+        let button = ReusableButton(style: .primary, buttonText: "Set up body measurement", selector: #selector(handleSetBodyMeasurement), target: self)
         return button
     }()
     
@@ -36,6 +36,8 @@ class BodyMeasurementModalVC: UIViewController {
     
     let modalSize = 2.24
     let modalType = "NotTappable"
+    
+    weak var delegate: ProductDetailDelegate?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -53,8 +55,14 @@ class BodyMeasurementModalVC: UIViewController {
     }
     
     // MARK: - Selectors
+    @objc func handleSetBodyMeasurement() {
+        self.dismiss(animated: true) {
+            // go to bodymeasurement view
+            self.delegate?.goToBodyMeasurement()
+        }
+    }
+    
     @objc func handleDismiss() {
-        print("BYE FELICIA")
         self.dismiss(animated: true)
     }
     

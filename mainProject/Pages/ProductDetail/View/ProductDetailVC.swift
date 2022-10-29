@@ -9,12 +9,14 @@ import UIKit
 import SceneKit
 import SceneKit.ModelIO
 import Combine
+import Firebase
 
 protocol ProductDetailDelegate: AnyObject {
     
     func showSizeCalc()
     func showBuyModal()
     func changeSelected(selected: Int)
+    func goToBodyMeasurement()
 }
 
 class ProductDetailVC: UIViewController {
@@ -275,15 +277,53 @@ extension ProductDetailVC: UIViewControllerTransitioningDelegate {
 extension ProductDetailVC: ProductDetailDelegate {
     
     func showSizeCalc() {
+        // Checking for Authentication of User
+        if let user = Auth.auth().currentUser {
+            if user.isAnonymous {
+                let slideVC = SignUpModalVC()
+                slideVC.delegate = self
+                presentedVC = slideVC.modalType
+                modalSize = slideVC.modalSize
+                slideVC.modalPresentationStyle = .custom
+                slideVC.transitioningDelegate = self
+                
+                self.present(slideVC, animated: true, completion: nil)
+            }
+        }
         
-        let slideVC = SizeCalculatorModalVC(productSizeChart: product.productSizeChart, brandName: brandName, productName: product.productName)
+        var sizeMeasurementExist = false
         
-        presentedVC = slideVC.modalType
-        modalSize = slideVC.modalSize
-        slideVC.modalPresentationStyle = .custom
-        slideVC.transitioningDelegate = self
+        if let user = defaults.object(forKey: "User") as? Data {
+            if let loadUser = try? decoder.decode(User.self, from: user) {
+                if loadUser.userBodyMeasurement.values.contains(0) {
+                    sizeMeasurementExist = false
+                } else {
+                    sizeMeasurementExist = true
+                }
+            }
+        }
         
-        self.present(slideVC, animated: true, completion: nil)
+        // Checking for Size Measurement of User
+        if sizeMeasurementExist {
+            let slideVC = SizeCalculatorModalVC(productSizeChart: product.productSizeChart, brandName: brandName, productName: product.productName)
+            
+            presentedVC = slideVC.modalType
+            modalSize = slideVC.modalSize
+            slideVC.modalPresentationStyle = .custom
+            slideVC.transitioningDelegate = self
+            
+            self.present(slideVC, animated: true, completion: nil)
+            
+        } else {
+            let slideVC = BodyMeasurementModalVC()
+            slideVC.delegate = self
+            presentedVC = slideVC.modalType
+            modalSize = slideVC.modalSize
+            slideVC.modalPresentationStyle = .custom
+            slideVC.transitioningDelegate = self
+            
+            self.present(slideVC, animated: true, completion: nil)
+        }
     }
     
     func showBuyModal() {
@@ -306,5 +346,23 @@ extension ProductDetailVC: ProductDetailDelegate {
             vm.asyncLoadModel(filename: product.colorsAsset.compactMap { ($0["assetLink"] as! String)}[selectedIndex])
             progressView.setProgress(0, animated: false)
         }
+    }
+    
+    func goToBodyMeasurement() {
+        if let user = defaults.object(forKey: "User") as? Data {
+            if let loadUser = try? decoder.decode(User.self, from: user) {
+                self.navigationController?.pushViewController(BodyMeasurementVC(user: loadUser), animated: true)
+            }
+        }
+    }
+}
+
+extension ProductDetailVC:ProductCatalogueDelegate {
+    func goToSignUp() {
+        self.navigationController?.pushViewController(SignupLogin(), animated: true)
+    }
+    
+    func skip() {
+        self.dismiss(animated: true)
     }
 }
