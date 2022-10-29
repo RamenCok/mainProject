@@ -40,13 +40,14 @@ class BodyMeasurementVC: UIViewController {
     
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .backgroundColor
+        collectionView.backgroundView = backgroundImage
         collectionView.register(BodyMeasurementCell.self, forCellWithReuseIdentifier: BodyMeasurementCell.identifier)
-        collectionView.backgroundColor = .clear
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.contentInset = UIEdgeInsets(top: 16, left: 20, bottom: 0, right: 20)
         collectionView.showsVerticalScrollIndicator = false
-        collectionView.backgroundColor = .clear
+        collectionView.backgroundColor = .backgroundColor
         return collectionView
     }()
     
@@ -87,9 +88,26 @@ class BodyMeasurementVC: UIViewController {
     
     //MARK: - Helpers
     func configureNavigation() {
-
-        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.blackTexts, NSAttributedString.Key.font: UIFont.heading_1()]
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.modalTitle()]
+        
+        let navBarAppearance = UINavigationBarAppearance()
+        
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.backgroundColor = .backgroundColor
+        navBarAppearance.largeTitleTextAttributes = [
+            .foregroundColor: UIColor.whiteColor,
+            .font: UIFont.heading_1()
+        ]
+        navBarAppearance.titleTextAttributes = [
+            .foregroundColor: UIColor.blackTexts!,
+            .font: UIFont.modalTitle()
+        ]
+        
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
+        
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.topItem?.backButtonDisplayMode = .minimal
+        
         self.title = "Body Measurement"
 
         let rightBarBtn = UIBarButtonItem(image: UIImage(systemName: "questionmark.circle"), style: .plain, target: self, action: #selector(handleQuestionMarkButton))
@@ -99,7 +117,7 @@ class BodyMeasurementVC: UIViewController {
     
     func configureUI() {
         
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .backgroundColor
 
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in

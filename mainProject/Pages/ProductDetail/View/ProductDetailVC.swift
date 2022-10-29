@@ -53,13 +53,13 @@ class ProductDetailVC: UIViewController {
     private lazy var sceneKitView: SCNView = {
         let view = SCNView()
         view.allowsCameraControl = true
-        view.backgroundColor = .clear
+        view.backgroundColor = .whiteColor
         return view
     }()
     
     private let viewInAR: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .primaryColor
+        button.backgroundColor = UIColor.rgb(red: 35, green: 49, blue: 97, alpha: 1)
         button.layer.cornerRadius = 45 / 2
         button.setTitleColor(.white, for: .normal)
         button.setTitle("View in AR", for: .normal)
@@ -73,20 +73,20 @@ class ProductDetailVC: UIViewController {
     
     private lazy var topRectangle: UIView = {
         let rect = UIView()
-        rect.backgroundColor = .systemBackground
+        rect.backgroundColor = .backgroundColor
         return rect
     }()
     
     private lazy var bottomRectangle: UIView = {
         let rect = UIView()
-        rect.backgroundColor = .systemBackground
+        rect.backgroundColor = .backgroundColor
         return rect
     }()
     
     private lazy var progressView: UIProgressView = {
         let pv = UIProgressView(progressViewStyle: .default)
         pv.trackTintColor = .lightGray
-        pv.tintColor = .primaryColor
+        pv.tintColor = .primaryButtonColor
         return pv
     }()
     
@@ -96,10 +96,13 @@ class ProductDetailVC: UIViewController {
     // MARK: - Lifecycle
     override open func viewDidLoad() {
         
+        view.backgroundColor = .backgroundColor
+        
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
         
         self.navigationItem.backButtonDisplayMode = .minimal
+        navigationController?.navigationBar.tintColor = UIColor.rgb(red: 35, green: 49, blue: 97, alpha: 1)
+        
         setupScrollView()
         
         configureProgressView()
@@ -172,7 +175,6 @@ class ProductDetailVC: UIViewController {
             make.top.equalTo(scrollView.snp.bottom)
             make.bottom.equalToSuperview()
             make.height.equalTo(view.frame.height * 0.194)
-            print(view.frame.height * 0.194)
         }
     }
     

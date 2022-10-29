@@ -8,6 +8,8 @@
 import UIKit
 import Combine
 import UIWindowTransitions
+import SnapKit
+
 class PersonalizeViewController: UIViewController {
 
     let vm = PersonalizeViewModel(service: UserService())
@@ -61,7 +63,7 @@ class PersonalizeViewController: UIViewController {
            button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
            button.showsMenuAsPrimaryAction = true
            button.menu = genderMenu
-           button.tintColor = .primaryColor
+           button.tintColor = UIColor.rgb(red: 35, green: 49, blue: 97, alpha: 1)
            button.alpha = 1
            return button
        }()
@@ -110,13 +112,12 @@ class PersonalizeViewController: UIViewController {
     
     // MARK: - Helpers
     func configureUI() {
-        view.backgroundColor = .systemBackground
+        
+        view.backgroundColor = .backgroundColor
         
         view.addSubview(bgLogin)
         bgLogin.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
+            make.edges.equalToSuperview()
         }
         
         view.addSubview(pinkTitle)
@@ -145,10 +146,9 @@ class PersonalizeViewController: UIViewController {
         view.addSubview(genderButton)
         genderButton.snp.makeConstraints { make in
             make.centerY.equalTo(genderLabel.snp.centerY)
-            make.trailing.equalTo(genderLabel.snp.trailing).offset(-14)
+            make.trailing.equalTo(genderLabel.snp.trailing)
             make.height.width.equalTo(view.frame.height / 18)
         }
-        
         
         view.addSubview(saveButton)
         saveButton.snp.makeConstraints { make in

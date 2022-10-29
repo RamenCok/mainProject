@@ -20,7 +20,7 @@ class DescriptionView: UIView {
         self.productDesc = productDesc
         super.init(frame: .zero)
         
-        backgroundColor = .systemBackground
+        backgroundColor = .clear
         configureUI()
     }
     
@@ -42,7 +42,7 @@ class DescriptionView: UIView {
     private func productDescription(productDesc: String)-> UIView {
         let label = ReusableLabel(style: .bodyText, textString: "\(productDesc)")
         label.numberOfLines = 0
-        label.textColor = UIColor("777777")
+        label.textColor = UIColor.blackTexts
         return label
     }
 }

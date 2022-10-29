@@ -20,9 +20,8 @@ class ProfileViewController: UIViewController {
     private var cancellables: Set<AnyCancellable> = []
     
     private lazy var imageBG: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "profileBG")
-        return image
+        let imageView = AuthBackground()
+        return imageView
     }()
     
     internal lazy var profileImage: UIImageView = {
@@ -103,7 +102,7 @@ class ProfileViewController: UIViewController {
         button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
         button.showsMenuAsPrimaryAction = true
         button.menu = genderMenu
-        button.tintColor = .primaryColor
+        button.tintColor = UIColor.rgb(red: 35, green: 49, blue: 97, alpha: 1)
         button.alpha = 0
         return button
     }()
@@ -221,6 +220,8 @@ class ProfileViewController: UIViewController {
         navigationItem.rightBarButtonItem = editBarButtonItem
     
         navigationController?.navigationBar.tintColor = .primaryColor
+        
+        view.backgroundColor = .backgroundColor
         
         view.addSubview(imageBG)
         imageBG.snp.makeConstraints { make in

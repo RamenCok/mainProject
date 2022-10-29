@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 import GoogleSignIn
 import FirebaseAuth
 import FirebaseCore
@@ -32,10 +33,8 @@ class SignupLogin: UIViewController {
         return view
     }()
     
-   
-    
     private lazy var titleLabel: UILabel = {
-        let label = ReusableLabel(style: .largeTitle_2, textString: "Level up your shopping journey")
+        let label = ReusableLabel(style: .largeTitle_2, textString: "Level up your\nshopping journey")
         return label
     }()
     
@@ -190,6 +189,7 @@ class SignupLogin: UIViewController {
         
         authorizationcontroller.performRequests()
     }
+    
     func createAppleIDRequest() -> ASAuthorizationAppleIDRequest {
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
@@ -201,10 +201,6 @@ class SignupLogin: UIViewController {
         return request
     }
     
-    @objc func printYeuy(){
-        print("")
-        
-    }
     @objc func handleCancelButton() {
         self.navigationController?.popViewController(animated: true)
     }
@@ -217,18 +213,10 @@ class SignupLogin: UIViewController {
         navigationController?.pushViewController(LoginViewController(), animated: true)
     }
     
-    @objc func handleGoogleButton() {
-        print("Google")
-    }
-    
-    @objc func handleAppleButton() {
-        print("Apple")
-    }
-    
     // MARK: - Helpers
     func configureUI() {
      
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .backgroundColor
         
         // To set transparent background for navigation bar
         let appearance = UINavigationBarAppearance()
@@ -246,9 +234,7 @@ class SignupLogin: UIViewController {
         
         view.addSubview(bgLogin)
         bgLogin.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
+            make.edges.equalToSuperview()
         }
         
         view.addSubview(stackView)

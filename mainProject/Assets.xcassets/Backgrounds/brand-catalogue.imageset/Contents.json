@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "brand-catalogue.png",
+      "filename" : "BRANDS, BODY MEASURE - BG.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "BRANDS, BODY MEASURE - BG@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "BRANDS, BODY MEASURE - BG@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -25,6 +25,8 @@ class LoginViewController: UIViewController {
     
     private lazy var emailTextField: TextField = {
         let textField = ReusableTextFieldAuth(placeholders: "Email")
+        textField.keyboardType = .emailAddress
+        textField.autocapitalizationType = .none
         return textField
     }()
     
@@ -105,14 +107,15 @@ class LoginViewController: UIViewController {
     }
         // MARK: - Helpers
         func configureUI() {
-            view.backgroundColor = .systemBackground
+            
+            view.backgroundColor = .backgroundColor
+            
             navigationController?.isNavigationBarHidden = false
+            navigationController?.navigationBar.topItem?.backButtonDisplayMode = .minimal
             
             view.addSubview(bgLogin)
             bgLogin.snp.makeConstraints { make in
-                make.top.equalToSuperview()
-                make.leading.equalToSuperview()
-                make.trailing.equalToSuperview()
+                make.edges.equalToSuperview()
             }
             
             view.addSubview(pinkTitle)

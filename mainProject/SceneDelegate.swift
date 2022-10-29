@@ -36,7 +36,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         navigationController.pushViewController(vc, animated: false)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-        window?.overrideUserInterfaceStyle = .light
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

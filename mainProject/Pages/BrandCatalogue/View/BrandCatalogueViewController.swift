@@ -54,8 +54,8 @@ class BrandCatalogueViewController: UIViewController {
     
     internal lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .clear
-        //        collectionView.backgroundView = backgroundImage
+        collectionView.backgroundColor = .backgroundColor
+        collectionView.backgroundView = backgroundImage
         
         collectionView.register(BrandCollectionViewCell.self, forCellWithReuseIdentifier: BrandCollectionViewCell.identifier)
         collectionView.delegate = self
@@ -72,21 +72,8 @@ class BrandCatalogueViewController: UIViewController {
         search.searchBar.delegate = self
         search.searchBar.tintColor = .primaryColor
         search.searchBar.searchTextField.font = UIFont.bodyText()
-        search.searchBar.searchTextField.backgroundColor = .white
-        
-        if let textfield = search.searchBar.value(forKey: "searchField") as? UITextField {
-            //textfield.textColor = // Set text color
-            if let backgroundview = textfield.subviews.first {
-                
-                // Background color
-                backgroundview.backgroundColor = UIColor.white
-                
-                // Rounded corner
-                backgroundview.layer.cornerRadius = 10
-                backgroundview.clipsToBounds = true
-            }
-        }
-        
+        search.searchBar.placeholder = "Find brands"
+        search.searchBar.searchTextField.backgroundColor = .backgroundColor
         return search
     }()
     
@@ -117,7 +104,6 @@ class BrandCatalogueViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("Hello")
         vm.fetchBrandList()
         vm.fetchUserProfile()
         navigationItem.title = "Brands"
@@ -129,9 +115,8 @@ class BrandCatalogueViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         profileButton.alpha = 0
+        UIApplication.shared.setStatusBarStyle(.default, animated: true)
     }
-    
-    
     
     // MARK: - Selectors
     @objc func handleProfileButtonTapped() {
@@ -149,20 +134,29 @@ class BrandCatalogueViewController: UIViewController {
     //MARK: - Helpers
     func configureUI() {
         
-        view.backgroundColor = .white
+        view.backgroundColor = .backgroundColor
         
-        searchBar.placeholder = "Your placeholder"
         searchBar.frame = CGRect(x: 0, y: 0, width: 200, height: 64)
         
-        self.navigationItem.searchController = search
-        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.blackTexts, NSAttributedString.Key.font: UIFont.heading_1()]
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.modalTitle()]
-        self.navigationController?.navigationBar.topItem?.backButtonDisplayMode = .minimal
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.backgroundColor = .backgroundColor
+        navBarAppearance.largeTitleTextAttributes = [
+            .foregroundColor: UIColor.whiteColor,
+            .font: UIFont.heading_1()
+        ]
+        navBarAppearance.titleTextAttributes = [
+            .foregroundColor: UIColor.blackTexts!,
+            .font: UIFont.modalTitle()
+        ]
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
         
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.topItem?.backButtonDisplayMode = .minimal
         
-        
-        self.navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.searchController = search
+        navigationItem.hidesSearchBarWhenScrolling = false
         
         guard let navigationBar = self.navigationController?.navigationBar else { return }
         navigationBar.addSubview(profileButton)
@@ -186,8 +180,9 @@ class BrandCatalogueViewController: UIViewController {
     }
     
     private func showImage(_ show: Bool) {
-      UIView.animate(withDuration: 0.25) {
-        self.profileButton.alpha = show ? 1.0 : 0.0
-      }
+        
+        UIView.animate(withDuration: 0.25) {
+            self.profileButton.alpha = show ? 1.0 : 0.0
+        }
     }
 }

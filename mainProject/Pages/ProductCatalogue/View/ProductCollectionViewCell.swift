@@ -80,6 +80,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
         label.numberOfLines = 2
         label.textAlignment = .left
         label.lineBreakMode = .byWordWrapping
+        label.textColor = .black
         return label
     }()
     
@@ -108,7 +109,6 @@ class ProductCollectionViewCell: UICollectionViewCell {
             make.trailing.equalTo(contentView.snp.trailing).offset(-15)
         }
         
-//        let colorArray = ProductColorView(colorarray: ["7479EA", "B55DD3", "FF95BF"])
         let colorArray = ProductColorView(colorarray: colorsAsset)
         contentView.addSubview(colorArray)
         colorArray.snp.makeConstraints { make in
@@ -118,14 +118,14 @@ class ProductCollectionViewCell: UICollectionViewCell {
         
         contentView.layer.cornerRadius = 20
         
-        contentView.backgroundColor = .systemBackground
+        contentView.backgroundColor = .whiteColor
         contentView.layer.borderColor = UIColor.lightGray3.cgColor
         contentView.layer.borderWidth = 1
         
         contentView.layer.shadowColor = UIColor.lightGray3.cgColor
-        contentView.layer.shadowOpacity = 1
+        contentView.layer.shadowOpacity = 0.15
         contentView.layer.shadowOffset = CGSize.zero
-        contentView.layer.shadowRadius = 5
+        contentView.layer.shadowRadius = 25
     }
     
 

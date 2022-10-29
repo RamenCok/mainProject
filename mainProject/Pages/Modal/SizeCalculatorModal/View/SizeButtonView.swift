@@ -13,11 +13,11 @@ class SizeButtonView: UIView {
     private lazy var sizeNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.bodyText()
-        label.textColor = .primaryColor
+        label.textColor = .primaryButtonColor
         return label
     }()
     
-    var fontColor: UIColor = .primaryColor {
+    var fontColor: UIColor = .primaryButtonColor! {
         didSet {
             sizeNameLabel.textColor = fontColor
         }
@@ -59,7 +59,7 @@ class SizeButtonView: UIView {
     
     private func commonInit() {
         
-        backgroundColor = UIColor.systemGray3
+        backgroundColor = UIColor.sizeButtonViewBG
         
         addSubview(sizeNameLabel)
         sizeNameLabel.snp.makeConstraints { make in

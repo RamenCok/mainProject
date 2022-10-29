@@ -16,8 +16,9 @@ class HeadlineView: UIView {
     
     private lazy var shareButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "square.and.arrow.up")?.scalePreservingAspectRatio(targetSize: CGSize(width: 27, height: 27)), for: .normal)
+        button.setImage(UIImage(systemName: "square.and.arrow.up")?.scalePreservingAspectRatio(targetSize: CGSize(width: 27, height: 27)).withRenderingMode(.alwaysTemplate), for: .normal)
         button.addTarget(self, action: #selector(handleShareButton), for: .touchUpInside)
+        button.tintColor = .primaryButtonColor
         return button
     }()
     
@@ -28,7 +29,7 @@ class HeadlineView: UIView {
         self.productName = productName
         super.init(frame: .zero)
         
-        backgroundColor = .systemBackground
+        backgroundColor = .backgroundColor
         configureUI()
     }
     
@@ -53,9 +54,9 @@ class HeadlineView: UIView {
         }
     }
     
-    private func productHeadline(brandName: String, productName: String)->UIView {
+    private func productHeadline(brandName: String, productName: String) -> UIView {
         let brandName = ReusableLabel(style: .productDetailBrand, textString: "\(brandName)")
-        brandName.textColor = UIColor("949494")
+        brandName.textColor = .blackTexts
         
         let productName = ReusableLabel(style: .heading_2, textString: "\(productName)")
         productName.numberOfLines = 2

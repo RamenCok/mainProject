@@ -13,6 +13,7 @@ class RadioButtonView: UIView {
     
     private var colorarray: [String]
     var selectedColor: Int
+    let border = UIView()
     
     private var radioButton: RadioButtonManager<UIView>?
     private var selectedBorderView: UIView?
@@ -26,7 +27,7 @@ class RadioButtonView: UIView {
         self.selectedColor = selectedColor
         super.init(frame: .zero)
         
-        backgroundColor = .systemBackground
+        backgroundColor = .backgroundColor
         configureRadioButton()
     }
     
@@ -73,9 +74,8 @@ class RadioButtonView: UIView {
         radioButton = RadioButtonManager(
             colorArray,
             onSelected: { [unowned self] color in
-                let border = UIView()
                 border.setDimensions(height: 30, width: 30)
-                border.layer.borderColor = UIColor.black.cgColor
+                border.layer.borderColor = UIColor.blackTexts?.cgColor
                 border.layer.borderWidth = 3
                 border.layer.cornerRadius = 30 / 2
                 
@@ -118,5 +118,15 @@ class RadioButtonView: UIView {
             make.center.equalTo(self)
             make.width.height.equalTo(self)
         }
+    }
+    
+    private func updateColors() {
+        border.layer.borderColor = UIColor.blackTexts?.cgColor
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        self.updateColors()
+        self.setNeedsDisplay()
     }
 }

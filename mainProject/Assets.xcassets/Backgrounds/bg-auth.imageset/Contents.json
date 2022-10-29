@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "bg-auth.png",
+      "filename" : "PROFILE, SIGN UP - BG.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "PROFILE, SIGN UP - BG@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "PROFILE, SIGN UP - BG@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

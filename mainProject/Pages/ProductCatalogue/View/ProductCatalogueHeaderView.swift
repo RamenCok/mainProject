@@ -16,7 +16,7 @@ class ProductCatalogueHeaderView: UICollectionReusableView {
     private lazy var label: UILabel = {
         let label = ReusableLabel(style: .caption, textString: "")
         label.textAlignment = .left
-        label.textColor = .gray
+        label.textColor = .blackTexts
         return label
     }()
     

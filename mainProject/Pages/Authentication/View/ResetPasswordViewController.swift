@@ -126,7 +126,8 @@ class ResetPasswordViewController: UIViewController {
     
     // MARK: - Helpers
     func configureUI() {
-        view.backgroundColor = .systemBackground
+        
+        view.backgroundColor = .backgroundColor
         
         let appearance = UINavigationBarAppearance()
         appearance.configureWithTransparentBackground()

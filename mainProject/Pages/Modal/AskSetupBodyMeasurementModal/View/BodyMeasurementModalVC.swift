@@ -69,7 +69,7 @@ class BodyMeasurementModalVC: UIViewController {
     // MARK: - Helpers
     func configureUI() {
         
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .backgroundColor
         
         view.addSubview(heading)
         heading.snp.makeConstraints { make in
