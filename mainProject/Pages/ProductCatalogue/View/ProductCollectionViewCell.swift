@@ -110,7 +110,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
         productImageView.sd_setImage(with: url)
 
         contentView.addSubview(productView)
-        productView.backgroundColor = .red
+//        productView.backgroundColor = .red
         productView.snp.makeConstraints { make in
             make.leading.equalTo(contentView.snp.leading).offset(0)
             make.trailing.equalTo(contentView.snp.trailing).offset(0)
