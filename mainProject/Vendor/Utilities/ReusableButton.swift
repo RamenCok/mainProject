@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 class ReusableButton: UIButton {
+    
     //MARK: Initializers
     enum Style{
         case primary
@@ -33,7 +34,6 @@ class ReusableButton: UIButton {
         super.init(frame: .zero)
         configureButton()
         configureTarget()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -45,56 +45,50 @@ class ReusableButton: UIButton {
         self.addTarget(target, action: selector, for: .touchUpInside)
     }
     
-    private func configureButton(){
-//        self.autoresizingMask = false
+    private func configureButton() {
+        
+        self.setTitle(buttontext, for: .normal)
         
         switch style {
-        case .primary:
-            self.backgroundColor = UIColor.primaryColor
-            self.layer.borderColor = UIColor.primaryColor.cgColor
-            self.layer.borderWidth = 1.5
-            self.tintColor = UIColor.whiteColor
-            break
+            case .primary:
+                self.backgroundColor = UIColor.primaryButtonColor
+                self.tintColor = UIColor.whiteColor
             
-        case .secondary:
-            self.backgroundColor = UIColor.clear
-            self.layer.borderColor = UIColor.primaryColor.cgColor
-            self.layer.borderWidth = 1.5
-            self.tintColor = UIColor.whiteColor
-            break
-            
-        case .primaryDisabled:
-            self.backgroundColor = UIColor.disabledColor
-            self.layer.borderColor = UIColor.disabledColor.cgColor
-            self.layer.borderWidth = 1.5
-            self.tintColor = UIColor.whiteColor
-            break
-            
-        case .secondaryDisabled:
-            self.backgroundColor = UIColor.clear
-            self.layer.borderColor = UIColor.disabledColor.cgColor
-            self.layer.borderWidth = 1.5
-            self.tintColor = UIColor.disabledColor
-            break
-            
-        case .delete:
-            self.backgroundColor = UIColor.redColor
-            self.layer.borderColor = UIColor.redColor.cgColor
-            self.layer.borderWidth = 1.5
-            self.tintColor = UIColor.whiteColor
-            break
-            
+            case .secondary:
+                self.backgroundColor = .clear
+                self.layer.borderColor = UIColor.primaryColor?.cgColor
+                self.layer.borderWidth = 1.5
+                self.setTitleColor(.primaryColor, for: .normal)
+                
+            case .primaryDisabled:
+                self.backgroundColor = UIColor.disabledColor
+                self.tintColor = UIColor.whiteColor
+                
+            case .secondaryDisabled:
+                self.backgroundColor = UIColor.clear
+                self.layer.borderColor = UIColor.disabledColor?.cgColor
+                self.layer.borderWidth = 1.5
+                self.tintColor = UIColor.disabledColor
+                
+            case .delete:
+                self.backgroundColor = UIColor.redColor
+                self.tintColor = UIColor.whiteColor
         }
+        
         self.layer.cornerRadius = 10
         self.titleLabel?.font = UIFont.bodyText()
         self.setTitle(buttontext, for: .normal)
-        self.titleLabel?.textColor = .white
         self.snp.makeConstraints { make in
             make.height.equalTo(48)
             make.width.equalTo(UIScreen.main.bounds.width - 40)
         }
+    }
+    
+    public func makeDisabled(isDisabled: Bool) {
         
-      
+        self.isEnabled = !isDisabled
+        self.backgroundColor = isDisabled ? .disabledColor : .primaryButtonColor
+        self.setTitleColor(isDisabled ? .disabledColorButtonText : .whiteColor, for: .normal)
     }
     
     //MARK: Animate
@@ -122,5 +116,15 @@ class ReusableButton: UIButton {
                 self.transform = .identity
                 self.alpha = 1
             }
+    }
+    
+    private func updateColors() {
+        self.layer.borderColor = UIColor.primaryColor?.cgColor
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        self.updateColors()
+        self.setNeedsDisplay()
     }
 }
