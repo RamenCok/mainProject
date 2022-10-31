@@ -114,11 +114,12 @@ class BodyMeasurementVC: UIViewController {
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.topItem?.backButtonDisplayMode = .minimal
+        navigationController?.navigationBar.tintColor = .whiteColor
         
         self.title = "Body Measurement"
 
         let rightBarBtn = UIBarButtonItem(image: UIImage(systemName: "questionmark.circle"), style: .plain, target: self, action: #selector(handleQuestionMarkButton))
-        rightBarBtn.tintColor = .primaryColor
+        rightBarBtn.tintColor = .whiteColor
         navigationItem.rightBarButtonItem = rightBarBtn
     }
     
