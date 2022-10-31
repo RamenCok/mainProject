@@ -101,6 +101,27 @@ class ProductDetailVC: UIViewController {
         
         view.backgroundColor = .backgroundColor
         
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.backgroundColor = .navBar
+        navBarAppearance.largeTitleTextAttributes = [
+            .foregroundColor: UIColor.whiteColor,
+            .font: UIFont.heading_1()
+        ]
+        navBarAppearance.titleTextAttributes = [
+            .foregroundColor: UIColor.blackTexts!,
+            .font: UIFont.modalTitle()
+        ]
+        
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
+        navigationController?.navigationBar.tintColor = .primaryColor
+        
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.topItem?.backButtonDisplayMode = .minimal
+        
+        UIApplication.shared.statusBarStyle = .darkContent
+        
         super.viewDidLoad()
         
         self.navigationItem.backButtonDisplayMode = .minimal
@@ -146,6 +167,12 @@ class ProductDetailVC: UIViewController {
         profilevm.getUser()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        super.viewWillDisappear(animated)
+        UIApplication.shared.setStatusBarStyle(.default, animated: true)
+    }
+    
     // MARK: - Selectors
     
     @objc func handleARButton() {
@@ -168,6 +195,7 @@ class ProductDetailVC: UIViewController {
         
         scrollView.contentInsetAdjustmentBehavior = .never
         scrollView.showsVerticalScrollIndicator = false
+        scrollView.delegate = self
         
         configureContentView()
         
@@ -377,5 +405,29 @@ extension ProductDetailVC:ProductCatalogueDelegate {
     
     func skip() {
         self.dismiss(animated: true)
+    }
+}
+
+extension ProductDetailVC: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        if scrollView.contentOffset.y > 0 {
+            let currentTheme = self.traitCollection.userInterfaceStyle
+            
+            switch currentTheme {
+                case .dark:
+                    UIApplication.shared.statusBarStyle = .lightContent
+                case .light:
+                    UIApplication.shared.statusBarStyle = .darkContent
+                default:
+                    UIApplication.shared.statusBarStyle = .darkContent
+            }
+            
+            navigationController?.navigationBar.tintColor = .primaryColor
+        } else {
+            navigationController?.navigationBar.tintColor = UIColor.rgb(red: 35, green: 49, blue: 97, alpha: 1)
+            UIApplication.shared.statusBarStyle = .darkContent
+        }
     }
 }
