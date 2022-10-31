@@ -109,6 +109,10 @@ class ProductCatalogueViewController: UIViewController {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithOpaqueBackground()
         navBarAppearance.backgroundColor = .navBar
+        navBarAppearance.largeTitleTextAttributes = [
+            .foregroundColor: UIColor.whiteColor,
+            .font: UIFont.heading_1()
+        ]
         navBarAppearance.titleTextAttributes = [
             .foregroundColor: UIColor.blackTexts!,
             .font: UIFont.modalTitle()
