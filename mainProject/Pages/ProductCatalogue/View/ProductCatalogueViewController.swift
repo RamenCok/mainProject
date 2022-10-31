@@ -67,12 +67,6 @@ class ProductCatalogueViewController: UIViewController {
         return layout
     }()
     
-    private lazy var rect: UIView = {
-        let rect = UIView()
-        rect.backgroundColor = .white
-        return rect
-    }()
-    
     private lazy var image: UIImageView = {
         let image = UIImageView(image: UIImage(named: "noProduct"))
         return image
@@ -112,10 +106,27 @@ class ProductCatalogueViewController: UIViewController {
         super.viewWillAppear(animated)
         productVM.fetchProductList(ref: brand.productRef)
         
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.backgroundColor = .navBar
+        navBarAppearance.titleTextAttributes = [
+            .foregroundColor: UIColor.blackTexts!,
+            .font: UIFont.modalTitle()
+        ]
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
+        
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.topItem?.backButtonDisplayMode = .minimal
+        
         navigationItem.title = "\(brand.brandName)"
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.backButtonDisplayMode = .minimal
         navigationController?.navigationBar.tintColor = .primaryColor
+        
+        view.backgroundColor = .backgroundColor
+        
+
     }
     
     // MARK: - Selectors
@@ -126,12 +137,12 @@ class ProductCatalogueViewController: UIViewController {
         
         view.backgroundColor = .backgroundColor
         
-        view.addSubview(rect)
-        rect.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-            make.top.equalToSuperview()
-            make.bottom.equalToSuperview()
-        }
+//        view.addSubview(rect)
+//        rect.snp.makeConstraints { make in
+//            make.leading.trailing.equalToSuperview()
+//            make.top.equalToSuperview()
+//            make.bottom.equalToSuperview()
+//        }
         
         view.addSubview(image)
         image.snp.makeConstraints { make in
