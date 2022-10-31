@@ -23,8 +23,10 @@ class ProductDetailVC: UIViewController {
     
     // MARK: - Properties
     private var vm = ARModelsViewModel()
+    private var profilevm = ProfileViewModel(service: Service())
     private var cancellables: Set<AnyCancellable> = []
     
+    private var user: User!
     private var brandName: String!
     private var product: Product!
     private var urlFile: URL!
@@ -130,12 +132,18 @@ class ProductDetailVC: UIViewController {
         vm.percentage.sink { [weak self] progress in
             self?.progressView.setProgress(progress, animated: true)
         }.store(in: &cancellables)
+        
+        profilevm.user.sink { [weak self] user in
+            self?.user = user
+        }.store(in: &cancellables)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         vm.asyncLoadModel(filename: product.colorsAsset.compactMap { ($0["assetLink"] as! String)}[selectedIndex])
+        
+        profilevm.getUser()
     }
     
     // MARK: - Selectors
@@ -302,18 +310,18 @@ extension ProductDetailVC: ProductDetailDelegate {
         
         var sizeMeasurementExist = false
         
-        if let user = defaults.object(forKey: "User") as? Data {
-            if let loadUser = try? decoder.decode(User.self, from: user) {
-                if loadUser.userBodyMeasurement.values.contains(0) {
-                    sizeMeasurementExist = false
-                } else {
-                    sizeMeasurementExist = true
-                }
-            }
+        if user.userBodyMeasurement.values.contains(0) {
+            sizeMeasurementExist = false
+        } else {
+            sizeMeasurementExist = true
         }
         
         // Checking for Size Measurement of User
         if sizeMeasurementExist {
+            print("product size: \(product.productSizeChart)")
+            print("product: \(product)")
+            print(product.productSizeChart)
+            print(product)
             let slideVC = SizeCalculatorModalVC(productSizeChart: product.productSizeChart, brandName: brandName, productName: product.productName)
             
             presentedVC = slideVC.modalType
@@ -358,11 +366,7 @@ extension ProductDetailVC: ProductDetailDelegate {
     }
     
     func goToBodyMeasurement() {
-        if let user = defaults.object(forKey: "User") as? Data {
-            if let loadUser = try? decoder.decode(User.self, from: user) {
-                self.navigationController?.pushViewController(BodyMeasurementVC(user: loadUser), animated: true)
-            }
-        }
+        self.navigationController?.pushViewController(BodyMeasurementVC(user: user), animated: true)
     }
 }
 

@@ -54,6 +54,7 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
     
     private lazy var productNameLabel: ReusableLabel = {
         let label = ReusableLabel(style: .heading_2, textString: "")
+        label.numberOfLines = 2
         return label
     }()
     
