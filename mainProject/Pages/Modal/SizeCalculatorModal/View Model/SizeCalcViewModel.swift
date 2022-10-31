@@ -29,7 +29,7 @@ class SizeCalcViewModel: ObservableObject {
     
     // MARK: - Find Recommended Size
     func appendSizeChart(productSizeChart: [ProductSizeChart]) {
-        
+        print(productSizeChart)
         for size in productSizeChart {
             
             sellerWaist.append((size.sizeName, size.sizeDimension["waist"]!))

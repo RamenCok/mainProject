@@ -318,6 +318,10 @@ extension ProductDetailVC: ProductDetailDelegate {
         
         // Checking for Size Measurement of User
         if sizeMeasurementExist {
+            print("product size: \(product.productSizeChart)")
+            print("product: \(product)")
+            print(product.productSizeChart)
+            print(product)
             let slideVC = SizeCalculatorModalVC(productSizeChart: product.productSizeChart, brandName: brandName, productName: product.productName)
             
             presentedVC = slideVC.modalType
