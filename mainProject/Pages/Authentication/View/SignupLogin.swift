@@ -324,6 +324,16 @@ extension SignupLogin: ASAuthorizationControllerDelegate, ASAuthorizationControl
             let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: currentNonce)
             print("Email")
             Auth.auth().signIn(with: credential) { (AuthDataResult, error) in
+                if let error = error {
+                    let alert = UIAlertController(title: "Login Failed", message: error.localizedDescription, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    let alert = UIAlertController(title: "Login Succcessful", message: "You'll be redirected shortly", preferredStyle: .alert)
+//                    alert.addAction(UIAlertAction(title: "You'll be redirected shortly", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+                
                 let wnd = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
                 var options = UIWindow.TransitionOptions()
                 options.direction = .toRight
@@ -333,24 +343,25 @@ extension SignupLogin: ASAuthorizationControllerDelegate, ASAuthorizationControl
                     print("Nice you're now signed in as \(users.uid), email: \(users.email ?? "unknown email")")
                     
                     let user: [String: Any] = [
-                        "name" : users.displayName,
+                        "name" : users.displayName == nil ? "" : users.displayName,
                         "email" : users.email,
                         "uid": users.uid,
                         "gender": ""
                     ]
+                    
                     print("debug name: \(users.displayName)")
                     AuthServices.shared.checkUserData(uid: user["uid"] as! String) { document, error in
                         if let document = document, document.exists {
                             let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
 
-                            if document.data()!["gender"] == nil || document.data()!["gender"] as! String == "" || users.displayName == nil {
+                            if document.data()!["gender"] == nil || document.data()!["gender"] as! String == "" || document.data()!["name"] as! String == "" {
                                 wnd?.set(rootViewController: UINavigationController(rootViewController: PersonalizeViewController()) , options: options)
                             } else {
                                 wnd?.set(rootViewController: UINavigationController(rootViewController: BrandCatalogueViewController()), options: options)
                             }
                             print("Document data: \(dataDescription)")
                         } else {
-                            if users.displayName == nil {
+                            if user["name"] as! String == "" {
                                 AuthServices.shared.writeUserData(credentials: user) {
                                     wnd?.set(rootViewController: UINavigationController(rootViewController: PersonalizeViewController()), options: options)
                                 }

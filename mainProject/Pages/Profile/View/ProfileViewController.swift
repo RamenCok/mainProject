@@ -197,6 +197,9 @@ class ProfileViewController: UIViewController {
                     alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 } else {
+                    let alert = UIAlertController(title: "Logout Successful", message: "You'll be redirected shortly", preferredStyle: .alert)
+//                    alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                     wnd?.set(rootViewController: UINavigationController(rootViewController: BrandCatalogueViewController()), options: options)
                 }
             })
