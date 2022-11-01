@@ -338,19 +338,26 @@ extension SignupLogin: ASAuthorizationControllerDelegate, ASAuthorizationControl
                         "uid": users.uid,
                         "gender": ""
                     ]
+                    print("debug name: \(users.displayName)")
                     AuthServices.shared.checkUserData(uid: user["uid"] as! String) { document, error in
                         if let document = document, document.exists {
                             let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
 
-                            if document.data()!["gender"] == nil || document.data()!["gender"] as! String == "" {
+                            if document.data()!["gender"] == nil || document.data()!["gender"] as! String == "" || users.displayName == nil {
                                 wnd?.set(rootViewController: UINavigationController(rootViewController: PersonalizeViewController()) , options: options)
                             } else {
                                 wnd?.set(rootViewController: UINavigationController(rootViewController: BrandCatalogueViewController()), options: options)
                             }
-                              print("Document data: \(dataDescription)")
+                            print("Document data: \(dataDescription)")
                         } else {
-                            AuthServices.shared.writeUserData(credentials: user) {
-                                wnd?.set(rootViewController: UINavigationController(rootViewController: BrandCatalogueViewController()), options: options)
+                            if users.displayName == nil {
+                                AuthServices.shared.writeUserData(credentials: user) {
+                                    wnd?.set(rootViewController: UINavigationController(rootViewController: PersonalizeViewController()), options: options)
+                                }
+                            } else {
+                                AuthServices.shared.writeUserData(credentials: user) {
+                                    wnd?.set(rootViewController: UINavigationController(rootViewController: BrandCatalogueViewController()), options: options)
+                                }
                             }
                         }
                     }
