@@ -322,6 +322,8 @@ extension ProductDetailVC: UIViewControllerTransitioningDelegate {
 extension ProductDetailVC: ProductDetailDelegate {
     
     func showSizeCalc() {
+        var sizeMeasurementExist = false
+        
         // Checking for Authentication of User
         if let user = Auth.auth().currentUser {
             if user.isAnonymous {
@@ -333,15 +335,14 @@ extension ProductDetailVC: ProductDetailDelegate {
                 slideVC.transitioningDelegate = self
                 
                 self.present(slideVC, animated: true, completion: nil)
+            } else {
+                
+                if self.user.userBodyMeasurement.values.contains(0) {
+                    sizeMeasurementExist = false
+                } else {
+                    sizeMeasurementExist = true
+                }
             }
-        }
-        
-        var sizeMeasurementExist = false
-        
-        if user.userBodyMeasurement.values.contains(0) {
-            sizeMeasurementExist = false
-        } else {
-            sizeMeasurementExist = true
         }
         
         // Checking for Size Measurement of User
