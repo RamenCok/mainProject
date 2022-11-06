@@ -141,8 +141,13 @@ class SignupLogin: UIViewController {
                 print(authResult?.user.providerData)
                 
                 if let error = error {
-                    print(error.localizedDescription)
-                    return
+                    let alert = UIAlertController(title: "Login Failed", message: error.localizedDescription, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    let alert = UIAlertController(title: "Login Succcessful", message: "You'll be redirected shortly", preferredStyle: .alert)
+//                    alert.addAction(UIAlertAction(title: "You'll be redirected shortly", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                 }
                 
                 // User is signed in

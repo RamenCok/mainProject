@@ -9,6 +9,7 @@ import Foundation
 
 struct Product {
     
+    var id: String
     var productName: String
     var productDesc: String
     var productImage: String
@@ -16,7 +17,8 @@ struct Product {
     var productSizeChart: [ProductSizeChart]
     var productLinks: [ProductLink]
     
-    init(dictionary: [String: Any]) {
+    init(dictionary: [String: Any], id: String) {
+        self.id = id
         self.productName = dictionary["productName"] as? String ?? ""
         self.productDesc = dictionary["productDesc"] as? String ?? ""
         self.productImage = dictionary["productImage"] as? String ?? ""

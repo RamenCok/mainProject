@@ -181,8 +181,12 @@ class ProductDetailVC: UIViewController {
         navVC.modalPresentationStyle = .fullScreen
         present(navVC, animated: true)
     }
+
     
     // MARK: - Helpers
+   
+    
+    
     private func setupScrollView() {
         
         view.addSubview(scrollView)
@@ -249,8 +253,9 @@ class ProductDetailVC: UIViewController {
             make.width.height.equalTo(contentView.snp.height)
         }
         bottomRectangle.setupShadow(opacity: 0.15, radius: 58, offset: CGSize(width: 1, height: 8), color: .systemGray)
-        
+//        bottomRectangle.backgroundColor = .yellow
         contentView.addSubview(viewInAR)
+        
         viewInAR.snp.makeConstraints { make in
             make.bottom.equalTo(bottomRectangle.snp.top).offset(view.frame.height * -0.014)
             make.trailing.equalTo(contentView.snp.trailing).offset(-20)
@@ -258,8 +263,9 @@ class ProductDetailVC: UIViewController {
             make.height.equalTo(view.frame.height * 0.053)
         }
         
-        let productHeadline = HeadlineView(brandName: brandName, productName: product.productName)
+        let productHeadline = HeadlineView(brandName: brandName, product: product)
         contentView.addSubview(productHeadline)
+//        productHeadline.backgroundColor = .red
         productHeadline.snp.makeConstraints { make in
             make.top.equalTo(topRectangle.snp.bottom).offset(view.frame.height * 0.02)
             make.leading.equalTo(contentView.snp.leading).offset(20)
@@ -268,6 +274,7 @@ class ProductDetailVC: UIViewController {
 
         let RadioButton = RadioButtonView(colorarray: product.colorsAsset.compactMap { $0["colors"] as? String }, selectedColor: selectedIndex)
         RadioButton.delegate = self
+//        RadioButton.backgroundColor = .blue
         contentView.addSubview(RadioButton)
         RadioButton.snp.makeConstraints { make in
             make.top.equalTo(productHeadline.snp.bottom).offset(view.frame.height * 0.02)
@@ -276,6 +283,7 @@ class ProductDetailVC: UIViewController {
         
         let productDescription = DescriptionView(productDesc: product.productDesc.replacingOccurrences(of: "\\n", with: "\n"))
         contentView.addSubview(productDescription)
+//        productDescription.backgroundColor = .green
         productDescription.snp.makeConstraints { make in
             make.top.equalTo(RadioButton.snp.bottom).offset(view.frame.height * 0.02)
             make.leading.equalTo(contentView.snp.leading).offset(20)
