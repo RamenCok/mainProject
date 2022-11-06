@@ -55,6 +55,7 @@
 		AC30936228F51F5C00766787 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = AC30936128F51F5C00766787 /* FirebaseStorage */; };
 		AC30936428F51F5D00766787 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = AC30936328F51F5D00766787 /* FirebaseStorageCombine-Community */; };
 		AC4A007D28F92160000B09C9 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4A007C28F92160000B09C9 /* Service.swift */; };
+		AC4C1F6A2918375900C598AA /* OneLastThingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4C1F692918375900C598AA /* OneLastThingViewController.swift */; };
 		AC52D7E22904045500AD136A /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC52D7E12904045500AD136A /* ARViewController.swift */; };
 		AC6F478028EDEADF00AAF1F6 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC6F477F28EDEADF00AAF1F6 /* IQKeyboardManagerSwift */; };
 		AC6F478428EE982F00AAF1F6 /* ReusableTextFieldAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */; };
@@ -146,6 +147,7 @@
 		AC30932628F32D5100766787 /* ProductColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductColorView.swift; sourceTree = "<group>"; };
 		AC30932828F32FD900766787 /* ProductCatalogueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCatalogueViewModel.swift; sourceTree = "<group>"; };
 		AC4A007C28F92160000B09C9 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		AC4C1F692918375900C598AA /* OneLastThingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneLastThingViewController.swift; sourceTree = "<group>"; };
 		AC52D7E12904045500AD136A /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTextFieldAuth.swift; sourceTree = "<group>"; };
 		AC6F478528EE9A5100AAF1F6 /* ReusablePasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePasswordTextField.swift; sourceTree = "<group>"; };
@@ -720,6 +722,7 @@
 				DBE905F028EFDF4F00B6E463 /* ResetPasswordViewController.swift */,
 				DBE905F128EFDF4F00B6E463 /* PersonalizeViewController.swift */,
 				DBE905F228EFDF4F00B6E463 /* LoginViewController.swift */,
+				AC4C1F692918375900C598AA /* OneLastThingViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -909,6 +912,7 @@
 				DB8BCD9F28EBDD8500630CA3 /* BuyModalVC.swift in Sources */,
 				DBF092C52908315E00CB1D7E /* PrivacyModalVC.swift in Sources */,
 				DB76CD8D28F51AC700F562CB /* BrandCatalogueVC + CollectionView Extensions.swift in Sources */,
+				AC4C1F6A2918375900C598AA /* OneLastThingViewController.swift in Sources */,
 				DBD144DF28EEA7A6006A3E40 /* ReusableSizeCalculatorButton.swift in Sources */,
 				DB76CD8F28F51BB100F562CB /* BrandCatalogueVC + ScrollView Extensions.swift in Sources */,
 				DB8BCD9728EBDC8F00630CA3 /* SignUpModalVC.swift in Sources */,
