@@ -51,6 +51,12 @@ class BodyMeasurementVC: UIViewController {
         return collectionView
     }()
     
+    private lazy var backButton: UIBarButtonItem = {
+        let btn = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(handleBack))
+        btn.setBackgroundImage(UIImage(systemName: "chevron.backward"), for: .normal, barMetrics: .default)
+        return btn
+    }()
+    
     internal var vm =  BodyMeasurementVM(service: Service())
     var user: User!
     
@@ -79,8 +85,47 @@ class BodyMeasurementVC: UIViewController {
         
         navigationItem.largeTitleDisplayMode = .always
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
 
     // MARK: - Selectors
+    @objc func handleBack() {
+        let wnd = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        var options = UIWindow.TransitionOptions()
+        options.direction = .toRight
+        options.duration = 0.4
+        options.style = .easeIn
+        if user.userBodyMeasurement["Chest"] == 0 || user.userBodyMeasurement["Waist"] == 0 || user.userBodyMeasurement["Height"] == 0 {
+            let alert = UIAlertController(title: "Hold on!", message: "Size calculator feature cannot be used until all fields have been completed", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Got It", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Skip", style: .cancel, handler: { action in
+                guard let valueDefaults = UserDefaults.standard.value(forKey: "fromOneLastThing") else {
+                    self.navigationController?.popViewController(animated: true)
+                    return
+                }
+                
+                UserDefaults.standard.removeObject(forKey: "fromOneLastThing")
+                
+                wnd?.set(rootViewController: UINavigationController(rootViewController: BrandCatalogueViewController()), options: options)
+            }))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            guard let valueDefaults = UserDefaults.standard.value(forKey: "fromOneLastThing") else {
+                self.navigationController?.popViewController(animated: true)
+                return
+            }
+            
+            UserDefaults.standard.removeObject(forKey: "fromOneLastThing")
+            
+            wnd?.set(rootViewController: UINavigationController(rootViewController: BrandCatalogueViewController()), options: options)
+        }
+        
+       
+    }
+    
+    
     @objc func handleQuestionMarkButton() {
         
         let slideVC = PrivacyModalVC()
@@ -121,6 +166,7 @@ class BodyMeasurementVC: UIViewController {
         let rightBarBtn = UIBarButtonItem(image: UIImage(systemName: "questionmark.circle"), style: .plain, target: self, action: #selector(handleQuestionMarkButton))
         rightBarBtn.tintColor = .whiteColor
         navigationItem.rightBarButtonItem = rightBarBtn
+        navigationItem.leftBarButtonItem = backButton
     }
     
     func configureUI() {
