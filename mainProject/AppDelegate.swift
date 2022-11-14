@@ -10,6 +10,7 @@ import IQKeyboardManagerSwift
 import FirebaseCore
 import GoogleSignIn
 import Firebase
+import Network
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,6 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigation.navigationBar.topItem?.backButtonDisplayMode = .minimal
         UINavigationBar.appearance().barTintColor = UIColor.navBar
         print("Yay")
+        
+       
+        
 //        if let userActDic = launchOptions?[UIApplication.LaunchOptionsKey.userActivityDictionary] as? [String: Any],let auserActivity  = userActDic["UIApplicationLaunchOptionsUserActivityKey"] as? NSUserActivity{
 //
 //                NSLog("type \(userActDic.self),\(userActDic)") // using NSLog for logging as print did not log to my 'Device and Simulator' logs

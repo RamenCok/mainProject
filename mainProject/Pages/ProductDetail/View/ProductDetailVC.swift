@@ -60,6 +60,12 @@ class ProductDetailVC: UIViewController {
         return view
     }()
     
+    private lazy var imageRotate: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "assetRotate")
+        return image
+    }()
+    
     private let viewInAR: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor.rgb(red: 35, green: 49, blue: 97, alpha: 1)
@@ -245,6 +251,14 @@ class ProductDetailVC: UIViewController {
             make.top.equalTo(contentView.snp.top)
             make.width.equalTo(contentView.snp.width)
             make.height.equalTo(view.frame.height * 0.448)
+        }
+        
+        contentView.addSubview(imageRotate)
+        imageRotate.snp.makeConstraints { make in
+            make.top.equalTo(contentView.snp.top)
+            make.width.equalTo(60)
+            make.centerX.equalTo(contentView.snp.centerX)
+            make.height.equalTo(27)
         }
         
         contentView.addSubview(bottomRectangle)

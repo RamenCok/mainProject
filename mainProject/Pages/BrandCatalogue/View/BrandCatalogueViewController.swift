@@ -10,6 +10,7 @@ import SnapKit
 import Combine
 import FirebaseAuth
 import SDWebImage
+import SkeletonView
 
 class BrandCatalogueViewController: UIViewController {
     
@@ -18,6 +19,7 @@ class BrandCatalogueViewController: UIViewController {
     internal var profilePict: String!
     internal var brandImage: UIImage!
     private var cancellables: Set<AnyCancellable> = []
+    let refreshControl = UIRefreshControl()
     
     
     internal var searching = false
@@ -63,6 +65,8 @@ class BrandCatalogueViewController: UIViewController {
         collectionView.contentInset = UIEdgeInsets(top: 16, left: 20, bottom: 0, right: 20)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.delaysContentTouches = false
+//        collectionView.showSkeleton()
+//        collectionView.isSkeletonable = true
         return collectionView
     }()
     
@@ -81,14 +85,21 @@ class BrandCatalogueViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         configureUI()
+        
         // Panggil dari vm
         vm.brandList
             .receive(on: RunLoop.main)
             .sink { [weak self] data in
             self?.brandList = data
             self?.configureCollectionView()
+            
             self?.collectionView.reloadData()
+            self?.collectionView.stopSkeletonAnimation()
+            self?.refreshControl.endRefreshing()
+            self?.backgroundImage.stopSkeletonAnimation()
+            self?.backgroundImage.hideSkeleton(reloadDataAfter: false, transition: .crossDissolve(0))
         }.store(in: &cancellables)
         vm.userProfile
             .receive(on: RunLoop.main)
@@ -96,16 +107,38 @@ class BrandCatalogueViewController: UIViewController {
                 let url = URL(string: data)
                 if url != nil {
                     self?.profileButton.sd_setImage(with: url, for: .normal)
+                    self?.profileButton.stopSkeletonAnimation()
+                    self?.profileButton.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
                 } else {
+                    self?.profileButton.stopSkeletonAnimation()
+                    self?.profileButton.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
                     self?.profileButton.setImage(UIImage(named: "initialProfilePicture"), for: .normal)
+                   
                 }
         }.store(in: &cancellables)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+//        collectionView.isSkeletonable = true
+//        collectionView.showAnimatedGradientSkeleton()
+        if let user = AUTH_REF.currentUser {
+            if !user.isAnonymous{
+                profileButton.isSkeletonable = true
+                profileButton.showAnimatedGradientSkeleton()
+            }
+        }
+        backgroundImage.isSkeletonable = true
+        backgroundImage.showAnimatedGradientSkeleton()
+        
+        
         vm.fetchBrandList()
         vm.fetchUserProfile()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         navigationItem.title = "Brands"
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -131,12 +164,21 @@ class BrandCatalogueViewController: UIViewController {
         }
     }
     
+    @objc func refresh(_ sender: AnyObject) {
+        vm.fetchBrandList()
+        
+    }
+    
     //MARK: - Helpers
     func configureUI() {
         
         view.backgroundColor = .backgroundColor
         
         searchBar.frame = CGRect(x: 0, y: 0, width: 200, height: 64)
+        
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        collectionView.addSubview(refreshControl)
         
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithOpaqueBackground()
@@ -174,9 +216,12 @@ class BrandCatalogueViewController: UIViewController {
     
     private func configureCollectionView() {
         view.addSubview(collectionView)
+        
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+
+//        print("reload")
     }
     
     private func showImage(_ show: Bool) {
@@ -185,4 +230,21 @@ class BrandCatalogueViewController: UIViewController {
             self.profileButton.alpha = show ? 1.0 : 0.0
         }
     }
+}
+
+
+extension BrandCatalogueViewController: SkeletonCollectionViewDataSource {
+    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> SkeletonView.ReusableCellIdentifier {
+        print("Debugggg")
+        return BrandCollectionViewCell.identifier
+    }
+//    func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        return 9
+//    }
+//
+//    func collectionSkeletonView(_ skeletonView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return 9
+//    }
+    
+    
 }

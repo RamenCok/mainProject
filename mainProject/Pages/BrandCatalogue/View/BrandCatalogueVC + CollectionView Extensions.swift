@@ -13,7 +13,7 @@ extension BrandCatalogueViewController: UICollectionViewDelegate, UICollectionVi
         if searching {
             return searchedBrand.count
         } else {
-            return brandList.count
+            return brandList.count > 0 ? brandList.count : 9
         }
     }
     

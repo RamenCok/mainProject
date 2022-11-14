@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAuth
 import Firebase
+import Network
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
@@ -35,6 +36,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //              }
 //            }
         
+
+        
         var vc: UIViewController = OnboardingViewController()
 
         if let user = Auth.auth().currentUser {
@@ -55,6 +58,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         navigationController.pushViewController(vc, animated: false)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+        let networkConnect = NetworkConnection()
+        networkConnect.checkConnection()
     }
     
    

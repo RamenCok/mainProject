@@ -128,11 +128,11 @@ class ProfileViewController: UIViewController {
         
         button.backgroundColor = .clear
         button.setTitle("Delete Account", for: .normal)
-        button.tintColor = .red
+        button.tintColor = .redColor
         
         let buttonAttribute: [NSAttributedString.Key: Any] = [
              .font: UIFont.caption(),
-             .foregroundColor: UIColor.red,
+             .foregroundColor: UIColor.redColor,
              .underlineStyle: NSUnderlineStyle.single.rawValue
          ]
         
@@ -174,7 +174,7 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        navigationController?.navigationBar.tintColor = .primaryColor
         super.viewWillAppear(animated)
         vm.getUser()
     }
@@ -237,8 +237,6 @@ class ProfileViewController: UIViewController {
                             wnd?.set(rootViewController: UINavigationController(rootViewController: BrandCatalogueViewController()), options: options)
                         }
                     }
-                    
-                   
                 }
             }
         }))
@@ -306,7 +304,7 @@ class ProfileViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = editBarButtonItem
     
-        navigationController?.navigationBar.tintColor = .primaryColor
+        
         
         view.backgroundColor = .backgroundColor
         
