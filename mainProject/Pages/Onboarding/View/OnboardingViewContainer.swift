@@ -35,14 +35,9 @@ class OnboardingViewContainer: UIViewController {
         return stackView
     }()
     
-    private lazy var pinkCapsule: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.tertiaryColor
-        view.snp.makeConstraints { make in
-            make.height.equalTo(25)
-            make.width.equalTo(82)
-        }
-        view.layer.cornerRadius = 12.5
+    private lazy var pinkCapsule: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "launchScreen")
         return view
     }()
     
@@ -95,8 +90,10 @@ class OnboardingViewContainer: UIViewController {
         
         view.addSubview(pinkCapsule)
         pinkCapsule.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(20)
-            make.top.equalTo(imageView.snp.top).offset(-20)
+            make.leading.equalToSuperview().offset(0)
+            make.top.equalTo(imageView.snp.top).offset(-40)
+            make.width.equalTo(view.frame.height * 0.1267772512)
+            make.height.equalTo(view.frame.height * 0.1267772512)
         }
     }
 }

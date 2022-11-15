@@ -60,6 +60,12 @@ class ProductDetailVC: UIViewController {
         return view
     }()
     
+    private lazy var imageRotate: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "assetRotate")
+        return image
+    }()
+    
     private let viewInAR: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor.rgb(red: 35, green: 49, blue: 97, alpha: 1)
@@ -100,6 +106,27 @@ class ProductDetailVC: UIViewController {
     override open func viewDidLoad() {
         
         view.backgroundColor = .backgroundColor
+        
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.backgroundColor = .navBar
+        navBarAppearance.largeTitleTextAttributes = [
+            .foregroundColor: UIColor.whiteColor,
+            .font: UIFont.heading_1()
+        ]
+        navBarAppearance.titleTextAttributes = [
+            .foregroundColor: UIColor.blackTexts!,
+            .font: UIFont.modalTitle()
+        ]
+        
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
+        navigationController?.navigationBar.tintColor = .primaryColor
+        
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.topItem?.backButtonDisplayMode = .minimal
+        
+        UIApplication.shared.statusBarStyle = .darkContent
         
         super.viewDidLoad()
         
@@ -146,6 +173,12 @@ class ProductDetailVC: UIViewController {
         profilevm.getUser()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        super.viewWillDisappear(animated)
+        UIApplication.shared.setStatusBarStyle(.default, animated: true)
+    }
+    
     // MARK: - Selectors
     
     @objc func handleARButton() {
@@ -154,8 +187,12 @@ class ProductDetailVC: UIViewController {
         navVC.modalPresentationStyle = .fullScreen
         present(navVC, animated: true)
     }
+
     
     // MARK: - Helpers
+   
+    
+    
     private func setupScrollView() {
         
         view.addSubview(scrollView)
@@ -168,6 +205,7 @@ class ProductDetailVC: UIViewController {
         
         scrollView.contentInsetAdjustmentBehavior = .never
         scrollView.showsVerticalScrollIndicator = false
+        scrollView.delegate = self
         
         configureContentView()
         
@@ -215,14 +253,23 @@ class ProductDetailVC: UIViewController {
             make.height.equalTo(view.frame.height * 0.448)
         }
         
+        contentView.addSubview(imageRotate)
+        imageRotate.snp.makeConstraints { make in
+            make.top.equalTo(contentView.snp.top)
+            make.width.equalTo(60)
+            make.centerX.equalTo(contentView.snp.centerX)
+            make.height.equalTo(27)
+        }
+        
         contentView.addSubview(bottomRectangle)
         bottomRectangle.snp.makeConstraints { make in
             make.top.equalTo(topRectangle.snp.bottom)
             make.width.height.equalTo(contentView.snp.height)
         }
         bottomRectangle.setupShadow(opacity: 0.15, radius: 58, offset: CGSize(width: 1, height: 8), color: .systemGray)
-        
+//        bottomRectangle.backgroundColor = .yellow
         contentView.addSubview(viewInAR)
+        
         viewInAR.snp.makeConstraints { make in
             make.bottom.equalTo(bottomRectangle.snp.top).offset(view.frame.height * -0.014)
             make.trailing.equalTo(contentView.snp.trailing).offset(-20)
@@ -230,8 +277,9 @@ class ProductDetailVC: UIViewController {
             make.height.equalTo(view.frame.height * 0.053)
         }
         
-        let productHeadline = HeadlineView(brandName: brandName, productName: product.productName)
+        let productHeadline = HeadlineView(brandName: brandName, product: product)
         contentView.addSubview(productHeadline)
+//        productHeadline.backgroundColor = .red
         productHeadline.snp.makeConstraints { make in
             make.top.equalTo(topRectangle.snp.bottom).offset(view.frame.height * 0.02)
             make.leading.equalTo(contentView.snp.leading).offset(20)
@@ -240,6 +288,7 @@ class ProductDetailVC: UIViewController {
 
         let RadioButton = RadioButtonView(colorarray: product.colorsAsset.compactMap { $0["colors"] as? String }, selectedColor: selectedIndex)
         RadioButton.delegate = self
+//        RadioButton.backgroundColor = .blue
         contentView.addSubview(RadioButton)
         RadioButton.snp.makeConstraints { make in
             make.top.equalTo(productHeadline.snp.bottom).offset(view.frame.height * 0.02)
@@ -248,6 +297,7 @@ class ProductDetailVC: UIViewController {
         
         let productDescription = DescriptionView(productDesc: product.productDesc.replacingOccurrences(of: "\\n", with: "\n"))
         contentView.addSubview(productDescription)
+//        productDescription.backgroundColor = .green
         productDescription.snp.makeConstraints { make in
             make.top.equalTo(RadioButton.snp.bottom).offset(view.frame.height * 0.02)
             make.leading.equalTo(contentView.snp.leading).offset(20)
@@ -294,6 +344,8 @@ extension ProductDetailVC: UIViewControllerTransitioningDelegate {
 extension ProductDetailVC: ProductDetailDelegate {
     
     func showSizeCalc() {
+        var sizeMeasurementExist = false
+        
         // Checking for Authentication of User
         if let user = Auth.auth().currentUser {
             if user.isAnonymous {
@@ -305,15 +357,14 @@ extension ProductDetailVC: ProductDetailDelegate {
                 slideVC.transitioningDelegate = self
                 
                 self.present(slideVC, animated: true, completion: nil)
+            } else {
+                
+                if self.user.userBodyMeasurement.values.contains(0) {
+                    sizeMeasurementExist = false
+                } else {
+                    sizeMeasurementExist = true
+                }
             }
-        }
-        
-        var sizeMeasurementExist = false
-        
-        if user.userBodyMeasurement.values.contains(0) {
-            sizeMeasurementExist = false
-        } else {
-            sizeMeasurementExist = true
         }
         
         // Checking for Size Measurement of User
@@ -377,5 +428,29 @@ extension ProductDetailVC:ProductCatalogueDelegate {
     
     func skip() {
         self.dismiss(animated: true)
+    }
+}
+
+extension ProductDetailVC: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        if scrollView.contentOffset.y > 0 {
+            let currentTheme = self.traitCollection.userInterfaceStyle
+            
+            switch currentTheme {
+                case .dark:
+                    UIApplication.shared.statusBarStyle = .lightContent
+                case .light:
+                    UIApplication.shared.statusBarStyle = .darkContent
+                default:
+                    UIApplication.shared.statusBarStyle = .darkContent
+            }
+            
+            navigationController?.navigationBar.tintColor = .primaryColor
+        } else {
+            navigationController?.navigationBar.tintColor = UIColor.rgb(red: 35, green: 49, blue: 97, alpha: 1)
+            UIApplication.shared.statusBarStyle = .darkContent
+        }
     }
 }

@@ -31,16 +31,20 @@ struct Service: ProfileServices {
     
     func getUser(_ completion: @escaping (User, Error?) -> Void) {
         
-        let document = Firestore.firestore().collection("users").document(uid!)
-        
-        document.getDocument { document, error in
+        guard let user = AUTH_REF.currentUser else { return }
+        if !user.isAnonymous {
             
-            if let document = document, document.exists {
-                let dictionary = document.data()
-                let user = User(dictionary: dictionary ?? ["" : ""])
-                completion(user, error)
-            } else {
-                print("Document does not exist")
+            let document = Firestore.firestore().collection("users").document(uid!)
+            
+            document.getDocument { document, error in
+                
+                if let document = document, document.exists {
+                    let dictionary = document.data()
+                    let user = User(dictionary: dictionary ?? ["" : ""])
+                    completion(user, error)
+                } else {
+                    print("Document does not exist")
+                }
             }
         }
     }
@@ -131,7 +135,7 @@ struct ProductService: ProductServicing {
         data.addSnapshotListener { snapshot, error in
             
             let dict = snapshot?.data()
-            var data = Product(dictionary: dict ?? [:])
+            var data = Product(dictionary: dict ?? [:], id: snapshot?.documentID ?? "noID")
             
             // REMOVE IF STATEMENT WHEN ALL PRODUCT HAS SIZE CHART!!!
 //            if data.productName == "Skelly Kaos Stripe Pria" {

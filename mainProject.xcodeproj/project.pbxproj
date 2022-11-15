@@ -55,6 +55,7 @@
 		AC30936228F51F5C00766787 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = AC30936128F51F5C00766787 /* FirebaseStorage */; };
 		AC30936428F51F5D00766787 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = AC30936328F51F5D00766787 /* FirebaseStorageCombine-Community */; };
 		AC4A007D28F92160000B09C9 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4A007C28F92160000B09C9 /* Service.swift */; };
+		AC4C1F6A2918375900C598AA /* OneLastThingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4C1F692918375900C598AA /* OneLastThingViewController.swift */; };
 		AC52D7E22904045500AD136A /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC52D7E12904045500AD136A /* ARViewController.swift */; };
 		AC6F478028EDEADF00AAF1F6 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC6F477F28EDEADF00AAF1F6 /* IQKeyboardManagerSwift */; };
 		AC6F478428EE982F00AAF1F6 /* ReusableTextFieldAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */; };
@@ -68,6 +69,8 @@
 		AC8608A528F52DC7002B0D3F /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC8608A428F52DC7002B0D3F /* GoogleSignInSwift */; };
 		AC8608A928F53B24002B0D3F /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8608A828F53B24002B0D3F /* AuthServices.swift */; };
 		AC879535290AB634005B8E0B /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = AC879534290AB634005B8E0B /* Lottie */; };
+		AC8B0F602921310200E8F9F9 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = AC8B0F5F2921310200E8F9F9 /* SkeletonView */; };
+		AC8B0F6F2922568200E8F9F9 /* CheckInternetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8B0F6E2922568200E8F9F9 /* CheckInternetConnection.swift */; };
 		ACB588A828E7E9C30025D230 /* ReusableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB588A728E7E9C30025D230 /* ReusableButton.swift */; };
 		ACB588AB28E7F08C0025D230 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = ACB588AA28E7F08C0025D230 /* SnapKit */; };
 		ACB588B428EA8CC80025D230 /* Sora-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = ACFEBEC528E7613000372297 /* Sora-Bold.otf */; };
@@ -146,6 +149,7 @@
 		AC30932628F32D5100766787 /* ProductColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductColorView.swift; sourceTree = "<group>"; };
 		AC30932828F32FD900766787 /* ProductCatalogueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCatalogueViewModel.swift; sourceTree = "<group>"; };
 		AC4A007C28F92160000B09C9 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		AC4C1F692918375900C598AA /* OneLastThingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneLastThingViewController.swift; sourceTree = "<group>"; };
 		AC52D7E12904045500AD136A /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		AC6F478328EE982F00AAF1F6 /* ReusableTextFieldAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableTextFieldAuth.swift; sourceTree = "<group>"; };
 		AC6F478528EE9A5100AAF1F6 /* ReusablePasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePasswordTextField.swift; sourceTree = "<group>"; };
@@ -154,6 +158,7 @@
 		AC8366CA28F6D009000EBF5D /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		AC8608A828F53B24002B0D3F /* AuthServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
 		AC8608AA28F53EB1002B0D3F /* mainProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mainProject.entitlements; sourceTree = "<group>"; };
+		AC8B0F6E2922568200E8F9F9 /* CheckInternetConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInternetConnection.swift; sourceTree = "<group>"; };
 		ACB588A728E7E9C30025D230 /* ReusableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableButton.swift; sourceTree = "<group>"; };
 		ACFE712E28ED207900A894D4 /* ReusablePinkCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePinkCapsule.swift; sourceTree = "<group>"; };
 		ACFE713028ED3C8000A894D4 /* ReusableAuthBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableAuthBackground.swift; sourceTree = "<group>"; };
@@ -244,6 +249,7 @@
 				AC8608A528F52DC7002B0D3F /* GoogleSignInSwift in Frameworks */,
 				AC30933428F51F5C00766787 /* FirebaseAnalyticsSwift in Frameworks */,
 				AC30933A28F51F5C00766787 /* FirebaseAppDistribution-Beta in Frameworks */,
+				AC8B0F602921310200E8F9F9 /* SkeletonView in Frameworks */,
 				AC30935E28F51F5C00766787 /* FirebaseRemoteConfig in Frameworks */,
 				AC30936228F51F5C00766787 /* FirebaseStorage in Frameworks */,
 				AC30933E28F51F5C00766787 /* FirebaseAuthCombine-Community in Frameworks */,
@@ -365,6 +371,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		AC8B0F6D2922567500E8F9F9 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				AC8B0F6E2922568200E8F9F9 /* CheckInternetConnection.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		ACB588BC28EA95EB0025D230 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -434,6 +448,7 @@
 		ACFEBEB828E7611000372297 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				AC8B0F6D2922567500E8F9F9 /* Network */,
 				DB8BCD8A28EBD66D00630CA3 /* PresentationController */,
 				ACFE713228ED3F9F00A894D4 /* Auth */,
 				ACB588A728E7E9C30025D230 /* ReusableButton.swift */,
@@ -720,6 +735,7 @@
 				DBE905F028EFDF4F00B6E463 /* ResetPasswordViewController.swift */,
 				DBE905F128EFDF4F00B6E463 /* PersonalizeViewController.swift */,
 				DBE905F228EFDF4F00B6E463 /* LoginViewController.swift */,
+				AC4C1F692918375900C598AA /* OneLastThingViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -827,6 +843,7 @@
 				AC8366C228F6A585000EBF5D /* UIWindowTransitions */,
 				DB3CB1C328F7036A000C502C /* SDWebImage */,
 				AC879534290AB634005B8E0B /* Lottie */,
+				AC8B0F5F2921310200E8F9F9 /* SkeletonView */,
 			);
 			productName = mainProject;
 			productReference = ACFEBE9F28E7603000372297 /* mainProject.app */;
@@ -864,6 +881,7 @@
 				AC8366C128F6A585000EBF5D /* XCRemoteSwiftPackageReference "UIWindowTransitions" */,
 				DB3CB1C228F7036A000C502C /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				AC879533290AB634005B8E0B /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				AC8B0F5E2921310200E8F9F9 /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			productRefGroup = ACFEBEA028E7603000372297 /* Products */;
 			projectDirPath = "";
@@ -909,6 +927,7 @@
 				DB8BCD9F28EBDD8500630CA3 /* BuyModalVC.swift in Sources */,
 				DBF092C52908315E00CB1D7E /* PrivacyModalVC.swift in Sources */,
 				DB76CD8D28F51AC700F562CB /* BrandCatalogueVC + CollectionView Extensions.swift in Sources */,
+				AC4C1F6A2918375900C598AA /* OneLastThingViewController.swift in Sources */,
 				DBD144DF28EEA7A6006A3E40 /* ReusableSizeCalculatorButton.swift in Sources */,
 				DB76CD8F28F51BB100F562CB /* BrandCatalogueVC + ScrollView Extensions.swift in Sources */,
 				DB8BCD9728EBDC8F00630CA3 /* SignUpModalVC.swift in Sources */,
@@ -962,6 +981,7 @@
 				DB76CD8B28F5157900F562CB /* BodyMeasurementVC + CollectionView Extensions.swift in Sources */,
 				DB6F3CCD28FE55770043FDC3 /* SetupBodyMeasurementModalVM.swift in Sources */,
 				ACFEBEA528E7603000372297 /* SceneDelegate.swift in Sources */,
+				AC8B0F6F2922568200E8F9F9 /* CheckInternetConnection.swift in Sources */,
 				ACFE713628ED6C1800A894D4 /* ReusableTextField.swift in Sources */,
 				0EAFD7E828EB06A30004E3DB /* RadioButtonView.swift in Sources */,
 				0EAFD7E428EAE35B0004E3DB /* RadioButton.swift in Sources */,
@@ -1117,7 +1137,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = mainProject/mainProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 8XZM6ZXT9F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mainProject/Info.plist;
@@ -1153,7 +1173,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = mainProject/mainProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 8XZM6ZXT9F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mainProject/Info.plist;
@@ -1243,6 +1263,14 @@
 			requirement = {
 				branch = master;
 				kind = branch;
+			};
+		};
+		AC8B0F5E2921310200E8F9F9 /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		ACB588A928E7F08C0025D230 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
@@ -1418,6 +1446,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AC879533290AB634005B8E0B /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		AC8B0F5F2921310200E8F9F9 /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AC8B0F5E2921310200E8F9F9 /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
 		};
 		ACB588AA28E7F08C0025D230 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -81,24 +81,24 @@ class OnboardingViewController: UIPageViewController {
     
     @objc func handleNavigationButton() {
         AuthServices.shared.anonymousAuth(completion: {authResult, error in
+            let wnd = UIApplication
+                .shared
+                .connectedScenes
+                .compactMap { $0 as? UIWindowScene }
+                .flatMap { $0.windows }
+                .first { $0.isKeyWindow }
             
+            let options = UIWindow.TransitionOptions()
+            options.direction = .toRight
+            options.duration = 0.4
+            options.style = .easeIn
+            wnd?.set(rootViewController: UINavigationController(rootViewController: BrandCatalogueViewController()), options: options)
         })
 //        print("Next Screen")
 //        let wnd = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
         
         // Update buat windows yg deprecated di ios 15
-        let wnd = UIApplication
-            .shared
-            .connectedScenes
-            .compactMap { $0 as? UIWindowScene }
-            .flatMap { $0.windows }
-            .first { $0.isKeyWindow }
         
-        let options = UIWindow.TransitionOptions()
-        options.direction = .toRight
-        options.duration = 0.4
-        options.style = .easeIn
-        wnd?.set(rootViewController: UINavigationController(rootViewController: BrandCatalogueViewController()), options: options)
         
 //        navigationController?.pushViewController(BrandCatalogueViewController() , animated: true)
         

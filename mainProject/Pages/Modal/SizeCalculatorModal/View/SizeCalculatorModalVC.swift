@@ -131,7 +131,9 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
     
     let profileVM = ProfileViewModel(service: Service())
     var user: User!
+    var chosenBtn: String = ""
     private var cancellables: Set<AnyCancellable> = []
+    private var btnEnabled = PassthroughSubject<String, Never>()
     
     let sizeCalcVM = SizeCalcViewModel()
     
@@ -155,6 +157,17 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        btnEnabled.sink { chosenBtn in
+            
+            self.chestButton.setImage(UIImage(
+                named: chosenBtn == "Chest" ? self.sizeCalcVM.setChestButtonImageClicked(currSize: self.chestButtonCurrentSize) : self.sizeCalcVM.setChestButtonImage(currSize: self.chestButtonCurrentSize)),
+                                 for: .normal)
+            self.heightButton.setImage(UIImage(named: chosenBtn == "Height" ? self.sizeCalcVM.setHeightButtonImageClicked(currSize: self.heightButtonCurrentSize) : self.sizeCalcVM.setHeightButtonImage(currSize: self.heightButtonCurrentSize)), for: .normal)
+            
+            self.waistButton.setImage(UIImage(named: chosenBtn == "Waist" ? self.sizeCalcVM.setWaistButtonImageClicked(currSize: self.waistButtonCurrentSize) : self.sizeCalcVM.setWaistButtonImage(currSize: self.waistButtonCurrentSize)), for: .normal)
+            
+        }.store(in: &cancellables)
         
         profileVM.user.sink { user in
             self.user = user
@@ -215,6 +228,9 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
         
         sizeExplanationView.bodyArea = "Chest"
         sizeExplanationView.awakeFromNib()
+        
+        btnEnabled.send("Chest")
+        
         sizeExplanationView.alpha = 1
     }
     
@@ -231,6 +247,9 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
         
         sizeExplanationView.bodyArea = "Height"
         sizeExplanationView.awakeFromNib()
+        
+        btnEnabled.send("Height")
+        
         sizeExplanationView.alpha = 1
     }
     
@@ -247,6 +266,9 @@ class SizeCalculatorModalVC: UIViewController, UIViewControllerTransitioningDele
         
         sizeExplanationView.bodyArea = "Waist"
         sizeExplanationView.awakeFromNib()
+        
+        btnEnabled.send("Waist")
+        
         sizeExplanationView.alpha = 1
     }
     

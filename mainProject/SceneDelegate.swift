@@ -7,14 +7,36 @@
 
 import UIKit
 import FirebaseAuth
+import Firebase
+import Network
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
+    
+    func handleDynamicLink(_ dynamicLink: DynamicLink) {
+        print("Handle")
+        guard let url = dynamicLink.url else {
+            print("error")
+            return
+        }
+        print("Your incoming parameter is: \(url.absoluteString)")
+    }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard (scene is UIWindowScene) else { return }
+//
+//        if let firstUrlContext = connectionOptions.userActivities.first,let url = firstUrlContext.webpageURL  {
+//            print("There is an url \(url)")
+//            DynamicLinks.dynamicLinks().handleUniversalLink(url) { (dynamiclink, error) in
+//                if let dynamiclink = dynamiclink {
+//                    self.handleDynamicLink(dynamiclink)
+//                }
+//              }
+//            }
+        
+
         
         var vc: UIViewController = OnboardingViewController()
 
@@ -36,7 +58,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         navigationController.pushViewController(vc, animated: false)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+        let networkConnect = NetworkConnection()
+        networkConnect.checkConnection()
     }
+    
+   
     
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

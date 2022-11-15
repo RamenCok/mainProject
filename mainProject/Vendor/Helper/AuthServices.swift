@@ -43,6 +43,12 @@ struct AuthServices {
         FR_REF_USER.document(uid).getDocument(completion: completionFunc)
     }
     
+    func deleteUser(completionFunc: @escaping (Error?) -> Void) {
+        let user = AUTH_REF.currentUser
+        
+        user?.delete(completion: completionFunc)
+    }
+    
     func writeUserData(credentials: Dictionary<String, Any>, completionFunc: @escaping () -> Void){
         FR_REF_USER.document(credentials["uid"] as! String).setData(credentials){err in
             if let err = err {
