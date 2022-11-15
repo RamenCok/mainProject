@@ -150,6 +150,15 @@ class SizeCalcViewModel: ObservableObject {
         }
     }
     
+    func setChestButtonImageClicked(currSize: Int) -> String {
+
+        if chest <= sortedChest[currSize].value {
+            return "fit-selected"
+        } else {
+            return "unfit-selected"
+        }
+    }
+    
     func setHeightButtonImage(currSize: Int) -> String {
         
         if height <= sortedHeight[currSize].value {
@@ -159,12 +168,30 @@ class SizeCalcViewModel: ObservableObject {
         }
     }
     
+    func setHeightButtonImageClicked(currSize: Int) -> String {
+        
+        if height <= sortedHeight[currSize].value {
+            return "fit-selected"
+        } else {
+            return "unfit-selected"
+        }
+    }
+    
     func setWaistButtonImage(currSize: Int) -> String {
         
         if waist <= sortedWaist[currSize].value {
             return "fit"
         } else {
             return "unfit"
+        }
+    }
+    
+    func setWaistButtonImageClicked(currSize: Int) -> String {
+        
+        if waist <= sortedWaist[currSize].value {
+            return "fit-selected"
+        } else {
+            return "unfit-selected"
         }
     }
     

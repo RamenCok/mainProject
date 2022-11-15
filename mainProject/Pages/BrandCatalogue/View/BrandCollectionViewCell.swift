@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import SDWebImage
+import SkeletonView
 
 class BrandCollectionViewCell: UICollectionViewCell {
     static let identifier = "BrandCollectionViewCell"
@@ -97,13 +98,14 @@ class BrandCollectionViewCell: UICollectionViewCell {
     }()
     
     private lazy var brandLabel: UILabel = {
-        let label = ReusableLabel(style: .bodyText, textString: "H&M")
+        let label = ReusableLabel(style: .bodyText, textString: "")
         label.textAlignment = .center
         return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -114,7 +116,11 @@ class BrandCollectionViewCell: UICollectionViewCell {
     func configure() {
         guard let brandImageUrl = URL(string: brandImage) else { return }
         brandImageView.sd_setImage(with: brandImageUrl)
-        
+        self.isSkeletonable = true
+//        self.contentView.isSkeletonable = true
+        brandView.isSkeletonable = true
+//        brandImageView.isSkeletonable = true
+        brandLabel.isSkeletonable = true
         contentView.addSubview(brandView)
         brandView.snp.makeConstraints { make in
             make.width.equalTo(contentView.frame.width)
@@ -129,11 +135,13 @@ class BrandCollectionViewCell: UICollectionViewCell {
             make.width.equalTo(contentView.frame.width)
         }
         
+       
         contentView.clipsToBounds = true
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
         brandLabel.frame = CGRect(x: 0, y: contentView.frame.size.width + 10, width: contentView.frame.size.width, height: 20)
         brandView.frame = CGRect(x: 0, y: 0, width: contentView.frame.size.width, height: contentView.frame.size.width)
     }

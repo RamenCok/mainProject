@@ -98,13 +98,18 @@ class PersonalizeViewController: UIViewController {
                 "gender": genderLabel.text,
                 "name": nameTextField.text
             ]
-            vm.saveData(updatedData: updatedUserData) {
+            vm.saveData(updatedData: updatedUserData) { [self] in
                 let wnd = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
                 var options = UIWindow.TransitionOptions()
                 options.direction = .toRight
                 options.duration = 0.4
                 options.style = .easeIn
-                wnd?.set(rootViewController: UINavigationController(rootViewController: BrandCatalogueViewController()), options: options)
+                print(self.user)
+                if self.user.userBodyMeasurement["Waist"] == 0 || self.user.userBodyMeasurement["Chest"] == 0 || self.user.userBodyMeasurement["Height"] == 0 {
+                    wnd?.set(rootViewController: UINavigationController(rootViewController: OneLastThingViewController(user: user)), options: options)
+                } else {
+                    wnd?.set(rootViewController: UINavigationController(rootViewController: BrandCatalogueViewController()), options: options)
+                }
             }
             
         }

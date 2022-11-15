@@ -36,6 +36,7 @@ class ProductCatalogueViewController: UIViewController {
     var presentedVC: String?
     
     private var cancellables: Set<AnyCancellable> = []
+    let refreshControl = UIRefreshControl()
     
     // bikin product array
     
@@ -54,6 +55,7 @@ class ProductCatalogueViewController: UIViewController {
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.backgroundColor = .backgroundColor
+        collectionView.addSubview(refreshControl)
         
         return collectionView
     }()
@@ -98,6 +100,7 @@ class ProductCatalogueViewController: UIViewController {
                 self.configureUI()
                 self.productList = list
                 self.productCollectionView.reloadData()
+                self.refreshControl.endRefreshing()
             }.store(in: &cancellables)
         }
     }
@@ -141,13 +144,6 @@ class ProductCatalogueViewController: UIViewController {
         
         view.backgroundColor = .backgroundColor
         
-//        view.addSubview(rect)
-//        rect.snp.makeConstraints { make in
-//            make.leading.trailing.equalToSuperview()
-//            make.top.equalToSuperview()
-//            make.bottom.equalToSuperview()
-//        }
-        
         view.addSubview(image)
         image.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -167,10 +163,16 @@ class ProductCatalogueViewController: UIViewController {
         }
     }
     
+    @objc func refresh(_ sender: AnyObject) {
+        productVM.fetchProductList(ref: brand.productRef)
+    }
+    
     func configureUI(){
         
         view.backgroundColor = .backgroundColor
-        
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        productCollectionView.addSubview(refreshControl)
         view.addSubview(productCollectionView)
         productCollectionView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()

@@ -123,6 +123,28 @@ class ProfileViewController: UIViewController {
         return button
     }()
     
+    private lazy var deleteButton: UIButton = {
+        let button = UIButton()
+        
+        button.backgroundColor = .clear
+        button.setTitle("Delete Account", for: .normal)
+        button.tintColor = .redColor
+        
+        let buttonAttribute: [NSAttributedString.Key: Any] = [
+             .font: UIFont.caption(),
+             .foregroundColor: UIColor.redColor,
+             .underlineStyle: NSUnderlineStyle.single.rawValue
+         ]
+        
+        let attributeString = NSMutableAttributedString(
+                string: "Delete Account",
+                attributes: buttonAttribute
+             )
+        button.setAttributedTitle(attributeString, for: .normal)
+        button.addTarget(self, action: #selector(handleDeleteButton), for: .touchUpInside)
+        return button
+    }()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         
@@ -152,7 +174,7 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        navigationController?.navigationBar.tintColor = .primaryColor
         super.viewWillAppear(animated)
         vm.getUser()
     }
@@ -175,10 +197,54 @@ class ProfileViewController: UIViewController {
     @objc func handleResetPasswordButton() {
         AuthServices.shared.resetPassword { error in
             if let error = error {
-                print(error.localizedDescription)
+                let alert = UIAlertController(title: "Reset Password error", message: error.localizedDescription, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                let alert = UIAlertController(title: "Reset Password Successful", message: "Please check your email / spam for further instruction", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
         }
         print("Reset Password")
+    }
+    
+    @objc func handleDeleteButton() {
+        let wnd = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        var options = UIWindow.TransitionOptions()
+        options.direction = .toRight
+        options.duration = 0.4
+        options.style = .easeIn
+        
+        let deleteAlert = UIAlertController(title: "Delete Confirmation", message: "Deleted Account can't be restored", preferredStyle: .alert)
+        deleteAlert.addAction(UIAlertAction(title: "Candel", style: .cancel, handler: nil))
+        deleteAlert.addAction(UIAlertAction(title: "Delete", style: .default, handler: { action in
+//            print("Delete Action")
+            AuthServices.shared.deleteUser { error in
+                if let error = error {
+                    let alert = UIAlertController(title: "Reset Password error", message: error.localizedDescription, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    AuthServices.shared.anonymousAuth { authDataResult, error in
+                        if let error = error {
+                            let alert = UIAlertController(title: "Navigation Failed", message: error.localizedDescription, preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+                            self.present(alert, animated: true, completion: nil)
+                        } else {
+                            let alert = UIAlertController(title: "Account has been deleted", message: "You'll be redirected shortly", preferredStyle: .alert)
+                            self.present(alert, animated: true, completion: nil)
+                            wnd?.set(rootViewController: UINavigationController(rootViewController: BrandCatalogueViewController()), options: options)
+                        }
+                    }
+                }
+            }
+        }))
+        
+        self.present(deleteAlert, animated: true, completion: nil)
+       
+        
+        
     }
     
     @objc func handleLogOutButton() {
@@ -238,7 +304,7 @@ class ProfileViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = editBarButtonItem
     
-        navigationController?.navigationBar.tintColor = .primaryColor
+        
         
         view.backgroundColor = .backgroundColor
         
@@ -289,11 +355,20 @@ class ProfileViewController: UIViewController {
             make.trailing.equalToSuperview().offset(-20)
         }
         
-        view.addSubview(logOutButton)
-        logOutButton.snp.makeConstraints { make in
+        view.addSubview(deleteButton)
+        deleteButton.snp.makeConstraints { make in
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-37)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
         }
+        
+        view.addSubview(logOutButton)
+        logOutButton.snp.makeConstraints { make in
+            make.bottom.equalTo(deleteButton.snp.top).offset(-10)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+        }
+        
+        
     }
 }
