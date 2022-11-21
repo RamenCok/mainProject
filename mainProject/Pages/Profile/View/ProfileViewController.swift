@@ -12,6 +12,7 @@ import GoogleSignIn
 import Combine
 import SDWebImage
 import UIWindowTransitions
+import SkeletonView
 
 class ProfileViewController: UIViewController {
 
@@ -155,14 +156,21 @@ class ProfileViewController: UIViewController {
         
         vm.user.sink { user in
             self.nameTF.text = user.userName
+            print("Debug: \(user.userName)")
             self.genderLabel.text = user.userGender
-            
+//            self.nameTF.stopSkeletonAnimation()
+//            self.nameTF.hideSkeleton()
+//
             let url = URL(string: user.userProfilePicture)
             
             if url != nil {
                 self.profileImage.sd_setImage(with: url)
+                self.profileImage.stopSkeletonAnimation()
+                self.profileImage.hideSkeleton()
             } else {
                 self.profileImage.image = UIImage(named: "initialProfilePicture")
+                self.profileImage.stopSkeletonAnimation()
+                self.profileImage.hideSkeleton()
             }
             
             self.user = user
@@ -176,7 +184,18 @@ class ProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.tintColor = .primaryColor
         super.viewWillAppear(animated)
+//        nameTF.isSkeletonable = true
+//        nameTF.showAnimatedGradientSkeleton()
+        
+//        profileImage.isSkeletonable = true
+//        profileImage.showAnimatedGradientSkeleton()
         vm.getUser()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+
+        
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

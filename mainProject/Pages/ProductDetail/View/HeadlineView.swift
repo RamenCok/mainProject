@@ -110,9 +110,9 @@ class HeadlineView: UIView {
             let secondActivityItem : NSURL = url as NSURL
                 
                 // If you want to use an image
-                let image : UIImage = UIImage(named: "AppIcon")!
+//                let image : UIImage = UIImage(named: "AppIcon")!
                 let activityViewController : UIActivityViewController = UIActivityViewController(
-                    activityItems: [firstActivityItem, secondActivityItem, image], applicationActivities: nil)
+                    activityItems: [firstActivityItem, secondActivityItem], applicationActivities: nil)
                 
                 // This lines is for the popover you need to show in iPad
             activityViewController.popoverPresentationController?.sourceView = (self.shareButton )

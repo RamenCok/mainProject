@@ -255,10 +255,10 @@ class ProductDetailVC: UIViewController {
         
         contentView.addSubview(imageRotate)
         imageRotate.snp.makeConstraints { make in
-            make.top.equalTo(contentView.snp.top)
             make.width.equalTo(60)
-            make.centerX.equalTo(contentView.snp.centerX)
             make.height.equalTo(27)
+            make.bottom.equalTo(sceneKitView.snp.bottom).offset(-10)
+            make.leading.equalTo(sceneKitView.snp.leading).offset(10)
         }
         
         contentView.addSubview(bottomRectangle)
