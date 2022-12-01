@@ -123,12 +123,12 @@ class BrandCatalogueViewController: UIViewController {
         
 //        collectionView.isSkeletonable = true
 //        collectionView.showAnimatedGradientSkeleton()
-        if let user = AUTH_REF.currentUser {
-            if !user.isAnonymous{
-                profileButton.isSkeletonable = true
-                profileButton.showAnimatedGradientSkeleton()
-            }
-        }
+//        if let user = AUTH_REF.currentUser {
+//            if !user.isAnonymous{
+//                profileButton.isSkeletonable = true
+//                profileButton.showAnimatedGradientSkeleton()
+//            }
+//        }
         backgroundImage.isSkeletonable = true
         backgroundImage.showAnimatedGradientSkeleton()
         

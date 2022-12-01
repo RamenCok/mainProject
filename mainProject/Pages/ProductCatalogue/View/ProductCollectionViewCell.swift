@@ -70,7 +70,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
     private lazy var productImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "sample-picture")
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = false
         
         return imageView
@@ -120,7 +120,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
         
         contentView.addSubview(productLabel)
         productLabel.snp.makeConstraints { make in
-            make.top.equalTo(productImageView.snp.bottom).offset(12)
+            make.top.equalTo(productImageView.snp.bottom).offset(25)
             make.leading.equalTo(contentView.snp.leading).offset(15)
             make.trailing.equalTo(contentView.snp.trailing).offset(-15)
         }
@@ -130,6 +130,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
         colorArray.snp.makeConstraints { make in
             make.top.equalTo(productLabel.snp.bottom).offset(9)
             make.leading.equalTo(contentView.snp.leading).offset(15)
+            make.bottom.equalTo(contentView.snp.bottom).inset(10)
         }
         
         contentView.layer.cornerRadius = 20
@@ -151,8 +152,8 @@ class ProductCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        productImageView.frame = CGRect(x: 0, y: 0, width: contentView.frame.size.width, height: contentView.frame.size.width)
-        productLabel.frame = CGRect(x: 0, y: contentView.frame.size.width + 10, width: contentView.frame.size.width-10, height: 60)
+//
+//        productImageView.frame = CGRect(x: 0, y: 0, width: contentView.frame.size.width, height: contentView.frame.size.width)
+//        productLabel.frame = CGRect(x: 0, y: contentView.frame.size.width + 10, width: contentView.frame.size.width-10, height: 60)
     }
 }

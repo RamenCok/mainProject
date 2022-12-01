@@ -135,27 +135,49 @@ class OnboardingViewController: UIPageViewController {
         navigationController?.navigationBar.isHidden = true
         view.addSubview(skipButton)
         skipButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(55)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
             make.trailing.equalToSuperview().offset(-20)
         }
         
-        let page1 = OnboardingViewContainer(
+        var page1 = OnboardingViewContainer(
             imageName: "onBoarding1",
             titleText: "Perfect fit, every time.",
-            subtitleText: "With our size calculator feature,\nyou can know which size fits\nbest on you."
+            subtitleText: ""
         )
         
-        let page2 = OnboardingViewContainer(
+        var page2 = OnboardingViewContainer(
             imageName: "onBoarding2",
             titleText: "Simple, yet intuitive.",
-            subtitleText: "Our 3D model preview enables you\nto visualize products in a way that\nis quick and hassle-free."
+            subtitleText: ""
         )
         
-        let page3 = OnboardingViewContainer(
+        var page3 = OnboardingViewContainer(
             imageName: "onBoarding3",
             titleText: "Try without\nbuy.",
-            subtitleText: "Our Augmented Reality feature\ncan help you visualize how a product\nlooks on you."
+            subtitleText: ""
         )
+        
+        if (UIApplication.shared.keyWindow?.safeAreaInsets.top)! > 20 {
+            page1 = OnboardingViewContainer(
+                imageName: "onBoarding1",
+                titleText: "Perfect fit, every time.",
+                subtitleText: "With our size calculator feature,\nyou can know which size fits\nbest on you."
+            )
+            
+            page2 = OnboardingViewContainer(
+                imageName: "onBoarding2",
+                titleText: "Simple, yet intuitive.",
+                subtitleText: "Our 3D model preview enables you\nto visualize products in a way that\nis quick and hassle-free."
+            )
+            
+            page3 = OnboardingViewContainer(
+                imageName: "onBoarding3",
+                titleText: "Try without\nbuy.",
+                subtitleText: "Our Augmented Reality feature\ncan help you visualize how a product\nlooks on you."
+            )
+        }
+        
+        
         
         pages.append(page1)
         pages.append(page2)

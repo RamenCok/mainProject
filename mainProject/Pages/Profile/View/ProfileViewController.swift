@@ -241,10 +241,13 @@ class ProfileViewController: UIViewController {
 //            print("Delete Action")
             AuthServices.shared.deleteUser { error in
                 if let error = error {
-                    let alert = UIAlertController(title: "Reset Password error", message: error.localizedDescription, preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Delete Account Error", message: error.localizedDescription, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 } else {
+                    let alert = UIAlertController(title: "Delete Account Successful", message: "You'll be redirected shortly", preferredStyle: .alert)
+                   
+                    self.present(alert, animated: true, completion: nil)
                     AuthServices.shared.anonymousAuth { authDataResult, error in
                         if let error = error {
                             let alert = UIAlertController(title: "Navigation Failed", message: error.localizedDescription, preferredStyle: .alert)
@@ -350,26 +353,26 @@ class ProfileViewController: UIViewController {
             make.trailing.equalToSuperview().offset(-20)
         }
         
-        view.addSubview(genderLabel)
-        genderLabel.snp.makeConstraints { make in
-            make.top.equalTo(nameTF.snp.bottom).offset(10)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
-        }
-        
-        view.addSubview(genderButton)
-        genderButton.snp.makeConstraints { make in
-            make.centerY.equalTo(genderLabel.snp.centerY)
-            make.trailing.equalTo(genderLabel.snp.trailing)
-            make.height.width.equalTo(view.frame.height / 18)
-        }
+//        view.addSubview(genderLabel)
+//        genderLabel.snp.makeConstraints { make in
+//            make.top.equalTo(nameTF.snp.bottom).offset(10)
+//            make.leading.equalToSuperview().offset(20)
+//            make.trailing.equalToSuperview().offset(-20)
+//        }
+//
+//        view.addSubview(genderButton)
+//        genderButton.snp.makeConstraints { make in
+//            make.centerY.equalTo(genderLabel.snp.centerY)
+//            make.trailing.equalTo(genderLabel.snp.trailing)
+//            make.height.width.equalTo(view.frame.height / 18)
+//        }
         
         let stack = UIStackView(arrangedSubviews: [bodyMeasurementButton, resetPasswordButton])
         stack.axis = .vertical
         stack.spacing = 10
         view.addSubview(stack)
         stack.snp.makeConstraints { make in
-            make.top.equalTo(genderLabel.snp.bottom).offset(view.frame.height / 33.76)
+            make.top.equalTo(nameTF.snp.bottom).offset(view.frame.height / 33.76)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
         }

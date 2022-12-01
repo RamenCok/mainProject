@@ -51,6 +51,13 @@ class SignupLogin: UIViewController {
         return button
     }()
     
+    private lazy var appleBtn2: ASAuthorizationAppleIDButton = {
+        let authorizationButton = ASAuthorizationAppleIDButton()
+          authorizationButton.addTarget(self, action: #selector(handleAppleLogin), for: .touchUpInside)
+          authorizationButton.cornerRadius = 10
+        return authorizationButton
+    }()
+    
     private lazy var googleBtn: UIButton = {
         let button = ReusableButton(style: .secondary, buttonText: " Continue with Google", selector: #selector(handleGoogleLogIn), target: self)
         button.setImage(UIImage(named: "google.logo"), for: .normal)
@@ -146,44 +153,42 @@ class SignupLogin: UIViewController {
                     self.present(alert, animated: true, completion: nil)
                 } else {
                     let alert = UIAlertController(title: "Login Succcessful", message: "You'll be redirected shortly", preferredStyle: .alert)
-//                    alert.addAction(UIAlertAction(title: "You'll be redirected shortly", style: .default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
-                }
-                
-                // User is signed in
-                let user: [String: Any] = [
-                    "name" : authResult?.user.displayName,
-                    "email" : authResult?.user.email,
-                    "uid": authResult?.user.uid,
-                    "gender": ""
-                ]
-                
-                let wnd = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-                var options = UIWindow.TransitionOptions()
-                options.direction = .toRight
-                options.duration = 0.4
-                options.style = .easeIn
-                
-                AuthServices.shared.checkUserData(uid: user["uid"] as! String) { document, error in
-                    if let document = document, document.exists {
-                          let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                    
+                    // User is signed in
+                    let user: [String: Any] = [
+                        "name" : authResult?.user.displayName,
+                        "email" : authResult?.user.email,
+                        "uid": authResult?.user.uid,
+                        "gender": "Male"
+                    ]
+                    
+                    let wnd = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+                    var options = UIWindow.TransitionOptions()
+                    options.direction = .toRight
+                    options.duration = 0.4
+                    options.style = .easeIn
+                    
+                    AuthServices.shared.checkUserData(uid: user["uid"] as! String) { document, error in
+                        if let document = document, document.exists {
+                              let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
 
-                        if document.data()!["gender"] == nil || document.data()!["gender"] as! String == "" {
-                            wnd?.set(rootViewController: UINavigationController(rootViewController: PersonalizeViewController()), options: options)
+                            if document.data()!["name"] as! String == "" {
+                                wnd?.set(rootViewController: UINavigationController(rootViewController: BrandCatalogueViewController()), options: options)
+                            } else {
+                                wnd?.set(rootViewController: UINavigationController(rootViewController: BrandCatalogueViewController()), options: options)
+                            }
+                              print("Document data: \(dataDescription)")
                         } else {
-                            wnd?.set(rootViewController: UINavigationController(rootViewController: BrandCatalogueViewController()), options: options)
+                            AuthServices.shared.writeUserData(credentials: user) {
+                                print(user)
+                                print("Yow")
+                                wnd?.set(rootViewController: UINavigationController(rootViewController: BrandCatalogueViewController()), options: options)
+                            }
                         }
-                          print("Document data: \(dataDescription)")
-                    } else {
-                        AuthServices.shared.writeUserData(credentials: user) {
-                            print(user)
-                            print("Yow")
-                            wnd?.set(rootViewController: UINavigationController(rootViewController: PersonalizeViewController()), options: options)
-                        }
+                   
                     }
-               
                 }
-               
             }
         }
     }
@@ -252,10 +257,11 @@ class SignupLogin: UIViewController {
         }
         
         appleBtn.setImage(UIImage(systemName: "apple.logo"), for: .normal)
-        let stackViewBtn = UIStackView(arrangedSubviews: [appleBtn, googleBtn])
+        let stackViewBtn = UIStackView(arrangedSubviews: [appleBtn2, googleBtn])
         stackViewBtn.axis = .vertical
         stackViewBtn.alignment = .leading
         stackViewBtn.spacing = view.frame.height * 0.0095
+
         
         view.addSubview(stackViewBtn)
         stackViewBtn.snp.makeConstraints { make in
@@ -264,6 +270,10 @@ class SignupLogin: UIViewController {
             make.top.equalTo(stackView.snp.bottom).offset(view.frame.height*0.0569)
         }
         
+        appleBtn2.snp.makeConstraints { make in
+            make.height.equalTo(48)
+            make.width.equalTo(UIScreen.main.bounds.width - 40)
+        }
         let viewOr = UIView()
         viewOr.addSubview(divider)
         divider.snp.makeConstraints { make in
@@ -326,6 +336,7 @@ extension SignupLogin: ASAuthorizationControllerDelegate, ASAuthorizationControl
                 return
             }
             
+            
             let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: currentNonce)
             print("Email")
             Auth.auth().signIn(with: credential) { (AuthDataResult, error) in
@@ -346,12 +357,13 @@ extension SignupLogin: ASAuthorizationControllerDelegate, ASAuthorizationControl
                 options.style = .easeIn
                 if let users = AuthDataResult?.user {
                     print("Nice you're now signed in as \(users.uid), email: \(users.email ?? "unknown email")")
-                    
+                    print(appleIDCredential.fullName)
+                    print("email: \(appleIDCredential.email)")
                     let user: [String: Any] = [
-                        "name" : users.displayName == nil ? "" : users.displayName,
+                        "name" : appleIDCredential.fullName?.givenName == nil ? users.email : appleIDCredential.fullName?.givenName,
                         "email" : users.email,
                         "uid": users.uid,
-                        "gender": ""
+                        "gender": "Male"
                     ]
                     
                     print("debug name: \(users.displayName)")
@@ -359,8 +371,8 @@ extension SignupLogin: ASAuthorizationControllerDelegate, ASAuthorizationControl
                         if let document = document, document.exists {
                             let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
 
-                            if document.data()!["gender"] == nil || document.data()!["gender"] as! String == "" || document.data()!["name"] as! String == "" {
-                                wnd?.set(rootViewController: UINavigationController(rootViewController: PersonalizeViewController()) , options: options)
+                            if document.data()!["name"] as! String == "" {
+                                wnd?.set(rootViewController: UINavigationController(rootViewController: BrandCatalogueViewController()) , options: options)
                             } else {
                                 wnd?.set(rootViewController: UINavigationController(rootViewController: BrandCatalogueViewController()), options: options)
                             }
@@ -368,7 +380,7 @@ extension SignupLogin: ASAuthorizationControllerDelegate, ASAuthorizationControl
                         } else {
                             if user["name"] as! String == "" {
                                 AuthServices.shared.writeUserData(credentials: user) {
-                                    wnd?.set(rootViewController: UINavigationController(rootViewController: PersonalizeViewController()), options: options)
+                                    wnd?.set(rootViewController: UINavigationController(rootViewController: BrandCatalogueViewController()), options: options)
                                 }
                             } else {
                                 AuthServices.shared.writeUserData(credentials: user) {

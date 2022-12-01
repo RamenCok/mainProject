@@ -34,7 +34,7 @@ class SignUpModalVC: UIViewController {
     var hasSetPointOrigin = false
     var pointOrigin: CGPoint?
     
-    let modalSize = 2.24
+    let modalSize = 1.9
     let modalType = "NotTappable"
     
     weak var delegate: ProductCatalogueDelegate?

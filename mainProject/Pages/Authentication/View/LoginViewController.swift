@@ -92,6 +92,9 @@ class LoginViewController: UIViewController {
                     
                 }
             } else {
+                let alert = UIAlertController(title: "Login Succcessful", message: "You'll be redirected shortly", preferredStyle: .alert)
+//                    alert.addAction(UIAlertAction(title: "You'll be redirected shortly", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
                 let wnd = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
                 var options = UIWindow.TransitionOptions()
                 options.direction = .toRight
@@ -101,7 +104,7 @@ class LoginViewController: UIViewController {
                     print("Nice you're now signed in as \(users.uid), email: \(users.email ?? "unknown email")")
                     
                     let user: [String: Any] = [
-                        "name" : users.displayName,
+                        "name" : users.displayName == nil ? users.email : users.displayName,
                         "email" : users.email,
                         "uid": users.uid,
                         "gender": ""
@@ -111,14 +114,14 @@ class LoginViewController: UIViewController {
                             let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
                             
                             if document.data()!["gender"] == nil || document.data()!["gender"] as! String == "" {
-                                wnd?.set(rootViewController: UINavigationController(rootViewController:  PersonalizeViewController()) , options: options)
+                                wnd?.set(rootViewController: UINavigationController(rootViewController:  BrandCatalogueViewController()) , options: options)
                             } else {
                                 wnd?.set(rootViewController: UINavigationController(rootViewController:  BrandCatalogueViewController()), options: options)
                             }
                             print("Document data: \(dataDescription)")
                         } else {
                             AuthServices.shared.writeUserData(credentials: user) {
-                                wnd?.set(rootViewController: UINavigationController(rootViewController:  PersonalizeViewController()), options: options)
+                                wnd?.set(rootViewController: UINavigationController(rootViewController:  BrandCatalogueViewController()), options: options)
                             }
                         }
                     }

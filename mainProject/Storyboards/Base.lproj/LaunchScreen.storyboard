@@ -18,19 +18,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="qzb-pq-EAm">
-                                <rect key="frame" x="107" y="334" width="176" height="176"/>
+                                <rect key="frame" x="70" y="297" width="250" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="qzb-pq-EAm" secondAttribute="height" multiplier="1:1" id="UxL-dJ-LXh"/>
+                                    <constraint firstAttribute="width" constant="250" id="uB3-Tx-v9f"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="qzb-pq-EAm" secondAttribute="bottom" constant="300" id="63S-wt-OWG"/>
-                            <constraint firstItem="qzb-pq-EAm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="287" id="tjU-WW-zWk"/>
-                            <constraint firstItem="qzb-pq-EAm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="107" id="tzm-Lo-cdM"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qzb-pq-EAm" secondAttribute="trailing" constant="107" id="xZC-Ot-yGh"/>
+                            <constraint firstItem="qzb-pq-EAm" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="5yt-mP-NiX"/>
+                            <constraint firstItem="qzb-pq-EAm" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="uzo-rG-PCI"/>
                         </constraints>
                     </view>
                 </viewController>

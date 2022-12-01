@@ -59,7 +59,7 @@ class SignUpViewController: UIViewController {
     }()
     
     private lazy var passwordError2: ReusableErrorLabel = {
-       let errorView = ReusableErrorLabel(text: "must include combination of numbers & letters")
+       let errorView = ReusableErrorLabel(text: "make sure you remember it")
         return errorView
     }()
     
@@ -81,31 +81,42 @@ class SignUpViewController: UIViewController {
         guard let password = passwordTextField.text else {return}
         
         AuthServices.shared.registerWithEmail(email: email, password: password) { result, error in
+            
+                
             if let error = error {
+                let alert = UIAlertController(title: "Register Failed", message: error.localizedDescription, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
                 print(error.localizedDescription)
                 if error.localizedDescription ==  "The email address is already in use by another account." {
                     self.emailError.isHidden = false
                 }
-            }
-            
-            if let user = result?.user {
-                let userInfo: [String: Any] = [
-                    "name" : "",
-                    "email" : user.email,
-                    "uid": user.uid,
-                    "gender": ""
-                ]
+            } else {
+                let alert = UIAlertController(title: "Register Succcessful", message: "You'll be redirected shortly", preferredStyle: .alert)
+//                    alert.addAction(UIAlertAction(title: "You'll be redirected shortly", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
                 
-                AuthServices.shared.writeUserData(credentials: userInfo) {
-                    let wnd = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-                    var options = UIWindow.TransitionOptions()
-                    options.direction = .toRight
-                    options.duration = 0.4
-                    options.style = .easeIn
+                if let user = result?.user {
+                    let userInfo: [String: Any] = [
+                        "name" : user.email,
+                        "email" : user.email,
+                        "uid": user.uid,
+                        "gender": "Male"
+                    ]
                     
-                    wnd?.set(rootViewController: PersonalizeViewController(), options: options)
+                    AuthServices.shared.writeUserData(credentials: userInfo) {
+                        let wnd = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+                        var options = UIWindow.TransitionOptions()
+                        options.direction = .toRight
+                        options.duration = 0.4
+                        options.style = .easeIn
+                        
+                        wnd?.set(rootViewController: UINavigationController(rootViewController: BrandCatalogueViewController()) , options: options)
+                    }
                 }
             }
+            
+           
         }
         
     }

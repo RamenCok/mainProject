@@ -93,7 +93,7 @@ class PersonalizeViewController: UIViewController {
     
     // MARK: - Selectors
     @objc func handleSave(){
-        if genderLabel.text != "No Gender" && nameTextField.text != "" {
+        if nameTextField.text != "" {
             let updatedUserData = [
                 "gender": genderLabel.text,
                 "name": nameTextField.text
@@ -140,20 +140,20 @@ class PersonalizeViewController: UIViewController {
             make.height.equalTo(view.frame.height*0.055)
         }
         
-        view.addSubview(genderLabel)
-        genderLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
-            make.top.equalTo(nameTextField.snp.bottom).offset(view.frame.height * 0.01421800948)
-            make.height.equalTo(view.frame.height*0.055)
-        }
-        
-        view.addSubview(genderButton)
-        genderButton.snp.makeConstraints { make in
-            make.centerY.equalTo(genderLabel.snp.centerY)
-            make.trailing.equalTo(genderLabel.snp.trailing)
-            make.height.width.equalTo(view.frame.height / 18)
-        }
+//        view.addSubview(genderLabel)
+//        genderLabel.snp.makeConstraints { make in
+//            make.leading.equalToSuperview().offset(20)
+//            make.trailing.equalToSuperview().offset(-20)
+//            make.top.equalTo(nameTextField.snp.bottom).offset(view.frame.height * 0.01421800948)
+//            make.height.equalTo(view.frame.height*0.055)
+//        }
+//
+//        view.addSubview(genderButton)
+//        genderButton.snp.makeConstraints { make in
+//            make.centerY.equalTo(genderLabel.snp.centerY)
+//            make.trailing.equalTo(genderLabel.snp.trailing)
+//            make.height.width.equalTo(view.frame.height / 18)
+//        }
         
         view.addSubview(saveButton)
         saveButton.snp.makeConstraints { make in
